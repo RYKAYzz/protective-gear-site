@@ -1,0 +1,83 @@
+/* Reset + base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Roboto", sans-serif;
+  padding: 1rem;
+  background-color: #f7f7f7;
+  color: #1c1c1c;
+}
+
+/* Header */
+header {
+  font-family: "Oswald", sans-serif;
+  margin-bottom: 1rem;
+}
+header h1 {
+  font-size: 1.6rem;
+}
+nav {
+  margin-top: 0.5rem;
+}
+#mobile-menu {
+  list-style: none;
+  display: none;
+}
+#mobile-menu li {
+  margin: 0.5rem 0;
+}
+#menu-toggle {
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+#menu-toggle:focus + #mobile-menu {
+  display: block;
+}
+
+/* Hero section */
+.hero {
+  background: #2c3e50;
+  color: white;
+  padding: 1.5rem;
+  text-align: center;
+  border-radius: 10px;
+}
+.hero button {
+  margin-top: 1rem;
+  background: #ffd600;
+  color: black;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Categories */
+.categories h3 {
+  margin: 2rem 0 0.5rem;
+}
+.grid {
+  display: grid;
+  gap: 1rem;
+}
+.card {
+  background: white;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Footer */
+footer {
+  margin-top: 3rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #666;
+}
