@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ARK Hygiene Favicon</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 20px;
+        background: #f0f0f0;
+      }
+      .favicon-container {
+        width: 32px;
+        height: 32px;
+        background: #4a90e2;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-family: Arial, sans-serif;
+        font-weight: bold;
+        font-size: 18px;
+        border: 2px solid #2c5aa0;
+        position: relative;
+      }
+      .medical-cross {
+        position: absolute;
+        top: 2px;
+        right: 2px;
+        width: 6px;
+        height: 6px;
+        background: #e74c3c;
+        border-radius: 1px;
+      }
+      .medical-cross::before,
+      .medical-cross::after {
+        content: "";
+        position: absolute;
+        background: white;
+      }
+      .medical-cross::before {
+        width: 2px;
+        height: 6px;
+        left: 2px;
+        top: 0;
+      }
+      .medical-cross::after {
+        width: 6px;
+        height: 2px;
+        left: 0;
+        top: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="favicon-container">
+      <div class="medical-cross"></div>
+      A
+    </div>
+    <p>This represents the favicon design for ARK Hygiene</p>
+  </body>
+</html>

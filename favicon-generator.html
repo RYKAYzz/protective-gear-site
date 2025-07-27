@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Favicon Generator</title>
+  </head>
+  <body>
+    <canvas id="favicon" width="32" height="32"></canvas>
+    <script>
+      const canvas = document.getElementById("favicon");
+      const ctx = canvas.getContext("2d");
+
+      // Background - shield shape
+      ctx.fillStyle = "#4a90e2";
+      ctx.beginPath();
+      ctx.moveTo(16, 2);
+      ctx.lineTo(4, 8);
+      ctx.lineTo(4, 16);
+      ctx.quadraticCurveTo(4, 24, 16, 30);
+      ctx.quadraticCurveTo(28, 24, 28, 16);
+      ctx.lineTo(28, 8);
+      ctx.closePath();
+      ctx.fill();
+
+      // Border
+      ctx.strokeStyle = "#2c5aa0";
+      ctx.lineWidth = 1;
+      ctx.stroke();
+
+      // Letter A
+      ctx.fillStyle = "white";
+      ctx.font = "bold 16px Arial";
+      ctx.textAlign = "center";
+      ctx.fillText("A", 16, 20);
+
+      // Medical cross
+      ctx.fillStyle = "#e74c3c";
+      ctx.fillRect(24, 6, 4, 4);
+      ctx.fillStyle = "white";
+      ctx.fillRect(25, 7, 2, 2);
+
+      // Download link
+      const link = document.createElement("a");
+      link.download = "favicon.ico";
+      link.href = canvas.toDataURL();
+      link.textContent = "Download Favicon";
+      document.body.appendChild(link);
+    </script>
+  </body>
+</html>
