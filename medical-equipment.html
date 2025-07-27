@@ -241,10 +241,7 @@
         <div class="contact-grid">
           <div class="contact-info">
             <h3>Get In Touch</h3>
-            <div class="contact-item">
-              <strong>Email:</strong>
-              <p>info@arkhygiene.com</p>
-            </div>
+
             <div class="contact-item">
               <strong>Phone:</strong>
               <p>
@@ -268,7 +265,7 @@
           </div>
           <div class="contact-form">
             <h3>Request Medical Equipment Quote</h3>
-            <form onsubmit="handleContactForm(event)">
+            <form onsubmit="showContactModal()">
               <div class="form-group">
                 <label for="name">Name *</label>
                 <input type="text" id="name" name="name" required />
@@ -310,9 +307,7 @@
                   placeholder="Please describe your specific requirements..."
                 ></textarea>
               </div>
-              <button type="submit" class="submit-btn">
-                Send Quote Request
-              </button>
+              <button type="submit" class="submit-btn">Contact Sales</button>
             </form>
           </div>
         </div>

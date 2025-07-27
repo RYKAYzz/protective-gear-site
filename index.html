@@ -1532,12 +1532,10 @@
         <h2>Contact Us</h2>
         <div class="contact-info-simple">
           <div class="contact-labels">
-            <p><strong>📧 Email:</strong></p>
             <p><strong>📞 Phone:</strong></p>
             <p><strong>📍 Address:</strong></p>
           </div>
           <div class="contact-details">
-            <p><a href="mailto:info@arkhygiene.com">info@arkhygiene.com</a></p>
             <p><a href="tel:+254729171831">+254729171831</a></p>
             <p>
               P.O Box 28255-00100<br />
@@ -1707,52 +1705,6 @@
             }
           });
         }
-      }
-
-      // Contact form handling
-      function handleContactForm(event) {
-        event.preventDefault();
-
-        const form = event.target;
-        const formData = new FormData(form);
-
-        // Get form values
-        const name = formData.get("name");
-        const email = formData.get("email");
-        const phone = formData.get("phone");
-        const company = formData.get("company");
-        const subject = formData.get("subject");
-        const message = formData.get("message");
-
-        // Validate required fields
-        if (!name || !email || !subject || !message) {
-          alert("Please fill in all required fields.");
-          return;
-        }
-
-        // Create email body
-        const emailBody = `
-Name: ${name}
-Email: ${email}
-Phone: ${phone || "Not provided"}
-Company: ${company || "Not provided"}
-Subject: ${subject}
-Message: ${message}
-        `;
-
-        // Open default email client
-        const mailtoLink = `mailto:info@arkhygiene.com?subject=${encodeURIComponent(
-          subject
-        )}&body=${encodeURIComponent(emailBody)}`;
-        window.open(mailtoLink);
-
-        // Show success message
-        alert(
-          "Thank you for your message! Your email client should open with the message details."
-        );
-
-        // Reset form
-        form.reset();
       }
 
       // Service Worker for caching and offline support

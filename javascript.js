@@ -206,13 +206,7 @@ function showContactOptionsModal(content) {
             <div class="contact-option-subtitle">Call us directly</div>
           </div>
         </div>
-        <div class="contact-option" onclick="contactViaEmail()">
-          <div class="contact-option-icon email-icon">✉️</div>
-          <div class="contact-option-text">
-            <div class="contact-option-title">Email</div>
-            <div class="contact-option-subtitle">Send via email</div>
-          </div>
-        </div>
+
       </div>
     </div>
   `;
@@ -271,20 +265,6 @@ function contactViaCall() {
   window.open(`tel:${phoneNumber}`, "_self");
   closeContactModal();
   showNotification("Opening phone dialer...");
-}
-
-// Contact via Email
-function contactViaEmail() {
-  const modal = document.querySelector(".contact-modal");
-  const content = modal ? modal.dataset.content : "";
-  const subject = "Product Selection Inquiry";
-  const emailBody = content || "Hello, I'm interested in your products.";
-  const mailtoLink = `mailto:info@arkhygiene.com?subject=${encodeURIComponent(
-    subject
-  )}&body=${encodeURIComponent(emailBody)}`;
-  window.open(mailtoLink, "_blank");
-  closeContactModal();
-  showNotification("Opening email client...");
 }
 
 // Update selection counter
