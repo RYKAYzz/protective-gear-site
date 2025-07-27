@@ -928,156 +928,84 @@
         </div>
       </section>
 
-      <section
-        class="contact-section"
-        role="region"
-        aria-labelledby="contact-title"
-      >
-        <div class="contact-container">
-          <h2 id="contact-title" class="contact-title">Request PPE Quote</h2>
-          <div class="contact-grid">
+    <footer role="contentinfo">
+      <div class="modern-footer">
+        <div class="footer-main">
+          <div class="footer-section">
+            <h3>Contact Information</h3>
             <div class="contact-info">
-              <h3>Get In Touch</h3>
-              <address>
-                <div class="contact-item">
-                  <span class="contact-icon" aria-label="Phone">
-                    <svg
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="#4a90e2"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path
-                        d="M22 16.92V21a2 2 0 0 1-2.18 2A19.72 19.72 0 0 1 3 5.18 2 2 0 0 1 5 3h4.09a2 2 0 0 1 2 1.72c.13.81.37 1.6.7 2.34a2 2 0 0 1-.45 2.11l-1.27 1.27a16 16 0 0 0 6.29 6.29l1.27-1.27a2 2 0 0 1 2.11-.45c.74.33 1.53.57 2.34.7A2 2 0 0 1 22 16.92z"
-                      ></path>
-                    </svg>
-                  </span>
-                  <strong>Phone:</strong>
-                  <p>
-                    <a href="tel:+254729171831" class="contact-link"
-                      >+254729171831</a
-                    >
-                  </p>
-                </div>
-              </address>
+              <p>
+                <strong>Email:</strong>
+                <a href="mailto:info@arksafety.biz">info@arksafety.biz</a>
+              </p>
+              <p>
+                <strong>Phone:</strong>
+                <a href="tel:+254729171831">+254729171831</a>
+              </p>
+              <p><strong>Address:</strong></p>
+              <p>P.O Box 28255-00100</p>
+              <p>
+                <a
+                  href="https://maps.google.com/?q=Nairobi+Harambee+avenue+Cargen+House"
+                  target="_blank"
+                  rel="noopener"
+                  >Nairobi Harambee avenue, Cargen House</a
+                >
+              </p>
             </div>
-
-            <div class="contact-form">
-              <h3>PPE Quote Request</h3>
-              <form
-                class="contact-form-grid"
-                onsubmit="showContactModal()"
-                role="form"
-              >
-                <div class="form-group">
-                  <label for="name">Full Name *</label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    required
-                    aria-required="true"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="email">Email Address *</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    aria-required="true"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="phone">Phone Number</label>
-                  <input type="tel" id="phone" name="phone" />
-                </div>
-                <div class="form-group">
-                  <label for="company">Company/Organization</label>
-                  <input type="text" id="company" name="company" />
-                </div>
-                <div class="form-group full-width">
-                  <label for="ppe-category">PPE Category *</label>
-                  <select
-                    id="ppe-category"
-                    name="ppe-category"
-                    required
-                    aria-required="true"
-                  >
-                    <option value="">Select PPE category</option>
-                    <option value="head-protection">Head Protection</option>
-                    <option value="face-protection">Face Protection</option>
-                    <option value="hand-protection">Hand Protection</option>
-                    <option value="foot-protection">Foot Protection</option>
-                    <option value="body-protection">Body Protection</option>
-                    <option value="respiratory-protection">
-                      Respiratory Protection
-                    </option>
-                    <option value="all-ppe">All PPE Products</option>
-                  </select>
-                </div>
-                <div class="form-group full-width">
-                  <label for="message">Specific Requirements *</label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows="4"
-                    required
-                    aria-required="true"
-                    placeholder="Please describe your PPE requirements, quantities, and any specific specifications..."
-                  ></textarea>
-                </div>
-                <div class="form-group full-width">
-                  <button type="submit" class="submit-btn">
-                    Contact Sales
-                  </button>
-                </div>
-              </form>
-            </div>
+          </div>
+          <div class="footer-section">
+            <h3>Request a Quote / Inquiry</h3>
+            <form class="footer-contact-form">
+              <div class="form-group">
+                <label for="footer-name">Your Name *</label>
+                <input type="text" id="footer-name" name="footer-name" required placeholder="Enter your full name" />
+              </div>
+              <div class="form-group">
+                <label for="footer-email">Your Email *</label>
+                <input type="email" id="footer-email" name="footer-email" required placeholder="Enter your email address" />
+              </div>
+              <div class="form-group">
+                <label for="footer-phone">Phone Number</label>
+                <input type="tel" id="footer-phone" name="footer-phone" placeholder="Optional" />
+              </div>
+              <div class="form-group">
+                <label for="footer-category">Category *</label>
+                <select id="footer-category" name="footer-category" required>
+                  <option value="">Select PPE category</option>
+                  <option value="head-protection">Head Protection</option>
+                  <option value="face-protection">Face Protection</option>
+                  <option value="hand-protection">Hand Protection</option>
+                  <option value="foot-protection">Foot Protection</option>
+                  <option value="body-protection">Body Protection</option>
+                  <option value="respiratory-protection">Respiratory Protection</option>
+                  <option value="all-ppe">All PPE Products</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="footer-units">Units *</label>
+                <input type="number" id="footer-units" name="footer-units" min="1" required placeholder="How many units?" />
+              </div>
+              <div class="form-group">
+                <label for="footer-message">What PPE do you need? *</label>
+                <textarea id="footer-message" name="footer-message" rows="3" required placeholder="Describe your PPE requirements, quantities, or ask a question..."></textarea>
+              </div>
+              <button type="submit" class="submit-btn">Request Quote</button>
+            </form>
           </div>
         </div>
-      </section>
-    </main>
-
-    <footer role="contentinfo">
-      <p>&copy; 2024 ARK Hygiene. All rights reserved.</p>
-    </footer>
-
-    <!-- Contact Modal -->
-    <div id="contactModal" class="contact-modal">
-      <div class="contact-modal-content">
-        <span class="close-modal" onclick="closeContactModal()">&times;</span>
-        <h3>Choose Contact Method</h3>
-        <div class="contact-options">
-          <div class="contact-option" onclick="contactViaWhatsApp()">
-            <div class="contact-option-icon whatsapp-icon">📱</div>
-            <div class="contact-option-text">
-              <div class="contact-option-title">WhatsApp</div>
-              <div class="contact-option-subtitle">Send via WhatsApp</div>
-            </div>
-          </div>
-          <div class="contact-option" onclick="contactViaCall()">
-            <div class="contact-option-icon call-icon">📞</div>
-            <div class="contact-option-text">
-              <div class="contact-option-title">Call</div>
-              <div class="contact-option-subtitle">Call us directly</div>
-            </div>
-          </div>
-          <div class="contact-option" onclick="contactViaEmail()">
-            <div class="contact-option-icon email-icon">✉️</div>
-            <div class="contact-option-text">
-              <div class="contact-option-title">Email</div>
-              <div class="contact-option-subtitle">Send via email</div>
+        <div class="footer-bottom">
+          <div class="footer-bottom-content">
+            <p>&copy; 2024 ARK Hygiene. All rights reserved.</p>
+            <div class="footer-links">
+              <a href="privacy-policy.html">Privacy Policy</a>
+              <a href="terms-of-service.html">Terms of Service</a>
+              <a href="sitemap.xml">Sitemap</a>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </footer>
 
     <!-- External JavaScript -->
     <script src="javascript.js"></script>

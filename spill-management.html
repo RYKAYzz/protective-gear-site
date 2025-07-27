@@ -108,29 +108,8 @@
             </div>
           </div>
           <div class="header-selection-icon" id="selectionCounter">
-            <div class="icon-container">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M9 11L12 14L22 4"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M21 12V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H12"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
+            <div class="icon-container" aria-label="Selected products">
+              <span aria-hidden="true">🛒</span>
               <span class="selection-count" id="selectedCount">0</span>
             </div>
           </div>
@@ -305,87 +284,85 @@
       </div>
     </section>
 
-    <section class="contact-section" id="contact">
-      <div class="contact-container">
-        <h2 class="contact-title">Contact Us</h2>
-        <div class="contact-grid">
-          <div class="contact-info">
-            <h3>Get In Touch</h3>
+    </main>
 
-            <div class="contact-item">
-              <strong>Phone:</strong>
+    <footer role="contentinfo">
+      <div class="modern-footer">
+        <div class="footer-main">
+          <div class="footer-section">
+            <h3>Contact Information</h3>
+            <div class="contact-info">
               <p>
-                <a href="tel:+254729171831" class="contact-link"
-                  >+254729171831</a
-                >
+                <strong>Email:</strong>
+                <a href="mailto:info@arksafety.biz">info@arksafety.biz</a>
               </p>
-            </div>
-            <div class="contact-item">
-              <strong>Address:</strong>
+              <p>
+                <strong>Phone:</strong>
+                <a href="tel:+254729171831">+254729171831</a>
+              </p>
+              <p><strong>Address:</strong></p>
+              <p>P.O Box 28255-00100</p>
               <p>
                 <a
-                  href="https://maps.google.com/?q=P.O+Box+28255-00100+Nairobi+Harambee+avenue+Cargen+House"
+                  href="https://maps.google.com/?q=Nairobi+Harambee+avenue+Cargen+House"
                   target="_blank"
-                  class="contact-link"
-                  >P.O Box 28255-00100<br />Nairobi Harambee avenue, Cargen
-                  House</a
+                  rel="noopener"
+                  >Nairobi Harambee avenue, Cargen House</a
                 >
               </p>
             </div>
           </div>
-          <div class="contact-form">
-            <h3>Request Spill Management Quote</h3>
-            <form onsubmit="showContactModal()">
+          <div class="footer-section">
+            <h3>Request a Quote / Inquiry</h3>
+            <form class="footer-contact-form">
               <div class="form-group">
-                <label for="name">Name *</label>
-                <input type="text" id="name" name="name" required />
+                <label for="footer-name">Your Name *</label>
+                <input type="text" id="footer-name" name="footer-name" required placeholder="Enter your full name" />
               </div>
               <div class="form-group">
-                <label for="email">Email *</label>
-                <input type="email" id="email" name="email" required />
+                <label for="footer-email">Your Email *</label>
+                <input type="email" id="footer-email" name="footer-email" required placeholder="Enter your email address" />
               </div>
               <div class="form-group">
-                <label for="phone">Phone</label>
-                <input type="tel" id="phone" name="phone" />
+                <label for="footer-phone">Phone Number</label>
+                <input type="tel" id="footer-phone" name="footer-phone" placeholder="Optional" />
               </div>
               <div class="form-group">
-                <label for="spill-type">Spill Kit Category *</label>
-                <select id="spill-type" name="spill-type" required>
-                  <option value="">Select Spill Kit Category</option>
+                <label for="footer-category">Category *</label>
+                <select id="footer-category" name="footer-category" required>
+                  <option value="">Select Spill Kit category</option>
                   <option value="biohazard">Biohazard Spill Kits</option>
                   <option value="cytotoxic">Cytotoxic Spill Kits</option>
                   <option value="urine-vomit">Urine & Vomit Spill Kits</option>
                   <option value="chemical">Chemical Spill Kits</option>
                   <option value="spill-packs">Spill Packs</option>
-                  <option value="specialized">
-                    Specialized Spill Equipment
-                  </option>
+                  <option value="specialized">Specialized Spill Equipment</option>
                 </select>
               </div>
               <div class="form-group">
-                <label for="quantity">Quantity Needed</label>
-                <input
-                  type="text"
-                  id="quantity"
-                  name="quantity"
-                  placeholder="e.g., 20 kits"
-                />
+                <label for="footer-units">Units *</label>
+                <input type="number" id="footer-units" name="footer-units" min="1" required placeholder="How many units?" />
               </div>
               <div class="form-group">
-                <label for="message">Additional Requirements</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows="4"
-                  placeholder="Please describe your specific requirements..."
-                ></textarea>
+                <label for="footer-message">What do you need? *</label>
+                <textarea id="footer-message" name="footer-message" rows="3" required placeholder="Describe your requirements, quantities, or ask a question..."></textarea>
               </div>
-              <button type="submit" class="submit-btn">Contact Sales</button>
+              <button type="submit" class="submit-btn">Request Quote</button>
             </form>
           </div>
         </div>
+        <div class="footer-bottom">
+          <div class="footer-bottom-content">
+            <p>&copy; 2024 ARK Hygiene. All rights reserved.</p>
+            <div class="footer-links">
+              <a href="privacy-policy.html">Privacy Policy</a>
+              <a href="terms-of-service.html">Terms of Service</a>
+              <a href="sitemap.xml">Sitemap</a>
+            </div>
+          </div>
+        </div>
       </div>
-    </section>
+    </footer>
     <script>
       // Smooth scrolling function
       function scrollToSection(sectionId) {

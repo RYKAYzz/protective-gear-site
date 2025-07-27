@@ -58,6 +58,13 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="favicon.png" />
     <link rel="apple-touch-icon" href="favicon.png" />
+    <!-- Font Awesome for footer icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
     <!-- Preload Critical Resources -->
     <link
@@ -670,6 +677,13 @@
           font-size: 0.8rem !important;
         }
 
+        /* Completely hide header on mobile */
+        @media (max-width: 400px) {
+          .desktop-header {
+            display: none !important;
+          }
+        }
+
         /* Mobile carousel fixes - same animation as desktop */
         .carousel-item {
           height: 160px !important;
@@ -1094,7 +1108,7 @@
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <a id="home"></a>
-    <header role="banner">
+    <header role="banner" class="desktop-header" id="main-header">
       <nav class="navbar" role="navigation" aria-label="Main navigation">
         <div class="header-left">
           <div class="logo" aria-label="ARK Hygiene Home">
@@ -1502,53 +1516,106 @@
 
     <footer role="contentinfo">
       <a id="about-us"></a>
-      <div class="about-container">
-        <h2 class="about-title">About Us</h2>
-        <div class="about-content">
-          <p>
-            ARK Hygiene is a leading provider of protective gear, medical
-            equipment, and sanitation solutions across Africa. With years of
-            experience in the industry, we are committed to delivering
-            high-quality products that ensure safety and hygiene in healthcare,
-            industry, and public spaces.
-          </p>
-          <p class="desktop-only">
-            Our comprehensive range includes PPE, medical equipment, waste
-            management solutions, and sanitation products. We serve healthcare
-            facilities, industrial environments, and public institutions with
-            reliable, innovative, and affordable hygiene and safety solutions.
-          </p>
-          <p class="desktop-only">
-            At ARK Hygiene, we believe that quality and safety should be
-            accessible to everyone. Our mission is to safeguard lives through
-            superior products and exceptional service, making us the most
-            trusted partner in hygiene and safety across Africa and beyond.
-          </p>
-        </div>
-      </div>
 
-      <!-- Contact Us -->
-      <section class="contact-simple" id="contact-us">
-        <h2>Contact Us</h2>
-        <div class="contact-info-simple">
-          <div class="contact-labels">
-            <p><strong>📞 Phone:</strong></p>
-            <p><strong>📍 Address:</strong></p>
-          </div>
-          <div class="contact-details">
-            <p><a href="tel:+254729171831">+254729171831</a></p>
+      <!-- Modern Footer Design -->
+      <div class="modern-footer">
+        <!-- Main Footer Content -->
+        <div class="footer-main">
+          <div class="footer-section">
+            <h3>About ARK Hygiene</h3>
             <p>
-              P.O Box 28255-00100<br />
-              <a
-                href="https://maps.google.com/?q=Nairobi+Harambee+avenue+Cargen+House"
-                target="_blank"
-                rel="noopener"
-                >Nairobi Harambee avenue, Cargen House</a
-              >
+              Leading provider of protective gear, medical equipment, and
+              sanitation solutions across Africa. We safeguard lives through
+              superior products and exceptional service.
             </p>
           </div>
+
+          <div class="footer-section">
+            <h3>Our Products</h3>
+            <ul>
+              <li><a href="ppe-safety-gear.html">PPE & Safety Gear</a></li>
+              <li><a href="medical-equipment.html">Medical Equipment</a></li>
+              <li>
+                <a href="sterilization-waste-equipment.html"
+                  >Waste Management</a
+                >
+              </li>
+              <li><a href="sanitary-solutions.html">Sanitary Solutions</a></li>
+              <li><a href="spill-management.html">Spill Management</a></li>
+              <li><a href="public-health-sanitation.html">Public Health</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h3>Contact Information</h3>
+            <div class="contact-info">
+              <p>
+                <strong>Email:</strong>
+                <a href="mailto:info@arksafety.biz">info@arksafety.biz</a>
+              </p>
+              <p>
+                <strong>Phone:</strong>
+                <a href="tel:+254729171831">+254729171831</a>
+              </p>
+              <p><strong>Address:</strong></p>
+              <p>P.O Box 28255-00100</p>
+              <p>
+                <a
+                  href="https://maps.google.com/?q=Nairobi+Harambee+avenue+Cargen+House"
+                  target="_blank"
+                  rel="noopener"
+                  >Nairobi Harambee avenue, Cargen House</a
+                >
+              </p>
+            </div>
+          </div>
+
+          <div class="footer-section">
+            <h3>Get In Touch</h3>
+            <p>
+              Ready to enhance your safety and hygiene standards? Contact us
+              today for expert consultation and quality products.
+            </p>
+            <div class="footer-contact-icons">
+              <a
+                href="https://wa.me/254729171831"
+                target="_blank"
+                rel="noopener"
+                aria-label="WhatsApp"
+                class="footer-icon whatsapp-icon"
+              >
+                <i class="fa-brands fa-whatsapp"></i>
+              </a>
+              <a
+                href="mailto:info@arksafety.biz"
+                aria-label="Email"
+                class="footer-icon email-icon"
+              >
+                <i class="fa-solid fa-envelope"></i>
+              </a>
+              <a
+                href="tel:+254729171831"
+                aria-label="Call"
+                class="footer-icon call-icon"
+              >
+                <i class="fa-solid fa-phone"></i>
+              </a>
+            </div>
+          </div>
         </div>
-      </section>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+          <div class="footer-bottom-content">
+            <p>&copy; 2024 ARK Hygiene. All rights reserved.</p>
+            <div class="footer-links">
+              <a href="privacy-policy.html">Privacy Policy</a>
+              <a href="terms-of-service.html">Terms of Service</a>
+              <a href="sitemap.xml">Sitemap</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </footer>
 
     <!-- Optimized JavaScript -->
@@ -1605,27 +1672,12 @@
         });
       }
 
-      // Update header background based on scroll position
-      function updateHeaderBackground() {
-        const header = document.querySelector("header");
-        const scrollPosition = window.scrollY;
-
-        if (scrollPosition > 100) {
-          header.style.background = "#ffffff";
-          header.style.boxShadow = "0 2px 10px rgba(0, 0, 0, 0.1)";
-        } else {
-          header.style.background = "#ffffff";
-          header.style.boxShadow = "0 2px 10px rgba(0, 0, 0, 0.1)";
-        }
-      }
-
       // Optimized scroll event listener with throttling
       let ticking = false;
       function updateOnScroll() {
         if (!ticking) {
           requestAnimationFrame(() => {
             updateActiveNavLink();
-            updateHeaderBackground();
             ticking = false;
           });
           ticking = true;
@@ -1664,12 +1716,25 @@
         });
       }
 
+      // Hide header on mobile devices
+      function hideHeaderOnMobile() {
+        const header = document.getElementById("main-header");
+        if (header && window.innerWidth <= 400) {
+          header.style.display = "none";
+        }
+      }
+
       // Initialize everything when DOM is ready
       document.addEventListener("DOMContentLoaded", () => {
+        hideHeaderOnMobile();
         updateActiveNavLink();
-        updateHeaderBackground();
         initCarousels();
         initDropdown();
+      });
+
+      // Hide header on window resize
+      window.addEventListener("resize", () => {
+        hideHeaderOnMobile();
       });
 
       // Dropdown functionality for mobile

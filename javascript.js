@@ -206,6 +206,13 @@ function showContactOptionsModal(content) {
             <div class="contact-option-subtitle">Call us directly</div>
           </div>
         </div>
+        <div class="contact-option" onclick="contactViaEmail()">
+          <div class="contact-option-icon email-icon">✉️</div>
+          <div class="contact-option-text">
+            <div class="contact-option-title">Email</div>
+            <div class="contact-option-subtitle">Send via email</div>
+          </div>
+        </div>
 
       </div>
     </div>
@@ -265,6 +272,20 @@ function contactViaCall() {
   window.open(`tel:${phoneNumber}`, "_self");
   closeContactModal();
   showNotification("Opening phone dialer...");
+}
+
+// Contact via Email
+function contactViaEmail() {
+  const modal = document.querySelector(".contact-modal");
+  const content = modal ? modal.dataset.content : "";
+  const subject = "Product Selection Inquiry";
+  const emailBody = content || "Hello, I'm interested in your products.";
+  const mailtoLink = `mailto:info@arksafety.biz?subject=${encodeURIComponent(
+    subject
+  )}&body=${encodeURIComponent(emailBody)}`;
+  window.open(mailtoLink, "_blank");
+  closeContactModal();
+  showNotification("Opening email client...");
 }
 
 // Update selection counter
@@ -711,6 +732,30 @@ document.addEventListener("DOMContentLoaded", function () {
     const img = new Image();
     img.src = src;
   });
+
+  var footerForm = document.querySelector(".footer-contact-form");
+  if (footerForm) {
+    footerForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      // Collect form data
+      const name = footerForm.querySelector("#footer-name")?.value || "";
+      const email = footerForm.querySelector("#footer-email")?.value || "";
+      const phone = footerForm.querySelector("#footer-phone")?.value || "";
+      const category =
+        footerForm.querySelector("#footer-category")?.value || "";
+      const units = footerForm.querySelector("#footer-units")?.value || "";
+      const message = footerForm.querySelector("#footer-message")?.value || "";
+      // Build content string
+      let content = `Quote/Inquiry Request:\n`;
+      if (name) content += `Name: ${name}\n`;
+      if (email) content += `Email: ${email}\n`;
+      if (phone) content += `Phone: ${phone}\n`;
+      if (category) content += `Category: ${category}\n`;
+      if (units) content += `Units: ${units}\n`;
+      if (message) content += `Message: ${message}\n`;
+      showContactOptionsModal(content);
+    });
+  }
 });
 
 // PC Navigation Functions
