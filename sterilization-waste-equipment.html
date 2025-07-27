@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO Meta Tags -->
+    <title>
+      Sterilization & Waste Equipment - ARK Hygiene | Medical Waste Management
+      Solutions
+    </title>
+    <meta
+      name="description"
+      content="Complete sterilization and waste management solutions including autoclaves, incinerators, sharp containers, waste bins, and medical waste bags for healthcare and industrial facilities."
+    />
+    <meta
+      name="keywords"
+      content="sterilization equipment, waste management, autoclave, incinerator, sharp containers, waste bins, medical waste bags, biohazard bags, cytotoxic waste, clinical waste, healthcare waste management"
+    />
+    <meta name="author" content="ARK Hygiene" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta
+      property="og:title"
+      content="Sterilization & Waste Equipment - ARK Hygiene"
+    />
+    <meta
+      property="og:description"
+      content="Complete sterilization and waste management solutions including autoclaves, incinerators, sharp containers, waste bins, and medical waste bags for healthcare and industrial facilities."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://arkhygiene.com/sterilization-waste-equipment.html"
+    />
+    <meta
+      property="og:image"
+      content="https://arkhygiene.com/assets/logo.png"
+    />
+    <meta property="og:site_name" content="ARK Hygiene" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Sterilization & Waste Equipment - ARK Hygiene"
+    />
+    <meta
+      name="twitter:description"
+      content="Complete sterilization and waste management solutions including autoclaves, incinerators, sharp containers, waste bins, and medical waste bags."
+    />
+    <meta
+      name="twitter:image"
+      content="https://arkhygiene.com/assets/logo.png"
+    />
+
+    <!-- Canonical URL -->
+    <link
+      rel="canonical"
+      href="https://arkhygiene.com/sterilization-waste-equipment.html"
+    />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="category-header">
+      <div class="category-navbar">
+        <div class="category-logo">
+          <a href="index.html" aria-label="Back to Home" class="logo-link">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9,22 9,12 15,12 15,22"></polyline>
+            </svg>
+          </a>
+        </div>
+        <div class="category-nav-links">
+          <div class="category-dropdown">
+            <button class="dropdown-btn">Categories ▼</button>
+            <div class="dropdown-content">
+              <a href="#" onclick="filterProducts('sterilization', event)"
+                >Sterilization Equipment</a
+              >
+              <a href="#" onclick="filterProducts('sharps', event)"
+                >Sharp Containers</a
+              >
+              <a href="#" onclick="filterProducts('bins', event)">Waste Bins</a>
+              <a href="#" onclick="filterProducts('cleaning', event)"
+                >Medical Waste Bags</a
+              >
+              <a href="#" onclick="filterProducts('all', event)"
+                >All Equipment</a
+              >
+            </div>
+          </div>
+          <div class="header-selection-icon" id="selectionCounter">
+            <div class="icon-container">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M9 11L12 14L22 4"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M21 12V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H12"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <span class="selection-count" id="selectedCount">0</span>
+            </div>
+          </div>
+          <button
+            class="send-selection-btn"
+            onclick="sendSelection(event)"
+            aria-label="Send selected products"
+            id="sendSelectionBtn"
+          >
+            Send Selection
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <section class="hero">
+      <h1>Sterilization & Waste Equipment</h1>
+      <p>
+        Complete sterilization and waste management solutions for healthcare,
+        industrial, and commercial facilities. Safe and efficient disposal
+        systems.
+      </p>
+      <div class="hero-buttons">
+        <button
+          class="explore-btn"
+          onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth'})"
+        >
+          Get Quote
+        </button>
+        <button class="explore-btn secondary" onclick="showContactModal()">
+          Contact Sales
+        </button>
+      </div>
+    </section>
+
+    <section class="products-section" id="products">
+      <h2>Our Sterilization & Waste Equipment</h2>
+
+      <!-- Unified Product Gallery -->
+      <div class="product-gallery">
+        <!-- Sterilization Equipment -->
+        <div
+          class="product-item"
+          data-product="autoclave"
+          data-category="sterilization"
+        >
+          <img
+            src="assets/Medical-waste-system/installations, repair and maintainance of medical waste equipments - autoclave.png"
+            alt="Medical Waste Autoclave"
+            class="product-image"
+            loading="lazy"
+            decoding="async"
+          />
+          <p class="product-name">Medical Waste Autoclave</p>
+          <p class="product-description">
+            High-temperature sterilization system for medical waste treatment
+          </p>
+          <div class="product-actions">
+            <button
+              class="btn-select"
+              onclick="selectProduct('autoclave', 'Medical Waste Autoclave')"
+            >
+              Select
+            </button>
+            <button
+              class="btn-details"
+              onclick="showProductDetails('autoclave')"
+            >
+              Details
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="product-item"
+          data-product="autoclave-shredder"
+          data-category="sterilization"
+        >
+          <img
+            src="assets/Medical-waste-system/installations, repair and maintainance of medical waste equipments - autoclave with shredder.png"
+            alt="Autoclave with Shredder"
+            class="product-image"
+            loading="lazy"
+            decoding="async"
+          />
+          <p class="product-name">Autoclave with Shredder</p>
+          <p class="product-description">
+            Combined sterilization and shredding system for medical waste
+          </p>
+          <div class="product-actions">
+            <button
+              class="btn-select"
+              onclick="selectProduct('autoclave-shredder', 'Autoclave with Shredder')"
+            >
+              Select
+            </button>
+            <button
+              class="btn-details"
+              onclick="showProductDetails('autoclave-shredder')"
+            >
+              Details
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="product-item"
+          data-product="macerator"
+          data-category="sterilization"
+        >
+          <img
+            src="assets/Medical-waste-system/installations, repair and maintainance of medical waste equipments - Macerators.png"
+            alt="Medical Waste Macerator"
+            class="product-image"
+            loading="lazy"
+            decoding="async"
+          />
+          <p class="product-name">Medical Waste Macerator</p>
+          <p class="product-description">
+            Advanced waste processing and disposal system
+          </p>
+          <div class="product-actions">
+            <button
+              class="btn-select"
+              onclick="selectProduct('macerator', 'Medical Waste Macerator')"
+            >
+              Select
+            </button>
+            <button
+              class="btn-details"
+              onclick="showProductDetails('macerator')"
+            >
+              Details
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="product-item"
+          data-product="incinerator"
+          data-category="sterilization"
+        >
+          <img
+            src="assets/Medical-waste-system/installations, repair and maintainance of medical waste equipments - diesel fried incinerator.png"
+            alt="Diesel Fired Incinerator"
+            class="product-image"
+            loading="lazy"
+            decoding="async"
+          />
+          <p class="product-name">Diesel Fired Incinerator</p>
+          <p class="product-description">
+            High-temperature medical waste incineration system
+          </p>
+          <div class="product-actions">
+            <button
+              class="btn-select"
+              onclick="selectProduct('incinerator', 'Diesel Fired Incinerator')"
+            >
+              Select
+            </button>
+            <button
+              class="btn-details"
+              onclick="showProductDetails('incinerator')"
+            >
+              Details
+            </button>
+          </div>
+        </div>
+
+        <!-- Sharp Containers -->
+        <div
+          class="product-item"
+          data-product="sharp-1.4l"
+          data-category="sharps"
+        >
+          <img
+            src="assets/Medical-waste-system/sharp containers - 1.4 litres.png"
+            alt="Sharp Container 1.4L"
+            class="product-image"
+            loading="lazy"
+            decoding="async"
+          />
+          <p class="product-name">Sharp Container 1.4L</p>
+          <p class="product-description">
+            Compact sharps disposal container for small facilities
+          </p>
+          <div class="product-actions">
+            <button
+              class="btn-select"
+              onclick="selectProduct('sharp-1.4l', 'Sharp Container 1.4L')"
+            >
+              Select
+            </button>
+            <button
+              class="btn-details"
+              onclick="showProductDetails('sharp-1.4l')"
+            >
+              Details
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="product-item"
+          data-product="sharp-2l"
+          data-category="sharps"
+        >
+          <img
+            src="assets/Medical-waste-system/sharp containers  - 2 litres.png"
+            alt="Sharp Container 2L"
+            class="product-image"
+            loading="lazy"
+            decoding="async"
+          />
+          <p class="product-name">Sharp Container 2L</p>
+          <p class="product-description">
+            Safe disposal container for sharps and needles
+          </p>
+          <div class="product-actions">
+            <button
+              class="btn-select"
+              onclick="selectProduct('sharp-2l', 'Sharp Container 2L')"
+            >
+              Select
+            </button>
+            <button
+              class="btn-details"
+              onclick="showProductDetails('sharp-2l')"
+            >
+              Details
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="product-item"
+          data-product="sharp-4l"
+          data-category="sharps"
+        >
+          <img
+            src="assets/Medical-waste-system/sharp containers - 4 litres.png"
+            alt="Sharp Container 4L"
+            class="product-image"
+            loading="lazy"
+            decoding="async"
+          />
+          <p class="product-name">Sharp Container 4L</p>
+          <p class="product-description">
+            Large capacity sharps disposal container
+          </p>
+          <div class="product-actions">
+            <button
+              class="btn-select"
+              onclick="selectProduct('sharp-4l', 'Sharp Container 4L')"
+            >
+              Select
+            </button>
+            <button
+              class="btn-details"
+              onclick="showProductDetails('sharp-4l')"
+            >
+              Details
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="product-item"
+          data-product="sharp-4.6l"
+          data-category="sharps"
+        >
+          <img
+            src="assets/Medical-waste-system/sharp containers - 4.6 litres.png"
+            alt="Sharp Container 4.6L"
+            class="product-image"
+            loading="lazy"
+            decoding="async"
+          />
+          <p class="product-name">Sharp Container 4.6L</p>
+          <p class="product-description">
+            Medium-large sharps disposal container
+          </p>
+          <div class="product-actions">
+            <button
+              class="btn-select"
+              onclick="selectProduct('sharp-4.6l', 'Sharp Container 4.6L')"
+            >
+              Select
+            </button>
+            <button
+              class="btn-details"
+              onclick="showProductDetails('sharp-4.6l')"
+            >
+              Details
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="product-item"
+          data-product="sharp-5l-box"
+          data-category="sharps"
+        >
+          <img
+            src="assets/Medical-waste-system/sharp containers - 5 litres Sharp Box.png"
+            alt="Sharp Container 5L Sharp Box"
+            class="product-image"
+            loading="lazy"
+            decoding="async"
+          />
+          <p class="product-name">Sharp Container 5L Sharp Box</p>
+          <p class="product-description">
+            Professional sharps disposal box for healthcare facilities
+          </p>
+          <div class="product-actions">
+            <button
+              class="btn-select"
+              onclick="selectProduct('sharp-5l-box', 'Sharp Container 5L Sharp Box')"
+            >
+              Select
+            </button>
+            <button
+              class="btn-details"
+              onclick="showProductDetails('sharp-5l-box')"
+            >
+              Details
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="product-item"
+          data-product="sharp-5l"
+          data-category="sharps"
+        >
+          <img
+            src="assets/Medical-waste-system/sharp containers 5 litres.png"
+            alt="Sharp Container 5L"
+            class="product-image"
+            loading="lazy"
+            decoding="async"
+          />
+          <p class="product-name">Sharp Container 5L</p>
+          <p class="product-description">
+            Standard 5-liter sharps disposal container
+          </p>
+          <div class="product-actions">
+            <button
+              class="btn-select"
+              onclick="selectProduct('sharp-5l', 'Sharp Container 5L')"
+            >
+              Select
+            </button>
+            <button
+              class="btn-details"
+              onclick="showProductDetails('sharp-5l')"
+            >
+              Details
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="product-item"
+          data-product="sharp-6l"
+          data-category="sharps"
+        >
+          <img
+            src="assets/Medical-waste-system/sharp containers - 6 litres.png"
+            alt="Sharp Container 6L"
+            class="product-image"
+            loading="lazy"
+            decoding="async"
+          />
+          <p class="product-name">Sharp Container 6L</p>
+          <p class="product-description">
+            High-capacity sharps disposal container
+          </p>
+          <div class="product-actions">
+            <button
+              class="btn-select"
+              onclick="selectProduct('sharp-6l', 'Sharp Container 6L')"
+            >
+              Select
+            </button>
+            <button
+              class="btn-details"
+              onclick="showProductDetails('sharp-6l')"
+            >
+              Details
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="product-item"
+          data-product="sharp-8l"
+          data-category="sharps"
+        >
+          <img
+            src="assets/Medical-waste-system/sharp containers - 8 litres.png"
+            alt="Sharp Container 8L"
+            class="product-image"
+            loading="lazy"
+            decoding="async"
+          />
+          <p class="product-name">Sharp Container 8L</p>
+          <p class="product-description">
+            High-capacity sharps disposal container for large facilities
+          </p>
+          <div class="product-actions">
+            <button
+              class="btn-select"
+              onclick="selectProduct('sharp-8l', 'Sharp Container 8L')"
+            >
+              Select
+            </button>
+            <button
+              class="btn-details"
+              onclick="showProductDetails('sharp-8l')"
+            >
+              Details
+            </button>
+          </div>
+        </div>
+
+        <!-- Waste Bins -->
+        <div
+          class="product-item"
+          data-product="pedal-bin-18l"
+          data-category="bins"
+        >
+          <img
+            src="assets/bins-wastes/pedal bins-18 litres.png"
+            alt="Pedal Bin 18L"
+            class="product-image"
+            loading="lazy"
+            decoding="async"
+          />
+          <p class="product-name">Pedal Bin 18L</p>
+          <p class="product-description">Compact pedal-operated waste bin</p>
+          <div class="product-actions">
+            <button
+              class="btn-select"
+              onclick="selectProduct('pedal-bin-18l', 'Pedal Bin 18L')"
+            >
+              Select
+            </button>
+            <button
+              class="btn-details"
+              onclick="showProductDetails('pedal-bin-18l')"
+            >
+              Details
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="product-item"
+          data-product="pedal-bin-20l"
+          data-category="bins"
+        >
+          <img
+            src="assets/bins-wastes/pedal bins-20 litres.png"
+            alt="Pedal Bin 20L"
+            class="product-image"
+            loading="lazy"
+            decoding="async"
+          />
+          <p class="product-name">Pedal Bin 20L</p>
+          <p class="product-description">Medium pedal-operated waste bin</p>
+          <div class="product-actions">
+            <button
+              class="btn-select"
+              onclick="selectProduct('pedal-bin-20l', 'Pedal Bin 20L')"
+            >
+              Select
+            </button>
+            <button
+              class="btn-details"
+              onclick="showProductDetails('pedal-bin-20l')"
+            >
+              Details
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="product-item"
+          data-product="pedal-bin-25l"
+          data-category="bins"
+        >
+          <img
+            src="assets/bins-wastes/pedal bins - 25 litres.png"
+            alt="Pedal Bin 25L"
+            class="product-image"
+            loading="lazy"
+            decoding="async"
+          />
+          <p class="product-name">Pedal Bin 25L</p>
+          <p class="product-description">Standard pedal-operated waste bin</p>
+          <div class="product-actions">
+            <button
+              class="btn-select"
+              onclick="selectProduct('pedal-bin-25l', 'Pedal Bin 25L')"
+            >
+              Select
+            </button>
+            <button
+              class="btn-details"
+              onclick="showProductDetails('pedal-bin-25l')"
+            >
+              Details
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="product-item"
+          data-product="pedal-bin-30l"
+          data-category="bins"
+        >
+          <img
+            src="assets/bins-wastes/pedal bins-30 litres.png"
+            alt="Pedal Bin 30L"
+            class="product-image"
+            loading="lazy"
+            decoding="async"
+          />
+          <p class="product-name">Pedal Bin 30L</p>
+          <p class="product-description">Large pedal-operated waste bin</p>
+          <div class="product-actions">
+            <button
+              class="btn-select"
+              onclick="selectProduct('pedal-bin-30l', 'Pedal Bin 30L')"
+            >
+              Select
+            </button>
+            <button
+              class="btn-details"
+              onclick="showProductDetails('pedal-bin-30l')"
+            >
+              Details
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="product-item"
+          data-product="pedal-bin-50l"
+          data-category="bins"
+        >
+          <img
+            src="assets/bins-wastes/pedal bins - 50 litres.png"
+            alt="Pedal Bin 50L"
+            class="product-image"
+            loading="lazy"
+            decoding="async"
+          />
+          <p class="product-name">Pedal Bin 50L</p>
+          <p class="product-description">
+            High-capacity pedal-operated waste bin
+          </p>
+          <div class="product-actions">
+            <button
+              class="btn-select"
+              onclick="selectProduct('pedal-bin-50l', 'Pedal Bin 50L')"
+            >
+              Select
+            </button>
+            <button
+              class="btn-details"
+              onclick="showProductDetails('pedal-bin-50l')"
+            >
+              Details
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="product-item"
+          data-product="pedal-bin-100l"
+          data-category="bins"
+        >
+          <img
+            src="assets/bins-wastes/pedal bins - 100 litres.jpg"
+            alt="Pedal Bin 100L"
+            class="product-image"
+            loading="lazy"
+            decoding="async"
+          />
+          <p class="product-name">Pedal Bin 100L</p>
+          <p class="product-description">
+            Extra large pedal-operated waste bin
+          </p>
+          <div class="product-actions">
+            <button
+              class="btn-select"
+              onclick="selectProduct('pedal-bin-100l', 'Pedal Bin 100L')"
+            >
+              Select
+            </button>
+            <button
+              class="btn-details"
+              onclick="showProductDetails('pedal-bin-100l')"
+            >
+              Details
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="product-item"
+          data-product="waste-bin-90l"
+          data-category="bins"
+        >
+          <img
+            src="assets/bins-wastes/waste bins-90 litres.png"
+            alt="Waste Bin 90L"
+            class="product-image"
+            loading="lazy"
+            decoding="async"
+          />
+          <p class="product-name">Waste Bin 90L</p>
+          <p class="product-description">
+            Large capacity waste bin for commercial use
+          </p>
+          <div class="product-actions">
+            <button
+              class="btn-select"
+              onclick="selectProduct('waste-bin-90l', 'Waste Bin 90L')"
+            >
+              Select
+            </button>
+            <button
+              class="btn-details"
+              onclick="showProductDetails('waste-bin-90l')"
+            >
+              Details
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="product-item"
+          data-product="waste-bin-120l"
+          data-category="bins"
+        >
+          <img
+            src="assets/bins-wastes/waste bins - 120 litres.png"
+            alt="Waste Bin 120L"
+            class="product-image"
+            loading="lazy"
+            decoding="async"
+          />
+          <p class="product-name">Waste Bin 120L</p>
+          <p class="product-description">
+            High-capacity waste bin for industrial use
+          </p>
+          <div class="product-actions">
+            <button
+              class="btn-select"
+              onclick="selectProduct('waste-bin-120l', 'Waste Bin 120L')"
+            >
+              Select
+            </button>
+            <button
+              class="btn-details"
+              onclick="showProductDetails('waste-bin-120l')"
+            >
+              Details
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="product-item"
+          data-product="waste-bin-240l"
+          data-category="bins"
+        >
+          <img
+            src="assets/bins-wastes/waste bins - 240 litres.jpg"
+            alt="Waste Bin 240L"
+            class="product-image"
+            loading="lazy"
+            decoding="async"
+          />
+          <p class="product-name">Waste Bin 240L</p>
+          <p class="product-description">
+            Extra large waste bin for heavy-duty applications
+          </p>
+          <div class="product-actions">
+            <button
+              class="btn-select"
+              onclick="selectProduct('waste-bin-240l', 'Waste Bin 240L')"
+            >
+              Select
+            </button>
+            <button
+              class="btn-details"
+              onclick="showProductDetails('waste-bin-240l')"
+            >
+              Details
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="product-item"
+          data-product="waste-bin-360l"
+          data-category="bins"
+        >
+          <img
+            src="assets/bins-wastes/waste bins - 360 litres.jpg"
+            alt="Waste Bin 360L"
+            class="product-image"
+            loading="lazy"
+            decoding="async"
+          />
+          <p class="product-name">Waste Bin 360L</p>
+          <p class="product-description">
+            Maximum capacity waste bin for large facilities
+          </p>
+          <div class="product-actions">
+            <button
+              class="btn-select"
+              onclick="selectProduct('waste-bin-360l', 'Waste Bin 360L')"
+            >
+              Select
+            </button>
+            <button
+              class="btn-details"
+              onclick="showProductDetails('waste-bin-360l')"
+            >
+              Details
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="product-item"
+          data-product="trolley-bin-120l"
+          data-category="bins"
+        >
+          <img
+            src="assets/bins-wastes/trolley bins - 120 litres.png"
+            alt="Trolley Bin 120L"
+            class="product-image"
+            loading="lazy"
+            decoding="async"
+          />
+          <p class="product-name">Trolley Bin 120L</p>
+          <p class="product-description">
+            Mobile waste collection bin with wheels
+          </p>
+          <div class="product-actions">
+            <button
+              class="btn-select"
+              onclick="selectProduct('trolley-bin-120l', 'Trolley Bin 120L')"
+            >
+              Select
+            </button>
+            <button
+              class="btn-details"
+              onclick="showProductDetails('trolley-bin-120l')"
+            >
+              Details
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="product-item"
+          data-product="trolley-bin-750l"
+          data-category="bins"
+        >
+          <img
+            src="assets/bins-wastes/trolley bins-750 litres.png"
+            alt="Trolley Bin 750L"
+            class="product-image"
+            loading="lazy"
+            decoding="async"
+          />
+          <p class="product-name">Trolley Bin 750L</p>
+          <p class="product-description">Large mobile waste collection bin</p>
+          <div class="product-actions">
+            <button
+              class="btn-select"
+              onclick="selectProduct('trolley-bin-750l', 'Trolley Bin 750L')"
+            >
+              Select
+            </button>
+            <button
+              class="btn-details"
+              onclick="showProductDetails('trolley-bin-750l')"
+            >
+              Details
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="product-item"
+          data-product="trolley-bin-1100l"
+          data-category="bins"
+        >
+          <img
+            src="assets/bins-wastes/trolley bins - 1100 litres.jpg"
+            alt="Trolley Bin 1100L"
+            class="product-image"
+            loading="lazy"
+            decoding="async"
+          />
+          <p class="product-name">Trolley Bin 1100L</p>
+          <p class="product-description">
+            Maximum capacity mobile waste collection bin
+          </p>
+          <div class="product-actions">
+            <button
+              class="btn-select"
+              onclick="selectProduct('trolley-bin-1100l', 'Trolley Bin 1100L')"
+            >
+              Select
+            </button>
+            <button
+              class="btn-details"
+              onclick="showProductDetails('trolley-bin-1100l')"
+            >
+              Details
+            </button>
+          </div>
+        </div>
+
+        <!-- Cleaning Equipment -->
+        <div
+          class="product-item"
+          data-product="hospital-biohazard-bag-red"
+          data-category="cleaning"
+        >
+          <img
+            src="assets/Medical-waste-system/cleaning Equipments - size 18 * 24 color red.png"
+            alt="Hospital Biohazard Polythene Bag - Red"
+            class="product-image"
+            loading="lazy"
+            decoding="async"
+          />
+          <p class="product-name">Hospital Biohazard Polythene Bag - Red</p>
+          <p class="product-description">
+            Red biohazard polythene bag for infectious waste disposal, size
+            18x24 inches
+          </p>
+          <div class="product-actions">
+            <button
+              class="btn-select"
+              onclick="selectProduct('hospital-biohazard-bag-red', 'Hospital Biohazard Polythene Bag - Red')"
+            >
+              Select
+            </button>
+            <button
+              class="btn-details"
+              onclick="showProductDetails('hospital-biohazard-bag-red')"
+            >
+              Details
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="product-item"
+          data-product="cytotoxic-waste-bag-red"
+          data-category="cleaning"
+        >
+          <img
+            src="assets/Medical-waste-system/cleaning Equipments  - size 20 by 36 color red.png"
+            alt="Cytotoxic Waste Polythene Bag - Red"
+            class="product-image"
+            loading="lazy"
+            decoding="async"
+          />
+          <p class="product-name">Cytotoxic Waste Polythene Bag - Red</p>
+          <p class="product-description">
+            Red cytotoxic waste polythene bag for hazardous drug waste disposal,
+            size 20x36 inches
+          </p>
+          <div class="product-actions">
+            <button
+              class="btn-select"
+              onclick="selectProduct('cytotoxic-waste-bag-red', 'Cytotoxic Waste Polythene Bag - Red')"
+            >
+              Select
+            </button>
+            <button
+              class="btn-details"
+              onclick="showProductDetails('cytotoxic-waste-bag-red')"
+            >
+              Details
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="product-item"
+          data-product="clinical-waste-bag-yellow-20x30"
+          data-category="cleaning"
+        >
+          <img
+            src="assets/Medical-waste-system/cleaning Equipments - size 20 by 30 color yellow.png"
+            alt="Clinical Waste Polythene Bag - Yellow 20x30"
+            class="product-image"
+            loading="lazy"
+            decoding="async"
+          />
+          <p class="product-name">
+            Clinical Waste Polythene Bag - Yellow 20x30
+          </p>
+          <p class="product-description">
+            Yellow clinical waste polythene bag for general medical waste
+            disposal, size 20x30 inches
+          </p>
+          <div class="product-actions">
+            <button
+              class="btn-select"
+              onclick="selectProduct('clinical-waste-bag-yellow-20x30', 'Clinical Waste Polythene Bag - Yellow 20x30')"
+            >
+              Select
+            </button>
+            <button
+              class="btn-details"
+              onclick="showProductDetails('clinical-waste-bag-yellow-20x30')"
+            >
+              Details
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="product-item"
+          data-product="clinical-waste-bag-yellow-24x36"
+          data-category="cleaning"
+        >
+          <img
+            src="assets/Medical-waste-system/cleaning Equipments  - size 24 by 36 color yellow.png"
+            alt="Clinical Waste Polythene Bag - Yellow 24x36"
+            class="product-image"
+            loading="lazy"
+            decoding="async"
+          />
+          <p class="product-name">
+            Clinical Waste Polythene Bag - Yellow 24x36
+          </p>
+          <p class="product-description">
+            Yellow clinical waste polythene bag for general medical waste
+            disposal, size 24x36 inches
+          </p>
+          <div class="product-actions">
+            <button
+              class="btn-select"
+              onclick="selectProduct('clinical-waste-bag-yellow-24x36', 'Clinical Waste Polythene Bag - Yellow 24x36')"
+            >
+              Select
+            </button>
+            <button
+              class="btn-details"
+              onclick="showProductDetails('clinical-waste-bag-yellow-24x36')"
+            >
+              Details
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="product-item"
+          data-product="sharps-disposal-bag-blue-30x50"
+          data-category="cleaning"
+        >
+          <img
+            src="assets/Medical-waste-system/cleaning Equipments  - size 30 by 50 color blue light.png"
+            alt="Sharps Disposal Polythene Bag - Blue 30x50"
+            class="product-image"
+            loading="lazy"
+            decoding="async"
+          />
+          <p class="product-name">Sharps Disposal Polythene Bag - Blue 30x50</p>
+          <p class="product-description">
+            Blue sharps disposal polythene bag for use with Sharp Containers,
+            size 30x50 inches
+          </p>
+          <div class="product-actions">
+            <button
+              class="btn-select"
+              onclick="selectProduct('sharps-disposal-bag-blue-30x50', 'Sharps Disposal Polythene Bag - Blue 30x50')"
+            >
+              Select
+            </button>
+            <button
+              class="btn-details"
+              onclick="showProductDetails('sharps-disposal-bag-blue-30x50')"
+            >
+              Details
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="product-item"
+          data-product="clinical-waste-bag-yellow-36x50"
+          data-category="cleaning"
+        >
+          <img
+            src="assets/Medical-waste-system/cleaning Equipments  - size 36 by 50 color yellow.jpg"
+            alt="Clinical Waste Polythene Bag - Yellow 36x50"
+            class="product-image"
+            loading="lazy"
+            decoding="async"
+          />
+          <p class="product-name">
+            Clinical Waste Polythene Bag - Yellow 36x50
+          </p>
+          <p class="product-description">
+            Yellow clinical waste polythene bag for general medical waste
+            disposal, size 36x50 inches
+          </p>
+          <div class="product-actions">
+            <button
+              class="btn-select"
+              onclick="selectProduct('clinical-waste-bag-yellow-36x50', 'Clinical Waste Polythene Bag - Yellow 36x50')"
+            >
+              Select
+            </button>
+            <button
+              class="btn-details"
+              onclick="showProductDetails('clinical-waste-bag-yellow-36x50')"
+            >
+              Details
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="product-item"
+          data-product="medical-waste-bags-various-sizes"
+          data-category="cleaning"
+        >
+          <img
+            src="assets/Medical-waste-system/cleaning Equipments - various sizes.png"
+            alt="Medical Waste Polythene Bags - Various Sizes"
+            class="product-image"
+            loading="lazy"
+            decoding="async"
+          />
+          <p class="product-name">
+            Medical Waste Polythene Bags - Various Sizes
+          </p>
+          <p class="product-description">
+            Complete range of medical waste polythene bags in various sizes and
+            colors for different waste types
+          </p>
+          <div class="product-actions">
+            <button
+              class="btn-select"
+              onclick="selectProduct('medical-waste-bags-various-sizes', 'Medical Waste Polythene Bags - Various Sizes')"
+            >
+              Select
+            </button>
+            <button
+              class="btn-details"
+              onclick="showProductDetails('medical-waste-bags-various-sizes')"
+            >
+              Details
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <div class="contact-container">
+        <h2 class="contact-title">Contact Us</h2>
+        <div class="contact-grid">
+          <div class="contact-info">
+            <h3>Get In Touch</h3>
+            <div class="contact-item">
+              <strong>Email:</strong>
+              <p>info@arkhygiene.com</p>
+            </div>
+            <div class="contact-item">
+              <strong>Phone:</strong>
+              <p>
+                <a href="tel:+254729171831" class="contact-link"
+                  >+254729171831</a
+                >
+              </p>
+            </div>
+            <div class="contact-item">
+              <strong>Address:</strong>
+              <p>
+                <a
+                  href="https://maps.google.com/?q=P.O+Box+28255-00100+Nairobi+Harambee+avenue+Cargen+House"
+                  target="_blank"
+                  class="contact-link"
+                  >P.O Box 28255-00100<br />Nairobi Harambee avenue, Cargen
+                  House</a
+                >
+              </p>
+            </div>
+          </div>
+          <div class="contact-form">
+            <h3>Request Waste Equipment Quote</h3>
+            <form onsubmit="handleContactForm(event)">
+              <div class="form-group">
+                <label for="name">Name *</label>
+                <input type="text" id="name" name="name" required />
+              </div>
+              <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" required />
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone" />
+              </div>
+              <div class="form-group">
+                <label for="equipment-type">Equipment Category *</label>
+                <select id="equipment-type" name="equipment-type" required>
+                  <option value="">Select Equipment Category</option>
+                  <option value="sterilization">Sterilization Equipment</option>
+                  <option value="incineration">Waste Incineration</option>
+                  <option value="pedal">Pedal & Waste Bins</option>
+                  <option value="waste">Waste Bins</option>
+                  <option value="trolley">Trolley Bins</option>
+                  <option value="cleaning">Medical Waste Bags</option>
+                  <option value="specialized">
+                    Specialized Waste Equipment
+                  </option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="quantity">Quantity Needed</label>
+                <input
+                  type="text"
+                  id="quantity"
+                  name="quantity"
+                  placeholder="e.g., 10 units"
+                />
+              </div>
+              <div class="form-group">
+                <label for="message">Additional Requirements</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="4"
+                  placeholder="Please describe your specific requirements..."
+                ></textarea>
+              </div>
+              <button type="submit" class="submit-btn">
+                Send Quote Request
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script>
+      // Smooth scrolling function
+      function scrollToSection(sectionId) {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    </script>
+    <script src="javascript.js"></script>
+    <script src="storage.js"></script>
+    <script>
+      // Initialize storage when page loads
+      document.addEventListener("DOMContentLoaded", function () {
+        if (typeof initializeStorage === "function") {
+          initializeStorage();
+        }
+      });
+    </script>
+  </body>
+</html>

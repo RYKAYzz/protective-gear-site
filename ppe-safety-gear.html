@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO Meta Tags -->
+    <title>PPE & Safety Gear - Protective Equipment | ARK Hygiene</title>
+    <meta
+      name="description"
+      content="Comprehensive range of PPE and safety gear including face shields, gloves, safety boots, and protective clothing. Quality protective equipment for healthcare and industrial safety."
+    />
+    <meta
+      name="keywords"
+      content="PPE, safety gear, protective equipment, face shields, safety gloves, safety boots, protective clothing, industrial safety, healthcare PPE"
+    />
+    <meta name="author" content="ARK Hygiene" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="PPE & Safety Gear - ARK Hygiene" />
+    <meta
+      property="og:description"
+      content="Comprehensive range of PPE and safety gear for healthcare and industrial safety."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://arkhygiene.com/ppe-safety-gear.html"
+    />
+    <meta
+      property="og:image"
+      content="https://arkhygiene.com/assets/PPE-safety-gear/face shield.png"
+    />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://arkhygiene.com/ppe-safety-gear.html" />
+
+    <!-- Preload Critical Resources -->
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;700&display=swap"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript
+      ><link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;700&display=swap"
+    /></noscript>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="category-header" role="banner">
+      <nav
+        class="category-navbar"
+        role="navigation"
+        aria-label="Category navigation"
+      >
+        <div class="category-logo">
+          <a href="index.html" aria-label="Back to Home" class="logo-link">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9,22 9,12 15,12 15,22"></polyline>
+            </svg>
+          </a>
+        </div>
+        <div class="category-nav-links">
+          <div class="category-dropdown">
+            <button
+              class="dropdown-btn"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Categories
+              <span aria-hidden="true">▼</span>
+            </button>
+            <div class="dropdown-content" role="menu">
+              <a href="#" role="menuitem" onclick="filterProducts('all', event)"
+                >All PPE Products</a
+              >
+              <a
+                href="#"
+                role="menuitem"
+                onclick="filterProducts('head-protection', event)"
+                >Head Protection</a
+              >
+              <a
+                href="#"
+                role="menuitem"
+                onclick="filterProducts('face-protection', event)"
+                >Face Protection</a
+              >
+              <a
+                href="#"
+                role="menuitem"
+                onclick="filterProducts('hand-protection', event)"
+                >Hand Protection</a
+              >
+              <a
+                href="#"
+                role="menuitem"
+                onclick="filterProducts('foot-protection', event)"
+                >Foot Protection</a
+              >
+              <a
+                href="#"
+                role="menuitem"
+                onclick="filterProducts('body-protection', event)"
+                >Body Protection</a
+              >
+              <a
+                href="#"
+                role="menuitem"
+                onclick="filterProducts('respiratory-protection', event)"
+                >Respiratory Protection</a
+              >
+            </div>
+          </div>
+          <div class="header-selection-icon">
+            <div class="icon-container" aria-label="Selected products">
+              <span aria-hidden="true">🛒</span>
+              <span class="selection-count" id="selectedCount">0</span>
+            </div>
+          </div>
+          <button
+            class="send-selection-btn"
+            onclick="sendSelection(event)"
+            aria-label="Send selected products"
+          >
+            Send Selection
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main-content" role="main">
+      <section class="hero" role="banner" aria-labelledby="hero-title">
+        <h1 id="hero-title">PPE & Safety Gear</h1>
+        <p>
+          Comprehensive range of personal protective equipment for healthcare,
+          industrial, and safety applications. Quality protective gear for every
+          environment.
+        </p>
+      </section>
+
+      <section
+        class="products-section"
+        role="region"
+        aria-labelledby="products-title"
+      >
+        <h2 id="products-title">Our PPE Products</h2>
+        <div class="product-gallery" role="list">
+          <!-- Head Protection -->
+          <article
+            class="product-item"
+            data-product="head-cover"
+            data-category="head-protection"
+            role="listitem"
+          >
+            <img
+              src="assets/PPE-safety-gear/head cover.png"
+              alt="Head Cover"
+              class="product-image"
+              loading="lazy"
+            />
+            <h3 class="product-name">Head Cover</h3>
+            <p class="product-description">
+              Disposable head cover for complete head protection in medical and
+              industrial environments.
+            </p>
+            <div class="product-actions">
+              <button
+                class="btn-select"
+                onclick="selectProduct('head-cover', 'Head Cover')"
+                aria-label="Select Head Cover"
+              >
+                Select
+              </button>
+              <button
+                class="btn-details"
+                onclick="showProductDetails('head-cover')"
+                aria-label="View Head Cover details"
+              >
+                Details
+              </button>
+            </div>
+            <div class="quantity-selector" id="quantity-head-cover">
+              <label for="qty-head-cover" class="quantity-label"
+                >Quantity:</label
+              >
+              <input
+                type="number"
+                id="qty-head-cover"
+                class="quantity-input"
+                min="10"
+                value="10"
+                onchange="updateQuantity('head-cover', this.value)"
+              />
+            </div>
+          </article>
+
+          <!-- Face Protection -->
+          <article
+            class="product-item"
+            data-product="face-shield"
+            data-category="face-protection"
+            role="listitem"
+          >
+            <img
+              src="assets/PPE-safety-gear/face shield.png"
+              alt="Face Shield"
+              class="product-image"
+              loading="lazy"
+            />
+            <h3 class="product-name">Face Shield</h3>
+            <p class="product-description">
+              Complete face protection shield for medical procedures and
+              industrial safety.
+            </p>
+            <div class="product-actions">
+              <button
+                class="btn-select"
+                onclick="selectProduct('face-shield', 'Face Shield')"
+                aria-label="Select Face Shield"
+              >
+                Select
+              </button>
+              <button
+                class="btn-details"
+                onclick="showProductDetails('face-shield')"
+                aria-label="View Face Shield details"
+              >
+                Details
+              </button>
+            </div>
+            <div class="quantity-selector" id="quantity-face-shield">
+              <label for="qty-face-shield" class="quantity-label"
+                >Quantity:</label
+              >
+              <input
+                type="number"
+                id="qty-face-shield"
+                class="quantity-input"
+                min="10"
+                value="10"
+                onchange="updateQuantity('face-shield', this.value)"
+              />
+            </div>
+          </article>
+
+          <article
+            class="product-item"
+            data-product="safety-goggles"
+            data-category="face-protection"
+            role="listitem"
+          >
+            <img
+              src="assets/PPE-safety-gear/safety google.png"
+              alt="Safety Goggles"
+              class="product-image"
+              loading="lazy"
+            />
+            <h3 class="product-name">Safety Goggles</h3>
+            <p class="product-description">
+              Protective safety goggles for eye protection in hazardous
+              environments.
+            </p>
+            <div class="product-actions">
+              <button
+                class="btn-select"
+                onclick="selectProduct('safety-goggles', 'Safety Goggles')"
+                aria-label="Select Safety Goggles"
+              >
+                Select
+              </button>
+              <button
+                class="btn-details"
+                onclick="showProductDetails('safety-goggles')"
+                aria-label="View Safety Goggles details"
+              >
+                Details
+              </button>
+            </div>
+            <div class="quantity-selector" id="quantity-safety-goggles">
+              <label for="qty-safety-goggles" class="quantity-label"
+                >Quantity:</label
+              >
+              <input
+                type="number"
+                id="qty-safety-goggles"
+                class="quantity-input"
+                min="10"
+                value="10"
+                onchange="updateQuantity('safety-goggles', this.value)"
+              />
+            </div>
+          </article>
+
+          <article
+            class="product-item"
+            data-product="face-masks"
+            data-category="face-protection"
+            role="listitem"
+          >
+            <img
+              src="assets/PPE-safety-gear/disposable re-usable face masks.png"
+              alt="Disposable Face Masks"
+              class="product-image"
+              loading="lazy"
+            />
+            <h3 class="product-name">Disposable Face Masks</h3>
+            <p class="product-description">
+              Disposable and reusable face masks for respiratory protection.
+            </p>
+            <div class="product-actions">
+              <button
+                class="btn-select"
+                onclick="selectProduct('face-masks', 'Disposable Face Masks')"
+                aria-label="Select Disposable Face Masks"
+              >
+                Select
+              </button>
+              <button
+                class="btn-details"
+                onclick="showProductDetails('face-masks')"
+                aria-label="View Disposable Face Masks details"
+              >
+                Details
+              </button>
+            </div>
+            <div class="quantity-selector" id="quantity-face-masks">
+              <label for="qty-face-masks" class="quantity-label"
+                >Quantity:</label
+              >
+              <input
+                type="number"
+                id="qty-face-masks"
+                class="quantity-input"
+                min="10"
+                value="10"
+                onchange="updateQuantity('face-masks', this.value)"
+              />
+            </div>
+          </article>
+
+          <!-- Hand Protection -->
+          <article
+            class="product-item"
+            data-product="latex-gloves"
+            data-category="hand-protection"
+            role="listitem"
+          >
+            <img
+              src="assets/PPE-safety-gear/latex powdered & powder free gloves.jpg"
+              alt="Latex Gloves"
+              class="product-image"
+              loading="lazy"
+            />
+            <h3 class="product-name">Latex Gloves</h3>
+            <p class="product-description">
+              Powdered and powder-free latex gloves for medical and industrial
+              use.
+            </p>
+            <div class="product-actions">
+              <button
+                class="btn-select"
+                onclick="selectProduct('latex-gloves', 'Latex Gloves')"
+                aria-label="Select Latex Gloves"
+              >
+                Select
+              </button>
+              <button
+                class="btn-details"
+                onclick="showProductDetails('latex-gloves')"
+                aria-label="View Latex Gloves details"
+              >
+                Details
+              </button>
+            </div>
+            <div class="quantity-selector" id="quantity-latex-gloves">
+              <label for="qty-latex-gloves" class="quantity-label"
+                >Quantity:</label
+              >
+              <input
+                type="number"
+                id="qty-latex-gloves"
+                class="quantity-input"
+                min="10"
+                value="10"
+                onchange="updateQuantity('latex-gloves', this.value)"
+              />
+            </div>
+          </article>
+
+          <article
+            class="product-item"
+            data-product="rubber-gloves-short"
+            data-category="hand-protection"
+            role="listitem"
+          >
+            <img
+              src="assets/PPE-safety-gear/heavy duty rubber gloves-short.png"
+              alt="Heavy Duty Rubber Gloves Short"
+              class="product-image"
+              loading="lazy"
+            />
+            <h3 class="product-name">Heavy Duty Rubber Gloves - Short</h3>
+            <p class="product-description">
+              Short heavy duty rubber gloves for industrial and chemical
+              handling.
+            </p>
+            <div class="product-actions">
+              <button
+                class="btn-select"
+                onclick="selectProduct('rubber-gloves-short', 'Heavy Duty Rubber Gloves Short')"
+                aria-label="Select Heavy Duty Rubber Gloves Short"
+              >
+                Select
+              </button>
+              <button
+                class="btn-details"
+                onclick="showProductDetails('rubber-gloves-short')"
+                aria-label="View Heavy Duty Rubber Gloves Short details"
+              >
+                Details
+              </button>
+            </div>
+            <div class="quantity-selector" id="quantity-rubber-gloves-short">
+              <label for="qty-rubber-gloves-short" class="quantity-label"
+                >Quantity:</label
+              >
+              <input
+                type="number"
+                id="qty-rubber-gloves-short"
+                class="quantity-input"
+                min="10"
+                value="10"
+                onchange="updateQuantity('rubber-gloves-short', this.value)"
+              />
+            </div>
+          </article>
+
+          <article
+            class="product-item"
+            data-product="rubber-gloves-long"
+            data-category="hand-protection"
+            role="listitem"
+          >
+            <img
+              src="assets/PPE-safety-gear/heavy duty rubber Gloves- long.png"
+              alt="Heavy Duty Rubber Gloves Long"
+              class="product-image"
+              loading="lazy"
+            />
+            <h3 class="product-name">Heavy Duty Rubber Gloves - Long</h3>
+            <p class="product-description">
+              Long heavy duty rubber gloves for extended arm protection.
+            </p>
+            <div class="product-actions">
+              <button
+                class="btn-select"
+                onclick="selectProduct('rubber-gloves-long', 'Heavy Duty Rubber Gloves Long')"
+                aria-label="Select Heavy Duty Rubber Gloves Long"
+              >
+                Select
+              </button>
+              <button
+                class="btn-details"
+                onclick="showProductDetails('rubber-gloves-long')"
+                aria-label="View Heavy Duty Rubber Gloves Long details"
+              >
+                Details
+              </button>
+            </div>
+            <div class="quantity-selector" id="quantity-rubber-gloves-long">
+              <label for="qty-rubber-gloves-long" class="quantity-label"
+                >Quantity:</label
+              >
+              <input
+                type="number"
+                id="qty-rubber-gloves-long"
+                class="quantity-input"
+                min="10"
+                value="10"
+                onchange="updateQuantity('rubber-gloves-long', this.value)"
+              />
+            </div>
+          </article>
+
+          <!-- Foot Protection -->
+          <article
+            class="product-item"
+            data-product="safety-boots"
+            data-category="foot-protection"
+            role="listitem"
+          >
+            <img
+              src="assets/PPE-safety-gear/safety boots.png"
+              alt="Safety Boots"
+              class="product-image"
+              loading="lazy"
+            />
+            <h3 class="product-name">Safety Boots</h3>
+            <p class="product-description">
+              Industrial safety boots with steel toe protection for hazardous
+              environments.
+            </p>
+            <div class="product-actions">
+              <button
+                class="btn-select"
+                onclick="selectProduct('safety-boots', 'Safety Boots')"
+                aria-label="Select Safety Boots"
+              >
+                Select
+              </button>
+              <button
+                class="btn-details"
+                onclick="showProductDetails('safety-boots')"
+                aria-label="View Safety Boots details"
+              >
+                Details
+              </button>
+            </div>
+            <div class="quantity-selector" id="quantity-safety-boots">
+              <label for="qty-safety-boots" class="quantity-label"
+                >Quantity:</label
+              >
+              <input
+                type="number"
+                id="qty-safety-boots"
+                class="quantity-input"
+                min="10"
+                value="10"
+                onchange="updateQuantity('safety-boots', this.value)"
+              />
+            </div>
+          </article>
+
+          <article
+            class="product-item"
+            data-product="sanitary-clog"
+            data-category="foot-protection"
+            role="listitem"
+          >
+            <img
+              src="assets/PPE-safety-gear/sanitary clog.png"
+              alt="Sanitary Clog"
+              class="product-image"
+              loading="lazy"
+            />
+            <h3 class="product-name">Sanitary Clog</h3>
+            <p class="product-description">
+              Medical sanitary clogs for healthcare environments.
+            </p>
+            <div class="product-actions">
+              <button
+                class="btn-select"
+                onclick="selectProduct('sanitary-clog', 'Sanitary Clog')"
+                aria-label="Select Sanitary Clog"
+              >
+                Select
+              </button>
+              <button
+                class="btn-details"
+                onclick="showProductDetails('sanitary-clog')"
+                aria-label="View Sanitary Clog details"
+              >
+                Details
+              </button>
+            </div>
+            <div class="quantity-selector" id="quantity-sanitary-clog">
+              <label for="qty-sanitary-clog" class="quantity-label"
+                >Quantity:</label
+              >
+              <input
+                type="number"
+                id="qty-sanitary-clog"
+                class="quantity-input"
+                min="10"
+                value="10"
+                onchange="updateQuantity('sanitary-clog', this.value)"
+              />
+            </div>
+          </article>
+
+          <article
+            class="product-item"
+            data-product="cover-shoes"
+            data-category="foot-protection"
+            role="listitem"
+          >
+            <img
+              src="assets/PPE-safety-gear/cover shoes.png"
+              alt="Cover Shoes"
+              class="product-image"
+              loading="lazy"
+            />
+            <h3 class="product-name">Cover Shoes</h3>
+            <p class="product-description">
+              Disposable cover shoes for clean room and medical environments.
+            </p>
+            <div class="product-actions">
+              <button
+                class="btn-select"
+                onclick="selectProduct('cover-shoes', 'Cover Shoes')"
+                aria-label="Select Cover Shoes"
+              >
+                Select
+              </button>
+              <button
+                class="btn-details"
+                onclick="showProductDetails('cover-shoes')"
+                aria-label="View Cover Shoes details"
+              >
+                Details
+              </button>
+            </div>
+            <div class="quantity-selector" id="quantity-cover-shoes">
+              <label for="qty-cover-shoes" class="quantity-label"
+                >Quantity:</label
+              >
+              <input
+                type="number"
+                id="qty-cover-shoes"
+                class="quantity-input"
+                min="10"
+                value="10"
+                onchange="updateQuantity('cover-shoes', this.value)"
+              />
+            </div>
+          </article>
+
+          <article
+            class="product-item"
+            data-product="surgical-boots"
+            data-category="foot-protection"
+            role="listitem"
+          >
+            <img
+              src="assets/PPE-safety-gear/surgical boots.png"
+              alt="Surgical Boots"
+              class="product-image"
+              loading="lazy"
+            />
+            <h3 class="product-name">Surgical Boots</h3>
+            <p class="product-description">
+              Sterile surgical boots for operating room environments.
+            </p>
+            <div class="product-actions">
+              <button
+                class="btn-select"
+                onclick="selectProduct('surgical-boots', 'Surgical Boots')"
+                aria-label="Select Surgical Boots"
+              >
+                Select
+              </button>
+              <button
+                class="btn-details"
+                onclick="showProductDetails('surgical-boots')"
+                aria-label="View Surgical Boots details"
+              >
+                Details
+              </button>
+            </div>
+            <div class="quantity-selector" id="quantity-surgical-boots">
+              <label for="qty-surgical-boots" class="quantity-label"
+                >Quantity:</label
+              >
+              <input
+                type="number"
+                id="qty-surgical-boots"
+                class="quantity-input"
+                min="10"
+                value="10"
+                onchange="updateQuantity('surgical-boots', this.value)"
+              />
+            </div>
+          </article>
+
+          <!-- Body Protection -->
+          <article
+            class="product-item"
+            data-product="lab-coat"
+            data-category="body-protection"
+            role="listitem"
+          >
+            <img
+              src="assets/PPE-safety-gear/lab coat.png"
+              alt="Lab Coat"
+              class="product-image"
+              loading="lazy"
+            />
+            <h3 class="product-name">Lab Coat</h3>
+            <p class="product-description">
+              Laboratory coat for scientific and medical environments.
+            </p>
+            <div class="product-actions">
+              <button
+                class="btn-select"
+                onclick="selectProduct('lab-coat', 'Lab Coat')"
+                aria-label="Select Lab Coat"
+              >
+                Select
+              </button>
+              <button
+                class="btn-details"
+                onclick="showProductDetails('lab-coat')"
+                aria-label="View Lab Coat details"
+              >
+                Details
+              </button>
+            </div>
+            <div class="quantity-selector" id="quantity-lab-coat">
+              <label for="qty-lab-coat" class="quantity-label">Quantity:</label>
+              <input
+                type="number"
+                id="qty-lab-coat"
+                class="quantity-input"
+                min="10"
+                value="10"
+                onchange="updateQuantity('lab-coat', this.value)"
+              />
+            </div>
+          </article>
+
+          <article
+            class="product-item"
+            data-product="dust-coat"
+            data-category="body-protection"
+            role="listitem"
+          >
+            <img
+              src="assets/PPE-safety-gear/dust coat.png"
+              alt="Dust Coat"
+              class="product-image"
+              loading="lazy"
+            />
+            <h3 class="product-name">Dust Coat</h3>
+            <p class="product-description">
+              Protective dust coat for industrial and construction environments.
+            </p>
+            <div class="product-actions">
+              <button
+                class="btn-select"
+                onclick="selectProduct('dust-coat', 'Dust Coat')"
+                aria-label="Select Dust Coat"
+              >
+                Select
+              </button>
+              <button
+                class="btn-details"
+                onclick="showProductDetails('dust-coat')"
+                aria-label="View Dust Coat details"
+              >
+                Details
+              </button>
+            </div>
+            <div class="quantity-selector" id="quantity-dust-coat">
+              <label for="qty-dust-coat" class="quantity-label"
+                >Quantity:</label
+              >
+              <input
+                type="number"
+                id="qty-dust-coat"
+                class="quantity-input"
+                min="10"
+                value="10"
+                onchange="updateQuantity('dust-coat', this.value)"
+              />
+            </div>
+          </article>
+
+          <article
+            class="product-item"
+            data-product="coverall"
+            data-category="body-protection"
+            role="listitem"
+          >
+            <img
+              src="assets/PPE-safety-gear/coverall.png"
+              alt="Coverall"
+              class="product-image"
+              loading="lazy"
+            />
+            <h3 class="product-name">Coverall</h3>
+            <p class="product-description">
+              Full body coverall for complete protection in hazardous
+              environments.
+            </p>
+            <div class="product-actions">
+              <button
+                class="btn-select"
+                onclick="selectProduct('coverall', 'Coverall')"
+                aria-label="Select Coverall"
+              >
+                Select
+              </button>
+              <button
+                class="btn-details"
+                onclick="showProductDetails('coverall')"
+                aria-label="View Coverall details"
+              >
+                Details
+              </button>
+            </div>
+            <div class="quantity-selector" id="quantity-coverall">
+              <label for="qty-coverall" class="quantity-label">Quantity:</label>
+              <input
+                type="number"
+                id="qty-coverall"
+                class="quantity-input"
+                min="10"
+                value="10"
+                onchange="updateQuantity('coverall', this.value)"
+              />
+            </div>
+          </article>
+
+          <article
+            class="product-item"
+            data-product="disposable-gown"
+            data-category="body-protection"
+            role="listitem"
+          >
+            <img
+              src="assets/PPE-safety-gear/disposable pvc gown.png"
+              alt="Disposable PVC Gown"
+              class="product-image"
+              loading="lazy"
+            />
+            <h3 class="product-name">Disposable PVC Gown</h3>
+            <p class="product-description">
+              Disposable PVC gown for medical and laboratory procedures.
+            </p>
+            <div class="product-actions">
+              <button
+                class="btn-select"
+                onclick="selectProduct('disposable-gown', 'Disposable PVC Gown')"
+                aria-label="Select Disposable PVC Gown"
+              >
+                Select
+              </button>
+              <button
+                class="btn-details"
+                onclick="showProductDetails('disposable-gown')"
+                aria-label="View Disposable PVC Gown details"
+              >
+                Details
+              </button>
+            </div>
+            <div class="quantity-selector" id="quantity-disposable-gown">
+              <label for="qty-disposable-gown" class="quantity-label"
+                >Quantity:</label
+              >
+              <input
+                type="number"
+                id="qty-disposable-gown"
+                class="quantity-input"
+                min="10"
+                value="10"
+                onchange="updateQuantity('disposable-gown', this.value)"
+              />
+            </div>
+          </article>
+
+          <article
+            class="product-item"
+            data-product="surgical-gown"
+            data-category="body-protection"
+            role="listitem"
+          >
+            <img
+              src="assets/PPE-safety-gear/surgical gown.png"
+              alt="Surgical Gown"
+              class="product-image"
+              loading="lazy"
+            />
+            <h3 class="product-name">Surgical Gown</h3>
+            <p class="product-description">
+              Sterile surgical gown for operating room procedures.
+            </p>
+            <div class="product-actions">
+              <button
+                class="btn-select"
+                onclick="selectProduct('surgical-gown', 'Surgical Gown')"
+                aria-label="Select Surgical Gown"
+              >
+                Select
+              </button>
+              <button
+                class="btn-details"
+                onclick="showProductDetails('surgical-gown')"
+                aria-label="View Surgical Gown details"
+              >
+                Details
+              </button>
+            </div>
+            <div class="quantity-selector" id="quantity-surgical-gown">
+              <label for="qty-surgical-gown" class="quantity-label"
+                >Quantity:</label
+              >
+              <input
+                type="number"
+                id="qty-surgical-gown"
+                class="quantity-input"
+                min="10"
+                value="10"
+                onchange="updateQuantity('surgical-gown', this.value)"
+              />
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section
+        class="contact-section"
+        role="region"
+        aria-labelledby="contact-title"
+      >
+        <div class="contact-container">
+          <h2 id="contact-title" class="contact-title">Request PPE Quote</h2>
+          <div class="contact-grid">
+            <div class="contact-info">
+              <h3>Get In Touch</h3>
+              <address>
+                <div class="contact-item">
+                  <span class="contact-icon" aria-label="Email">✉️</span>
+                  <strong>Email:</strong>
+                  <p>
+                    <a href="mailto:info@arkhygiene.com" class="contact-link"
+                      >info@arkhygiene.com</a
+                    >
+                  </p>
+                </div>
+                <div class="contact-item">
+                  <span class="contact-icon" aria-label="Phone">
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="#4a90e2"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M22 16.92V21a2 2 0 0 1-2.18 2A19.72 19.72 0 0 1 3 5.18 2 2 0 0 1 5 3h4.09a2 2 0 0 1 2 1.72c.13.81.37 1.6.7 2.34a2 2 0 0 1-.45 2.11l-1.27 1.27a16 16 0 0 0 6.29 6.29l1.27-1.27a2 2 0 0 1 2.11-.45c.74.33 1.53.57 2.34.7A2 2 0 0 1 22 16.92z"
+                      ></path>
+                    </svg>
+                  </span>
+                  <strong>Phone:</strong>
+                  <p>
+                    <a href="tel:+254729171831" class="contact-link"
+                      >+254729171831</a
+                    >
+                  </p>
+                </div>
+              </address>
+            </div>
+
+            <div class="contact-form">
+              <h3>PPE Quote Request</h3>
+              <form
+                class="contact-form-grid"
+                onsubmit="handleContactForm(event)"
+                role="form"
+              >
+                <div class="form-group">
+                  <label for="name">Full Name *</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    aria-required="true"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="email">Email Address *</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    aria-required="true"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="phone">Phone Number</label>
+                  <input type="tel" id="phone" name="phone" />
+                </div>
+                <div class="form-group">
+                  <label for="company">Company/Organization</label>
+                  <input type="text" id="company" name="company" />
+                </div>
+                <div class="form-group full-width">
+                  <label for="ppe-category">PPE Category *</label>
+                  <select
+                    id="ppe-category"
+                    name="ppe-category"
+                    required
+                    aria-required="true"
+                  >
+                    <option value="">Select PPE category</option>
+                    <option value="head-protection">Head Protection</option>
+                    <option value="face-protection">Face Protection</option>
+                    <option value="hand-protection">Hand Protection</option>
+                    <option value="foot-protection">Foot Protection</option>
+                    <option value="body-protection">Body Protection</option>
+                    <option value="respiratory-protection">
+                      Respiratory Protection
+                    </option>
+                    <option value="all-ppe">All PPE Products</option>
+                  </select>
+                </div>
+                <div class="form-group full-width">
+                  <label for="message">Specific Requirements *</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="4"
+                    required
+                    aria-required="true"
+                    placeholder="Please describe your PPE requirements, quantities, and any specific specifications..."
+                  ></textarea>
+                </div>
+                <div class="form-group full-width">
+                  <button type="submit" class="submit-btn">
+                    Request PPE Quote
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer role="contentinfo">
+      <p>&copy; 2024 ARK Hygiene. All rights reserved.</p>
+    </footer>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="contact-modal">
+      <div class="contact-modal-content">
+        <span class="close-modal" onclick="closeContactModal()">&times;</span>
+        <h3>Choose Contact Method</h3>
+        <div class="contact-options">
+          <div class="contact-option" onclick="contactViaWhatsApp()">
+            <div class="contact-option-icon whatsapp-icon">📱</div>
+            <div class="contact-option-text">
+              <div class="contact-option-title">WhatsApp</div>
+              <div class="contact-option-subtitle">Send via WhatsApp</div>
+            </div>
+          </div>
+          <div class="contact-option" onclick="contactViaCall()">
+            <div class="contact-option-icon call-icon">📞</div>
+            <div class="contact-option-text">
+              <div class="contact-option-title">Call</div>
+              <div class="contact-option-subtitle">Call us directly</div>
+            </div>
+          </div>
+          <div class="contact-option" onclick="contactViaEmail()">
+            <div class="contact-option-icon email-icon">✉️</div>
+            <div class="contact-option-text">
+              <div class="contact-option-title">Email</div>
+              <div class="contact-option-subtitle">Send via email</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- External JavaScript -->
+    <script src="javascript.js"></script>
+    <script src="storage.js"></script>
+    <script>
+      // Initialize storage when page loads
+      document.addEventListener("DOMContentLoaded", function () {
+        if (typeof initializeStorage === "function") {
+          initializeStorage();
+        }
+      });
+    </script>
+  </body>
+</html>

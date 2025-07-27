@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO Meta Tags -->
+    <title>
+      Public Health & Sanitation Equipment - ARK Hygiene | Cleaning & Hygiene
+      Solutions
+    </title>
+    <meta
+      name="description"
+      content="Comprehensive public health and sanitation equipment including cleaning equipment, disinfectants, mops, buckets, trolleys, and hygiene solutions for healthcare and commercial facilities."
+    />
+    <meta
+      name="keywords"
+      content="public health, sanitation equipment, cleaning equipment, disinfectants, cleaning mops, cleaning buckets, cleaning trolleys, hygiene solutions, healthcare cleaning, commercial cleaning, industrial cleaning"
+    />
+    <meta name="author" content="ARK Hygiene" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta
+      property="og:title"
+      content="Public Health & Sanitation Equipment - ARK Hygiene"
+    />
+    <meta
+      property="og:description"
+      content="Comprehensive public health and sanitation equipment including cleaning equipment, disinfectants, mops, buckets, trolleys, and hygiene solutions for healthcare and commercial facilities."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://arkhygiene.com/public-health-sanitation.html"
+    />
+    <meta
+      property="og:image"
+      content="https://arkhygiene.com/assets/logo.png"
+    />
+    <meta property="og:site_name" content="ARK Hygiene" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Public Health & Sanitation Equipment - ARK Hygiene"
+    />
+    <meta
+      name="twitter:description"
+      content="Comprehensive public health and sanitation equipment including cleaning equipment, disinfectants, mops, buckets, trolleys, and hygiene solutions."
+    />
+    <meta
+      name="twitter:image"
+      content="https://arkhygiene.com/assets/logo.png"
+    />
+
+    <!-- Canonical URL -->
+    <link
+      rel="canonical"
+      href="https://arkhygiene.com/public-health-sanitation.html"
+    />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="category-header">
+      <div class="category-navbar">
+        <div class="category-logo">
+          <a href="index.html" aria-label="Back to Home" class="logo-link">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9,22 9,12 15,12 15,22"></polyline>
+            </svg>
+          </a>
+        </div>
+        <div class="category-nav-links">
+          <div class="category-dropdown">
+            <button class="dropdown-btn">Categories ▼</button>
+            <div class="dropdown-content">
+              <a href="#" onclick="filterProducts('cleaning', event)"
+                >Cleaning Equipment</a
+              >
+              <a href="#" onclick="filterProducts('disinfectants', event)"
+                >Disinfectants</a
+              >
+              <a href="#" onclick="filterProducts('linen', event)"
+                >Linen & Covers</a
+              >
+              <a href="#" onclick="filterProducts('all', event)"
+                >All Public Health Products</a
+              >
+            </div>
+          </div>
+          <div class="header-selection-icon" id="selectionCounter">
+            <div class="icon-container">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M9 11L12 14L22 4"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M21 12V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H12"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <span class="selection-count" id="selectedCount">0</span>
+            </div>
+          </div>
+          <button
+            class="send-selection-btn"
+            onclick="sendSelection(event)"
+            aria-label="Send selected products"
+            id="sendSelectionBtn"
+          >
+            Send Selection
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <section class="hero">
+      <h1>Public Health & Sanitation</h1>
+      <p>
+        Complete range of public health and sanitation solutions for healthcare,
+        commercial, and residential facilities. Quality products for every
+        environment.
+      </p>
+      <div class="hero-buttons">
+        <button
+          class="explore-btn"
+          onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth'})"
+        >
+          Get Quote
+        </button>
+        <button class="explore-btn secondary" onclick="showContactModal()">
+          Contact Sales
+        </button>
+      </div>
+    </section>
+
+    <section class="products-section" id="products">
+      <h2>Our Public Health & Sanitation Solutions</h2>
+
+      <!-- Unified Product Gallery -->
+      <div class="product-gallery">
+        <!-- Cleaning Equipment -->
+        <div
+          class="product-item"
+          data-product="cleaning-mops"
+          data-category="cleaning"
+        >
+          <img
+            src="assets/Cleaning-equipments/cleaning Equipments  - cleaning mops.png"
+            alt="Cleaning Mops"
+            class="product-image"
+            loading="lazy"
+            decoding="async"
+          />
+          <p class="product-name">Cleaning Mops</p>
+          <p class="product-description">
+            Professional cleaning mops for various surfaces
+          </p>
+          <div class="product-actions">
+            <button
+              class="btn-select"
+              onclick="selectProduct('cleaning-mops', 'Cleaning Mops')"
+            >
+              Select
+            </button>
+            <button
+              class="btn-details"
+              onclick="showProductDetails('cleaning-mops')"
+            >
+              Details
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="product-item"
+          data-product="cleaning-buckets"
+          data-category="cleaning"
+        >
+          <img
+            src="assets/Cleaning-equipments/cleaning Equipments  - cleaning buckets.png"
+            alt="Cleaning Buckets"
+            class="product-image"
+            loading="lazy"
+            decoding="async"
+          />
+          <p class="product-name">Cleaning Buckets</p>
+          <p class="product-description">
+            Durable cleaning buckets for professional use
+          </p>
+          <div class="product-actions">
+            <button
+              class="btn-select"
+              onclick="selectProduct('cleaning-buckets', 'Cleaning Buckets')"
+            >
+              Select
+            </button>
+            <button
+              class="btn-details"
+              onclick="showProductDetails('cleaning-buckets')"
+            >
+              Details
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="product-item"
+          data-product="cleaning-trolley"
+          data-category="cleaning"
+        >
+          <img
+            src="assets/Cleaning-equipments/cleaning Equipments  - cleaning trolley.png"
+            alt="Cleaning Trolley"
+            class="product-image"
+            loading="lazy"
+            decoding="async"
+          />
+          <p class="product-name">Cleaning Trolley</p>
+          <p class="product-description">
+            Mobile cleaning trolley for organized cleaning
+          </p>
+          <div class="product-actions">
+            <button
+              class="btn-select"
+              onclick="selectProduct('cleaning-trolley', 'Cleaning Trolley')"
+            >
+              Select
+            </button>
+            <button
+              class="btn-details"
+              onclick="showProductDetails('cleaning-trolley')"
+            >
+              Details
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="product-item"
+          data-product="window-squeezer"
+          data-category="cleaning"
+        >
+          <img
+            src="assets/Cleaning-equipments/cleaning Equipments - window cleaner squeezer.png"
+            alt="Window Cleaner Squeezer"
+            class="product-image"
+            loading="lazy"
+            decoding="async"
+          />
+          <p class="product-name">Window Cleaner Squeezer</p>
+          <p class="product-description">
+            Professional window cleaning squeezer
+          </p>
+          <div class="product-actions">
+            <button
+              class="btn-select"
+              onclick="selectProduct('window-squeezer', 'Window Cleaner Squeezer')"
+            >
+              Select
+            </button>
+            <button
+              class="btn-details"
+              onclick="showProductDetails('window-squeezer')"
+            >
+              Details
+            </button>
+          </div>
+        </div>
+
+        <!-- Disinfectants -->
+        <div
+          class="product-item"
+          data-product="portex-spray"
+          data-category="disinfectants"
+        >
+          <img
+            src="assets/Disinfectants/disinfectant spray portex.png"
+            alt="Portex Disinfectant Spray"
+            class="product-image"
+            loading="lazy"
+            decoding="async"
+          />
+          <p class="product-name">Portex Disinfectant Spray</p>
+          <p class="product-description">
+            Professional disinfectant spray for surfaces
+          </p>
+          <div class="product-actions">
+            <button
+              class="btn-select"
+              onclick="selectProduct('portex-spray', 'Portex Disinfectant Spray')"
+            >
+              Select
+            </button>
+            <button
+              class="btn-details"
+              onclick="showProductDetails('portex-spray')"
+            >
+              Details
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="product-item"
+          data-product="clorox-wipes"
+          data-category="disinfectants"
+        >
+          <img
+            src="assets/Disinfectants/clorox disinfecting wipes.png"
+            alt="Clorox Disinfecting Wipes"
+            class="product-image"
+            loading="lazy"
+            decoding="async"
+          />
+          <p class="product-name">Clorox Disinfecting Wipes</p>
+          <p class="product-description">
+            Convenient disinfecting wipes for quick cleanup
+          </p>
+          <div class="product-actions">
+            <button
+              class="btn-select"
+              onclick="selectProduct('clorox-wipes', 'Clorox Disinfecting Wipes')"
+            >
+              Select
+            </button>
+            <button
+              class="btn-details"
+              onclick="showProductDetails('clorox-wipes')"
+            >
+              Details
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="product-item"
+          data-product="parker-spray"
+          data-category="disinfectants"
+        >
+          <img
+            src="assets/Disinfectants/parker portex disinfectant sprays.png"
+            alt="Parker Portex Disinfectant Sprays"
+            class="product-image"
+            loading="lazy"
+            decoding="async"
+          />
+          <p class="product-name">Parker Portex Disinfectant Sprays</p>
+          <p class="product-description">
+            Professional disinfectant sprays for healthcare
+          </p>
+          <div class="product-actions">
+            <button
+              class="btn-select"
+              onclick="selectProduct('parker-spray', 'Parker Portex Disinfectant Sprays')"
+            >
+              Select
+            </button>
+            <button
+              class="btn-details"
+              onclick="showProductDetails('parker-spray')"
+            >
+              Details
+            </button>
+          </div>
+        </div>
+
+        <!-- Linen & Covers -->
+        <div
+          class="product-item"
+          data-product="hospital-sheets"
+          data-category="linen"
+        >
+          <img
+            src="assets/linen-covers/linen & covers - hospital bed sheets.png"
+            alt="Hospital Bed Sheets"
+            class="product-image"
+            loading="lazy"
+            decoding="async"
+          />
+          <p class="product-name">Hospital Bed Sheets</p>
+          <p class="product-description">Professional hospital bed sheets</p>
+          <div class="product-actions">
+            <button
+              class="btn-select"
+              onclick="selectProduct('hospital-sheets', 'Hospital Bed Sheets')"
+            >
+              Select
+            </button>
+            <button
+              class="btn-details"
+              onclick="showProductDetails('hospital-sheets')"
+            >
+              Details
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="product-item"
+          data-product="hospital-counterpanes"
+          data-category="linen"
+        >
+          <img
+            src="assets/linen-covers/linen & covers - hospital counterpanes.png"
+            alt="Hospital Counterpanes"
+            class="product-image"
+            loading="lazy"
+            decoding="async"
+          />
+          <p class="product-name">Hospital Counterpanes</p>
+          <p class="product-description">Professional hospital counterpanes</p>
+          <div class="product-actions">
+            <button
+              class="btn-select"
+              onclick="selectProduct('hospital-counterpanes', 'Hospital Counterpanes')"
+            >
+              Select
+            </button>
+            <button
+              class="btn-details"
+              onclick="showProductDetails('hospital-counterpanes')"
+            >
+              Details
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="product-item"
+          data-product="cellular-blankets"
+          data-category="linen"
+        >
+          <img
+            src="assets/linen-covers/linen & covers - cellular blankets Multi colour.png"
+            alt="Cellular Blankets"
+            class="product-image"
+            loading="lazy"
+            decoding="async"
+          />
+          <p class="product-name">Cellular Blankets</p>
+          <p class="product-description">
+            Multi-color cellular blankets for healthcare
+          </p>
+          <div class="product-actions">
+            <button
+              class="btn-select"
+              onclick="selectProduct('cellular-blankets', 'Cellular Blankets')"
+            >
+              Select
+            </button>
+            <button
+              class="btn-details"
+              onclick="showProductDetails('cellular-blankets')"
+            >
+              Details
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="product-item"
+          data-product="first-aid-kit"
+          data-category="linen"
+        >
+          <img
+            src="assets/linen-covers/First aid kit.png"
+            alt="First Aid Kit"
+            class="product-image"
+            loading="lazy"
+            decoding="async"
+          />
+          <p class="product-name">First Aid Kit</p>
+          <p class="product-description">
+            Complete first aid kit for emergency situations
+          </p>
+          <div class="product-actions">
+            <button
+              class="btn-select"
+              onclick="selectProduct('first-aid-kit', 'First Aid Kit')"
+            >
+              Select
+            </button>
+            <button
+              class="btn-details"
+              onclick="showProductDetails('first-aid-kit')"
+            >
+              Details
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <div class="contact-container">
+        <h2 class="contact-title">Contact Us</h2>
+        <div class="contact-grid">
+          <div class="contact-info">
+            <h3>Get In Touch</h3>
+            <div class="contact-item">
+              <strong>Email:</strong>
+              <p>info@arkhygiene.com</p>
+            </div>
+            <div class="contact-item">
+              <strong>Phone:</strong>
+              <p>
+                <a href="tel:+254729171831" class="contact-link"
+                  >+254729171831</a
+                >
+              </p>
+            </div>
+            <div class="contact-item">
+              <strong>Address:</strong>
+              <p>
+                <a
+                  href="https://maps.google.com/?q=P.O+Box+28255-00100+Nairobi+Harambee+avenue+Cargen+House"
+                  target="_blank"
+                  class="contact-link"
+                  >P.O Box 28255-00100<br />Nairobi Harambee avenue, Cargen
+                  House</a
+                >
+              </p>
+            </div>
+          </div>
+          <div class="contact-form">
+            <h3>Request Public Health Quote</h3>
+            <form onsubmit="handleContactForm(event)">
+              <div class="form-group">
+                <label for="name">Name *</label>
+                <input type="text" id="name" name="name" required />
+              </div>
+              <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" required />
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone" />
+              </div>
+              <div class="form-group">
+                <label for="product-type">Product Category *</label>
+                <select id="product-type" name="product-type" required>
+                  <option value="">Select Product Category</option>
+                  <option value="first-aid">First Aid & Disinfectants</option>
+                  <option value="cleaning-equipment">Cleaning Equipment</option>
+                  <option value="cleaning-supplies">Cleaning Supplies</option>
+                  <option value="hygiene-products">Hygiene Products</option>
+                  <option value="public-health">Public Health Equipment</option>
+                  <option value="sanitation">Sanitation Solutions</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="quantity">Quantity Needed</label>
+                <input
+                  type="text"
+                  id="quantity"
+                  name="quantity"
+                  placeholder="e.g., 100 units"
+                />
+              </div>
+              <div class="form-group">
+                <label for="message">Additional Requirements</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="4"
+                  placeholder="Please describe your specific requirements..."
+                ></textarea>
+              </div>
+              <button type="submit" class="submit-btn">
+                Send Quote Request
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script>
+      // Smooth scrolling function
+      function scrollToSection(sectionId) {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    </script>
+    <script src="javascript.js"></script>
+    <script src="storage.js"></script>
+    <script>
+      // Initialize storage when page loads
+      document.addEventListener("DOMContentLoaded", function () {
+        if (typeof initializeStorage === "function") {
+          initializeStorage();
+        }
+      });
+    </script>
+  </body>
+</html>

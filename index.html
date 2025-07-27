@@ -3,47 +3,1783 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ARK Hygiene</title>
-    <link rel="stylesheet" href="style.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Oswald:wght@600&family=Roboto&display=swap"
-      rel="stylesheet"
+
+    <!-- SEO Meta Tags -->
+    <title>
+      ARK Hygiene - Protective Gear & Medical Supplies | Leading PPE Supplier in
+      Africa
+    </title>
+    <meta
+      name="description"
+      content="ARK Hygiene is Africa's leading supplier of protective gear, medical equipment, waste management solutions, and sanitation products. Quality PPE, medical supplies, and safety equipment for healthcare, industry, and public spaces."
     />
+    <meta
+      name="keywords"
+      content="PPE, protective gear, medical equipment, safety equipment, waste management, sanitation products, medical supplies, Africa, healthcare, industrial safety, face masks, gloves, safety boots, medical waste, sterilization equipment"
+    />
+    <meta name="author" content="ARK Hygiene" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta
+      property="og:title"
+      content="ARK Hygiene - Protective Gear & Medical Supplies"
+    />
+    <meta
+      property="og:description"
+      content="Leading supplier of PPE, medical equipment, and safety solutions across Africa. Quality protective gear for healthcare and industry."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://arkhygiene.com" />
+    <meta
+      property="og:image"
+      content="https://arkhygiene.com/assets/logo.png"
+    />
+    <meta property="og:site_name" content="ARK Hygiene" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="ARK Hygiene - Protective Gear & Medical Supplies"
+    />
+    <meta
+      name="twitter:description"
+      content="Leading supplier of PPE, medical equipment, and safety solutions across Africa."
+    />
+    <meta
+      name="twitter:image"
+      content="https://arkhygiene.com/assets/logo.png"
+    />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://arkhygiene.com" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+
+    <!-- Preload Critical Resources -->
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;700&display=swap"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript
+      ><link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;700&display=swap"
+    /></noscript>
+
+    <!-- Preload Critical Images -->
+    <link
+      rel="preload"
+      as="image"
+      href="assets/PPE-safety-gear/face shield.png"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="assets/specimen-bags/specimen bags & containers.png"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="assets/bins-wastes/pedal bins - 25 litres.png"
+    />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "ARK Hygiene",
+        "url": "https://arkhygiene.com",
+        "logo": "https://arkhygiene.com/assets/logo.png",
+        "description": "Leading supplier of protective gear, medical equipment, and safety solutions across Africa",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "P.O Box 28255-00100",
+          "addressLocality": "Nairobi",
+          "addressRegion": "Nairobi",
+          "addressCountry": "KE"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+254729171831",
+          "contactType": "customer service",
+          "email": "info@arkhygiene.com"
+        },
+        "sameAs": [
+          "https://www.facebook.com/arkhygiene",
+          "https://www.linkedin.com/company/arkhygiene"
+        ]
+      }
+    </script>
+
+    <!-- Performance Optimizations -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="theme-color" content="#4a90e2" />
+    <meta name="msapplication-TileColor" content="#4a90e2" />
+
+    <!-- DNS Prefetch -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+
+    <!-- Critical CSS Inline -->
+    <style>
+      /* Critical CSS for above-the-fold content */
+      html {
+        scroll-behavior: smooth;
+      }
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        font-family: "Poppins", "Roboto", sans-serif;
+        background: #fff;
+        box-sizing: border-box;
+        overflow-x: hidden;
+      }
+      *,
+      *:before,
+      *:after {
+        box-sizing: inherit;
+      }
+      header {
+        width: 100%;
+        background: #ffffff;
+        color: #222;
+        margin: 0;
+        padding: 0;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        border-bottom: 1px solid rgba(142, 197, 252, 0.2);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 4vw;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      .logo {
+        font-family: "Poppins", sans-serif;
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #222;
+        letter-spacing: 1px;
+        margin: 0;
+        padding: 0;
+      }
+      .logo-link {
+        color: #222;
+        text-decoration: none;
+        transition: color 0.3s ease;
+        cursor: pointer;
+      }
+      .logo-link:hover {
+        color: #4a90e2;
+      }
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .nav-links a {
+        color: #222;
+        text-decoration: none;
+        font-family: "Roboto", sans-serif;
+        font-size: 0.9rem;
+        font-weight: 500;
+        padding: 6px 8px;
+        border-radius: 6px;
+        transition: background 0.3s ease;
+      }
+      .nav-links a:hover {
+        background: rgba(142, 197, 252, 0.15);
+        color: #4a90e2;
+      }
+      .hero {
+        width: 100%;
+        min-height: 180px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: none;
+        color: #222;
+        text-align: center;
+        padding: 32px 6vw 18px 6vw;
+        margin: 0;
+      }
+      .hero h1 {
+        font-size: 1.3rem;
+        font-family: "Poppins", sans-serif;
+        margin-bottom: 12px;
+        font-weight: 700;
+      }
+      .hero p {
+        font-size: 1rem;
+        font-family: "Roboto", sans-serif;
+        max-width: 95vw;
+        margin: 0 auto;
+      }
+      .hero-buttons {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 24px;
+      }
+      .hero .explore-btn {
+        padding: 14px 36px;
+        background: linear-gradient(90deg, #8ec5fc 0%, #4a90e2 100%);
+        color: #222;
+        border: none;
+        border-radius: 32px;
+        font-family: "Poppins", sans-serif;
+        font-size: 1.1rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+        cursor: pointer;
+        box-shadow: 0 2px 8px rgba(142, 197, 252, 0.18);
+        transition: background 0.4s ease, box-shadow 0.4s ease;
+      }
+      .hero .explore-btn:hover {
+        background: linear-gradient(90deg, #4a90e2 0%, #8ec5fc 100%);
+        box-shadow: 0 4px 16px rgba(142, 197, 252, 0.28);
+        color: #222;
+      }
+      .hero .explore-btn.secondary {
+        background: transparent;
+        color: #222;
+        border: 2px solid #4a90e2;
+        box-shadow: none;
+      }
+      .hero .explore-btn.secondary:hover {
+        background: #4a90e2;
+        color: #222;
+      }
+      .header-hero-container {
+        background: linear-gradient(135deg, #fff 0%, #8ec5fc 100%);
+        width: 100%;
+        margin: 0;
+      }
+
+      /* Accessibility Improvements */
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      /* Focus styles for accessibility */
+      a:focus,
+      button:focus,
+      input:focus,
+      select:focus,
+      textarea:focus {
+        outline: 2px solid #4a90e2;
+        outline-offset: 2px;
+      }
+
+      /* Skip to main content link */
+      .skip-link {
+        position: absolute;
+        top: -40px;
+        left: 6px;
+        background: #4a90e2;
+        color: white;
+        padding: 8px;
+        text-decoration: none;
+        border-radius: 4px;
+        z-index: 1001;
+        transition: top 0.3s ease;
+      }
+      .skip-link:focus {
+        top: 6px;
+      }
+
+      /* Products Section Styling */
+      .products-section {
+        padding: 24px 4vw 16px 4vw;
+        background: linear-gradient(
+          135deg,
+          #fff 0%,
+          #8ec5fc 40%,
+          #4a90e2 80%,
+          #003366 100%
+        );
+        margin: 0;
+      }
+      .products-section h2 {
+        text-align: center;
+        font-size: 1.1rem;
+        font-family: "Poppins", sans-serif;
+        margin-bottom: 18px;
+        color: #2a2a2a;
+      }
+      .product-cards {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        align-items: center;
+        width: 100%;
+        max-width: 100%;
+      }
+      .product-card {
+        background: transparent;
+        border-radius: 14px;
+        box-shadow: none;
+        width: 100%;
+        max-width: 100%;
+        min-height: 120px;
+        padding: 18px 6vw 14px 6vw;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        transition: box-shadow 0.2s;
+        font-family: "Roboto", sans-serif;
+        margin: 0;
+        border: 1px solid #e0e0e0;
+      }
+      .product-card h3 {
+        font-size: 1.05rem;
+        font-family: "Poppins", sans-serif;
+        margin-bottom: 6px;
+        color: #3a3a3a;
+      }
+      .product-card ul {
+        margin: 0 0 0 18px;
+        padding: 0;
+        font-size: 0.98rem;
+        color: #444;
+      }
+
+      /* Carousel Styling */
+      .ppe-carousel,
+      .medical-carousel,
+      .waste-carousel,
+      .sanitary-carousel,
+      .spill-carousel,
+      .health-carousel {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 8px;
+        overflow: hidden;
+        position: relative;
+        height: 220px;
+        min-height: 220px;
+        flex: 1;
+      }
+
+      .carousel-item {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 220px;
+        gap: 30px;
+        padding: 0 20px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out;
+        z-index: 1;
+      }
+
+      .carousel-item.active {
+        opacity: 1;
+        visibility: visible;
+        z-index: 2;
+      }
+
+      .carousel-desc {
+        text-align: left;
+        font-size: 1.5rem;
+        color: #333;
+        font-family: "Roboto", sans-serif;
+        font-weight: 600;
+        position: static;
+        width: 50%;
+        line-height: 1.5;
+        flex-shrink: 0;
+      }
+
+      .ppe-carousel-img,
+      .medical-carousel-img,
+      .waste-carousel-img,
+      .sanitary-carousel-img,
+      .spill-carousel-img,
+      .health-carousel-img {
+        max-width: 180px;
+        max-height: 160px;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+        border-radius: 8px;
+        box-shadow: none;
+        background: transparent;
+        padding: 8px;
+        position: static;
+        transition: transform 0.6s ease-in-out;
+        flex-shrink: 0;
+        flex-grow: 0;
+      }
+
+      .product-cta {
+        background: #333;
+        color: #fff;
+        border: none;
+        border-radius: 20px;
+        font-family: "Poppins", sans-serif;
+        font-size: 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+        padding: 8px 20px;
+        margin-top: 12px;
+        transition: all 0.3s ease;
+      }
+
+      .product-cta:hover {
+        background: #555;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Category Title Styling */
+      .ppe-title,
+      .medical-title,
+      .waste-title,
+      .sanitary-title,
+      .spill-title,
+      .health-title {
+        text-align: center !important;
+        font-size: 1.3rem;
+        font-family: "Poppins", sans-serif;
+        margin-bottom: 6px;
+        color: #3a3a3a;
+        width: 100%;
+        display: block;
+        font-weight: 600;
+      }
+
+      .ppe-desc,
+      .medical-desc,
+      .waste-desc,
+      .sanitary-desc,
+      .spill-desc,
+      .health-desc {
+        text-align: center;
+        font-size: 1rem;
+        color: #333;
+        margin-bottom: 10px;
+        font-family: "Roboto", sans-serif;
+        line-height: 1.4;
+        width: 100%;
+      }
+
+      /* Dropdown Styling */
+      .products-dropdown {
+        position: relative;
+        display: inline-block;
+      }
+
+      .products-dropdown-content {
+        display: none;
+        position: absolute;
+        background: #fff;
+        min-width: 200px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        border-radius: 8px;
+        z-index: 1001;
+        top: 100%;
+        left: 0;
+        margin-top: 8px;
+        border: 1px solid rgba(142, 197, 252, 0.2);
+      }
+
+      .products-dropdown-content a {
+        color: #333;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        font-size: 0.9rem;
+        border-bottom: 1px solid #f0f0f0;
+        transition: background 0.3s ease;
+      }
+
+      .products-dropdown-content a:last-child {
+        border-bottom: none;
+      }
+
+      .products-dropdown-content a:hover {
+        background: rgba(142, 197, 252, 0.1);
+        color: #4a90e2;
+      }
+
+      .products-dropdown:hover .products-dropdown-content {
+        display: block;
+      }
+
+      .products-dropdown:hover .nav-links a {
+        background: rgba(142, 197, 252, 0.15);
+        color: #4a90e2;
+      }
+
+      /* Responsive Design */
+      @media (min-width: 600px) {
+        .navbar {
+          padding: 16px 6vw;
+        }
+        .hero {
+          padding: 48px 10vw 28px 10vw;
+        }
+        .hero h1 {
+          font-size: 1.7rem;
+        }
+        .products-section {
+          padding: 36px 8vw 24px 8vw;
+        }
+        .products-section h2 {
+          font-size: 1.4rem;
+        }
+        .product-cards {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 24px;
+          align-items: stretch;
+        }
+        .product-card {
+          max-width: 100%;
+          min-height: 180px;
+          padding: 28px 24px 20px 24px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+        }
+        .product-card h3 {
+          font-size: 1.2rem;
+        }
+        .product-card ul {
+          font-size: 1.05rem;
+        }
+        .product-cta {
+          margin-top: auto;
+          align-self: flex-start;
+        }
+      }
+
+      @media (min-width: 900px) {
+        .navbar {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 18px 32px;
+        }
+        .hero {
+          padding: 60px 20vw 40px 20vw;
+        }
+        .hero h1 {
+          font-size: 2.2rem;
+        }
+        .products-section {
+          padding: 60px 12vw 40px 12vw;
+        }
+        .products-section h2 {
+          font-size: 2.2rem;
+        }
+        .product-cards {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 32px;
+          align-items: stretch;
+        }
+        .product-card {
+          min-height: 220px;
+          padding: 38px 32px 28px 32px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+        }
+        .product-card h3 {
+          font-size: 1.5rem;
+        }
+        .product-card ul {
+          font-size: 1.15rem;
+        }
+        .product-cta {
+          margin-top: auto;
+          align-self: flex-start;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .navbar {
+          flex-direction: row;
+          align-items: center;
+          padding: 8px 2vw;
+          justify-content: space-between;
+          width: 100%;
+          box-sizing: border-box;
+        }
+        .logo {
+          margin: 0;
+          padding: 0;
+          font-size: 1rem;
+        }
+        .nav-links {
+          flex-direction: row;
+          gap: 4px;
+          padding: 0;
+          list-style: none;
+          flex-wrap: nowrap;
+        }
+        .nav-links a {
+          font-size: 0.8rem;
+          padding: 4px 6px;
+          white-space: nowrap;
+        }
+
+        /* Mobile dropdown adjustments */
+        .products-dropdown-content {
+          min-width: 160px !important;
+          left: -60% !important;
+        }
+
+        .products-dropdown-content a {
+          padding: 8px 10px !important;
+          font-size: 0.8rem !important;
+        }
+
+        /* Mobile carousel fixes - same animation as desktop */
+        .carousel-item {
+          height: 160px !important;
+          gap: 16px !important;
+          flex-direction: row !important;
+          justify-content: space-between !important;
+          align-items: center !important;
+          padding: 0 4px !important;
+          opacity: 0 !important;
+          visibility: hidden !important;
+          transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out !important;
+          position: absolute !important;
+          top: 0 !important;
+          left: 0 !important;
+          z-index: 1 !important;
+          width: 100% !important;
+          transform: none !important;
+        }
+
+        .carousel-item.active {
+          opacity: 1 !important;
+          visibility: visible !important;
+          z-index: 2 !important;
+        }
+
+        .carousel-desc {
+          font-size: 0.85rem !important;
+          width: 55% !important;
+          line-height: 1.5 !important;
+          text-align: left !important;
+          margin-top: 0 !important;
+          word-wrap: break-word !important;
+          overflow-wrap: break-word !important;
+          hyphens: auto !important;
+          padding: 0 4px !important;
+          flex: 1 !important;
+          font-weight: 500 !important;
+          color: #333 !important;
+        }
+
+        .medical-carousel-img,
+        .waste-carousel-img,
+        .sanitary-carousel-img,
+        .spill-carousel-img,
+        .health-carousel-img,
+        .ppe-carousel-img {
+          max-width: 42% !important;
+          max-height: 120px !important;
+          object-fit: contain !important;
+          background: transparent !important;
+          padding: 6px !important;
+          border-radius: 8px !important;
+          flex-shrink: 0 !important;
+          transform: none !important;
+          transition: none !important;
+        }
+
+        .product-cta {
+          font-size: 0.75rem !important;
+          padding: 6px 12px !important;
+          margin-top: 4px !important;
+        }
+
+        .product-card {
+          padding: 15px 4vw 16px 4vw !important;
+          min-height: 140px !important;
+          border: none !important;
+          background: rgba(255, 255, 255, 0.7) !important;
+          display: flex !important;
+          flex-direction: column !important;
+          border-bottom: 2px solid rgba(142, 197, 252, 0.4) !important;
+          margin-bottom: 12px !important;
+          position: relative !important;
+          border-radius: 12px !important;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
+        }
+
+        .product-card:last-child {
+          border-bottom: none !important;
+          margin-bottom: 0 !important;
+        }
+
+        /* Add category indicators */
+        .product-card::before {
+          content: "";
+          position: absolute !important;
+          top: 0 !important;
+          left: 0 !important;
+          right: 0 !important;
+          height: 3px !important;
+          background: linear-gradient(90deg, #8ec5fc, #4a90e2) !important;
+          border-radius: 12px 12px 0 0 !important;
+        }
+
+        /* Fixed layout for mobile - no alternating to prevent shifting */
+        .carousel-item.active {
+          flex-direction: row !important;
+        }
+
+        .product-card:nth-child(odd) .carousel-desc {
+          text-align: center !important;
+          padding-left: 0 !important;
+          padding-right: 4px !important;
+        }
+
+        .product-card:nth-child(even) .carousel-desc {
+          text-align: center !important;
+          padding-right: 0 !important;
+          padding-left: 4px !important;
+        }
+
+        .product-card:nth-child(odd) .product-cta {
+          align-self: flex-start !important;
+          margin-top: 12px !important;
+        }
+
+        .product-card:nth-child(even) .product-cta {
+          align-self: flex-end !important;
+          margin-top: 12px !important;
+        }
+
+        /* Show all carousels with same animation as desktop on mobile */
+        .medical-carousel,
+        .waste-carousel,
+        .sanitary-carousel,
+        .spill-carousel,
+        .health-carousel {
+          display: flex !important;
+          flex-direction: row !important;
+          align-items: center !important;
+          justify-content: space-between !important;
+          gap: 16px !important;
+          height: 160px !important;
+          min-height: 160px !important;
+          overflow: hidden !important;
+          position: relative !important;
+        }
+
+        .medical-carousel .carousel-item,
+        .waste-carousel .carousel-item,
+        .sanitary-carousel .carousel-item,
+        .spill-carousel .carousel-item,
+        .health-carousel .carousel-item {
+          display: flex !important;
+          flex-direction: row !important;
+          align-items: center !important;
+          justify-content: space-between !important;
+          gap: 16px !important;
+          height: 160px !important;
+          opacity: 0 !important;
+          visibility: hidden !important;
+          transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out !important;
+          position: absolute !important;
+          top: 0 !important;
+          left: 0 !important;
+          z-index: 1 !important;
+          width: 100% !important;
+          padding: 0 4px !important;
+        }
+
+        .medical-carousel .carousel-item.active,
+        .waste-carousel .carousel-item.active,
+        .sanitary-carousel .carousel-item.active,
+        .spill-carousel .carousel-item.active,
+        .health-carousel .carousel-item.active {
+          opacity: 1 !important;
+          visibility: visible !important;
+          z-index: 2 !important;
+        }
+
+        /* Show PPE with same animation as desktop on mobile */
+        .ppe-carousel {
+          display: flex !important;
+          flex-direction: row !important;
+          align-items: center !important;
+          justify-content: space-between !important;
+          gap: 16px !important;
+          height: 160px !important;
+          min-height: 160px !important;
+          overflow: hidden !important;
+          position: relative !important;
+        }
+
+        .ppe-carousel .carousel-item {
+          display: flex !important;
+          flex-direction: row !important;
+          align-items: center !important;
+          justify-content: space-between !important;
+          gap: 16px !important;
+          height: 160px !important;
+          opacity: 0 !important;
+          visibility: hidden !important;
+          transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out !important;
+          position: absolute !important;
+          top: 0 !important;
+          left: 0 !important;
+          z-index: 1 !important;
+          width: 100% !important;
+          padding: 0 4px !important;
+        }
+
+        .ppe-carousel .carousel-item.active {
+          opacity: 1 !important;
+          visibility: visible !important;
+          z-index: 2 !important;
+        }
+
+        .ppe-carousel-img {
+          max-width: 42% !important;
+          max-height: 120px !important;
+          object-fit: contain !important;
+          background: transparent !important;
+          padding: 6px !important;
+          border-radius: 8px !important;
+          flex-shrink: 0 !important;
+        }
+
+        .ppe-carousel .carousel-desc {
+          font-size: 0.85rem !important;
+          width: 55% !important;
+          line-height: 1.5 !important;
+          text-align: left !important;
+          margin-top: 0 !important;
+          word-wrap: break-word !important;
+          overflow-wrap: break-word !important;
+          hyphens: auto !important;
+          padding: 0 4px !important;
+          flex: 1 !important;
+          font-weight: 500 !important;
+          color: #333 !important;
+        }
+
+        .carousel-desc {
+          font-size: 0.85rem !important;
+          width: 55% !important;
+          line-height: 1.5 !important;
+          text-align: left !important;
+          margin-top: 0 !important;
+          word-wrap: break-word !important;
+          overflow-wrap: break-word !important;
+          hyphens: auto !important;
+          padding: 0 4px !important;
+          flex: 1 !important;
+          font-weight: 500 !important;
+          color: #333 !important;
+        }
+
+        .medical-carousel-img,
+        .waste-carousel-img,
+        .sanitary-carousel-img,
+        .spill-carousel-img,
+        .health-carousel-img,
+        .ppe-carousel-img {
+          max-width: 42% !important;
+          max-height: 120px !important;
+          object-fit: contain !important;
+          background: transparent !important;
+          padding: 6px !important;
+          border-radius: 8px !important;
+          flex-shrink: 0 !important;
+        }
+
+        /* Improve products section spacing */
+        .products-section {
+          padding: 40px 4vw 30px 4vw !important;
+          background: linear-gradient(
+            135deg,
+            #fff 0%,
+            #8ec5fc 40%,
+            #4a90e2 80%,
+            #003366 100%
+          ) !important;
+        }
+
+        .product-cards {
+          gap: 16px !important;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .carousel-item {
+          height: 200px !important;
+          gap: 12px !important;
+          flex-direction: column !important;
+          justify-content: center !important;
+        }
+
+        .ppe-carousel,
+        .medical-carousel,
+        .waste-carousel,
+        .sanitary-carousel,
+        .spill-carousel,
+        .health-carousel {
+          height: 200px !important;
+          min-height: 200px !important;
+          overflow: hidden !important;
+        }
+
+        .carousel-item {
+          height: 200px !important;
+        }
+
+        .carousel-desc {
+          font-size: 1.6rem !important;
+          width: 100% !important;
+          text-align: center !important;
+          margin-top: 8px !important;
+          font-weight: 600 !important;
+          line-height: 1.4 !important;
+        }
+
+        .medical-carousel-img,
+        .waste-carousel-img,
+        .sanitary-carousel-img,
+        .spill-carousel-img,
+        .health-carousel-img,
+        .ppe-carousel-img {
+          max-width: 140px !important;
+          max-height: 130px !important;
+          width: auto !important;
+          height: auto !important;
+          object-fit: contain !important;
+          background: transparent !important;
+          padding: 8px !important;
+          border-radius: 8px !important;
+        }
+
+        .product-card {
+          padding: 16px 4vw 12px 4vw !important;
+        }
+
+        .hero-buttons {
+          flex-direction: column;
+          gap: 12px;
+        }
+
+        .hero .explore-btn {
+          font-size: 1rem;
+          padding: 12px 28px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .navbar {
+          padding: 6px 1vw;
+        }
+        .logo {
+          font-size: 0.9rem;
+        }
+        .nav-links a {
+          font-size: 0.75rem;
+          padding: 3px 4px;
+        }
+
+        .medical-title,
+        .waste-title,
+        .sanitary-title,
+        .spill-title,
+        .health-title,
+        .ppe-title {
+          font-size: 1.2rem !important;
+          margin-bottom: 8px !important;
+        }
+
+        .medical-desc,
+        .waste-desc,
+        .sanitary-desc,
+        .spill-desc,
+        .health-desc,
+        .ppe-desc {
+          font-size: 0.9rem !important;
+          margin-bottom: 12px !important;
+        }
+
+        .carousel-desc {
+          font-size: 0.8rem !important;
+        }
+      }
+
+      @media (max-width: 400px) {
+        .medical-title,
+        .waste-title,
+        .sanitary-title,
+        .spill-title,
+        .health-title {
+          font-size: 1.1rem !important;
+          margin-bottom: 6px !important;
+        }
+
+        .ppe-title {
+          font-size: 1.4rem !important;
+          margin-bottom: 8px !important;
+        }
+
+        .medical-desc,
+        .waste-desc,
+        .sanitary-desc,
+        .spill-desc,
+        .health-desc,
+        .ppe-desc {
+          font-size: 0.85rem !important;
+          margin-bottom: 10px !important;
+        }
+
+        .carousel-desc {
+          font-size: 0.75rem !important;
+        }
+      }
+    </style>
+
+    <!-- Non-critical CSS -->
+    <link
+      rel="stylesheet"
+      href="style.css"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript><link rel="stylesheet" href="style.css" /></noscript>
   </head>
   <body>
-    <header>
-      <h1>ARK Hygiene</h1>
-      <nav>
-        <button id="menu-toggle">☰</button>
-        <ul id="mobile-menu">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Products</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <a id="home"></a>
+    <header role="banner">
+      <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="header-left">
+          <div class="logo" aria-label="ARK Hygiene Home">
+            <a href="#home" onclick="scrollToTop()" class="logo-link"
+              >ARK Hygiene</a
+            >
+          </div>
+        </div>
+        <div class="header-right">
+          <ul class="nav-links" role="menubar">
+            <li role="none">
+              <a
+                href="#home"
+                class="active"
+                role="menuitem"
+                onclick="scrollToSection('home')"
+                >Home</a
+              >
+            </li>
+            <li role="none" class="products-dropdown">
+              <a
+                href="#products"
+                role="menuitem"
+                aria-haspopup="true"
+                aria-expanded="false"
+                onclick="scrollToSection('products')"
+                >Products</a
+              >
+              <ul
+                class="products-dropdown-content"
+                role="menu"
+                aria-label="Product categories"
+              >
+                <li role="none">
+                  <a href="ppe-safety-gear.html" role="menuitem"
+                    >PPE & Safety Gear</a
+                  >
+                </li>
+                <li role="none">
+                  <a href="medical-equipment.html" role="menuitem"
+                    >Medical Equipment</a
+                  >
+                </li>
+                <li role="none">
+                  <a href="sterilization-waste-equipment.html" role="menuitem"
+                    >Sterilization & Waste Equipment</a
+                  >
+                </li>
+                <li role="none">
+                  <a href="sanitary-solutions.html" role="menuitem"
+                    >Sanitary Solutions</a
+                  >
+                </li>
+                <li role="none">
+                  <a href="spill-management.html" role="menuitem"
+                    >Spill Management</a
+                  >
+                </li>
+                <li role="none">
+                  <a href="public-health-sanitation.html" role="menuitem"
+                    >Public Health & Sanitation</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li role="none">
+              <a
+                href="#about-us"
+                role="menuitem"
+                onclick="scrollToSection('about-us')"
+                >About Us</a
+              >
+            </li>
+            <li role="none">
+              <a href="#" role="menuitem" onclick="showContactModal()"
+                >Contact Us</a
+              >
+            </li>
+          </ul>
+        </div>
       </nav>
     </header>
 
-    <section class="hero">
-      <h2>Reliable Hygiene & Safety Solutions</h2>
-      <p>Your trusted provider of protective gear and medical equipment.</p>
-      <button>Shop Now</button>
-    </section>
-
-    <section class="categories">
-      <h3>Product Categories</h3>
-      <div class="grid">
-        <div class="card">Waste Bins</div>
-        <div class="card">Sanitary Bins</div>
-        <div class="card">PPE</div>
-        <div class="card">Spill Kits</div>
-        <div class="card">Disinfectants</div>
-        <div class="card">Medical Waste</div>
+    <main id="main-content" role="main">
+      <div class="header-hero-container">
+        <section class="hero" role="banner" aria-labelledby="hero-title">
+          <h1 id="hero-title">Protective Gear & Medical Supplies Catalogue</h1>
+          <p>
+            Explore our comprehensive range of PPE, medical equipment, waste
+            management solutions, and sanitation products. Quality and safety
+            for every environment.
+          </p>
+        </section>
       </div>
-    </section>
 
-    <footer>
-      <p>&copy; 2025 ARK Hygiene</p>
+      <section
+        class="products-section"
+        id="products"
+        role="region"
+        aria-labelledby="products-title"
+      >
+        <h2 id="products-title">Product Categories</h2>
+        <div class="product-cards" role="list">
+          <article class="product-card" role="listitem">
+            <h3 class="ppe-title">PPE & Safety Gear</h3>
+            <div class="ppe-desc">
+              Essential personal protective equipment for safety in all
+              environments.
+            </div>
+            <div
+              class="ppe-carousel"
+              role="region"
+              aria-label="PPE product showcase"
+            >
+              <div class="carousel-item" role="group" aria-label="Face Shield">
+                <img
+                  src="assets/PPE-safety-gear/face shield.png"
+                  alt="Face Shield - Complete face protection"
+                  class="ppe-carousel-img"
+                  loading="lazy"
+                />
+                <div class="carousel-desc">
+                  Face Shield - Complete face protection
+                </div>
+              </div>
+              <div
+                class="carousel-item"
+                role="group"
+                aria-label="Heavy Duty Rubber Gloves"
+              >
+                <img
+                  src="assets/PPE-safety-gear/heavy duty rubber gloves-short.png"
+                  alt="Heavy Duty Rubber Gloves Short"
+                  class="ppe-carousel-img"
+                  loading="lazy"
+                />
+                <div class="carousel-desc">
+                  Heavy Duty Rubber Gloves - Short
+                </div>
+              </div>
+              <div class="carousel-item" role="group" aria-label="Safety Boots">
+                <img
+                  src="assets/PPE-safety-gear/safety boots.png"
+                  alt="Safety Boots - Industrial protection"
+                  class="ppe-carousel-img"
+                  loading="lazy"
+                />
+                <div class="carousel-desc">
+                  Safety Boots - Industrial protection
+                </div>
+              </div>
+              <div
+                class="carousel-item"
+                role="group"
+                aria-label="Sanitary Clog"
+              >
+                <img
+                  src="assets/PPE-safety-gear/sanitary clog.png"
+                  alt="Sanitary Clog - Medical footwear"
+                  class="ppe-carousel-img"
+                  loading="lazy"
+                />
+                <div class="carousel-desc">
+                  Sanitary Clog - Medical footwear
+                </div>
+              </div>
+            </div>
+            <button
+              class="product-cta"
+              onclick="window.location.href='ppe-safety-gear.html'"
+              aria-label="Learn more about PPE and Safety Gear"
+            >
+              Learn More
+            </button>
+          </article>
+
+          <article class="product-card" role="listitem">
+            <h3 class="medical-title">Medical Equipment</h3>
+            <div class="medical-desc">
+              Complete range of medical equipment for healthcare facilities.
+            </div>
+            <div
+              class="medical-carousel"
+              role="region"
+              aria-label="Medical equipment showcase"
+            >
+              <div
+                class="carousel-item"
+                role="group"
+                aria-label="Specimen Bags"
+              >
+                <img
+                  src="assets/specimen-bags/specimen bags & containers.png"
+                  alt="Specimen Bags & Containers"
+                  class="medical-carousel-img"
+                  loading="lazy"
+                />
+                <div class="carousel-desc">Specimen Bags & Containers</div>
+              </div>
+              <div
+                class="carousel-item"
+                role="group"
+                aria-label="Specimen Containers"
+              >
+                <img
+                  src="assets/specimen-bags/pecimen bags & containers -2.png"
+                  alt="Specimen Containers - Secure handling"
+                  class="medical-carousel-img"
+                  loading="lazy"
+                />
+                <div class="carousel-desc">
+                  Specimen Containers - Secure handling
+                </div>
+              </div>
+            </div>
+            <button
+              class="product-cta"
+              onclick="window.location.href='medical-equipment.html'"
+              aria-label="Learn more about Medical Equipment"
+            >
+              Learn More
+            </button>
+          </article>
+
+          <article class="product-card" role="listitem">
+            <h3 class="waste-title">Sterilization & Waste Equipment</h3>
+            <div class="waste-desc">
+              Complete waste management and sterilization solutions.
+            </div>
+            <div
+              class="waste-carousel"
+              role="region"
+              aria-label="Waste equipment showcase"
+            >
+              <div class="carousel-item" role="group" aria-label="Pedal Bins">
+                <img
+                  src="assets/bins-wastes/pedal bins - 25 litres.png"
+                  alt="Pedal Bins - 25 litres"
+                  class="waste-carousel-img"
+                  loading="lazy"
+                />
+                <div class="carousel-desc">Pedal Bins - 25 litres</div>
+              </div>
+              <div class="carousel-item" role="group" aria-label="Waste Bins">
+                <img
+                  src="assets/bins-wastes/waste bins - 120 litres.png"
+                  alt="Waste Bins - 120 litres"
+                  class="waste-carousel-img"
+                  loading="lazy"
+                />
+                <div class="carousel-desc">Waste Bins - 120 litres</div>
+              </div>
+            </div>
+            <button
+              class="product-cta"
+              onclick="window.location.href='sterilization-waste-equipment.html'"
+              aria-label="Learn more about Sterilization and Waste Equipment"
+            >
+              Learn More
+            </button>
+          </article>
+
+          <article class="product-card" role="listitem">
+            <h3 class="sanitary-title">Sanitary Solutions</h3>
+            <div class="sanitary-desc">
+              Hygiene and sanitary solutions for all environments.
+            </div>
+            <div
+              class="sanitary-carousel"
+              role="region"
+              aria-label="Sanitary solutions showcase"
+            >
+              <div
+                class="carousel-item"
+                role="group"
+                aria-label="Automatic Sanitary Bins"
+              >
+                <img
+                  src="assets/sanitary-bins/sanitary bins -automatic.png"
+                  alt="Automatic Sanitary Bins"
+                  class="sanitary-carousel-img"
+                  loading="lazy"
+                />
+                <div class="carousel-desc">Automatic Sanitary Bins</div>
+              </div>
+              <div
+                class="carousel-item"
+                role="group"
+                aria-label="Paper Towel Dispenser"
+              >
+                <img
+                  src="assets/tissue-dispensers/tissue dispensers  - paper towel dispenser.png"
+                  alt="Paper Towel Dispenser"
+                  class="sanitary-carousel-img"
+                  loading="lazy"
+                />
+                <div class="carousel-desc">Paper Towel Dispenser</div>
+              </div>
+            </div>
+            <button
+              class="product-cta"
+              onclick="window.location.href='sanitary-solutions.html'"
+              aria-label="Learn more about Sanitary Solutions"
+            >
+              Learn More
+            </button>
+          </article>
+
+          <article class="product-card" role="listitem">
+            <h3 class="spill-title">Spill Management</h3>
+            <div class="spill-desc">
+              Professional spill kits for all types of incidents.
+            </div>
+            <div
+              class="spill-carousel"
+              role="region"
+              aria-label="Spill management showcase"
+            >
+              <div
+                class="carousel-item"
+                role="group"
+                aria-label="Biohazard Spill Kit"
+              >
+                <img
+                  src="assets/spill-kits/spill kits & spill packs -  biohazard  spill kit.png"
+                  alt="Biohazard Spill Kit"
+                  class="spill-carousel-img"
+                  loading="lazy"
+                />
+                <div class="carousel-desc">Biohazard Spill Kit</div>
+              </div>
+              <div
+                class="carousel-item"
+                role="group"
+                aria-label="Cytotoxic Spill Pack"
+              >
+                <img
+                  src="assets/spill-kits/spill kits & spill packs - cytotoxic spill pack.png"
+                  alt="Cytotoxic Spill Pack"
+                  class="spill-carousel-img"
+                  loading="lazy"
+                />
+                <div class="carousel-desc">Cytotoxic Spill Pack</div>
+              </div>
+            </div>
+            <button
+              class="product-cta"
+              onclick="window.location.href='spill-management.html'"
+              aria-label="Learn more about Spill Management"
+            >
+              Learn More
+            </button>
+          </article>
+
+          <article class="product-card" role="listitem">
+            <h3 class="health-title">Public Health & Sanitation</h3>
+            <div class="health-desc">
+              First aid and cleaning equipment for public health.
+            </div>
+            <div
+              class="health-carousel"
+              role="region"
+              aria-label="Public health showcase"
+            >
+              <div
+                class="carousel-item"
+                role="group"
+                aria-label="Disinfectant Spray"
+              >
+                <img
+                  src="assets/Disinfectants/disinfectant spray portex.png"
+                  alt="Disinfectant Spray - Portex"
+                  class="health-carousel-img"
+                  loading="lazy"
+                />
+                <div class="carousel-desc">Disinfectant Spray - Portex</div>
+              </div>
+              <div
+                class="carousel-item"
+                role="group"
+                aria-label="Cleaning Mops"
+              >
+                <img
+                  src="assets/Cleaning-equipments/cleaning Equipments  - cleaning mops.png"
+                  alt="Cleaning Mops - Professional grade"
+                  class="health-carousel-img"
+                  loading="lazy"
+                />
+                <div class="carousel-desc">
+                  Cleaning Mops - Professional grade
+                </div>
+              </div>
+            </div>
+            <button
+              class="product-cta"
+              onclick="window.location.href='public-health-sanitation.html'"
+              aria-label="Learn more about Public Health and Sanitation"
+            >
+              Learn More
+            </button>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer role="contentinfo">
+      <a id="about-us"></a>
+      <div class="about-container">
+        <h2 class="about-title">About Us</h2>
+        <div class="about-content">
+          <p>
+            ARK Hygiene is a leading provider of protective gear, medical
+            equipment, and sanitation solutions across Africa. With years of
+            experience in the industry, we are committed to delivering
+            high-quality products that ensure safety and hygiene in healthcare,
+            industry, and public spaces.
+          </p>
+          <p class="desktop-only">
+            Our comprehensive range includes PPE, medical equipment, waste
+            management solutions, and sanitation products. We serve healthcare
+            facilities, industrial environments, and public institutions with
+            reliable, innovative, and affordable hygiene and safety solutions.
+          </p>
+          <p class="desktop-only">
+            At ARK Hygiene, we believe that quality and safety should be
+            accessible to everyone. Our mission is to safeguard lives through
+            superior products and exceptional service, making us the most
+            trusted partner in hygiene and safety across Africa and beyond.
+          </p>
+        </div>
+      </div>
+
+      <!-- Contact Us -->
+      <section class="contact-simple" id="contact-us">
+        <h2>Contact Us</h2>
+        <div class="contact-info-simple">
+          <div class="contact-labels">
+            <p><strong>📧 Email:</strong></p>
+            <p><strong>📞 Phone:</strong></p>
+            <p><strong>📍 Address:</strong></p>
+          </div>
+          <div class="contact-details">
+            <p><a href="mailto:info@arkhygiene.com">info@arkhygiene.com</a></p>
+            <p><a href="tel:+254729171831">+254729171831</a></p>
+            <p>
+              P.O Box 28255-00100<br />
+              <a
+                href="https://maps.google.com/?q=Nairobi+Harambee+avenue+Cargen+House"
+                target="_blank"
+                rel="noopener"
+                >Nairobi Harambee avenue, Cargen House</a
+              >
+            </p>
+          </div>
+        </div>
+      </section>
     </footer>
+
+    <!-- Optimized JavaScript -->
+    <script>
+      // Performance optimizations
+      "use strict";
+
+      // Lazy loading for images
+      if ("IntersectionObserver" in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const img = entry.target;
+              img.src = img.dataset.src;
+              img.classList.remove("lazy");
+              imageObserver.unobserve(img);
+            }
+          });
+        });
+
+        document.querySelectorAll("img[data-src]").forEach((img) => {
+          imageObserver.observe(img);
+        });
+      }
+
+      // Update active navigation link based on scroll position
+      function updateActiveNavLink() {
+        const sections = ["home", "products", "about-us", "contact-us"];
+        const navLinks = document.querySelectorAll(".nav-links a");
+
+        let currentSection = "home";
+        const scrollPosition = window.scrollY + 100;
+
+        sections.forEach((section) => {
+          const element = document.getElementById(section);
+          if (element) {
+            const elementTop = element.offsetTop;
+            const elementHeight = element.offsetHeight;
+
+            if (
+              scrollPosition >= elementTop &&
+              scrollPosition < elementTop + elementHeight
+            ) {
+              currentSection = section;
+            }
+          }
+        });
+
+        navLinks.forEach((link) => {
+          link.classList.remove("active");
+          if (link.getAttribute("href") === `#${currentSection}`) {
+            link.classList.add("active");
+          }
+        });
+      }
+
+      // Update header background based on scroll position
+      function updateHeaderBackground() {
+        const header = document.querySelector("header");
+        const scrollPosition = window.scrollY;
+
+        if (scrollPosition > 100) {
+          header.style.background = "#ffffff";
+          header.style.boxShadow = "0 2px 10px rgba(0, 0, 0, 0.1)";
+        } else {
+          header.style.background = "#ffffff";
+          header.style.boxShadow = "0 2px 10px rgba(0, 0, 0, 0.1)";
+        }
+      }
+
+      // Optimized scroll event listener with throttling
+      let ticking = false;
+      function updateOnScroll() {
+        if (!ticking) {
+          requestAnimationFrame(() => {
+            updateActiveNavLink();
+            updateHeaderBackground();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }
+
+      // Add scroll event listeners
+      window.addEventListener("scroll", updateOnScroll, { passive: true });
+
+      // Carousel functionality with performance optimizations
+      function initCarousels() {
+        const carousels = [
+          { selector: ".ppe-carousel .carousel-item", interval: 2500 },
+          { selector: ".medical-carousel .carousel-item", interval: 3000 },
+          { selector: ".waste-carousel .carousel-item", interval: 3500 },
+          { selector: ".sanitary-carousel .carousel-item", interval: 4000 },
+          { selector: ".spill-carousel .carousel-item", interval: 4500 },
+          { selector: ".health-carousel .carousel-item", interval: 5000 },
+        ];
+
+        carousels.forEach((carousel) => {
+          const items = document.querySelectorAll(carousel.selector);
+          if (items.length > 0) {
+            let current = 0;
+
+            // Set first item as active
+            items[0].classList.add("active");
+
+            // Start the carousel animation
+            setInterval(() => {
+              items[current].classList.remove("active");
+              current = (current + 1) % items.length;
+              items[current].classList.add("active");
+            }, carousel.interval);
+          }
+        });
+      }
+
+      // Initialize everything when DOM is ready
+      document.addEventListener("DOMContentLoaded", () => {
+        updateActiveNavLink();
+        updateHeaderBackground();
+        initCarousels();
+        initDropdown();
+      });
+
+      // Dropdown functionality for mobile
+      function initDropdown() {
+        const dropdown = document.querySelector(".products-dropdown");
+        const dropdownContent = document.querySelector(
+          ".products-dropdown-content"
+        );
+        const dropdownLink = document.querySelector(".products-dropdown a");
+
+        if (dropdown && dropdownContent && dropdownLink) {
+          // Toggle dropdown on click for mobile
+          dropdownLink.addEventListener("click", function (e) {
+            e.preventDefault();
+            const isExpanded = this.getAttribute("aria-expanded") === "true";
+            this.setAttribute("aria-expanded", !isExpanded);
+            dropdownContent.style.display = isExpanded ? "none" : "block";
+          });
+
+          // Close dropdown when clicking outside
+          document.addEventListener("click", function (e) {
+            if (!dropdown.contains(e.target)) {
+              dropdownContent.style.display = "none";
+              dropdownLink.setAttribute("aria-expanded", "false");
+            }
+          });
+
+          // Close dropdown on escape key
+          document.addEventListener("keydown", function (e) {
+            if (e.key === "Escape") {
+              dropdownContent.style.display = "none";
+              dropdownLink.setAttribute("aria-expanded", "false");
+            }
+          });
+        }
+      }
+
+      // Contact form handling
+      function handleContactForm(event) {
+        event.preventDefault();
+
+        const form = event.target;
+        const formData = new FormData(form);
+
+        // Get form values
+        const name = formData.get("name");
+        const email = formData.get("email");
+        const phone = formData.get("phone");
+        const company = formData.get("company");
+        const subject = formData.get("subject");
+        const message = formData.get("message");
+
+        // Validate required fields
+        if (!name || !email || !subject || !message) {
+          alert("Please fill in all required fields.");
+          return;
+        }
+
+        // Create email body
+        const emailBody = `
+Name: ${name}
+Email: ${email}
+Phone: ${phone || "Not provided"}
+Company: ${company || "Not provided"}
+Subject: ${subject}
+Message: ${message}
+        `;
+
+        // Open default email client
+        const mailtoLink = `mailto:info@arkhygiene.com?subject=${encodeURIComponent(
+          subject
+        )}&body=${encodeURIComponent(emailBody)}`;
+        window.open(mailtoLink);
+
+        // Show success message
+        alert(
+          "Thank you for your message! Your email client should open with the message details."
+        );
+
+        // Reset form
+        form.reset();
+      }
+
+      // Service Worker for caching and offline support
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("/sw.js")
+            .then((registration) => {
+              console.log("SW registered: ", registration);
+            })
+            .catch((registrationError) => {
+              console.log("SW registration failed: ", registrationError);
+            });
+        });
+      }
+    </script>
+    <script src="javascript.js"></script>
+    <script src="storage.js"></script>
+    <script>
+      // Initialize storage when page loads
+      document.addEventListener("DOMContentLoaded", function () {
+        if (typeof initializeStorage === "function") {
+          initializeStorage();
+        }
+      });
+    </script>
   </body>
 </html>
