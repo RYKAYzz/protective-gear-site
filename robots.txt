@@ -1,8 +1,17 @@
 User-agent: *
 Allow: /
 
-# Sitemap
+# Sitemap location
 Sitemap: https://arkhygiene.com/sitemap.xml
 
-# Crawl-delay
-Crawl-delay: 1 
+# Crawl delay (optional - be respectful to server)
+Crawl-delay: 1
+
+# Allow all important directories
+Allow: /assets/
+Allow: /images/
+
+# Disallow any admin or private areas (if they exist in future)
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/ 
