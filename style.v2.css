@@ -3507,6 +3507,9 @@ footer p {
   padding: 24px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .blog-card:hover {
@@ -3520,6 +3523,12 @@ footer p {
   padding: 20px;
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
   border-radius: 8px;
+}
+
+.blog-content-inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .blog-content-inner h3 {
@@ -3591,6 +3600,7 @@ footer p {
   text-decoration: none;
   display: inline-block;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-top: auto;
 }
 
 .read-more-btn:hover {
