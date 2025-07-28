@@ -3,6 +3,27 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Critical CSS to prevent flash of unstyled content */
+.mobile-menu-toggle {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .mobile-menu-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none;
+  }
+}
+
+@media (min-width: 1025px) {
+  .nav-links {
+    display: flex;
+  }
+}
+
 /* Touch Device Improvements */
 * {
   -webkit-tap-highlight-color: transparent;
@@ -2125,7 +2146,7 @@ body {
 /* Simple mobile header with hamburger menu */
 @media (max-width: 1024px) {
   .desktop-header {
-    display: flex;
+    display: flex !important;
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
@@ -2134,6 +2155,15 @@ body {
   .logo-link {
     font-size: 1.2rem;
     font-weight: 600;
+  }
+
+  /* Prevent flash of old header */
+  .nav-links {
+    display: none !important;
+  }
+
+  .mobile-menu-toggle {
+    display: flex !important;
   }
 }
 
@@ -3757,6 +3787,11 @@ footer p {
 @media (min-width: 1025px) {
   .mobile-menu-toggle {
     display: none !important;
+  }
+
+  /* Ensure nav links show on desktop */
+  .nav-links {
+    display: flex !important;
   }
 }
 

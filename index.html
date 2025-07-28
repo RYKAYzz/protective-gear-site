@@ -1956,6 +1956,21 @@
         });
       }
 
+      // Prevent flash of unstyled content
+      (function () {
+        const width = window.innerWidth;
+        const mobileMenuToggle = document.querySelector(".mobile-menu-toggle");
+        const navLinks = document.querySelector(".nav-links");
+
+        if (width <= 1024) {
+          if (mobileMenuToggle) mobileMenuToggle.style.display = "flex";
+          if (navLinks) navLinks.style.display = "none";
+        } else {
+          if (mobileMenuToggle) mobileMenuToggle.style.display = "none";
+          if (navLinks) navLinks.style.display = "flex";
+        }
+      })();
+
       // Initialize everything when DOM is ready
       document.addEventListener("DOMContentLoaded", () => {
         updateActiveNavLink();
