@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO Meta Tags -->
+    <title>Contact Us - ARK Hygiene Solutions Kenya | Get in Touch</title>
+    <meta
+      name="description"
+      content="Contact ARK Hygiene Solutions Kenya for PPE supplies, medical equipment, and hygiene products. Get expert consultation and quotes for your healthcare facility."
+    />
+    <meta
+      name="keywords"
+      content="contact ARK hygiene, PPE supplier contact, medical equipment Kenya, hygiene products contact, healthcare supplies Kenya"
+    />
+    <meta name="author" content="ARK Hygiene" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta
+      property="og:title"
+      content="Contact Us - ARK Hygiene Solutions Kenya"
+    />
+    <meta
+      property="og:description"
+      content="Get in touch with ARK Hygiene for PPE supplies, medical equipment, and hygiene products. Expert consultation available."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://arkhygiene.com/contact-us.html" />
+    <meta property="og:image" content="https://arkhygiene.com/favicon.png" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://arkhygiene.com/contact-us.html" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="company logo.png" />
+    <link rel="apple-touch-icon" href="company logo.png" />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Preload Critical Resources -->
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;700&display=swap"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript
+      ><link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;700&display=swap"
+    /></noscript>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.v2.css" />
+
+    <style>
+      /* Contact Page Specific Styles */
+      .contact-hero {
+        background: linear-gradient(135deg, #fff 0%, #8ec5fc 100%);
+        padding: 40px 6vw 30px 6vw;
+        text-align: center;
+        margin: 0;
+      }
+
+      .contact-hero h1 {
+        font-size: 1.8rem;
+        font-family: "Poppins", sans-serif;
+        margin-bottom: 16px;
+        color: #222;
+        font-weight: 700;
+      }
+
+      .contact-hero p {
+        font-size: 1.1rem;
+        font-family: "Roboto", sans-serif;
+        color: #444;
+        max-width: 600px;
+        margin: 0 auto;
+        line-height: 1.6;
+      }
+
+      .contact-section {
+        padding: 40px 6vw 30px 6vw;
+        background: #fff;
+      }
+
+      .contact-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .contact-info {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        padding: 30px 24px;
+        border-radius: 16px;
+        border: 1px solid #e0e0e0;
+      }
+
+      .contact-info h2 {
+        font-size: 1.4rem;
+        font-family: "Poppins", sans-serif;
+        margin-bottom: 20px;
+        color: #222;
+        text-align: center;
+      }
+
+      .contact-methods {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .contact-method {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 16px;
+        background: #fff;
+        border-radius: 12px;
+        border: 1px solid #e0e0e0;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .contact-method:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      .contact-icon {
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(135deg, #8ec5fc 0%, #4a90e2 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 1.2rem;
+        flex-shrink: 0;
+      }
+
+      .contact-details h3 {
+        font-size: 1.1rem;
+        font-family: "Poppins", sans-serif;
+        margin-bottom: 4px;
+        color: #222;
+      }
+
+      .contact-details p,
+      .contact-details a {
+        font-size: 1rem;
+        font-family: "Roboto", sans-serif;
+        color: #666;
+        margin: 0;
+        text-decoration: none;
+      }
+
+      .contact-details a:hover {
+        color: #4a90e2;
+      }
+
+      .contact-form {
+        background: #fff;
+        padding: 30px 24px;
+        border-radius: 16px;
+        border: 1px solid #e0e0e0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+
+      .contact-form h2 {
+        font-size: 1.4rem;
+        font-family: "Poppins", sans-serif;
+        margin-bottom: 24px;
+        color: #222;
+        text-align: center;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        font-size: 1rem;
+        font-family: "Roboto", sans-serif;
+        margin-bottom: 8px;
+        color: #333;
+        font-weight: 500;
+      }
+
+      .form-group input,
+      .form-group textarea,
+      .form-group select {
+        width: 100%;
+        padding: 12px 16px;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-family: "Roboto", sans-serif;
+        transition: border-color 0.3s ease;
+        box-sizing: border-box;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus,
+      .form-group select:focus {
+        outline: none;
+        border-color: #4a90e2;
+      }
+
+      .form-group textarea {
+        resize: vertical;
+        min-height: 120px;
+      }
+
+      .submit-btn {
+        background: linear-gradient(135deg, #8ec5fc 0%, #4a90e2 100%);
+        color: #fff;
+        border: none;
+        padding: 14px 32px;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        font-family: "Poppins", sans-serif;
+        font-weight: 600;
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        width: 100%;
+      }
+
+      .submit-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+      }
+
+      .map-section {
+        padding: 40px 6vw 30px 6vw;
+        background: #f8f9fa;
+      }
+
+      .map-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: #fff;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .map-container h2 {
+        font-size: 1.4rem;
+        font-family: "Poppins", sans-serif;
+        margin-bottom: 20px;
+        color: #222;
+        text-align: center;
+        padding: 24px 24px 0 24px;
+      }
+
+      .map-placeholder {
+        width: 100%;
+        height: 300px;
+        background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #666;
+        font-family: "Roboto", sans-serif;
+        font-size: 1.1rem;
+      }
+
+      .back-to-home {
+        text-align: center;
+        padding: 20px 6vw;
+        background: #fff;
+      }
+
+      .back-btn {
+        background: transparent;
+        color: #4a90e2;
+        border: 2px solid #4a90e2;
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-family: "Poppins", sans-serif;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      .back-btn:hover {
+        background: #4a90e2;
+        color: #fff;
+      }
+
+      /* Responsive Design */
+      @media (min-width: 768px) {
+        .contact-hero h1 {
+          font-size: 2.2rem;
+        }
+
+        .contact-hero p {
+          font-size: 1.2rem;
+        }
+
+        .contact-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 40px;
+        }
+
+        .map-placeholder {
+          height: 400px;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .contact-section {
+          padding: 60px 8vw 40px 8vw;
+        }
+
+        .contact-hero {
+          padding: 60px 10vw 40px 10vw;
+        }
+
+        .contact-hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .contact-info h2,
+        .contact-form h2,
+        .map-container h2 {
+          font-size: 1.6rem;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .contact-hero {
+          padding: 30px 4vw 20px 4vw;
+        }
+
+        .contact-hero h1 {
+          font-size: 1.5rem;
+        }
+
+        .contact-hero p {
+          font-size: 1rem;
+        }
+
+        .contact-section {
+          padding: 30px 4vw 20px 4vw;
+        }
+
+        .contact-info,
+        .contact-form {
+          padding: 20px 16px;
+        }
+
+        .contact-method {
+          padding: 12px;
+          gap: 12px;
+        }
+
+        .contact-icon {
+          width: 40px;
+          height: 40px;
+          font-size: 1rem;
+        }
+
+        .contact-details h3 {
+          font-size: 1rem;
+        }
+
+        .contact-details p,
+        .contact-details a {
+          font-size: 0.9rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="category-header" role="banner">
+      <nav
+        class="category-navbar"
+        role="navigation"
+        aria-label="Contact page navigation"
+      >
+        <div class="category-logo">
+          <a href="index.html" aria-label="Back to Home" class="logo-link">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9,22 9,12 15,12 15,22"></polyline>
+            </svg>
+          </a>
+        </div>
+        <div class="category-nav-links">
+          <h1 style="margin: 0; font-size: 1.2rem; color: #222">Contact Us</h1>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main-content" role="main">
+      <section class="contact-hero" role="banner" aria-labelledby="hero-title">
+        <h1 id="hero-title">Contact ARK Hygiene Solutions</h1>
+        <p>
+          Ready to enhance your facility's safety and hygiene standards? Contact
+          our expert team today for professional consultation, customized
+          solutions, and premium quality products. We're here to help you find
+          the right solutions for your healthcare facility's specific needs.
+        </p>
+      </section>
+
+      <section
+        class="contact-section"
+        role="region"
+        aria-labelledby="contact-title"
+      >
+        <div class="contact-grid">
+          <div class="contact-info">
+            <h2 id="contact-title">Contact Information</h2>
+            <div class="contact-methods">
+              <div class="contact-method">
+                <div class="contact-icon">
+                  <i class="fa-solid fa-phone"></i>
+                </div>
+                <div class="contact-details">
+                  <h3>Phone</h3>
+                  <a href="tel:+254729171831">+254729171831</a>
+                </div>
+              </div>
+
+              <div class="contact-method">
+                <div class="contact-icon">
+                  <i class="fa-solid fa-envelope"></i>
+                </div>
+                <div class="contact-details">
+                  <h3>Email</h3>
+                  <a href="mailto:info@arksafety.biz">info@arksafety.biz</a>
+                </div>
+              </div>
+
+              <div class="contact-method">
+                <div class="contact-icon">
+                  <i class="fa-brands fa-whatsapp"></i>
+                </div>
+                <div class="contact-details">
+                  <h3>WhatsApp</h3>
+                  <a
+                    href="https://wa.me/254729171831"
+                    target="_blank"
+                    rel="noopener"
+                    >+254729171831</a
+                  >
+                </div>
+              </div>
+
+              <div class="contact-method">
+                <div class="contact-icon">
+                  <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div class="contact-details">
+                  <h3>Address</h3>
+                  <p>P.O Box 28255-00100</p>
+                  <a
+                    href="https://maps.google.com/?q=Nairobi+Harambee+avenue+Cargen+House"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    Nairobi Harambee avenue, Cargen House, Kenya
+                  </a>
+                </div>
+              </div>
+
+              <div class="contact-method">
+                <div class="contact-icon">
+                  <i class="fa-solid fa-clock"></i>
+                </div>
+                <div class="contact-details">
+                  <h3>Business Hours</h3>
+                  <p>Monday - Friday: 8:00 AM - 6:00 PM</p>
+                  <p>Saturday: 9:00 AM - 3:00 PM</p>
+                </div>
+              </div>
+
+              <div class="contact-method">
+                <div class="contact-icon">
+                  <i class="fa-solid fa-truck"></i>
+                </div>
+                <div class="contact-details">
+                  <h3>Delivery Service</h3>
+                  <p>Nationwide delivery across Kenya</p>
+                  <p>Express delivery available</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-form">
+            <h2>Send Us a Message</h2>
+            <form id="contactForm" onsubmit="submitContactForm(event)">
+              <div class="form-group">
+                <label for="name">Full Name *</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  placeholder="Enter your full name"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  placeholder="Enter your email address"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  placeholder="Enter your phone number"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="company">Company/Organization</label>
+                <input
+                  type="text"
+                  id="company"
+                  name="company"
+                  placeholder="Enter your company name"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="subject">Subject *</label>
+                <select
+                  id="subject"
+                  name="subject"
+                  required
+                  onchange="toggleQuoteFields()"
+                >
+                  <option value="">Select a subject</option>
+                  <option value="quote-request">Quote Request</option>
+                  <option value="product-inquiry">Product Inquiry</option>
+                  <option value="technical-support">Technical Support</option>
+                  <option value="installation-service">
+                    Installation Service
+                  </option>
+                  <option value="maintenance-service">
+                    Maintenance Service
+                  </option>
+                  <option value="partnership">Partnership</option>
+                  <option value="general">General Inquiry</option>
+                </select>
+              </div>
+
+              <div id="quote-fields" style="display: none">
+                <div class="form-group">
+                  <label for="product_category">Product Category</label>
+                  <select id="product_category" name="product_category">
+                    <option value="">Select product category</option>
+                    <option value="ppe-safety-gear">PPE & Safety Gear</option>
+                    <option value="medical-equipment">Medical Equipment</option>
+                    <option value="sterilization-waste">
+                      Sterilization & Waste Equipment
+                    </option>
+                    <option value="sanitary-solutions">
+                      Sanitary Solutions
+                    </option>
+                    <option value="spill-management">Spill Management</option>
+                    <option value="public-health">
+                      Public Health & Sanitation
+                    </option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="quantity">Estimated Quantity</label>
+                  <input
+                    type="text"
+                    id="quantity"
+                    name="quantity"
+                    placeholder="e.g., 100 units, 5 pieces"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="urgency">Urgency Level</label>
+                  <select id="urgency" name="urgency">
+                    <option value="">Select urgency</option>
+                    <option value="immediate">Immediate (1-2 days)</option>
+                    <option value="urgent">Urgent (1 week)</option>
+                    <option value="standard">Standard (2-4 weeks)</option>
+                    <option value="flexible">Flexible timeline</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Message *</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  required
+                  placeholder="Tell us about your requirements..."
+                ></textarea>
+              </div>
+
+              <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section class="map-section" role="region" aria-labelledby="map-title">
+        <div class="map-container">
+          <h2 id="map-title">Our Location</h2>
+          <div class="map-placeholder">
+            <div style="text-align: center">
+              <i
+                class="fa-solid fa-map-location-dot"
+                style="font-size: 3rem; color: #4a90e2; margin-bottom: 16px"
+              ></i>
+              <p>Nairobi Harambee avenue, Cargen House, Kenya</p>
+              <p>P.O Box 28255-00100</p>
+              <p style="font-size: 0.9rem; color: #666; margin-top: 8px">
+                Nationwide delivery available
+              </p>
+              <a
+                href="https://maps.google.com/?q=Nairobi+Harambee+avenue+Cargen+House"
+                target="_blank"
+                rel="noopener"
+                style="color: #4a90e2; text-decoration: none; font-weight: 600"
+              >
+                View on Google Maps →
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="back-to-home">
+        <a href="index.html" class="back-btn">
+          <i class="fa-solid fa-arrow-left" style="margin-right: 8px"></i>
+          Back to Home
+        </a>
+      </div>
+    </main>
+
+    <footer role="contentinfo">
+      <div class="modern-footer">
+        <div class="footer-main">
+          <div class="footer-section">
+            <h3>Our Products</h3>
+            <ul>
+              <li><a href="ppe-safety-gear.html">PPE & Safety Gear</a></li>
+              <li><a href="medical-equipment.html">Medical Equipment</a></li>
+              <li>
+                <a href="sterilization-waste-equipment.html"
+                  >Waste Management</a
+                >
+              </li>
+              <li><a href="sanitary-solutions.html">Sanitary Solutions</a></li>
+              <li><a href="spill-management.html">Spill Management</a></li>
+              <li><a href="public-health-sanitation.html">Public Health</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h3>Contact Information</h3>
+            <div class="contact-info">
+              <p>
+                <strong>Email:</strong>
+                <a href="mailto:info@arksafety.biz">info@arksafety.biz</a>
+              </p>
+              <p>
+                <strong>Phone:</strong>
+                <a href="tel:+254729171831">+254729171831</a>
+              </p>
+              <p><strong>Address:</strong></p>
+              <p>P.O Box 28255-00100</p>
+              <p>
+                <a
+                  href="https://maps.google.com/?q=Nairobi+Harambee+avenue+Cargen+House"
+                  target="_blank"
+                  rel="noopener"
+                  >Nairobi Harambee avenue, Cargen House, Kenya</a
+                >
+              </p>
+              <p><strong>Delivery:</strong> Nationwide across Kenya</p>
+            </div>
+          </div>
+
+          <div class="footer-section">
+            <h3>Services We Offer</h3>
+            <ul>
+              <li>Installation Services</li>
+              <li>Maintenance & Repair</li>
+              <li>Technical Support</li>
+              <li>Staff Training</li>
+              <li>Compliance Consulting</li>
+              <li>Emergency Services</li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h3>Quick Contact</h3>
+            <div class="footer-contact-icons">
+              <a
+                href="https://wa.me/254729171831"
+                target="_blank"
+                rel="noopener"
+                aria-label="WhatsApp"
+                class="footer-icon whatsapp-icon"
+              >
+                <i class="fa-brands fa-whatsapp"></i>
+              </a>
+              <a
+                href="mailto:info@arksafety.biz"
+                aria-label="Email"
+                class="footer-icon email-icon"
+              >
+                <i class="fa-solid fa-envelope"></i>
+              </a>
+              <a
+                href="tel:+254729171831"
+                aria-label="Call"
+                class="footer-icon call-icon"
+              >
+                <i class="fa-solid fa-phone"></i>
+              </a>
+            </div>
+            <p style="margin-top: 16px; font-size: 0.9rem; color: #666">
+              Need immediate assistance? Call us now!
+            </p>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div class="footer-bottom-content">
+            <p>&copy; 2024 ARK Hygiene. All rights reserved.</p>
+            <div class="footer-links">
+              <a href="privacy-policy.html">Privacy Policy</a>
+              <a href="terms-of-service.html">Terms of Service</a>
+              <a href="sitemap.xml">Sitemap</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Toggle quote fields based on subject selection
+      function toggleQuoteFields() {
+        const subject = document.getElementById("subject").value;
+        const quoteFields = document.getElementById("quote-fields");
+
+        if (subject === "quote-request") {
+          quoteFields.style.display = "block";
+        } else {
+          quoteFields.style.display = "none";
+        }
+      }
+
+      function submitContactForm(event) {
+        event.preventDefault();
+
+        // Get form data
+        const formData = new FormData(event.target);
+        const data = Object.fromEntries(formData);
+
+        // Simple validation
+        if (!data.name || !data.email || !data.subject || !data.message) {
+          alert("Please fill in all required fields.");
+          return;
+        }
+
+        // Here you would typically send the data to your server
+        // For now, we'll just show a success message
+        alert(
+          "Thank you for your message! We will get back to you within 24 hours."
+        );
+        event.target.reset();
+        document.getElementById("quote-fields").style.display = "none";
+      }
+
+      // Mobile header handling
+      function hideHeaderOnMobile() {
+        const header = document.querySelector(".category-header");
+        if (header && window.innerWidth <= 400) {
+          header.style.display = "none";
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        hideHeaderOnMobile();
+      });
+
+      window.addEventListener("resize", () => {
+        hideHeaderOnMobile();
+      });
+    </script>
+  </body>
+</html>

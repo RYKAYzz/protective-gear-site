@@ -56,8 +56,22 @@
     <link rel="canonical" href="https://arkhygiene.com" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="favicon.png" />
-    <link rel="apple-touch-icon" href="favicon.png" />
+    <link rel="icon" type="image/png" href="company logo.png" />
+    <link rel="apple-touch-icon" href="company logo.png" />
+
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "GA_MEASUREMENT_ID");
+    </script>
     <!-- Font Awesome for footer icons -->
     <link
       rel="stylesheet"
@@ -1118,6 +1132,15 @@
           </div>
         </div>
         <div class="header-right">
+          <button
+            class="mobile-menu-toggle"
+            onclick="toggleMobileMenu()"
+            aria-label="Toggle mobile menu"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
           <ul class="nav-links" role="menubar">
             <li role="none">
               <a
@@ -1175,16 +1198,31 @@
               </ul>
             </li>
             <li role="none">
-              <a
-                href="#about-us"
-                role="menuitem"
-                onclick="scrollToSection('about-us')"
-                >About Us</a
-              >
+              <a href="about-us.html" role="menuitem">About Us</a>
             </li>
             <li role="none">
-              <a href="#" role="menuitem" onclick="showContactModal()"
-                >Contact Us</a
+              <a href="services.html" role="menuitem">Services</a>
+            </li>
+            <li role="none">
+              <a href="testimonials.html" role="menuitem">Testimonials</a>
+            </li>
+            <li role="none">
+              <a href="faq.html" role="menuitem">FAQ</a>
+            </li>
+            <li role="none">
+              <a href="contact-us.html" role="menuitem">Contact Us</a>
+            </li>
+            <li role="none">
+              <a
+                href="contact-us.html#quote"
+                role="menuitem"
+                style="
+                  background: #4a90e2;
+                  color: #fff;
+                  border-radius: 4px;
+                  padding: 8px 16px;
+                "
+                >Get Quote</a
               >
             </li>
           </ul>
@@ -1196,14 +1234,14 @@
       <div class="header-hero-container">
         <section class="hero" role="banner" aria-labelledby="hero-title">
           <h1 id="hero-title">
-            Personal Protective Equipment Kenya - Hospital Safety Equipment &
-            Medical Supplies
+            Professional Healthcare Safety Solutions - PPE, Medical Equipment &
+            Sterilization Systems
           </h1>
           <p>
-            Leading hygiene products supplier in Kenya offering protective gear
-            for hospitals, medical waste disposal equipment, and affordable
-            hygiene solutions. Buy face masks, gloves, and personal protective
-            equipment online.
+            Leading healthcare safety and hygiene solutions provider in Kenya
+            offering certified personal protective equipment, medical waste
+            disposal systems, sterilization equipment, and comprehensive
+            healthcare supplies. ISO 13485 certified quality standards.
           </p>
         </section>
       </div>
@@ -1521,6 +1559,142 @@
           </article>
         </div>
       </section>
+
+      <!-- Blog Section -->
+      <section class="blog-section" role="region" aria-labelledby="blog-title">
+        <div class="blog-content">
+          <h2 id="blog-title">Latest Healthcare Insights</h2>
+          <p class="blog-subtitle">
+            Stay updated with the latest in healthcare safety, hygiene best
+            practices, and industry news.
+          </p>
+          <div class="blog-grid">
+            <article class="blog-card">
+              <div class="blog-image">
+                <i
+                  class="fa-solid fa-shield-virus"
+                  style="font-size: 2rem; color: #4a90e2"
+                ></i>
+              </div>
+              <div class="blog-content-inner">
+                <h3>Essential PPE for Healthcare Workers</h3>
+                <p>
+                  Learn about the critical personal protective equipment needed
+                  for healthcare facilities and how to ensure proper usage and
+                  disposal.
+                </p>
+                <div class="blog-meta">
+                  <span class="blog-date">March 15, 2024</span>
+                  <span class="blog-category">Safety</span>
+                </div>
+                <a
+                  href="blog-articles/essential-ppe-guide.html"
+                  class="read-more-btn"
+                  style="margin-top: 16px"
+                >
+                  <i
+                    class="fa-solid fa-arrow-right"
+                    style="margin-right: 8px"
+                  ></i>
+                  Read Full Article
+                </a>
+              </div>
+            </article>
+
+            <article class="blog-card">
+              <div class="blog-image">
+                <i
+                  class="fa-solid fa-recycle"
+                  style="font-size: 2rem; color: #4a90e2"
+                ></i>
+              </div>
+              <div class="blog-content-inner">
+                <h3>Medical Waste Management Best Practices</h3>
+                <p>
+                  Discover the latest guidelines for proper medical waste
+                  disposal and how to implement effective waste management
+                  systems in your facility.
+                </p>
+                <div class="blog-meta">
+                  <span class="blog-date">March 10, 2024</span>
+                  <span class="blog-category">Waste Management</span>
+                </div>
+                <a
+                  href="blog-articles/medical-waste-management.html"
+                  class="read-more-btn"
+                  style="margin-top: 16px"
+                >
+                  <i
+                    class="fa-solid fa-arrow-right"
+                    style="margin-right: 8px"
+                  ></i>
+                  Read Full Article
+                </a>
+              </div>
+            </article>
+
+            <article class="blog-card">
+              <div class="blog-image">
+                <i
+                  class="fa-solid fa-hand-sparkles"
+                  style="font-size: 2rem; color: #4a90e2"
+                ></i>
+              </div>
+              <div class="blog-content-inner">
+                <h3>Sterilization Equipment Maintenance</h3>
+                <p>
+                  Essential tips for maintaining your sterilization equipment to
+                  ensure optimal performance and compliance with healthcare
+                  standards.
+                </p>
+                <div class="blog-meta">
+                  <span class="blog-date">March 5, 2024</span>
+                  <span class="blog-category">Equipment</span>
+                </div>
+                <a
+                  href="blog-articles/sterilization-maintenance.html"
+                  class="read-more-btn"
+                  style="margin-top: 16px"
+                >
+                  <i
+                    class="fa-solid fa-arrow-right"
+                    style="margin-right: 8px"
+                  ></i>
+                  Read Full Article
+                </a>
+              </div>
+            </article>
+          </div>
+          <div class="blog-cta">
+            <a href="blog.html" class="blog-btn">
+              <i class="fa-solid fa-newspaper" style="margin-right: 8px"></i>
+              Read More Articles
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Call to Action Section -->
+      <section class="cta-section" role="region" aria-labelledby="cta-title">
+        <div class="cta-content">
+          <h2 id="cta-title">Ready to Get Started?</h2>
+          <p>
+            Contact us today to discuss your healthcare facility's safety and
+            hygiene needs. Our expert team is ready to help you find the right
+            solutions.
+          </p>
+          <div class="cta-buttons">
+            <a href="contact-us.html" class="cta-btn primary">
+              <i class="fa-solid fa-phone" style="margin-right: 8px"></i>
+              Contact Us Today
+            </a>
+            <a href="services.html" class="cta-btn secondary">
+              <i class="fa-solid fa-info-circle" style="margin-right: 8px"></i>
+              Learn About Our Services
+            </a>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer role="contentinfo">
@@ -1538,6 +1712,38 @@
               and medical waste disposal equipment. Affordable hygiene solutions
               for healthcare facilities and industry.
             </p>
+            <div style="margin-top: 16px">
+              <a
+                href="about-us.html"
+                style="
+                  color: #4a90e2;
+                  text-decoration: none;
+                  margin-right: 16px;
+                "
+                >About Us</a
+              >
+              <a
+                href="services.html"
+                style="
+                  color: #4a90e2;
+                  text-decoration: none;
+                  margin-right: 16px;
+                "
+                >Our Services</a
+              >
+              <a
+                href="testimonials.html"
+                style="
+                  color: #4a90e2;
+                  text-decoration: none;
+                  margin-right: 16px;
+                "
+                >Testimonials</a
+              >
+              <a href="faq.html" style="color: #4a90e2; text-decoration: none"
+                >FAQ</a
+              >
+            </div>
           </div>
 
           <div class="footer-section">
@@ -1574,9 +1780,10 @@
                   href="https://maps.google.com/?q=Nairobi+Harambee+avenue+Cargen+House"
                   target="_blank"
                   rel="noopener"
-                  >Nairobi Harambee avenue, Cargen House</a
+                  >Nairobi Harambee avenue, Cargen House, Kenya</a
                 >
               </p>
+              <p><strong>Delivery:</strong> Nationwide across Kenya</p>
             </div>
           </div>
 
@@ -1649,6 +1856,29 @@
         document.querySelectorAll("img[data-src]").forEach((img) => {
           imageObserver.observe(img);
         });
+      }
+
+      // Mobile menu toggle function
+      function toggleMobileMenu() {
+        const toggle = document.querySelector(".mobile-menu-toggle");
+        const navLinks = document.querySelector(".nav-links");
+
+        console.log("Mobile menu toggle clicked");
+        console.log("Toggle element:", toggle);
+        console.log("Nav links element:", navLinks);
+
+        if (toggle && navLinks) {
+          toggle.classList.toggle("active");
+          navLinks.classList.toggle("active");
+
+          console.log("Toggle active:", toggle.classList.contains("active"));
+          console.log(
+            "Nav links active:",
+            navLinks.classList.contains("active")
+          );
+        } else {
+          console.error("Mobile menu elements not found!");
+        }
       }
 
       // Update active navigation link based on scroll position
@@ -1726,25 +1956,11 @@
         });
       }
 
-      // Hide header on mobile devices
-      function hideHeaderOnMobile() {
-        const header = document.getElementById("main-header");
-        if (header && window.innerWidth <= 400) {
-          header.style.display = "none";
-        }
-      }
-
       // Initialize everything when DOM is ready
       document.addEventListener("DOMContentLoaded", () => {
-        hideHeaderOnMobile();
         updateActiveNavLink();
         initCarousels();
         initDropdown();
-      });
-
-      // Hide header on window resize
-      window.addEventListener("resize", () => {
-        hideHeaderOnMobile();
       });
 
       // Dropdown functionality for mobile

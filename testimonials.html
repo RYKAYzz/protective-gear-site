@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO Meta Tags -->
+    <title>
+      Customer Testimonials - ARK Hygiene Solutions Kenya | Trusted by
+      Healthcare Facilities
+    </title>
+    <meta
+      name="description"
+      content="Read customer testimonials and reviews from healthcare facilities across Kenya. See why hospitals, clinics, and medical centers trust ARK Hygiene for their PPE and medical equipment needs."
+    />
+    <meta
+      name="keywords"
+      content="ARK hygiene testimonials, customer reviews Kenya, healthcare facility reviews, PPE supplier reviews, medical equipment testimonials"
+    />
+    <meta name="author" content="ARK Hygiene" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta
+      property="og:title"
+      content="Customer Testimonials - ARK Hygiene Solutions Kenya"
+    />
+    <meta
+      property="og:description"
+      content="Read customer testimonials and reviews from healthcare facilities across Kenya."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://arkhygiene.com/testimonials.html"
+    />
+    <meta
+      property="og:image"
+      content="https://arkhygiene.com/company logo.png"
+    />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://arkhygiene.com/testimonials.html" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="company logo.png" />
+    <link rel="apple-touch-icon" href="company logo.png" />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Preload Critical Resources -->
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;700&display=swap"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript
+      ><link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;700&display=swap"
+    /></noscript>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.v2.css" />
+
+    <style>
+      /* Testimonials Page Specific Styles */
+      .testimonials-hero {
+        background: linear-gradient(135deg, #fff 0%, #8ec5fc 100%);
+        padding: 40px 6vw 30px 6vw;
+        text-align: center;
+        margin: 0;
+      }
+
+      .testimonials-hero h1 {
+        font-size: 1.8rem;
+        font-family: "Poppins", sans-serif;
+        margin-bottom: 16px;
+        color: #222;
+        font-weight: 700;
+      }
+
+      .testimonials-hero p {
+        font-size: 1.1rem;
+        font-family: "Roboto", sans-serif;
+        color: #444;
+        max-width: 700px;
+        margin: 0 auto;
+        line-height: 1.6;
+      }
+
+      .testimonials-section {
+        padding: 40px 6vw 30px 6vw;
+        background: #fff;
+      }
+
+      .testimonials-content {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .testimonials-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+      }
+
+      .testimonial-card {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        padding: 30px 24px;
+        border-radius: 16px;
+        border: 1px solid #e0e0e0;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .testimonial-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      .testimonial-header {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 20px;
+      }
+
+      .testimonial-avatar {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #8ec5fc 0%, #4a90e2 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 1.5rem;
+        font-weight: 600;
+        flex-shrink: 0;
+      }
+
+      .testimonial-info h3 {
+        font-size: 1.2rem;
+        font-family: "Poppins", sans-serif;
+        margin-bottom: 4px;
+        color: #222;
+      }
+
+      .testimonial-info p {
+        font-size: 0.9rem;
+        font-family: "Roboto", sans-serif;
+        color: #666;
+        margin: 0;
+      }
+
+      .testimonial-content {
+        font-size: 1rem;
+        font-family: "Roboto", sans-serif;
+        color: #444;
+        line-height: 1.6;
+        margin-bottom: 16px;
+      }
+
+      .testimonial-rating {
+        display: flex;
+        gap: 4px;
+        margin-bottom: 12px;
+      }
+
+      .star {
+        color: #ffd700;
+        font-size: 1.1rem;
+      }
+
+      .testimonial-date {
+        font-size: 0.85rem;
+        color: #888;
+        font-family: "Roboto", sans-serif;
+      }
+
+      .stats-section {
+        background: linear-gradient(135deg, #4a90e2 0%, #8ec5fc 100%);
+        padding: 40px 6vw 30px 6vw;
+        color: #fff;
+      }
+
+      .stats-content {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .stats-content h2 {
+        font-size: 1.6rem;
+        font-family: "Poppins", sans-serif;
+        margin-bottom: 30px;
+        text-align: center;
+      }
+
+      .stats-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .stat-item {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 24px;
+        border-radius: 12px;
+        text-align: center;
+        backdrop-filter: blur(10px);
+      }
+
+      .stat-number {
+        font-size: 2rem;
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+
+      .stat-label {
+        font-size: 1rem;
+        font-family: "Roboto", sans-serif;
+        opacity: 0.9;
+      }
+
+      .cta-section {
+        background: #fff;
+        padding: 40px 6vw 30px 6vw;
+        text-align: center;
+      }
+
+      .cta-content {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .cta-content h2 {
+        font-size: 1.6rem;
+        font-family: "Poppins", sans-serif;
+        margin-bottom: 16px;
+        color: #222;
+      }
+
+      .cta-content p {
+        font-size: 1.1rem;
+        font-family: "Roboto", sans-serif;
+        color: #444;
+        line-height: 1.6;
+        margin-bottom: 24px;
+      }
+
+      .cta-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        align-items: center;
+      }
+
+      .cta-btn {
+        padding: 14px 32px;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        font-family: "Poppins", sans-serif;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      .cta-btn.primary {
+        background: linear-gradient(135deg, #8ec5fc 0%, #4a90e2 100%);
+        color: #fff;
+        border: none;
+      }
+
+      .cta-btn.primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+      }
+
+      .cta-btn.secondary {
+        background: transparent;
+        color: #4a90e2;
+        border: 2px solid #4a90e2;
+      }
+
+      .cta-btn.secondary:hover {
+        background: #4a90e2;
+        color: #fff;
+      }
+
+      .back-to-home {
+        text-align: center;
+        padding: 20px 6vw;
+        background: #fff;
+      }
+
+      .back-btn {
+        background: transparent;
+        color: #4a90e2;
+        border: 2px solid #4a90e2;
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-family: "Poppins", sans-serif;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      .back-btn:hover {
+        background: #4a90e2;
+        color: #fff;
+      }
+
+      /* Responsive Design */
+      @media (min-width: 768px) {
+        .testimonials-hero h1 {
+          font-size: 2.2rem;
+        }
+
+        .testimonials-hero p {
+          font-size: 1.2rem;
+        }
+
+        .testimonials-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 30px;
+        }
+
+        .stats-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 20px;
+        }
+
+        .cta-buttons {
+          flex-direction: row;
+          justify-content: center;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .testimonials-section {
+          padding: 60px 8vw 40px 8vw;
+        }
+
+        .testimonials-hero {
+          padding: 60px 10vw 40px 10vw;
+        }
+
+        .testimonials-hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .stats-content h2 {
+          font-size: 1.8rem;
+        }
+
+        .cta-content h2 {
+          font-size: 1.8rem;
+        }
+
+        .stats-grid {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+
+      @media (max-width: 600px) {
+        .testimonials-hero {
+          padding: 30px 4vw 20px 4vw;
+        }
+
+        .testimonials-hero h1 {
+          font-size: 1.5rem;
+        }
+
+        .testimonials-hero p {
+          font-size: 1rem;
+        }
+
+        .testimonials-section {
+          padding: 30px 4vw 20px 4vw;
+        }
+
+        .testimonial-card {
+          padding: 20px 16px;
+        }
+
+        .testimonial-header {
+          gap: 12px;
+        }
+
+        .testimonial-avatar {
+          width: 50px;
+          height: 50px;
+          font-size: 1.2rem;
+        }
+
+        .testimonial-info h3 {
+          font-size: 1.1rem;
+        }
+
+        .testimonial-info p {
+          font-size: 0.85rem;
+        }
+
+        .testimonial-content {
+          font-size: 0.95rem;
+        }
+
+        .stat-item {
+          padding: 16px;
+        }
+
+        .stat-number {
+          font-size: 1.5rem;
+        }
+
+        .stat-label {
+          font-size: 0.9rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="category-header" role="banner">
+      <nav
+        class="category-navbar"
+        role="navigation"
+        aria-label="Testimonials page navigation"
+      >
+        <div class="category-logo">
+          <a href="index.html" aria-label="Back to Home" class="logo-link">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9,22 9,12 15,12 15,22"></polyline>
+            </svg>
+          </a>
+        </div>
+        <div class="category-nav-links">
+          <h1 style="margin: 0; font-size: 1.2rem; color: #222">
+            Customer Testimonials
+          </h1>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main-content" role="main">
+      <section
+        class="testimonials-hero"
+        role="banner"
+        aria-labelledby="hero-title"
+      >
+        <h1 id="hero-title">What Our Customers Say</h1>
+        <p>
+          Discover why healthcare facilities across Kenya trust ARK Hygiene
+          Solutions for their PPE, medical equipment, and sterilization needs.
+          Read real testimonials from satisfied customers.
+        </p>
+      </section>
+
+      <section
+        class="testimonials-section"
+        role="region"
+        aria-labelledby="testimonials-title"
+      >
+        <div class="testimonials-content">
+          <div class="testimonials-grid">
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <div class="testimonial-avatar">KM</div>
+                <div class="testimonial-info">
+                  <h3>Dr. Sarah Mwangi</h3>
+                  <p>Medical Director, Nairobi General Hospital</p>
+                </div>
+              </div>
+              <div class="testimonial-rating">
+                <i class="fa-solid fa-star star"></i>
+                <i class="fa-solid fa-star star"></i>
+                <i class="fa-solid fa-star star"></i>
+                <i class="fa-solid fa-star star"></i>
+                <i class="fa-solid fa-star star"></i>
+              </div>
+              <div class="testimonial-content">
+                "ARK Hygiene has been our trusted partner for over 3 years.
+                Their quality PPE and reliable delivery have been crucial for
+                our hospital's safety standards. The team is professional and
+                always responsive to our urgent needs."
+              </div>
+              <div class="testimonial-date">March 2024</div>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <div class="testimonial-avatar">MC</div>
+                <div class="testimonial-info">
+                  <h3>Michael Chengo</h3>
+                  <p>Facility Manager, Mombasa Medical Center</p>
+                </div>
+              </div>
+              <div class="testimonial-rating">
+                <i class="fa-solid fa-star star"></i>
+                <i class="fa-solid fa-star star"></i>
+                <i class="fa-solid fa-star star"></i>
+                <i class="fa-solid fa-star star"></i>
+                <i class="fa-solid fa-star star"></i>
+              </div>
+              <div class="testimonial-content">
+                "Excellent service and product quality. ARK Hygiene's
+                sterilization equipment installation was flawless, and their
+                ongoing maintenance support has kept our facility running
+                smoothly. Highly recommended!"
+              </div>
+              <div class="testimonial-date">February 2024</div>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <div class="testimonial-avatar">AK</div>
+                <div class="testimonial-info">
+                  <h3>Alice Kamau</h3>
+                  <p>Procurement Manager, Kisumu Regional Hospital</p>
+                </div>
+              </div>
+              <div class="testimonial-rating">
+                <i class="fa-solid fa-star star"></i>
+                <i class="fa-solid fa-star star"></i>
+                <i class="fa-solid fa-star star"></i>
+                <i class="fa-solid fa-star star"></i>
+                <i class="fa-solid fa-star star"></i>
+              </div>
+              <div class="testimonial-content">
+                "The team at ARK Hygiene understands healthcare needs perfectly.
+                Their medical waste disposal solutions have significantly
+                improved our facility's safety standards. Fast delivery and
+                competitive pricing."
+              </div>
+              <div class="testimonial-date">January 2024</div>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <div class="testimonial-avatar">JO</div>
+                <div class="testimonial-info">
+                  <h3>John Otieno</h3>
+                  <p>CEO, Eldoret Private Clinic</p>
+                </div>
+              </div>
+              <div class="testimonial-rating">
+                <i class="fa-solid fa-star star"></i>
+                <i class="fa-solid fa-star star"></i>
+                <i class="fa-solid fa-star star"></i>
+                <i class="fa-solid fa-star star"></i>
+                <i class="fa-solid fa-star star"></i>
+              </div>
+              <div class="testimonial-content">
+                "Outstanding customer service and product quality. ARK Hygiene's
+                comprehensive range of medical supplies has been essential for
+                our clinic. Their technical support team is always available
+                when needed."
+              </div>
+              <div class="testimonial-date">December 2023</div>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <div class="testimonial-avatar">MW</div>
+                <div class="testimonial-info">
+                  <h3>Mary Wanjiku</h3>
+                  <p>Head Nurse, Thika Medical Center</p>
+                </div>
+              </div>
+              <div class="testimonial-rating">
+                <i class="fa-solid fa-star star"></i>
+                <i class="fa-solid fa-star star"></i>
+                <i class="fa-solid fa-star star"></i>
+                <i class="fa-solid fa-star star"></i>
+                <i class="fa-solid fa-star star"></i>
+              </div>
+              <div class="testimonial-content">
+                "Reliable supplier with excellent product quality. Their PPE
+                supplies have been crucial for our nursing staff safety. Quick
+                response times and professional service delivery."
+              </div>
+              <div class="testimonial-date">November 2023</div>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <div class="testimonial-avatar">PK</div>
+                <div class="testimonial-info">
+                  <h3>Peter Kiprop</h3>
+                  <p>Operations Manager, Nakuru County Hospital</p>
+                </div>
+              </div>
+              <div class="testimonial-rating">
+                <i class="fa-solid fa-star star"></i>
+                <i class="fa-solid fa-star star"></i>
+                <i class="fa-solid fa-star star"></i>
+                <i class="fa-solid fa-star star"></i>
+                <i class="fa-solid fa-star star"></i>
+              </div>
+              <div class="testimonial-content">
+                "ARK Hygiene's medical equipment and sterilization solutions
+                have transformed our facility's efficiency. Their installation
+                and training services are top-notch. A trusted partner for
+                healthcare."
+              </div>
+              <div class="testimonial-date">October 2023</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="stats-section"
+        role="region"
+        aria-labelledby="stats-title"
+      >
+        <div class="stats-content">
+          <h2 id="stats-title">
+            Trusted by Healthcare Facilities Across Kenya
+          </h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-number">500+</div>
+              <div class="stat-label">Satisfied Customers</div>
+            </div>
+
+            <div class="stat-item">
+              <div class="stat-number">4.9/5</div>
+              <div class="stat-label">Average Rating</div>
+            </div>
+
+            <div class="stat-item">
+              <div class="stat-number">98%</div>
+              <div class="stat-label">Customer Satisfaction</div>
+            </div>
+
+            <div class="stat-item">
+              <div class="stat-number">24/7</div>
+              <div class="stat-label">Support Available</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-section" role="region" aria-labelledby="cta-title">
+        <div class="cta-content">
+          <h2 id="cta-title">Join Our Satisfied Customers</h2>
+          <p>
+            Experience the same level of quality and service that our customers
+            rave about. Contact us today to discuss your healthcare facility's
+            needs.
+          </p>
+          <div class="cta-buttons">
+            <a href="contact-us.html" class="cta-btn primary">
+              <i class="fa-solid fa-phone" style="margin-right: 8px"></i>
+              Get Started Today
+            </a>
+            <a href="services.html" class="cta-btn secondary">
+              <i class="fa-solid fa-info-circle" style="margin-right: 8px"></i>
+              Learn About Our Services
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <div class="back-to-home">
+        <a href="index.html" class="back-btn">
+          <i class="fa-solid fa-arrow-left" style="margin-right: 8px"></i>
+          Back to Home
+        </a>
+      </div>
+    </main>
+
+    <footer role="contentinfo">
+      <div class="modern-footer">
+        <div class="footer-main">
+          <div class="footer-section">
+            <h3>Our Products</h3>
+            <ul>
+              <li><a href="ppe-safety-gear.html">PPE & Safety Gear</a></li>
+              <li><a href="medical-equipment.html">Medical Equipment</a></li>
+              <li>
+                <a href="sterilization-waste-equipment.html"
+                  >Waste Management</a
+                >
+              </li>
+              <li><a href="sanitary-solutions.html">Sanitary Solutions</a></li>
+              <li><a href="spill-management.html">Spill Management</a></li>
+              <li><a href="public-health-sanitation.html">Public Health</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h3>Contact Information</h3>
+            <div class="contact-info">
+              <p>
+                <strong>Email:</strong>
+                <a href="mailto:info@arksafety.biz">info@arksafety.biz</a>
+              </p>
+              <p>
+                <strong>Phone:</strong>
+                <a href="tel:+254729171831">+254729171831</a>
+              </p>
+              <p><strong>Address:</strong></p>
+              <p>P.O Box 28255-00100</p>
+              <p>
+                <a
+                  href="https://maps.google.com/?q=Nairobi+Harambee+avenue+Cargen+House"
+                  target="_blank"
+                  rel="noopener"
+                  >Nairobi Harambee avenue, Cargen House, Kenya</a
+                >
+              </p>
+              <p><strong>Delivery:</strong> Nationwide across Kenya</p>
+            </div>
+          </div>
+
+          <div class="footer-section">
+            <h3>Customer Satisfaction</h3>
+            <ul>
+              <li>500+ Happy Customers</li>
+              <li>4.9/5 Star Rating</li>
+              <li>98% Satisfaction Rate</li>
+              <li>24/7 Support</li>
+              <li>ISO 13485 Certified</li>
+              <li>Professional Service</li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h3>Quick Contact</h3>
+            <div class="footer-contact-icons">
+              <a
+                href="https://wa.me/254729171831"
+                target="_blank"
+                rel="noopener"
+                aria-label="WhatsApp"
+                class="footer-icon whatsapp-icon"
+              >
+                <i class="fa-brands fa-whatsapp"></i>
+              </a>
+              <a
+                href="mailto:info@arksafety.biz"
+                aria-label="Email"
+                class="footer-icon email-icon"
+              >
+                <i class="fa-solid fa-envelope"></i>
+              </a>
+              <a
+                href="tel:+254729171831"
+                aria-label="Call"
+                class="footer-icon call-icon"
+              >
+                <i class="fa-solid fa-phone"></i>
+              </a>
+            </div>
+            <p style="margin-top: 16px; font-size: 0.9rem; color: #666">
+              Join our satisfied customers today!
+            </p>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div class="footer-bottom-content">
+            <p>&copy; 2024 ARK Hygiene. All rights reserved.</p>
+            <div class="footer-links">
+              <a href="privacy-policy.html">Privacy Policy</a>
+              <a href="terms-of-service.html">Terms of Service</a>
+              <a href="sitemap.xml">Sitemap</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile header handling
+      function hideHeaderOnMobile() {
+        const header = document.querySelector(".category-header");
+        if (header && window.innerWidth <= 400) {
+          header.style.display = "none";
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        hideHeaderOnMobile();
+      });
+
+      window.addEventListener("resize", () => {
+        hideHeaderOnMobile();
+      });
+    </script>
+  </body>
+</html>

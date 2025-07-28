@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO Meta Tags -->
+    <title>
+      Services - ARK Hygiene Solutions Kenya | Installation & Maintenance
+    </title>
+    <meta
+      name="description"
+      content="ARK Hygiene offers comprehensive services including installation, repair, and maintenance of medical waste equipment, autoclaves, and sterilization systems. Expert technical support and training available."
+    />
+    <meta
+      name="keywords"
+      content="medical equipment installation, autoclave repair, waste equipment maintenance, sterilization services, technical support Kenya, healthcare equipment services"
+    />
+    <meta name="author" content="ARK Hygiene" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta
+      property="og:title"
+      content="Services - ARK Hygiene Solutions Kenya"
+    />
+    <meta
+      property="og:description"
+      content="Comprehensive installation, repair, and maintenance services for medical waste equipment and sterilization systems."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://arkhygiene.com/services.html" />
+    <meta property="og:image" content="https://arkhygiene.com/favicon.png" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://arkhygiene.com/services.html" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="company logo.png" />
+    <link rel="apple-touch-icon" href="company logo.png" />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Preload Critical Resources -->
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;700&display=swap"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript
+      ><link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;700&display=swap"
+    /></noscript>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.v2.css" />
+
+    <style>
+      /* Services Page Specific Styles */
+      .services-hero {
+        background: linear-gradient(135deg, #fff 0%, #8ec5fc 100%);
+        padding: 40px 6vw 30px 6vw;
+        text-align: center;
+        margin: 0;
+      }
+
+      .services-hero h1 {
+        font-size: 1.8rem;
+        font-family: "Poppins", sans-serif;
+        margin-bottom: 16px;
+        color: #222;
+        font-weight: 700;
+      }
+
+      .services-hero p {
+        font-size: 1.1rem;
+        font-family: "Roboto", sans-serif;
+        color: #444;
+        max-width: 700px;
+        margin: 0 auto;
+        line-height: 1.6;
+      }
+
+      .services-section {
+        padding: 40px 6vw 30px 6vw;
+        background: #fff;
+      }
+
+      .services-content {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .services-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+      }
+
+      .service-card {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        padding: 30px 24px;
+        border-radius: 16px;
+        border: 1px solid #e0e0e0;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .service-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      .service-header {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 20px;
+      }
+
+      .service-icon {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #8ec5fc 0%, #4a90e2 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 1.5rem;
+        flex-shrink: 0;
+      }
+
+      .service-title {
+        font-size: 1.4rem;
+        font-family: "Poppins", sans-serif;
+        color: #222;
+        margin: 0;
+      }
+
+      .service-description {
+        font-size: 1rem;
+        font-family: "Roboto", sans-serif;
+        color: #444;
+        line-height: 1.6;
+        margin-bottom: 20px;
+      }
+
+      .service-features {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .service-features li {
+        font-size: 0.95rem;
+        font-family: "Roboto", sans-serif;
+        color: #666;
+        margin-bottom: 8px;
+        padding-left: 20px;
+        position: relative;
+      }
+
+      .service-features li:before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: #4a90e2;
+        font-weight: bold;
+      }
+
+      .service-features li:last-child {
+        margin-bottom: 0;
+      }
+
+      .equipment-section {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        padding: 40px 6vw 30px 6vw;
+      }
+
+      .equipment-content {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .equipment-content h2 {
+        font-size: 1.6rem;
+        font-family: "Poppins", sans-serif;
+        margin-bottom: 30px;
+        color: #222;
+        text-align: center;
+      }
+
+      .equipment-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .equipment-item {
+        background: #fff;
+        padding: 24px;
+        border-radius: 12px;
+        border: 1px solid #e0e0e0;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .equipment-item:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      .equipment-icon {
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(135deg, #8ec5fc 0%, #4a90e2 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 1.2rem;
+        flex-shrink: 0;
+      }
+
+      .equipment-content h3 {
+        font-size: 1.2rem;
+        font-family: "Poppins", sans-serif;
+        margin-bottom: 8px;
+        color: #222;
+      }
+
+      .equipment-content p {
+        font-size: 1rem;
+        font-family: "Roboto", sans-serif;
+        color: #666;
+        line-height: 1.5;
+        margin: 0;
+      }
+
+      .support-section {
+        background: linear-gradient(135deg, #4a90e2 0%, #8ec5fc 100%);
+        padding: 40px 6vw 30px 6vw;
+        color: #fff;
+      }
+
+      .support-content {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .support-content h2 {
+        font-size: 1.6rem;
+        font-family: "Poppins", sans-serif;
+        margin-bottom: 30px;
+        text-align: center;
+      }
+
+      .support-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .support-item {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 24px;
+        border-radius: 12px;
+        backdrop-filter: blur(10px);
+        text-align: center;
+      }
+
+      .support-icon {
+        font-size: 2rem;
+        margin-bottom: 16px;
+        color: #fff;
+      }
+
+      .support-item h3 {
+        font-size: 1.2rem;
+        font-family: "Poppins", sans-serif;
+        margin-bottom: 12px;
+      }
+
+      .support-item p {
+        font-size: 1rem;
+        font-family: "Roboto", sans-serif;
+        line-height: 1.5;
+        margin: 0;
+        opacity: 0.9;
+      }
+
+      .cta-section {
+        background: #fff;
+        padding: 40px 6vw 30px 6vw;
+        text-align: center;
+      }
+
+      .cta-content {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .cta-content h2 {
+        font-size: 1.6rem;
+        font-family: "Poppins", sans-serif;
+        margin-bottom: 16px;
+        color: #222;
+      }
+
+      .cta-content p {
+        font-size: 1.1rem;
+        font-family: "Roboto", sans-serif;
+        color: #444;
+        line-height: 1.6;
+        margin-bottom: 24px;
+      }
+
+      .cta-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        align-items: center;
+      }
+
+      .cta-btn {
+        padding: 14px 32px;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        font-family: "Poppins", sans-serif;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      .cta-btn.primary {
+        background: linear-gradient(135deg, #8ec5fc 0%, #4a90e2 100%);
+        color: #fff;
+        border: none;
+      }
+
+      .cta-btn.primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+      }
+
+      .cta-btn.secondary {
+        background: transparent;
+        color: #4a90e2;
+        border: 2px solid #4a90e2;
+      }
+
+      .cta-btn.secondary:hover {
+        background: #4a90e2;
+        color: #fff;
+      }
+
+      .back-to-home {
+        text-align: center;
+        padding: 20px 6vw;
+        background: #fff;
+      }
+
+      .back-btn {
+        background: transparent;
+        color: #4a90e2;
+        border: 2px solid #4a90e2;
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-family: "Poppins", sans-serif;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      .back-btn:hover {
+        background: #4a90e2;
+        color: #fff;
+      }
+
+      /* Responsive Design */
+      @media (min-width: 768px) {
+        .services-hero h1 {
+          font-size: 2.2rem;
+        }
+
+        .services-hero p {
+          font-size: 1.2rem;
+        }
+
+        .services-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 30px;
+        }
+
+        .equipment-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 20px;
+        }
+
+        .support-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 20px;
+        }
+
+        .cta-buttons {
+          flex-direction: row;
+          justify-content: center;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .services-section {
+          padding: 60px 8vw 40px 8vw;
+        }
+
+        .services-hero {
+          padding: 60px 10vw 40px 10vw;
+        }
+
+        .services-hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .service-title {
+          font-size: 1.5rem;
+        }
+
+        .equipment-content h2,
+        .support-content h2,
+        .cta-content h2 {
+          font-size: 1.8rem;
+        }
+
+        .equipment-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .support-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      @media (max-width: 600px) {
+        .services-hero {
+          padding: 30px 4vw 20px 4vw;
+        }
+
+        .services-hero h1 {
+          font-size: 1.5rem;
+        }
+
+        .services-hero p {
+          font-size: 1rem;
+        }
+
+        .services-section {
+          padding: 30px 4vw 20px 4vw;
+        }
+
+        .service-card {
+          padding: 20px 16px;
+        }
+
+        .service-header {
+          gap: 12px;
+        }
+
+        .service-icon {
+          width: 50px;
+          height: 50px;
+          font-size: 1.2rem;
+        }
+
+        .service-title {
+          font-size: 1.2rem;
+        }
+
+        .equipment-item,
+        .support-item {
+          padding: 16px;
+          gap: 12px;
+        }
+
+        .equipment-icon {
+          width: 40px;
+          height: 40px;
+          font-size: 1rem;
+        }
+
+        .equipment-content h3,
+        .support-item h3 {
+          font-size: 1.1rem;
+        }
+
+        .equipment-content p,
+        .support-item p {
+          font-size: 0.9rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="category-header" role="banner">
+      <nav
+        class="category-navbar"
+        role="navigation"
+        aria-label="Services page navigation"
+      >
+        <div class="category-logo">
+          <a href="index.html" aria-label="Back to Home" class="logo-link">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9,22 9,12 15,12 15,22"></polyline>
+            </svg>
+          </a>
+        </div>
+        <div class="category-nav-links">
+          <h1 style="margin: 0; font-size: 1.2rem; color: #222">
+            Our Services
+          </h1>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main-content" role="main">
+      <section class="services-hero" role="banner" aria-labelledby="hero-title">
+        <h1 id="hero-title">Professional Healthcare Services</h1>
+        <p>
+          Beyond supplying premium quality products, we provide comprehensive
+          installation, maintenance, and technical support services to ensure
+          your healthcare equipment operates at peak performance and maintains
+          the highest safety standards. Our certified expert team is here to
+          support your healthcare facility every step of the way with
+          professional, reliable service.
+        </p>
+      </section>
+
+      <section
+        class="services-section"
+        role="region"
+        aria-labelledby="services-title"
+      >
+        <div class="services-content">
+          <div class="services-grid">
+            <div class="service-card">
+              <div class="service-header">
+                <div class="service-icon">
+                  <i class="fa-solid fa-tools"></i>
+                </div>
+                <h2 class="service-title">Installation Services</h2>
+              </div>
+              <div class="service-description">
+                Professional installation of medical waste equipment,
+                autoclaves, and sterilization systems by certified technicians.
+              </div>
+              <ul class="service-features">
+                <li>Site assessment and planning</li>
+                <li>Equipment installation and setup</li>
+                <li>Safety testing and validation</li>
+                <li>Staff training and handover</li>
+                <li>Documentation and compliance</li>
+              </ul>
+            </div>
+
+            <div class="service-card">
+              <div class="service-header">
+                <div class="service-icon">
+                  <i class="fa-solid fa-wrench"></i>
+                </div>
+                <h2 class="service-title">Repair & Maintenance</h2>
+              </div>
+              <div class="service-description">
+                Regular maintenance and prompt repair services to keep your
+                equipment running efficiently and safely.
+              </div>
+              <ul class="service-features">
+                <li>Preventive maintenance schedules</li>
+                <li>Emergency repair services</li>
+                <li>Parts replacement and upgrades</li>
+                <li>Performance optimization</li>
+                <li>Warranty support</li>
+              </ul>
+            </div>
+
+            <div class="service-card">
+              <div class="service-header">
+                <div class="service-icon">
+                  <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <h2 class="service-title">Training & Support</h2>
+              </div>
+              <div class="service-description">
+                Comprehensive training programs and ongoing technical support
+                for your staff to ensure proper equipment operation.
+              </div>
+              <ul class="service-features">
+                <li>Equipment operation training</li>
+                <li>Safety protocol instruction</li>
+                <li>Maintenance procedures</li>
+                <li>24/7 technical support</li>
+                <li>Remote troubleshooting</li>
+              </ul>
+            </div>
+
+            <div class="service-card">
+              <div class="service-header">
+                <div class="service-icon">
+                  <i class="fa-solid fa-clipboard-check"></i>
+                </div>
+                <h2 class="service-title">Compliance & Certification</h2>
+              </div>
+              <div class="service-description">
+                Ensure your facility meets all regulatory requirements with our
+                compliance consulting and certification services.
+              </div>
+              <ul class="service-features">
+                <li>Regulatory compliance audits</li>
+                <li>Safety certification</li>
+                <li>Documentation management</li>
+                <li>Inspection preparation</li>
+                <li>Continuous monitoring</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="equipment-section"
+        role="region"
+        aria-labelledby="equipment-title"
+      >
+        <div class="equipment-content">
+          <h2 id="equipment-title">Equipment We Service</h2>
+          <div class="equipment-grid">
+            <div class="equipment-item">
+              <div class="equipment-icon">
+                <i class="fa-solid fa-fire"></i>
+              </div>
+              <div class="equipment-content">
+                <h3>Autoclaves</h3>
+                <p>
+                  Installation, maintenance, and repair of autoclave systems for
+                  sterilization of medical instruments and equipment.
+                </p>
+              </div>
+            </div>
+
+            <div class="equipment-item">
+              <div class="equipment-icon">
+                <i class="fa-solid fa-trash"></i>
+              </div>
+              <div class="equipment-content">
+                <h3>Medical Waste Incinerators</h3>
+                <p>
+                  Complete service for diesel-fired incinerators and medical
+                  waste disposal systems including shredders.
+                </p>
+              </div>
+            </div>
+
+            <div class="equipment-item">
+              <div class="equipment-icon">
+                <i class="fa-solid fa-recycle"></i>
+              </div>
+              <div class="equipment-content">
+                <h3>Macerators</h3>
+                <p>
+                  Installation and maintenance of macerator systems for safe
+                  disposal of medical waste and sharps containers.
+                </p>
+              </div>
+            </div>
+
+            <div class="equipment-item">
+              <div class="equipment-icon">
+                <i class="fa-solid fa-droplet"></i>
+              </div>
+              <div class="equipment-content">
+                <h3>Sterilization Systems</h3>
+                <p>
+                  Complete sterilization equipment including autoclaves with
+                  shredder capabilities and monitoring systems.
+                </p>
+              </div>
+            </div>
+
+            <div class="equipment-item">
+              <div class="equipment-icon">
+                <i class="fa-solid fa-shield-halved"></i>
+              </div>
+              <div class="equipment-content">
+                <h3>Safety Equipment</h3>
+                <p>
+                  Installation and maintenance of safety showers, eyewash
+                  stations, and emergency response equipment.
+                </p>
+              </div>
+            </div>
+
+            <div class="equipment-item">
+              <div class="equipment-icon">
+                <i class="fa-solid fa-snowflake"></i>
+              </div>
+              <div class="equipment-content">
+                <h3>Climate Control Systems</h3>
+                <p>
+                  HVAC systems for medical facilities, clean rooms, and
+                  temperature-controlled environments.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="support-section"
+        role="region"
+        aria-labelledby="support-title"
+      >
+        <div class="support-content">
+          <h2 id="support-title">Technical Support</h2>
+          <div class="support-grid">
+            <div class="support-item">
+              <div class="support-icon">
+                <i class="fa-solid fa-phone"></i>
+              </div>
+              <h3>24/7 Emergency Support</h3>
+              <p>
+                Round-the-clock emergency support for critical equipment
+                failures and urgent maintenance needs.
+              </p>
+            </div>
+
+            <div class="support-item">
+              <div class="support-icon">
+                <i class="fa-solid fa-laptop"></i>
+              </div>
+              <h3>Remote Diagnostics</h3>
+              <p>
+                Advanced remote monitoring and diagnostics to identify and
+                resolve issues before they become problems.
+              </p>
+            </div>
+
+            <div class="support-item">
+              <div class="support-icon">
+                <i class="fa-solid fa-truck"></i>
+              </div>
+              <h3>On-Site Service</h3>
+              <p>
+                Prompt on-site service visits by certified technicians for
+                complex repairs and installations.
+              </p>
+            </div>
+
+            <div class="support-item">
+              <div class="support-icon">
+                <i class="fa-solid fa-calendar-check"></i>
+              </div>
+              <h3>Scheduled Maintenance</h3>
+              <p>
+                Regular preventive maintenance programs to extend equipment life
+                and prevent costly breakdowns.
+              </p>
+            </div>
+
+            <div class="support-item">
+              <div class="support-icon">
+                <i class="fa-solid fa-users"></i>
+              </div>
+              <h3>Staff Training</h3>
+              <p>
+                Comprehensive training programs for your staff on equipment
+                operation, safety, and maintenance procedures.
+              </p>
+            </div>
+
+            <div class="support-item">
+              <div class="support-icon">
+                <i class="fa-solid fa-file-contract"></i>
+              </div>
+              <h3>Service Contracts</h3>
+              <p>
+                Flexible service contracts tailored to your facility's needs and
+                budget requirements.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-section" role="region" aria-labelledby="cta-title">
+        <div class="cta-content">
+          <h2 id="cta-title">Ready to Get Started?</h2>
+          <p>
+            Contact us today to discuss your service needs. Our expert team is
+            ready to provide you with the best solutions for your healthcare
+            facility.
+          </p>
+          <div class="cta-buttons">
+            <a href="contact-us.html" class="cta-btn primary">
+              <i class="fa-solid fa-phone" style="margin-right: 8px"></i>
+              Contact Us
+            </a>
+            <a href="tel:+254729171831" class="cta-btn secondary">
+              <i class="fa-solid fa-phone" style="margin-right: 8px"></i>
+              Call Now
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <div class="back-to-home">
+        <a href="index.html" class="back-btn">
+          <i class="fa-solid fa-arrow-left" style="margin-right: 8px"></i>
+          Back to Home
+        </a>
+      </div>
+    </main>
+
+    <footer role="contentinfo">
+      <div class="modern-footer">
+        <div class="footer-main">
+          <div class="footer-section">
+            <h3>Our Products</h3>
+            <ul>
+              <li><a href="ppe-safety-gear.html">PPE & Safety Gear</a></li>
+              <li><a href="medical-equipment.html">Medical Equipment</a></li>
+              <li>
+                <a href="sterilization-waste-equipment.html"
+                  >Waste Management</a
+                >
+              </li>
+              <li><a href="sanitary-solutions.html">Sanitary Solutions</a></li>
+              <li><a href="spill-management.html">Spill Management</a></li>
+              <li><a href="public-health-sanitation.html">Public Health</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h3>Contact Information</h3>
+            <div class="contact-info">
+              <p>
+                <strong>Email:</strong>
+                <a href="mailto:info@arksafety.biz">info@arksafety.biz</a>
+              </p>
+              <p>
+                <strong>Phone:</strong>
+                <a href="tel:+254729171831">+254729171831</a>
+              </p>
+              <p><strong>Address:</strong></p>
+              <p>P.O Box 28255-00100</p>
+              <p>
+                <a
+                  href="https://maps.google.com/?q=Nairobi+Harambee+avenue+Cargen+House"
+                  target="_blank"
+                  rel="noopener"
+                  >Nairobi Harambee avenue, Cargen House, Kenya</a
+                >
+              </p>
+              <p><strong>Delivery:</strong> Nationwide across Kenya</p>
+            </div>
+          </div>
+
+          <div class="footer-section">
+            <h3>Equipment We Service</h3>
+            <ul>
+              <li>Autoclaves & Sterilizers</li>
+              <li>Medical Waste Incinerators</li>
+              <li>Macerators & Shredders</li>
+              <li>Safety Equipment</li>
+              <li>Climate Control Systems</li>
+              <li>Emergency Response Equipment</li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h3>Quick Contact</h3>
+            <div class="footer-contact-icons">
+              <a
+                href="https://wa.me/254729171831"
+                target="_blank"
+                rel="noopener"
+                aria-label="WhatsApp"
+                class="footer-icon whatsapp-icon"
+              >
+                <i class="fa-brands fa-whatsapp"></i>
+              </a>
+              <a
+                href="mailto:info@arksafety.biz"
+                aria-label="Email"
+                class="footer-icon email-icon"
+              >
+                <i class="fa-solid fa-envelope"></i>
+              </a>
+              <a
+                href="tel:+254729171831"
+                aria-label="Call"
+                class="footer-icon call-icon"
+              >
+                <i class="fa-solid fa-phone"></i>
+              </a>
+            </div>
+            <p style="margin-top: 16px; font-size: 0.9rem; color: #666">
+              Need service or installation? Contact us today!
+            </p>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div class="footer-bottom-content">
+            <p>&copy; 2024 ARK Hygiene. All rights reserved.</p>
+            <div class="footer-links">
+              <a href="privacy-policy.html">Privacy Policy</a>
+              <a href="terms-of-service.html">Terms of Service</a>
+              <a href="sitemap.xml">Sitemap</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile header handling
+      function hideHeaderOnMobile() {
+        const header = document.querySelector(".category-header");
+        if (header && window.innerWidth <= 400) {
+          header.style.display = "none";
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        hideHeaderOnMobile();
+      });
+
+      window.addEventListener("resize", () => {
+        hideHeaderOnMobile();
+      });
+    </script>
+  </body>
+</html>
