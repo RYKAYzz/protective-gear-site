@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Selected Products - Ark Hygiene Solutions</title>
+    <meta
+      name="description"
+      content="View and manage your selected products. Modify quantities and remove items from your selection."
+    />
+    <link rel="icon" type="image/png" href="company logo.png" />
+    <link rel="stylesheet" href="style.v2.css" />
+  </head>
+  <body>
+    <header class="category-header" role="banner">
+      <nav
+        class="category-navbar"
+        role="navigation"
+        aria-label="Selected products page navigation"
+      >
+        <div class="category-logo">
+          <a href="index.html" aria-label="Back to Home" class="logo-link">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9,22 9,12 15,12 15,22"></polyline>
+            </svg>
+          </a>
+        </div>
+        <div class="category-nav-links">
+          <h1 style="margin: 0; font-size: 1.2rem; color: #222">
+            Selected Products
+          </h1>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" role="main">
+      <section class="hero" role="banner" aria-labelledby="hero-title">
+        <h1 id="hero-title">Selected Products</h1>
+        <p>Review and manage your selected items</p>
+      </section>
+
+      <section
+        class="products-section"
+        role="region"
+        aria-labelledby="products-title"
+      >
+        <h2 id="products-title">Your Selection</h2>
+
+        <!-- Empty Cart State -->
+        <div id="empty-cart" class="empty-state" style="display: none">
+          <h2>No Products Selected</h2>
+          <p>
+            You haven't selected any products yet. Browse our catalog to get
+            started.
+          </p>
+          <a href="index.html" class="btn-primary">Browse Products</a>
+        </div>
+
+        <!-- Selected Products List -->
+        <div id="selected-products-list" class="product-gallery" role="list">
+          <!-- Products will be dynamically loaded here -->
+        </div>
+
+        <!-- Cart Summary -->
+        <div id="cart-summary" class="cart-summary" style="display: none">
+          <h3>Order Summary</h3>
+          <div class="summary-item">
+            <span>Total Items:</span>
+            <span id="total-items">0</span>
+          </div>
+          <div class="summary-item">
+            <span>Total Quantity:</span>
+            <span id="total-quantity">0</span>
+          </div>
+          <div class="summary-item">
+            <span>Unique Products:</span>
+            <span id="unique-products">0</span>
+          </div>
+          <div class="action-buttons">
+            <button class="btn-primary" onclick="proceedToQuote()">
+              Get Quote
+            </button>
+            <button class="btn-secondary" onclick="clearAllProducts()">
+              Clear All
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer role="contentinfo">
+      <a id="about-us"></a>
+
+      <!-- Modern Footer Design -->
+      <div class="modern-footer">
+        <!-- Main Footer Content -->
+        <div class="footer-main">
+          <div class="footer-section">
+            <h3>About ARK Hygiene</h3>
+            <p>
+              ARK Hygiene Solutions Kenya - Leading hygiene products supplier
+              offering personal protective equipment, hospital safety equipment,
+              and medical waste disposal equipment. Affordable hygiene solutions
+              for healthcare facilities and industry.
+            </p>
+            <div style="margin-top: 16px">
+              <a
+                href="about-us.html"
+                style="
+                  color: #4a90e2;
+                  text-decoration: none;
+                  margin-right: 16px;
+                "
+                >About Us</a
+              >
+              <a
+                href="services.html"
+                style="
+                  color: #4a90e2;
+                  text-decoration: none;
+                  margin-right: 16px;
+                "
+                >Our Services</a
+              >
+              <a
+                href="testimonials.html"
+                style="
+                  color: #4a90e2;
+                  text-decoration: none;
+                  margin-right: 16px;
+                "
+                >Testimonials</a
+              >
+              <a href="faq.html" style="color: #4a90e2; text-decoration: none"
+                >FAQ</a
+              >
+            </div>
+          </div>
+
+          <div class="footer-section">
+            <h3>Our Products</h3>
+            <ul>
+              <li><a href="ppe-safety-gear.html">PPE & Safety Gear</a></li>
+              <li><a href="medical-equipment.html">Medical Equipment</a></li>
+              <li>
+                <a href="sterilization-waste-equipment.html"
+                  >Waste Management</a
+                >
+              </li>
+              <li><a href="sanitary-solutions.html">Sanitary Solutions</a></li>
+              <li><a href="spill-management.html">Spill Management</a></li>
+              <li><a href="public-health-sanitation.html">Public Health</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h3>Contact Information</h3>
+            <div class="contact-info">
+              <p>
+                <strong>Email:</strong>
+                <a href="mailto:info@arksafety.biz">info@arksafety.biz</a>
+              </p>
+              <p>
+                <strong>Phone:</strong>
+                <a href="tel:+254729171831">+254729171831</a>
+              </p>
+              <p><strong>Address:</strong></p>
+              <p>P.O Box 28255-00100</p>
+              <p>
+                <a
+                  href="https://maps.google.com/?q=Nairobi+Harambee+avenue+Cargen+House"
+                  target="_blank"
+                  rel="noopener"
+                  >Nairobi Harambee avenue, Cargen House, Kenya</a
+                >
+              </p>
+              <p><strong>Delivery:</strong> Nationwide across Kenya</p>
+            </div>
+          </div>
+
+          <div class="footer-section">
+            <h3>Get In Touch</h3>
+            <p>
+              Ready to enhance your safety and hygiene standards? Contact us
+              today for expert consultation and quality products.
+            </p>
+            <div class="footer-cta">
+              <a href="contact-us.html" class="btn-primary">Contact Us</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+          <p>&copy; 2024 ARK Hygiene Solutions. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="javascript.js"></script>
+    <script>
+      // Load selected products on page load
+      document.addEventListener("DOMContentLoaded", function () {
+        loadSelectedProducts();
+      });
+
+      function loadSelectedProducts() {
+        const selectedProducts = JSON.parse(
+          localStorage.getItem("selectedProducts") || "[]"
+        );
+
+        if (selectedProducts.length === 0) {
+          document.getElementById("empty-cart").style.display = "block";
+          document.getElementById("selected-products-list").style.display =
+            "none";
+          document.getElementById("cart-summary").style.display = "none";
+          return;
+        }
+
+        document.getElementById("empty-cart").style.display = "none";
+        document.getElementById("selected-products-list").style.display =
+          "grid";
+        document.getElementById("cart-summary").style.display = "block";
+
+        const productsList = document.getElementById("selected-products-list");
+        productsList.innerHTML = "";
+
+        let totalQuantity = 0;
+
+        selectedProducts.forEach((product) => {
+          const productCard = createProductCard(product);
+          productsList.appendChild(productCard);
+          totalQuantity += parseInt(product.quantity);
+        });
+
+        updateSummary(
+          selectedProducts.length,
+          totalQuantity,
+          selectedProducts.length
+        );
+      }
+
+      function createProductCard(product) {
+        const card = document.createElement("article");
+        card.className = "product-item";
+        card.setAttribute("data-product-id", product.id);
+        card.setAttribute("role", "listitem");
+
+        const categoryLabels = {
+          "face-protection": "Face Protection",
+          "hand-protection": "Hand Protection",
+          "body-protection": "Body Protection",
+          "foot-protection": "Foot Protection",
+          "head-protection": "Head Protection",
+        };
+
+        card.innerHTML = `
+          <img src="${product.image}" alt="${product.name}" class="product-image" loading="lazy">
+          <h3 class="product-name">${product.name}</h3>
+          <p class="product-description">${product.description}</p>
+          <div class="product-actions" style="display: flex; gap: 10px; align-items: center; margin-top: 10px;">
+            <div class="quantity-controls" style="display: flex; align-items: center; gap: 5px;">
+              <label style="font-weight: 600;">Quantity:</label>
+              <input type="number" min="10" value="${product.quantity}" class="quantity-input" 
+                     onchange="updateProductQuantity('${product.id}', this.value)" 
+                     style="width: 60px; padding: 5px; border: 1px solid #ccc; border-radius: 4px;">
+            </div>
+            <button class="btn-secondary" onclick="removeProduct('${product.id}')" 
+                    style="background: #dc3545; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">
+              Remove
+            </button>
+          </div>
+        `;
+
+        return card;
+      }
+
+      function updateProductQuantity(productId, newQuantity) {
+        console.log("updateProductQuantity called:", productId, newQuantity);
+        const selectedProducts = JSON.parse(
+          localStorage.getItem("selectedProducts") || "[]"
+        );
+        const productIndex = selectedProducts.findIndex(
+          (p) => p.id === productId
+        );
+
+        if (productIndex !== -1) {
+          selectedProducts[productIndex].quantity = parseInt(newQuantity);
+          localStorage.setItem(
+            "selectedProducts",
+            JSON.stringify(selectedProducts)
+          );
+
+          // Update summary
+          const totalQuantity = selectedProducts.reduce(
+            (sum, p) => sum + parseInt(p.quantity),
+            0
+          );
+          updateSummary(
+            selectedProducts.length,
+            totalQuantity,
+            selectedProducts.length
+          );
+        }
+      }
+
+      function removeProduct(productId) {
+        console.log("removeProduct called:", productId);
+        const selectedProducts = JSON.parse(
+          localStorage.getItem("selectedProducts") || "[]"
+        );
+        const updatedProducts = selectedProducts.filter(
+          (p) => p.id !== productId
+        );
+
+        localStorage.setItem(
+          "selectedProducts",
+          JSON.stringify(updatedProducts)
+        );
+
+        // Remove from display
+        const productCard = document.querySelector(
+          `[data-product-id="${productId}"]`
+        );
+        if (productCard) {
+          productCard.remove();
+        }
+
+        // Update summary
+        if (updatedProducts.length === 0) {
+          loadSelectedProducts(); // This will show empty state
+        } else {
+          const totalQuantity = updatedProducts.reduce(
+            (sum, p) => sum + parseInt(p.quantity),
+            0
+          );
+          updateSummary(
+            updatedProducts.length,
+            totalQuantity,
+            updatedProducts.length
+          );
+        }
+      }
+
+      function updateSummary(totalItems, totalQuantity, uniqueProducts) {
+        document.getElementById("total-items").textContent = totalItems;
+        document.getElementById("total-quantity").textContent = totalQuantity;
+        document.getElementById("unique-products").textContent = uniqueProducts;
+      }
+
+      function clearAllProducts() {
+        if (confirm("Are you sure you want to clear all selected products?")) {
+          localStorage.removeItem("selectedProducts");
+          loadSelectedProducts();
+        }
+      }
+
+      function proceedToQuote() {
+        const selectedProducts = JSON.parse(
+          localStorage.getItem("selectedProducts") || "[]"
+        );
+        if (selectedProducts.length > 0) {
+          // Redirect to contact page with pre-filled product information
+          window.location.href = "contact-us.html?source=quote";
+        } else {
+          alert("Please select at least one product before proceeding.");
+        }
+      }
+    </script>
+  </body>
+</html>

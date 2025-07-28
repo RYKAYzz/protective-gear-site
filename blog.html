@@ -116,6 +116,9 @@
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         border: 1px solid #e0e0e0;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
       }
 
       .blog-card:hover {
@@ -129,6 +132,13 @@
         padding: 24px;
         background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
         border-radius: 8px;
+      }
+
+      .blog-content-inner {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        justify-content: space-between;
       }
 
       .blog-content-inner h3 {
@@ -187,11 +197,27 @@
         text-decoration: none;
         display: inline-block;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
+        margin-top: auto;
       }
 
       .read-more-btn:hover {
         transform: translateY(-2px);
         box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+      }
+
+      .coming-soon-badge {
+        display: inline-block;
+        background: #6c757d;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        cursor: default;
+        opacity: 0.8;
+        margin-top: auto;
       }
 
       .back-to-home {
@@ -617,16 +643,7 @@
                   ensures that critical items are available when needed, while
                   maintaining quality standards and cost efficiency.
                 </p>
-                <a
-                  href="blog-articles/supply-chain-management.html"
-                  class="read-more-btn"
-                >
-                  <i
-                    class="fa-solid fa-arrow-right"
-                    style="margin-right: 8px"
-                  ></i>
-                  Read Full Article
-                </a>
+                <span class="coming-soon-badge"> Coming Soon </span>
               </div>
             </article>
 
@@ -660,16 +677,7 @@
                   compliance protocols protects your facility and demonstrates
                   commitment to quality care.
                 </p>
-                <a
-                  href="blog-articles/healthcare-compliance.html"
-                  class="read-more-btn"
-                >
-                  <i
-                    class="fa-solid fa-arrow-right"
-                    style="margin-right: 8px"
-                  ></i>
-                  Read Full Article
-                </a>
+                <span class="coming-soon-badge"> Coming Soon </span>
               </div>
             </article>
           </div>

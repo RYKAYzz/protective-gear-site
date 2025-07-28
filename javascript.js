@@ -42,7 +42,22 @@ function selectProduct(productId, productName) {
   } else {
     // Select product
     productItem.classList.add("selected");
-    selectedProducts.push({ id: productId, name: productName, quantity: 50 });
+
+    // Get product details for localStorage
+    const productImage = productItem.querySelector(".product-image").src;
+    const productDescription = productItem.querySelector(
+      ".product-description"
+    ).textContent;
+    const productCategory = productItem.getAttribute("data-category");
+
+    selectedProducts.push({
+      id: productId,
+      name: productName,
+      quantity: 50,
+      image: productImage,
+      description: productDescription,
+      category: productCategory,
+    });
 
     // Add quantity input
     const productActions = productItem.querySelector(".product-actions");
@@ -56,6 +71,9 @@ function selectProduct(productId, productName) {
     `;
     productActions.appendChild(quantityDiv);
   }
+
+  // Save to localStorage
+  localStorage.setItem("selectedProducts", JSON.stringify(selectedProducts));
 
   updateSelectionCounter();
   showNotification(`${productName} ${isSelected ? "deselected" : "selected"}`);
@@ -77,6 +95,9 @@ function updateQuantity(productId, quantity) {
     if (input && newQuantity < 10) {
       input.value = product.quantity;
     }
+
+    // Save to localStorage
+    localStorage.setItem("selectedProducts", JSON.stringify(selectedProducts));
   }
 }
 
@@ -286,6 +307,40 @@ function contactViaEmail() {
   window.open(mailtoLink, "_blank");
   closeContactModal();
   showNotification("Opening email client...");
+}
+
+// Load selected products from localStorage
+function loadSelectedProductsFromStorage() {
+  const storedProducts = localStorage.getItem("selectedProducts");
+  if (storedProducts) {
+    selectedProducts = JSON.parse(storedProducts);
+
+    // Update visual state of selected products
+    selectedProducts.forEach((product) => {
+      const productItem = document.querySelector(
+        `[data-product="${product.id}"]`
+      );
+      if (productItem) {
+        productItem.classList.add("selected");
+
+        // Add quantity input if not already present
+        const existingQuantity =
+          productItem.querySelector(".quantity-selector");
+        if (!existingQuantity) {
+          const productActions = productItem.querySelector(".product-actions");
+          const quantityDiv = document.createElement("div");
+          quantityDiv.className = "quantity-selector show";
+          quantityDiv.innerHTML = `
+            <label class="quantity-label">Quantity:</label>
+            <input type="number" min="10" value="${product.quantity}" class="quantity-input" 
+                   onchange="updateQuantity('${product.id}', this.value)"
+                   onclick="event.stopPropagation()">
+          `;
+          productActions.appendChild(quantityDiv);
+        }
+      }
+    });
+  }
 }
 
 // Update selection counter
@@ -681,6 +736,9 @@ document.addEventListener("DOMContentLoaded", function () {
   if (typeof selectedProducts !== "undefined") {
     selectedProducts.length = 0;
   }
+
+  // Load selected products from localStorage
+  loadSelectedProductsFromStorage();
 
   updateSelectionCounter();
 
