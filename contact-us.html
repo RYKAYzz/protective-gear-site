@@ -776,6 +776,18 @@
       </div>
     </footer>
 
+    <!-- EmailJS SDK -->
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+    ></script>
+    <script type="text/javascript">
+      (function () {
+        // Initialize EmailJS with your public key
+        emailjs.init("hKeD5z6q3-AOT4Vfg");
+      })();
+    </script>
+
     <script>
       // Toggle quote fields based on subject selection
       function toggleQuoteFields() {
@@ -802,13 +814,50 @@
           return;
         }
 
-        // Here you would typically send the data to your server
-        // For now, we'll just show a success message
-        alert(
-          "Thank you for your message! We will get back to you within 24 hours."
-        );
-        event.target.reset();
-        document.getElementById("quote-fields").style.display = "none";
+        // Show loading state
+        const submitBtn = event.target.querySelector(".submit-btn");
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = "Sending...";
+        submitBtn.disabled = true;
+
+        // Prepare email template parameters
+        const templateParams = {
+          from_name: data.name,
+          from_email: data.email,
+          from_phone: data.phone || "Not provided",
+          from_company: data.company || "Not provided",
+          subject: data.subject,
+          product_category: data.product_category || "Not specified",
+          quantity: data.quantity || "Not specified",
+          urgency: data.urgency || "Not specified",
+          message: data.message,
+          to_email: "info@arksafety.biz",
+        };
+
+        // Send email using EmailJS
+        emailjs
+          .send("info@arksafety.biz", "template_i08vkdq", templateParams)
+          .then(
+            function (response) {
+              console.log("SUCCESS!", response.status, response.text);
+              alert(
+                "Thank you for your message! We will get back to you within 24 hours."
+              );
+              event.target.reset();
+              document.getElementById("quote-fields").style.display = "none";
+            },
+            function (error) {
+              console.log("FAILED...", error);
+              alert(
+                "Sorry, there was an error sending your message. Please try again or contact us directly at info@arksafety.biz"
+              );
+            }
+          )
+          .finally(function () {
+            // Reset button state
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+          });
       }
 
       // Mobile header handling
