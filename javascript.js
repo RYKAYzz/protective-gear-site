@@ -76,7 +76,7 @@ function selectProduct(productId, productName) {
   localStorage.setItem("selectedProducts", JSON.stringify(selectedProducts));
 
   updateSelectionCounter();
-  showNotification(`${productName} ${isSelected ? "deselected" : "selected"}`);
+  // Silent update - no notification for selection
 }
 
 // Update product quantity
@@ -113,12 +113,20 @@ function sendSelection(event) {
 
   // Check if button is disabled
   if (sendBtn && sendBtn.disabled) {
-    showNotification("No products selected!");
+    showNotificationPopup(
+      "No Products Selected",
+      "Please select at least one product before sending.",
+      "error"
+    );
     return;
   }
 
   if (selectedProducts.length === 0) {
-    showNotification("No products selected!");
+    showNotificationPopup(
+      "No Products Selected",
+      "Please select at least one product before sending.",
+      "error"
+    );
     return;
   }
 
@@ -189,7 +197,7 @@ function sendSelection(event) {
   showContactOptionsModal(content);
 }
 
-// Show contact options modal
+// Show contact options modal with inquiry form
 function showContactOptionsModal(content) {
   // Prevent automatic modal display
   if (!content || typeof content !== "string") {
@@ -208,41 +216,137 @@ function showContactOptionsModal(content) {
   const modal = document.createElement("div");
   modal.className = "contact-modal";
   modal.style.display = "block"; // Force display
-  modal.innerHTML = `
-    <div class="contact-modal-content">
-      <span class="close-modal" onclick="closeContactModal()">&times;</span>
-      <h3>Choose Contact Method</h3>
-      <div class="contact-options">
-        <div class="contact-option" onclick="contactViaWhatsApp()">
-          <div class="contact-option-icon whatsapp-icon">📱</div>
-          <div class="contact-option-text">
-            <div class="contact-option-title">WhatsApp</div>
-            <div class="contact-option-subtitle">Send via WhatsApp</div>
-          </div>
-        </div>
-        <div class="contact-option" onclick="contactViaCall()">
-          <div class="contact-option-icon call-icon">📞</div>
-          <div class="contact-option-text">
-            <div class="contact-option-title">Call</div>
-            <div class="contact-option-subtitle">Call us directly</div>
-          </div>
-        </div>
-        <div class="contact-option" onclick="contactViaEmail()">
-          <div class="contact-option-icon email-icon">✉️</div>
-          <div class="contact-option-text">
-            <div class="contact-option-title">Email</div>
-            <div class="contact-option-subtitle">Send via email</div>
-          </div>
-        </div>
+  
+  // Detect page type for subject
+  const pageTitle = document.title || "";
+  let pageType = "Product";
+  if (pageTitle.includes("PPE") || pageTitle.includes("Safety")) {
+    pageType = "PPE & Safety Gear";
+  } else if (pageTitle.includes("Medical")) {
+    pageType = "Medical Equipment";
+  } else if (pageTitle.includes("Sterilization") || pageTitle.includes("Waste")) {
+    pageType = "Sterilization & Waste Equipment";
+  } else if (pageTitle.includes("Sanitary")) {
+    pageType = "Sanitary Solutions";
+  } else if (pageTitle.includes("Spill")) {
+    pageType = "Spill Management";
+  } else if (pageTitle.includes("Health") || pageTitle.includes("Sanitation")) {
+    pageType = "Public Health & Sanitation";
+  }
 
-      </div>
+  modal.innerHTML = `
+    <div class="contact-modal-content" style="max-width: 550px; padding: 40px; border: 1px solid #ddd; border-radius: 10px; background: #ffffff; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);">
+      <span class="close-modal" onclick="closeContactModal()" style="position: absolute; top: 15px; right: 15px; font-size: 28px; font-weight: bold; color: #999; cursor: pointer; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; transition: color 0.3s ease;">&times;</span>
+      <h3 style="margin: 0 0 25px 0; font-size: 1.5rem; font-weight: 700; color: #222; border-bottom: 1px solid #e0e0e0; padding-bottom: 15px; letter-spacing: -0.5px; font-family: 'Poppins', sans-serif;">Submit Product Inquiry</h3>
+      <p style="margin-bottom: 30px; color: #666; font-size: 0.9rem; line-height: 1.6; font-family: 'Roboto', sans-serif;">Please provide your contact information to submit your product selection inquiry.</p>
+      <form id="productInquiryForm" onsubmit="submitProductInquiry(event)">
+        <div style="margin-bottom: 15px;">
+          <label style="display: block; margin-bottom: 5px; font-weight: 600; font-size: 0.9rem; color: #333; font-family: 'Roboto', sans-serif;">Name *</label>
+          <input type="text" id="inquiryName" name="name" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; background: #ffffff; color: #222; font-size: 1rem; box-sizing: border-box; font-family: 'Roboto', sans-serif; transition: all 0.3s ease;">
+        </div>
+        <div style="margin-bottom: 15px;">
+          <label style="display: block; margin-bottom: 5px; font-weight: 600; font-size: 0.9rem; color: #333; font-family: 'Roboto', sans-serif;">Email *</label>
+          <input type="email" id="inquiryEmail" name="email" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; background: #ffffff; color: #222; font-size: 1rem; box-sizing: border-box; font-family: 'Roboto', sans-serif; transition: all 0.3s ease;">
+        </div>
+        <div style="margin-bottom: 15px;">
+          <label style="display: block; margin-bottom: 5px; font-weight: 600; font-size: 0.9rem; color: #333; font-family: 'Roboto', sans-serif;">Phone</label>
+          <input type="tel" id="inquiryPhone" name="phone" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; background: #ffffff; color: #222; font-size: 1rem; box-sizing: border-box; font-family: 'Roboto', sans-serif; transition: all 0.3s ease;">
+        </div>
+        <div style="margin-bottom: 15px;">
+          <label style="display: block; margin-bottom: 5px; font-weight: 600; font-size: 0.9rem; color: #333; font-family: 'Roboto', sans-serif;">Company</label>
+          <input type="text" id="inquiryCompany" name="company" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; background: #ffffff; color: #222; font-size: 1rem; box-sizing: border-box; font-family: 'Roboto', sans-serif; transition: all 0.3s ease;">
+        </div>
+        <div style="margin-bottom: 20px;">
+          <label style="display: block; margin-bottom: 5px; font-weight: 600; font-size: 0.9rem; color: #333; font-family: 'Roboto', sans-serif;">Message</label>
+          <textarea id="inquiryMessage" name="message" readonly style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; background: #f5f5f5; color: #222; font-size: 0.95rem; box-sizing: border-box; font-family: 'Roboto', sans-serif; resize: none; overflow-y: auto; line-height: 1.6; white-space: pre-wrap; word-wrap: break-word;"></textarea>
+        </div>
+        <button type="submit" id="submitInquiryBtn" style="width: 100%; padding: 12px; background: linear-gradient(135deg, #8ec5fc 0%, #4a90e2 100%); color: #222; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 1rem; transition: all 0.4s ease; margin-bottom: 20px; position: relative; min-height: 48px; display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 2px 8px rgba(142, 197, 252, 0.18); font-family: 'Poppins', sans-serif;">
+          <span id="submitBtnText">Submit Inquiry</span>
+          <span id="submitBtnSpinner" style="display: none; font-size: 0.9rem; opacity: 0.8;">Loading...</span>
+        </button>
+        <p style="text-align: center; margin: 20px 0 15px 0; font-size: 0.85rem; color: #666; font-family: 'Roboto', sans-serif;">Or contact us via:</p>
+        <div style="display: flex; gap: 10px; margin-top: 10px;">
+          <button type="button" onclick="contactViaWhatsApp()" style="flex: 1; padding: 10px; background: #25D366; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 0.9rem; transition: all 0.3s ease; font-family: 'Roboto', sans-serif;">WhatsApp</button>
+          <button type="button" onclick="contactViaCall()" style="flex: 1; padding: 10px; background: #4a90e2; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 0.9rem; transition: all 0.3s ease; font-family: 'Roboto', sans-serif;">Call</button>
+          <button type="button" onclick="contactViaEmail()" style="flex: 1; padding: 10px; background: #666; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 0.9rem; transition: all 0.3s ease; font-family: 'Roboto', sans-serif;">Email</button>
+        </div>
+      </form>
     </div>
   `;
-
-  // Store content for use in contact functions
-  modal.dataset.content = content;
-
+  
+  // Add focus styles and auto-size textarea
   document.body.appendChild(modal);
+  
+  // Set textarea content and auto-size it
+  const textarea = modal.querySelector('#inquiryMessage');
+  if (textarea) {
+    textarea.value = content;
+    // Auto-size textarea to fit content
+    textarea.style.height = 'auto';
+    textarea.style.height = textarea.scrollHeight + 'px';
+    // Ensure minimum height but allow growth
+    textarea.style.minHeight = '120px';
+    textarea.style.maxHeight = '400px';
+  }
+  
+  // Add focus styles to inputs
+  const inputs = modal.querySelectorAll('input, textarea');
+  inputs.forEach(input => {
+    input.addEventListener('focus', function() {
+      this.style.borderColor = '#4a90e2';
+      this.style.outline = 'none';
+      this.style.boxShadow = '0 0 8px rgba(74, 144, 226, 0.2)';
+    });
+    input.addEventListener('blur', function() {
+      this.style.borderColor = '#ddd';
+      this.style.boxShadow = 'none';
+    });
+  });
+  
+  // Add hover styles to submit button
+  const submitBtn = modal.querySelector('button[type="submit"]');
+  if (submitBtn) {
+    submitBtn.addEventListener('mouseenter', function() {
+      this.style.background = 'linear-gradient(135deg, #4a90e2 0%, #8ec5fc 100%)';
+      this.style.boxShadow = '0 4px 16px rgba(142, 197, 252, 0.28)';
+    });
+    submitBtn.addEventListener('mouseleave', function() {
+      this.style.background = 'linear-gradient(135deg, #8ec5fc 0%, #4a90e2 100%)';
+      this.style.boxShadow = '0 2px 8px rgba(142, 197, 252, 0.18)';
+    });
+  }
+  
+  // Add hover styles to contact buttons
+  const contactBtns = modal.querySelectorAll('button[type="button"]');
+  contactBtns.forEach(btn => {
+    const originalBg = window.getComputedStyle(btn).backgroundColor;
+    btn.addEventListener('mouseenter', function() {
+      if (this.textContent === 'WhatsApp') {
+        this.style.background = '#128C7E';
+      } else if (this.textContent === 'Call') {
+        this.style.background = '#357ABD';
+      } else if (this.textContent === 'Email') {
+        this.style.background = '#555';
+      }
+      this.style.transform = 'translateY(-2px)';
+      this.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15)';
+    });
+    btn.addEventListener('mouseleave', function() {
+      if (this.textContent === 'WhatsApp') {
+        this.style.background = '#25D366';
+      } else if (this.textContent === 'Call') {
+        this.style.background = '#4a90e2';
+      } else if (this.textContent === 'Email') {
+        this.style.background = '#666';
+      }
+      this.style.transform = 'translateY(0)';
+      this.style.boxShadow = 'none';
+    });
+  });
+
+  // Store content and page type for use in contact functions
+  modal.dataset.content = content;
+  modal.dataset.pageType = pageType;
 
   // Close modal when clicking outside
   modal.addEventListener("click", function (e) {
@@ -250,6 +354,197 @@ function showContactOptionsModal(content) {
       closeContactModal();
     }
   });
+}
+
+// Submit product inquiry to backend
+async function submitProductInquiry(event) {
+  event.preventDefault();
+  
+  const form = event.target;
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const submitBtnText = form.querySelector('#submitBtnText');
+  const submitBtnSpinner = form.querySelector('#submitBtnSpinner');
+  const originalText = submitBtnText ? submitBtnText.textContent : submitBtn.textContent;
+  
+  // Show loading state
+  if (submitBtnText) {
+    submitBtnText.textContent = "Submitting...";
+  } else {
+    submitBtn.textContent = "Submitting...";
+  }
+  
+  if (submitBtnSpinner) {
+    submitBtnSpinner.style.display = "inline";
+  }
+  
+  submitBtn.disabled = true;
+  submitBtn.style.opacity = "0.7";
+  submitBtn.style.cursor = "not-allowed";
+
+  const modal = document.querySelector(".contact-modal");
+  const pageType = modal ? modal.dataset.pageType : "Product";
+  const content = modal ? modal.dataset.content : "";
+
+  // Get product category from page type
+  let productCategory = "";
+  if (pageType.includes("PPE")) {
+    productCategory = "ppe-safety-gear";
+  } else if (pageType.includes("Medical")) {
+    productCategory = "medical-equipment";
+  } else if (pageType.includes("Sterilization") || pageType.includes("Waste")) {
+    productCategory = "sterilization-waste";
+  } else if (pageType.includes("Sanitary")) {
+    productCategory = "sanitary-solutions";
+  } else if (pageType.includes("Spill")) {
+    productCategory = "spill-management";
+  } else if (pageType.includes("Health") || pageType.includes("Sanitation")) {
+    productCategory = "public-health-sanitation";
+  }
+
+  // Calculate total quantity
+  let totalQuantity = 0;
+  if (selectedProducts && selectedProducts.length > 0) {
+    totalQuantity = selectedProducts.reduce((sum, product) => sum + (parseInt(product.quantity) || 0), 0);
+  }
+
+  const inquiryData = {
+    name: document.getElementById("inquiryName").value,
+    email: document.getElementById("inquiryEmail").value,
+    phone: document.getElementById("inquiryPhone").value || "",
+    company: document.getElementById("inquiryCompany").value || "",
+    subject: "quote-request",
+    message: document.getElementById("inquiryMessage").value || content,
+    status: "new"
+  };
+
+  // Only include optional fields if they have values
+  if (productCategory && productCategory.trim() !== "") {
+    inquiryData.productCategory = productCategory;
+  }
+  if (totalQuantity > 0) {
+    inquiryData.quantity = totalQuantity.toString();
+  }
+  inquiryData.urgency = "standard"; // Default value is valid
+
+  try {
+    // Check if API is loaded
+    if (typeof api === 'undefined') {
+      // Load API client if not available
+      const script = document.createElement('script');
+      script.src = 'js/api.js';
+      script.onload = async () => {
+        await submitInquiryToAPI(inquiryData);
+      };
+      document.head.appendChild(script);
+      return;
+    }
+
+    const response = await api.createInquiry(inquiryData);
+
+    if (response.success) {
+      showNotificationPopup(
+        "Inquiry Submitted Successfully",
+        "Thank you for your inquiry. We'll get back to you soon.",
+        "success"
+      );
+      closeContactModal();
+      
+      // Clear selections
+      selectedProducts = [];
+      localStorage.removeItem("selectedProducts");
+      updateSelectionCounter();
+      
+      // Clear form
+      form.reset();
+    } else {
+      throw new Error(response.message || "Failed to submit inquiry");
+    }
+  } catch (error) {
+    console.error("Error submitting inquiry:", error);
+    showNotificationPopup(
+      "Error",
+      "Error submitting inquiry. Please try again or contact us directly.",
+      "error"
+    );
+  } finally {
+    // Reset button state
+    if (submitBtnText) {
+      submitBtnText.textContent = originalText;
+    } else {
+      submitBtn.textContent = originalText;
+    }
+    
+    if (submitBtnSpinner) {
+      submitBtnSpinner.style.display = "none";
+    }
+    
+    submitBtn.disabled = false;
+    submitBtn.style.opacity = "1";
+    submitBtn.style.cursor = "pointer";
+  }
+}
+
+// Helper function to submit inquiry when API is loaded
+async function submitInquiryToAPI(inquiryData) {
+  const response = await api.createInquiry(inquiryData);
+  if (response.success) {
+    showNotificationPopup(
+      "Inquiry Submitted Successfully",
+      "Thank you for your inquiry. We'll get back to you soon.",
+      "success"
+    );
+    closeContactModal();
+    selectedProducts = [];
+    localStorage.removeItem("selectedProducts");
+    updateSelectionCounter();
+  }
+}
+
+// Custom Notification Popup Functions
+function showNotificationPopup(title, message, type = "success") {
+  const overlay = document.getElementById("notificationOverlay");
+  const popup = document.getElementById("notificationPopup");
+  const titleEl = document.getElementById("notificationTitle");
+  const messageEl = document.getElementById("notificationMessage");
+
+  if (!overlay || !popup || !titleEl || !messageEl) {
+    // Fallback to alert if popup elements don't exist
+    alert(`${title}\n\n${message}`);
+    return;
+  }
+
+  titleEl.textContent = title;
+  messageEl.textContent = message;
+
+  // Remove previous type classes
+  popup.classList.remove("success", "error");
+  popup.classList.add(type);
+
+  overlay.classList.add("active");
+
+  // Close on overlay click
+  overlay.addEventListener("click", function closeOnOverlayClick(e) {
+    if (e.target === overlay) {
+      closeNotificationPopup();
+      overlay.removeEventListener("click", closeOnOverlayClick);
+    }
+  });
+
+  // Close on Escape key
+  const escapeHandler = (e) => {
+    if (e.key === "Escape") {
+      closeNotificationPopup();
+      document.removeEventListener("keydown", escapeHandler);
+    }
+  };
+  document.addEventListener("keydown", escapeHandler);
+}
+
+function closeNotificationPopup() {
+  const overlay = document.getElementById("notificationOverlay");
+  if (overlay) {
+    overlay.classList.remove("active");
+  }
 }
 
 // Close contact modal
@@ -284,7 +579,7 @@ function contactViaWhatsApp() {
   )}`;
   window.open(whatsappUrl, "_blank");
   closeContactModal();
-  showNotification("Opening WhatsApp...");
+  // Silent - no notification needed for WhatsApp opening
 }
 
 // Contact via Call
@@ -292,7 +587,7 @@ function contactViaCall() {
   const phoneNumber = "254729171831";
   window.open(`tel:${phoneNumber}`, "_self");
   closeContactModal();
-  showNotification("Opening phone dialer...");
+  // Silent - no notification needed for phone dialer opening
 }
 
 // Contact via Email
@@ -306,7 +601,7 @@ function contactViaEmail() {
   )}&body=${encodeURIComponent(emailBody)}`;
   window.open(mailtoLink, "_blank");
   closeContactModal();
-  showNotification("Opening email client...");
+  // Silent - no notification needed for email client opening
 }
 
 // Load selected products from localStorage
@@ -536,17 +831,20 @@ function showProductDetails(productId) {
     "first-aid-kit": "First Aid Kit",
   };
 
-  const productName = productNames[productId] || "Product";
-  showNotification(
-    `Details for ${productName} - Contact us for more information!`
-  );
+  // Product details are shown in the modal, no notification needed
 }
 
-// Performance-optimized notification system
+// Legacy notification system - kept for backwards compatibility but deprecated
+// Use showNotificationPopup instead
 let notificationTimeout;
 let notificationQueue = [];
 
 function showNotification(message) {
+  // Use new popup system instead
+  showNotificationPopup("Notification", message, "success");
+  return;
+  
+  // Old code below (deprecated)
   notificationQueue.push(message);
   if (notificationQueue.length === 1) {
     showNextNotification();
@@ -704,10 +1002,7 @@ function handleContactForm(event) {
   // Open email client
   window.location.href = mailtoLink;
 
-  // Show success notification
-  showNotification(
-    "Email client opened! Please send the email to complete your request."
-  );
+  // Email client will open automatically, no notification needed
 
   // Reset form
   form.reset();

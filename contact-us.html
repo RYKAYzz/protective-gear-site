@@ -387,6 +387,118 @@
           font-size: 0.9rem;
         }
       }
+
+      /* Custom Notification Popup */
+      .notification-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 10000;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      .notification-overlay.active {
+        display: flex;
+      }
+
+      .notification-popup {
+        background: #ffffff;
+        border: 2px solid #000000;
+        max-width: 500px;
+        width: 100%;
+        padding: 40px;
+        position: relative;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .notification-popup.success {
+        border-color: #000000;
+      }
+
+      .notification-popup.error {
+        border-color: #000000;
+      }
+
+      .notification-popup h3 {
+        margin: 0 0 20px 0;
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #000000;
+        font-family: "Poppins", sans-serif;
+        letter-spacing: -0.5px;
+      }
+
+      .notification-popup p {
+        margin: 0 0 30px 0;
+        font-size: 1rem;
+        color: #333333;
+        line-height: 1.6;
+        font-family: "Roboto", sans-serif;
+      }
+
+      .notification-popup button {
+        width: 100%;
+        padding: 14px;
+        background: #000000;
+        color: #ffffff;
+        border: 2px solid #000000;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+        font-family: "Roboto", sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .notification-popup button:hover {
+        background: #ffffff;
+        color: #000000;
+      }
+
+      .notification-close {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        width: 30px;
+        height: 30px;
+        border: 1px solid #000000;
+        background: #ffffff;
+        color: #000000;
+        font-size: 20px;
+        font-weight: 700;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s;
+        line-height: 1;
+      }
+
+      .notification-close:hover {
+        background: #000000;
+        color: #ffffff;
+      }
+
+      @media (max-width: 600px) {
+        .notification-popup {
+          padding: 30px 25px;
+        }
+
+        .notification-popup h3 {
+          font-size: 1.3rem;
+        }
+
+        .notification-popup p {
+          font-size: 0.95rem;
+        }
+      }
     </style>
   </head>
   <body>
@@ -776,17 +888,20 @@
       </div>
     </footer>
 
-    <!-- EmailJS SDK -->
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
-    ></script>
-    <script type="text/javascript">
-      (function () {
-        // Initialize EmailJS with your public key
-        emailjs.init("hKeD5z6q3-AOT4Vfg");
-      })();
-    </script>
+    <!-- Custom Notification Popup -->
+    <div id="notificationOverlay" class="notification-overlay">
+      <div id="notificationPopup" class="notification-popup">
+        <span class="notification-close" onclick="closeNotification()"
+          >&times;</span
+        >
+        <h3 id="notificationTitle"></h3>
+        <p id="notificationMessage"></p>
+        <button onclick="closeNotification()">OK</button>
+      </div>
+    </div>
+
+    <!-- API Client -->
+    <script src="js/api.js"></script>
 
     <script>
       // Toggle quote fields based on subject selection
@@ -801,7 +916,7 @@
         }
       }
 
-      function submitContactForm(event) {
+      async function submitContactForm(event) {
         event.preventDefault();
 
         // Get form data
@@ -810,7 +925,11 @@
 
         // Simple validation
         if (!data.name || !data.email || !data.subject || !data.message) {
-          alert("Please fill in all required fields.");
+          showNotification(
+            "Validation Error",
+            "Please fill in all required fields.",
+            "error"
+          );
           return;
         }
 
@@ -820,44 +939,109 @@
         submitBtn.textContent = "Sending...";
         submitBtn.disabled = true;
 
-        // Prepare email template parameters
-        const templateParams = {
-          from_name: data.name,
-          from_email: data.email,
-          from_phone: data.phone || "Not provided",
-          from_company: data.company || "Not provided",
+        // Prepare inquiry data for backend
+        const inquiryData = {
+          name: data.name,
+          email: data.email,
+          phone: data.phone || "",
+          company: data.company || "",
           subject: data.subject,
-          product_category: data.product_category || "Not specified",
-          quantity: data.quantity || "Not specified",
-          urgency: data.urgency || "Not specified",
           message: data.message,
-          to_email: "info@arksafety.biz",
+          status: "new",
         };
 
-        // Send email using EmailJS
-        emailjs
-          .send("info@arksafety.biz", "template_i08vkdq", templateParams)
-          .then(
-            function (response) {
-              console.log("SUCCESS!", response.status, response.text);
-              alert(
-                "Thank you for your message! We will get back to you within 24 hours."
-              );
-              event.target.reset();
-              document.getElementById("quote-fields").style.display = "none";
-            },
-            function (error) {
-              console.log("FAILED...", error);
-              alert(
-                "Sorry, there was an error sending your message. Please try again or contact us directly at info@arksafety.biz"
-              );
-            }
-          )
-          .finally(function () {
-            // Reset button state
-            submitBtn.textContent = originalText;
-            submitBtn.disabled = false;
-          });
+        // Only include optional fields if they have values (don't send empty strings for enums)
+        if (data.product_category && data.product_category.trim() !== "") {
+          inquiryData.productCategory = data.product_category;
+        }
+        if (data.quantity && data.quantity.trim() !== "") {
+          inquiryData.quantity = data.quantity;
+        }
+        if (data.urgency && data.urgency.trim() !== "") {
+          inquiryData.urgency = data.urgency;
+        }
+
+        try {
+          // Log inquiry data for debugging
+          console.log("Submitting inquiry:", inquiryData);
+
+          // Check if API is available
+          if (typeof api === "undefined") {
+            throw new Error(
+              "API client not loaded. Please refresh the page and try again."
+            );
+          }
+
+          // Submit inquiry to backend API
+          const response = await api.createInquiry(inquiryData);
+
+          console.log("Inquiry response:", response);
+
+          if (response.success) {
+            showNotification(
+              "Message Sent Successfully",
+              "Thank you for your message! We will get back to you within 24 hours.",
+              "success"
+            );
+            event.target.reset();
+            document.getElementById("quote-fields").style.display = "none";
+          } else {
+            throw new Error(response.message || "Failed to send inquiry");
+          }
+        } catch (error) {
+          console.error("Error submitting inquiry:", error);
+          console.error("Inquiry data:", inquiryData);
+          const errorMessage =
+            error.message || "Sorry, there was an error sending your message.";
+          showNotification(
+            "Error",
+            `${errorMessage}\n\nPlease try again or contact us directly at info@arksafety.biz`,
+            "error"
+          );
+        } finally {
+          // Reset button state
+          submitBtn.textContent = originalText;
+          submitBtn.disabled = false;
+        }
+      }
+
+      // Custom Notification Functions
+      function showNotification(title, message, type = "success") {
+        const overlay = document.getElementById("notificationOverlay");
+        const popup = document.getElementById("notificationPopup");
+        const titleEl = document.getElementById("notificationTitle");
+        const messageEl = document.getElementById("notificationMessage");
+
+        titleEl.textContent = title;
+        messageEl.textContent = message;
+
+        // Remove previous type classes
+        popup.classList.remove("success", "error");
+        popup.classList.add(type);
+
+        overlay.classList.add("active");
+
+        // Close on overlay click
+        overlay.addEventListener("click", function closeOnOverlayClick(e) {
+          if (e.target === overlay) {
+            closeNotification();
+            overlay.removeEventListener("click", closeOnOverlayClick);
+          }
+        });
+
+        // Close on Escape key
+        const escapeHandler = (e) => {
+          if (e.key === "Escape") {
+            closeNotification();
+            document.removeEventListener("keydown", escapeHandler);
+          }
+        };
+        document.addEventListener("keydown", escapeHandler);
+      }
+
+      function closeNotification() {
+        const overlay = document.getElementById("notificationOverlay");
+        overlay.classList.remove("active");
       }
 
       // Mobile header handling

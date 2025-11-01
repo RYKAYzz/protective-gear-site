@@ -462,25 +462,55 @@ body {
 
 .contact-modal-content {
   background: #fff;
-  padding: 20px;
+  padding: 40px;
+  border: 1px solid #ddd;
   border-radius: 10px;
   width: 95%;
-  max-width: 400px;
+  max-width: 550px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
   position: relative;
   margin: 0 auto;
   transform: translateZ(0);
 }
 
+.contact-modal-content h3 {
+  margin: 0 0 25px 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #222;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 15px;
+  letter-spacing: -0.5px;
+  font-family: "Poppins", sans-serif;
+}
+
+.contact-modal-content input,
+.contact-modal-content textarea {
+  font-family: "Roboto", sans-serif;
+}
+
+.contact-modal-content input:focus,
+.contact-modal-content textarea:focus {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 0 8px rgba(74, 144, 226, 0.2);
+}
+
 .close-modal {
   position: absolute;
   right: 15px;
   top: 15px;
-  font-size: 20px;
+  font-size: 28px;
   font-weight: bold;
   color: #999;
   cursor: pointer;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: color 0.3s ease;
+  line-height: 1;
 }
 
 .close-modal:hover {
