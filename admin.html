@@ -37,10 +37,34 @@
         padding: 30px;
         margin-bottom: 40px;
         border-bottom: 2px solid #000000;
+      }
+
+      .admin-header-top {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        margin-bottom: 20px;
         flex-wrap: wrap;
+        gap: 15px;
+      }
+
+      .admin-logout-btn {
+        padding: 10px 20px;
+        border: 1px solid #000000;
+        background: #ffffff;
+        color: #000000;
+        cursor: pointer;
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: all 0.2s;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        white-space: nowrap;
+      }
+
+      .admin-logout-btn:hover {
+        background: #000000;
+        color: #ffffff;
       }
 
       .admin-header h1 {
@@ -79,32 +103,6 @@
       .admin-nav button.active {
         background: #000000;
         color: #ffffff;
-      }
-
-      /* Tooltip Styles */
-      .admin-nav button::after {
-        content: attr(data-tooltip);
-        position: absolute;
-        bottom: 100%;
-        left: 50%;
-        transform: translateX(-50%);
-        margin-bottom: 8px;
-        padding: 6px 12px;
-        background: #000000;
-        color: #ffffff;
-        font-size: 0.75rem;
-        white-space: nowrap;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.2s;
-        text-transform: none;
-        letter-spacing: 0;
-        font-weight: 400;
-        z-index: 1000;
-      }
-
-      .admin-nav button:hover::after {
-        opacity: 1;
       }
 
       .login-section {
@@ -769,50 +767,221 @@
         color: #000000;
       }
 
+      /* Mobile Card View - Hidden on desktop */
+      .mobile-card-view {
+        display: none;
+      }
+
       @media (max-width: 768px) {
         .admin-container {
-          padding: 20px 15px;
+          padding: 0;
         }
 
         .admin-header {
-          padding: 20px;
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 20px;
+          padding: 12px;
+          margin-bottom: 15px;
+        }
+
+        .admin-header-top {
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          gap: 10px;
+          margin-bottom: 12px;
         }
 
         .admin-header h1 {
-          font-size: 1.5rem;
+          font-size: 1.2rem;
+          line-height: 1.2;
+          margin: 0;
+          flex: 1;
         }
 
+        .admin-logout-btn {
+          padding: 8px 14px;
+          font-size: 0.75rem;
+          flex-shrink: 0;
+        }
+
+        /* Make navigation tabs wrap - no horizontal scrolling */
         .admin-nav {
           width: 100%;
           gap: 5px;
+          display: flex;
+          flex-wrap: wrap;
         }
 
         .admin-nav button {
-          flex: 1;
-          padding: 10px 12px;
-          font-size: 0.8rem;
+          flex: 1 1 auto;
+          min-width: calc(50% - 3px);
+          padding: 10px 8px;
+          font-size: 0.75rem;
+          white-space: nowrap;
         }
 
         .stats-grid {
           grid-template-columns: 1fr;
-          gap: 20px;
+          gap: 12px;
+        }
+
+        .stat-card {
+          padding: 15px;
+        }
+
+        .stat-card .stat-value {
+          font-size: 1.8rem;
         }
 
         .login-section {
-          margin: 60px auto;
-          padding: 30px 25px;
+          margin: 30px auto;
+          padding: 20px 15px;
+        }
+
+        /* Improve table accessibility on mobile */
+        .table-container {
+          -webkit-overflow-scrolling: touch;
+          border: 2px solid #000000;
         }
 
         table {
           font-size: 0.8rem;
+          min-width: 600px; /* Ensure horizontal scroll if needed */
         }
 
         table th,
         table td {
-          padding: 10px 12px;
+          padding: 12px 10px;
+          word-wrap: break-word;
+          max-width: 150px;
+        }
+
+        /* Make table cells wrap text */
+        table td {
+          white-space: normal;
+          overflow-wrap: break-word;
+        }
+
+        /* Hide desktop tables on mobile, show mobile card views */
+        .table-container {
+          display: none !important;
+        }
+
+        .mobile-card-view {
+          display: block !important;
+          padding: 0 12px;
+        }
+
+        .mobile-table-row {
+          background: #ffffff;
+          border: 2px solid #000000;
+          padding: 12px;
+          margin-bottom: 12px;
+        }
+
+        .mobile-table-row-header {
+          font-weight: 600;
+          font-size: 0.75rem;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          color: #000000;
+          margin-bottom: 5px;
+        }
+
+        .mobile-table-row-value {
+          margin-bottom: 12px;
+        }
+
+        .mobile-table-row-value:last-of-type {
+          margin-bottom: 0;
+        }
+
+        .mobile-table-row-actions {
+          display: flex;
+          gap: 10px;
+          margin-top: 15px;
+          padding-top: 15px;
+          border-top: 1px solid #e0e0e0;
+        }
+
+        .mobile-table-row-actions button {
+          flex: 1;
+          min-width: 80px;
+        }
+
+        /* Recent Activity grid - single column on mobile */
+        .recent-activity-grid {
+          grid-template-columns: 1fr !important;
+          gap: 12px !important;
+          padding: 0 12px;
+        }
+
+        /* Recent Activity containers - better scrolling */
+        #recentInquiriesList,
+        #recentOrdersList {
+          max-height: 250px;
+          overflow-y: auto;
+          -webkit-overflow-scrolling: touch;
+        }
+
+        /* Better touch targets for buttons */
+        .btn,
+        table button {
+          min-height: 44px; /* Minimum touch target size */
+          padding: 12px 16px;
+        }
+
+        /* Section headers */
+        h2 {
+          font-size: 1.2rem;
+          margin-bottom: 15px;
+          padding-bottom: 10px;
+          padding-left: 12px;
+          padding-right: 12px;
+        }
+
+        /* Improve spacing in sections - full width */
+        .dashboard-section {
+          padding: 0;
+          width: 100%;
+        }
+
+        /* Full width sections on mobile */
+        .dashboard-section > div {
+          padding-left: 12px;
+          padding-right: 12px;
+        }
+
+        /* Reduce gaps everywhere */
+        .stats-grid,
+        .recent-activity-grid {
+          padding: 0 12px;
+        }
+
+        /* Compact table container padding */
+        .table-container {
+          margin: 0 12px;
+        }
+
+        /* Data Management sections - full width on mobile */
+        .data-management-section {
+          padding: 20px 12px !important;
+          margin-left: 0 !important;
+          margin-right: 0 !important;
+          width: 100% !important;
+          box-sizing: border-box !important;
+        }
+
+        /* Download Data and Delete Data sections - full width */
+        #datamanagement .stats-grid {
+          margin: 0 12px 20px 12px !important;
+        }
+
+        /* Ensure all sections in Data Management use full width */
+        #datamanagement > div:not(.stats-grid) {
+          padding-left: 12px !important;
+          padding-right: 12px !important;
+          margin-left: 0 !important;
+          margin-right: 0 !important;
         }
       }
     </style>
@@ -883,45 +1052,24 @@
       <!-- Dashboard Section -->
       <div id="dashboardSection" style="display: none">
         <div class="admin-header">
-          <h1>ARK Hygiene Admin Dashboard</h1>
+          <div class="admin-header-top">
+            <h1>ARK Hygiene Admin Dashboard</h1>
+            <button onclick="logout()" class="admin-logout-btn">Logout</button>
+          </div>
           <div class="admin-nav">
-            <button
-              onclick="showSection('dashboard')"
-              class="active"
-              data-tooltip="View overview statistics and key metrics"
-            >
+            <button onclick="showSection('dashboard')" class="active">
               Dashboard
             </button>
-            <button
-              onclick="showSection('products')"
-              data-tooltip="Manage product catalog - add, edit, or delete products"
-            >
-              Products
-            </button>
-            <button
-              onclick="showSection('inquiries')"
-              data-tooltip="View and respond to customer quote requests and inquiries from contact forms"
-            >
-              Quote Requests
-            </button>
+            <button onclick="showSection('products')">Products</button>
+            <button onclick="showSection('inquiries')">Quote Requests</button>
             <!-- Orders section hidden - currently all customer requests go to Quote Requests -->
             <!-- <button
               onclick="showSection('orders')"
-              data-tooltip="Track and manage confirmed customer orders"
             >
               Orders
             </button> -->
-            <button
-              onclick="showSection('datamanagement')"
-              data-tooltip="Download data and manage database storage to prevent exceeding limits"
-            >
+            <button onclick="showSection('datamanagement')">
               Data Management
-            </button>
-            <button
-              onclick="logout()"
-              data-tooltip="Log out from admin dashboard"
-            >
-              Logout
             </button>
           </div>
         </div>
@@ -964,6 +1112,7 @@
           <div style="margin-top: 50px">
             <h2>Recent Activity</h2>
             <div
+              class="recent-activity-grid"
               style="
                 display: grid;
                 grid-template-columns: 1fr 1fr;
@@ -1053,6 +1202,9 @@
               </tbody>
             </table>
           </div>
+          <div id="productsMobileView" class="mobile-card-view">
+            <!-- Mobile card view for products will be loaded here -->
+          </div>
         </div>
 
         <!-- Data Management Section -->
@@ -1097,6 +1249,7 @@
 
           <!-- Download Data Section -->
           <div
+            class="data-management-section"
             style="
               margin-bottom: 40px;
               padding: 30px;
@@ -1165,6 +1318,7 @@
 
           <!-- Delete Data Section -->
           <div
+            class="data-management-section"
             style="
               padding: 30px;
               border: 2px solid #000000;
@@ -1326,6 +1480,7 @@
 
             <!-- Clear All Data (Danger Zone) -->
             <div
+              class="data-management-section"
               style="
                 margin-top: 40px;
                 padding: 30px;
@@ -1467,6 +1622,9 @@
                 <!-- Inquiries will be loaded here -->
               </tbody>
             </table>
+          </div>
+          <div id="inquiriesMobileView" class="mobile-card-view">
+            <!-- Mobile card view for inquiries will be loaded here -->
           </div>
 
           <!-- Inquiry Detail Modal -->
@@ -2436,14 +2594,25 @@
         try {
           const response = await api.getProducts({ limit: 50 });
           const tbody = document.getElementById("productsTableBody");
-          tbody.innerHTML = "";
+          const mobileView = document.getElementById("productsMobileView");
+
+          // Clear both views
+          if (tbody) tbody.innerHTML = "";
+          if (mobileView) mobileView.innerHTML = "";
 
           if (response.success && response.data) {
             if (response.data.length === 0) {
-              tbody.innerHTML =
-                '<tr><td colspan="6" style="text-align: center; padding: 30px;">No products found. Click "Add Product" to create one.</td></tr>';
+              if (tbody) {
+                tbody.innerHTML =
+                  '<tr><td colspan="6" style="text-align: center; padding: 30px;">No products found. Click "Add Product" to create one.</td></tr>';
+              }
+              if (mobileView) {
+                mobileView.innerHTML =
+                  '<div class="empty-state" style="text-align: center; padding: 30px; color: #666;">No products found. Click "Add Product" to create one.</div>';
+              }
             } else {
               response.data.forEach((product) => {
+                // Desktop table row
                 const row = document.createElement("tr");
                 row.innerHTML = `
                 <td>${product.name}</td>
@@ -2465,6 +2634,47 @@
                 </td>
               `;
                 tbody.appendChild(row);
+
+                // Mobile card view
+                if (mobileView) {
+                  const card = document.createElement("div");
+                  card.className = "mobile-table-row";
+                  card.innerHTML = `
+                    <div class="mobile-table-row-value">
+                      <div class="mobile-table-row-header">Name</div>
+                      <div><strong>${product.name}</strong></div>
+                    </div>
+                    <div class="mobile-table-row-value">
+                      <div class="mobile-table-row-header">Category</div>
+                      <div>${product.category}</div>
+                    </div>
+                    <div class="mobile-table-row-value">
+                      <div class="mobile-table-row-header">Price</div>
+                      <div>${
+                        product.price
+                          ? "KES " + product.price.toFixed(2)
+                          : "N/A"
+                      }</div>
+                    </div>
+                    <div class="mobile-table-row-value">
+                      <div class="mobile-table-row-header">Stock</div>
+                      <div>${product.stock || 0}</div>
+                    </div>
+                    <div class="mobile-table-row-value">
+                      <div class="mobile-table-row-header">Status</div>
+                      <div>${product.active ? "Active" : "Inactive"}</div>
+                    </div>
+                    <div class="mobile-table-row-actions">
+                      <button onclick="editProduct('${
+                        product._id
+                      }')" class="view-btn">Edit</button>
+                      <button onclick="deleteProduct('${
+                        product._id
+                      }')" class="delete-btn">Delete</button>
+                    </div>
+                  `;
+                  mobileView.appendChild(card);
+                }
               });
             }
           }
@@ -2477,14 +2687,25 @@
         try {
           const response = await api.getInquiries({ limit: 50 });
           const tbody = document.getElementById("inquiriesTableBody");
-          tbody.innerHTML = "";
+          const mobileView = document.getElementById("inquiriesMobileView");
+
+          // Clear both views
+          if (tbody) tbody.innerHTML = "";
+          if (mobileView) mobileView.innerHTML = "";
 
           if (response.success && response.data) {
             if (response.data.length === 0) {
-              tbody.innerHTML =
-                '<tr><td colspan="6" style="text-align: center; padding: 30px;">No inquiries found.</td></tr>';
+              if (tbody) {
+                tbody.innerHTML =
+                  '<tr><td colspan="6" style="text-align: center; padding: 30px;">No inquiries found.</td></tr>';
+              }
+              if (mobileView) {
+                mobileView.innerHTML =
+                  '<div class="empty-state" style="text-align: center; padding: 30px; color: #666;">No inquiries found.</div>';
+              }
             } else {
               response.data.forEach((inquiry) => {
+                // Desktop table row
                 const row = document.createElement("tr");
                 row.innerHTML = `
                 <td>${inquiry.name}</td>
@@ -2511,6 +2732,52 @@
                 </td>
               `;
                 tbody.appendChild(row);
+
+                // Mobile card view
+                if (mobileView) {
+                  const card = document.createElement("div");
+                  card.className = "mobile-table-row";
+                  card.innerHTML = `
+                    <div class="mobile-table-row-value">
+                      <div class="mobile-table-row-header">Name</div>
+                      <div><strong>${inquiry.name}</strong></div>
+                    </div>
+                    <div class="mobile-table-row-value">
+                      <div class="mobile-table-row-header">Email</div>
+                      <div><a href="javascript:void(0)" onclick="openEmailClient('${escapeForOnClick(
+                        inquiry.email
+                      )}', '${escapeForOnClick(
+                    inquiry.subject || "Re: Your Inquiry"
+                  )}', '${escapeForOnClick(
+                    (inquiry.message || "").substring(0, 500)
+                  )}')" style="color: #000; text-decoration: underline; word-break: break-all;">${
+                    inquiry.email
+                  }</a></div>
+                    </div>
+                    <div class="mobile-table-row-value">
+                      <div class="mobile-table-row-header">Subject</div>
+                      <div>${inquiry.subject}</div>
+                    </div>
+                    <div class="mobile-table-row-value">
+                      <div class="mobile-table-row-header">Status</div>
+                      <div><span class="badge ${inquiry.status}">${
+                    inquiry.status
+                  }</span></div>
+                    </div>
+                    <div class="mobile-table-row-value">
+                      <div class="mobile-table-row-header">Date</div>
+                      <div>${new Date(
+                        inquiry.createdAt
+                      ).toLocaleDateString()}</div>
+                    </div>
+                    <div class="mobile-table-row-actions">
+                      <button onclick="viewInquiry('${
+                        inquiry._id
+                      }')" class="view-btn" style="width: 100%;">View Details</button>
+                    </div>
+                  `;
+                  mobileView.appendChild(card);
+                }
               });
             }
           }

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LifeQuest - Your Achievement Journey</title>
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
+  <body>
+    <header class="header">
+      <nav class="nav">
+        <div class="nav-brand">
+          <h1>LifeQuest</h1>
+        </div>
+        <div class="nav-menu">
+          <a href="#" class="nav-link active">Dashboard</a>
+          <a href="#" class="nav-link">Badges</a>
+          <a href="#" class="nav-link">Profile</a>
+          <a href="#" class="nav-link">Leaderboard</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="main">
+      <section class="hero">
+        <div class="hero-content">
+          <h2>Welcome to Your Life Journey</h2>
+          <p>
+            Track your achievements, earn badges, and level up through life's
+            milestones
+          </p>
+        </div>
+      </section>
+
+      <section class="user-stats">
+        <div class="stat-card">
+          <h3>Level</h3>
+          <div class="stat-value" id="user-level">25</div>
+          <p>Based on your age</p>
+        </div>
+        <div class="stat-card">
+          <h3>Badges Earned</h3>
+          <div class="stat-value" id="badges-count">0</div>
+          <p>Your achievements</p>
+        </div>
+        <div class="stat-card">
+          <h3>Total Points</h3>
+          <div class="stat-value" id="total-points">0</div>
+          <p>Your journey score</p>
+        </div>
+      </section>
+
+      <section class="recent-achievements">
+        <h3>Recent Achievements</h3>
+        <div class="achievements-grid" id="achievements-container">
+          <!-- Achievements will be populated by JavaScript -->
+        </div>
+      </section>
+
+      <section class="search-filter-section">
+        <div class="search-container">
+          <input
+            type="text"
+            class="search-input"
+            id="badge-search"
+            placeholder="Search badges..."
+          />
+          <div class="filter-buttons">
+            <button class="filter-btn active" data-category="all">All</button>
+            <button class="filter-btn" data-category="career">Career</button>
+            <button class="filter-btn" data-category="education">
+              Education
+            </button>
+            <button class="filter-btn" data-category="health">Health</button>
+            <button class="filter-btn" data-category="financial">
+              Financial
+            </button>
+            <button class="filter-btn" data-category="travel">Travel</button>
+            <button class="filter-btn" data-category="social">Social</button>
+            <button class="filter-btn" data-category="creative">
+              Creative
+            </button>
+            <button class="filter-btn" data-category="technology">
+              Technology
+            </button>
+            <button class="filter-btn" data-category="lifestyle">
+              Lifestyle
+            </button>
+            <button class="filter-btn" data-category="extreme">Extreme</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="progress-section">
+        <h3>Your Progress</h3>
+        <div class="progress-grid" id="progress-container">
+          <!-- Progress will be populated by JavaScript -->
+        </div>
+      </section>
+
+      <section class="achievement-history">
+        <div class="history-header">
+          <h3>Recent Achievements</h3>
+          <div class="history-stats">
+            <span>Total Earned: <span id="total-earned">0</span></span>
+            <span>This Month: <span id="month-earned">0</span></span>
+          </div>
+        </div>
+        <div id="history-container">
+          <!-- History will be populated by JavaScript -->
+        </div>
+      </section>
+
+      <section class="available-badges">
+        <div class="section-header">
+          <h3>Available Badges</h3>
+          <div class="badge-stats">
+            <span class="stat-item"
+              >Total: <span id="total-badges">0</span></span
+            >
+            <span class="stat-item"
+              >Earned: <span id="earned-badges">0</span></span
+            >
+            <span class="stat-item"
+              >Remaining: <span id="remaining-badges">0</span></span
+            >
+          </div>
+        </div>
+        <div class="badges-grid" id="badges-container">
+          <!-- Badges will be populated by JavaScript -->
+        </div>
+        <div class="load-more-section">
+          <button class="btn btn-secondary" id="load-more-badges">
+            Load More Badges
+          </button>
+          <button class="btn btn-primary" id="shuffle-badges">
+            Shuffle Badges
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>&copy; 2024 LifeQuest. Your journey, your achievements.</p>
+    </footer>
+
+    <script src="js/common.js"></script>
+    <script src="js/achievements-database.js"></script>
+    <script src="js/performance-optimizer.js"></script>
+    <script src="js/index.js"></script>
+  </body>
+</html>

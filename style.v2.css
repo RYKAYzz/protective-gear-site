@@ -73,7 +73,7 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  font-family: "Poppins", "Roboto", sans-serif;
+  font-family: "Ubuntu", sans-serif;
   background: #fff;
   box-sizing: border-box;
   overflow-x: hidden;
@@ -168,7 +168,7 @@ body {
   background: none;
   border: none;
   color: #222;
-  font-family: "Roboto", sans-serif;
+  font-family: "Ubuntu", sans-serif;
   font-size: 0.9rem;
   font-weight: 500;
   padding: 8px 12px;
@@ -369,7 +369,7 @@ body {
   justify-content: center;
   font-size: 0.9rem;
   font-weight: 700;
-  font-family: "Roboto", sans-serif;
+  font-family: "Ubuntu", sans-serif;
   opacity: 1;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 4px 16px rgba(74, 144, 226, 0.4);
@@ -389,7 +389,7 @@ body {
   color: #fff;
   border: none;
   border-radius: 32px;
-  font-family: "Poppins", sans-serif;
+  font-family: "Ubuntu", sans-serif;
   font-size: 0.9rem;
   font-weight: 600;
   letter-spacing: 1px;
@@ -481,12 +481,12 @@ body {
   border-bottom: 1px solid #e0e0e0;
   padding-bottom: 15px;
   letter-spacing: -0.5px;
-  font-family: "Poppins", sans-serif;
+  font-family: "Ubuntu", sans-serif;
 }
 
 .contact-modal-content input,
 .contact-modal-content textarea {
-  font-family: "Roboto", sans-serif;
+  font-family: "Ubuntu", sans-serif;
 }
 
 .contact-modal-content input:focus,
@@ -591,7 +591,7 @@ body {
 }
 
 .hero h1 {
-  font-family: "Poppins", sans-serif;
+  font-family: "Ubuntu", sans-serif;
   font-size: 2.5rem;
   font-weight: 900;
   margin: 0 0 16px 0;
@@ -599,7 +599,7 @@ body {
 }
 
 .hero p {
-  font-family: "Roboto", sans-serif;
+  font-family: "Ubuntu", sans-serif;
   font-size: 1.2rem;
   line-height: 1.6;
   margin: 0 0 24px 0;
@@ -621,7 +621,7 @@ body {
   color: #222;
   border: none;
   border-radius: 32px;
-  font-family: "Poppins", sans-serif;
+  font-family: "Ubuntu", sans-serif;
   font-size: 1.1rem;
   font-weight: 600;
   letter-spacing: 1px;
@@ -653,22 +653,18 @@ body {
 
 /* Products Section - ORIGINAL DESIGN (UNCHANGED) */
 .products-section {
-  padding: 60px 8vw 40px 8vw;
-  background: linear-gradient(
-    135deg,
-    #fff 0%,
-    #8ec5fc 40%,
-    #4a90e2 80%,
-    #003366 100%
-  );
+  padding: 60px 8vw 50px 8vw;
+  background: #ffffff;
 }
 
 .products-section h2 {
   text-align: center;
-  font-size: 2.2rem;
-  font-family: "Poppins", sans-serif;
+  font-size: 1.75rem;
+  font-family: "Ubuntu", sans-serif;
   margin-bottom: 40px;
-  color: #222;
+  color: #1a1a1a;
+  font-weight: 600;
+  letter-spacing: -0.3px;
 }
 
 /* Professional Product Catalog Styling */
@@ -744,7 +740,7 @@ body {
   color: #333;
   padding: 10px 20px;
   border-radius: 6px;
-  font-family: "Roboto", sans-serif;
+  font-family: "Ubuntu", sans-serif;
   font-weight: 500;
   font-size: 0.9rem;
   cursor: pointer;
@@ -849,7 +845,7 @@ body {
 }
 
 .product-name {
-  font-family: "Poppins", sans-serif;
+  font-family: "Ubuntu", sans-serif;
   font-size: 1.2rem;
   font-weight: 600;
   color: #222;
@@ -863,7 +859,7 @@ body {
 }
 
 .product-description {
-  font-family: "Roboto", sans-serif;
+  font-family: "Ubuntu", sans-serif;
   font-size: 0.95rem;
   color: #555;
   line-height: 1.5;
@@ -892,7 +888,7 @@ body {
 .btn-details {
   padding: 12px 24px;
   border-radius: 8px;
-  font-family: "Roboto", sans-serif;
+  font-family: "Ubuntu", sans-serif;
   font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
@@ -948,7 +944,7 @@ body {
 }
 
 .quantity-label {
-  font-family: "Roboto", sans-serif;
+  font-family: "Ubuntu", sans-serif;
   font-size: 0.9rem;
   color: #555;
   margin-bottom: 8px;
@@ -960,7 +956,7 @@ body {
   padding: 8px 12px;
   border: 1px solid #ddd;
   border-radius: 6px;
-  font-family: "Roboto", sans-serif;
+  font-family: "Ubuntu", sans-serif;
   font-size: 0.9rem;
   color: #333;
   background: #fff;
@@ -982,7 +978,7 @@ body {
   color: white;
   padding: 12px 20px;
   border-radius: 8px;
-  font-family: "Roboto", sans-serif;
+  font-family: "Ubuntu", sans-serif;
   font-size: 0.9rem;
   z-index: 10000;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -2613,7 +2609,7 @@ body {
 }
 
 .contact-title {
-  font-family: "Poppins", sans-serif;
+  font-family: "Ubuntu", sans-serif;
   font-size: 2rem;
   font-weight: 900;
   color: #222;
@@ -2635,7 +2631,7 @@ body {
 }
 
 .contact-info h3 {
-  font-family: "Poppins", sans-serif;
+  font-family: "Ubuntu", sans-serif;
   font-size: 1.2rem;
   color: #3a3a3a;
   margin-bottom: 20px;
@@ -2651,14 +2647,14 @@ body {
 }
 
 .contact-item strong {
-  font-family: "Roboto", sans-serif;
+  font-family: "Ubuntu", sans-serif;
   font-size: 1rem;
   color: #555;
   margin-right: 8px;
 }
 
 .contact-item p {
-  font-family: "Roboto", sans-serif;
+  font-family: "Ubuntu", sans-serif;
   font-size: 1rem;
   color: #222;
   margin: 0;
@@ -2696,7 +2692,7 @@ body {
 }
 
 .contact-form h3 {
-  font-family: "Poppins", sans-serif;
+  font-family: "Ubuntu", sans-serif;
   font-size: 1.4rem;
   color: #3a3a3a;
   margin-bottom: 24px;
@@ -2714,7 +2710,7 @@ body {
 }
 
 .form-group label {
-  font-family: "Roboto", sans-serif;
+  font-family: "Ubuntu", sans-serif;
   font-size: 0.9rem;
   color: #555;
   display: block;
@@ -2729,7 +2725,7 @@ body {
   padding: 12px 14px;
   border: 1px solid #ccc;
   border-radius: 8px;
-  font-family: "Roboto", sans-serif;
+  font-family: "Ubuntu", sans-serif;
   font-size: 1rem;
   color: #222;
   box-sizing: border-box;
@@ -2749,7 +2745,7 @@ body {
   color: #fff;
   border: none;
   border-radius: 32px;
-  font-family: "Poppins", sans-serif;
+  font-family: "Ubuntu", sans-serif;
   font-size: 1.1rem;
   font-weight: 600;
   letter-spacing: 1px;
@@ -2885,7 +2881,7 @@ body {
 .nav-links a {
   color: #222;
   text-decoration: none;
-  font-family: "Roboto", sans-serif;
+  font-family: "Ubuntu", sans-serif;
   font-size: 0.9rem;
   font-weight: 500;
   padding: 8px 12px;
@@ -2928,7 +2924,7 @@ body {
 .modern-footer {
   background: #f8f9fa;
   color: #333;
-  font-family: "Roboto", sans-serif;
+  font-family: "Ubuntu", sans-serif;
 }
 
 .footer-main {
@@ -2941,7 +2937,7 @@ body {
 }
 
 .footer-section h3 {
-  font-family: "Poppins", sans-serif;
+  font-family: "Ubuntu", sans-serif;
   font-size: 1.2rem;
   font-weight: 600;
   color: #222;
@@ -3028,7 +3024,7 @@ body {
   border: none;
   padding: 12px 24px;
   border-radius: 6px;
-  font-family: "Poppins", sans-serif;
+  font-family: "Ubuntu", sans-serif;
   font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
@@ -3090,7 +3086,7 @@ body {
   max-width: 800px;
   margin: 0 auto;
   padding: 40px 20px;
-  font-family: "Roboto", sans-serif;
+  font-family: "Ubuntu", sans-serif;
 }
 
 .privacy-content .container {
@@ -3101,7 +3097,7 @@ body {
 }
 
 .privacy-content h1 {
-  font-family: "Poppins", sans-serif;
+  font-family: "Ubuntu", sans-serif;
   font-size: 2.5rem;
   font-weight: 700;
   color: #222;
@@ -3122,7 +3118,7 @@ body {
 }
 
 .privacy-content h2 {
-  font-family: "Poppins", sans-serif;
+  font-family: "Ubuntu", sans-serif;
   font-size: 1.4rem;
   font-weight: 600;
   color: #222;
@@ -3216,7 +3212,7 @@ footer::before {
 }
 
 footer h3 {
-  font-family: "Poppins", sans-serif;
+  font-family: "Ubuntu", sans-serif;
   font-size: 2.2rem;
   font-weight: 700;
   margin-bottom: 20px;
@@ -3229,7 +3225,7 @@ footer h3 {
 }
 
 footer p {
-  font-family: "Roboto", sans-serif;
+  font-family: "Ubuntu", sans-serif;
   font-size: 1.1rem;
   line-height: 1.7;
   margin-bottom: 30px;
@@ -3254,7 +3250,7 @@ footer p {
 .footer-links a {
   color: #fff;
   text-decoration: none;
-  font-family: "Roboto", sans-serif;
+  font-family: "Ubuntu", sans-serif;
   font-size: 1rem;
   font-weight: 500;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -3294,7 +3290,7 @@ footer p {
 .footer-bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.15);
   padding-top: 25px;
-  font-family: "Roboto", sans-serif;
+  font-family: "Ubuntu", sans-serif;
   font-size: 0.9rem;
   opacity: 0.7;
   position: relative;
@@ -3304,7 +3300,7 @@ footer p {
 .product-cta {
   padding: 12px 24px;
   border-radius: 8px;
-  font-family: "Roboto", sans-serif;
+  font-family: "Ubuntu", sans-serif;
   font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
@@ -3507,7 +3503,7 @@ footer p {
 
 .blog-content h2 {
   font-size: 2rem;
-  font-family: "Poppins", sans-serif;
+  font-family: "Ubuntu", sans-serif;
   text-align: center;
   margin-bottom: 16px;
   color: #222;
@@ -3515,7 +3511,7 @@ footer p {
 
 .blog-subtitle {
   font-size: 1.1rem;
-  font-family: "Roboto", sans-serif;
+  font-family: "Ubuntu", sans-serif;
   text-align: center;
   color: #666;
   margin-bottom: 40px;
@@ -3563,14 +3559,14 @@ footer p {
 
 .blog-content-inner h3 {
   font-size: 1.2rem;
-  font-family: "Poppins", sans-serif;
+  font-family: "Ubuntu", sans-serif;
   margin-bottom: 12px;
   color: #222;
 }
 
 .blog-content-inner p {
   font-size: 1rem;
-  font-family: "Roboto", sans-serif;
+  font-family: "Ubuntu", sans-serif;
   color: #666;
   line-height: 1.6;
   margin-bottom: 16px;
@@ -3582,7 +3578,7 @@ footer p {
   align-items: center;
   font-size: 0.85rem;
   color: #888;
-  font-family: "Roboto", sans-serif;
+  font-family: "Ubuntu", sans-serif;
 }
 
 .blog-date {
@@ -3607,7 +3603,7 @@ footer p {
   padding: 14px 32px;
   border-radius: 8px;
   font-size: 1.1rem;
-  font-family: "Poppins", sans-serif;
+  font-family: "Ubuntu", sans-serif;
   font-weight: 600;
   text-decoration: none;
   display: inline-block;
@@ -3625,7 +3621,7 @@ footer p {
   padding: 8px 16px;
   border-radius: 6px;
   font-size: 0.85rem;
-  font-family: "Poppins", sans-serif;
+  font-family: "Ubuntu", sans-serif;
   font-weight: 600;
   text-decoration: none;
   display: inline-block;
@@ -3850,14 +3846,14 @@ footer p {
 
 .cta-content h2 {
   font-size: 2.2rem;
-  font-family: "Poppins", sans-serif;
+  font-family: "Ubuntu", sans-serif;
   margin-bottom: 16px;
   color: #fff;
 }
 
 .cta-content p {
   font-size: 1.2rem;
-  font-family: "Roboto", sans-serif;
+  font-family: "Ubuntu", sans-serif;
   line-height: 1.6;
   margin-bottom: 32px;
   opacity: 0.9;
@@ -3874,7 +3870,7 @@ footer p {
   padding: 16px 32px;
   border-radius: 8px;
   font-size: 1.1rem;
-  font-family: "Poppins", sans-serif;
+  font-family: "Ubuntu", sans-serif;
   font-weight: 600;
   text-decoration: none;
   display: inline-block;

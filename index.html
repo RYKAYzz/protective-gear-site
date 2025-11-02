@@ -83,14 +83,14 @@
     <!-- Preload Critical Resources -->
     <link
       rel="preload"
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
       as="style"
       onload="this.onload=null;this.rel='stylesheet'"
     />
     <noscript
       ><link
         rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
     /></noscript>
 
     <!-- Preload Critical Images -->
@@ -108,6 +108,16 @@
       rel="preload"
       as="image"
       href="assets/bins-wastes/pedal bins - 25 litres.png"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="assets/spill-kits/spill kits & spill packs -  biohazard  spill kit.png"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="assets/Disinfectants/disinfectant spray portex.png"
     />
 
     <!-- Structured Data -->
@@ -159,10 +169,14 @@
         height: 100%;
         margin: 0;
         padding: 0;
-        font-family: "Poppins", "Roboto", sans-serif;
+        font-family: "Ubuntu", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
         background: #fff;
         box-sizing: border-box;
         overflow-x: hidden;
+        font-size: 16px;
+        line-height: 1.6;
+        color: #2c3e50;
       }
       *,
       *:before,
@@ -178,23 +192,26 @@
         position: sticky;
         top: 0;
         z-index: 1000;
-        border-bottom: 1px solid rgba(142, 197, 252, 0.2);
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        border-bottom: 1px solid #e8ecef;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
       }
       .navbar {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 12px 4vw;
+        padding: 20px 5vw !important;
         width: 100%;
         box-sizing: border-box;
+        max-width: 1400px;
+        margin: 0 auto;
       }
       .logo {
-        font-family: "Poppins", sans-serif;
-        font-size: 1.2rem;
-        font-weight: 700;
-        color: #222;
-        letter-spacing: 1px;
+        font-family: "Ubuntu", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        font-size: 1.4rem !important;
+        font-weight: 600 !important;
+        color: #1a1a1a !important;
+        letter-spacing: -0.3px !important;
         margin: 0;
         padding: 0;
       }
@@ -216,82 +233,353 @@
         list-style: none;
       }
       .nav-links a {
-        color: #222;
+        color: #2c3e50;
         text-decoration: none;
-        font-family: "Roboto", sans-serif;
+        font-family: "Ubuntu", sans-serif;
         font-size: 0.9rem;
         font-weight: 500;
-        padding: 6px 8px;
+        padding: 8px 12px;
         border-radius: 6px;
-        transition: background 0.3s ease;
+        transition: all 0.2s ease;
       }
       .nav-links a:hover {
-        background: rgba(142, 197, 252, 0.15);
+        background: #f0f7ff;
         color: #4a90e2;
       }
       .hero {
         width: 100%;
-        min-height: 180px;
+        min-height: 500px !important;
         display: flex;
-        flex-direction: column;
         align-items: center;
         justify-content: center;
-        background: none;
-        color: #222;
-        text-align: center;
-        padding: 32px 6vw 18px 6vw;
+        background: #fafbfc !important;
+        color: #2c3e50;
+        padding: 60px 5vw 60px 5vw !important;
         margin: 0;
+        border-bottom: none !important;
+      }
+      .hero-content-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+        max-width: 1400px;
+        width: 100%;
+      }
+      .hero-text-content {
+        text-align: left;
+      }
+      @media (max-width: 968px) {
+        .hero-content-wrapper {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+        .hero-text-content {
+          text-align: center;
+        }
       }
       .hero h1 {
-        font-size: 1.3rem;
-        font-family: "Poppins", sans-serif;
-        margin-bottom: 12px;
-        font-weight: 700;
+        font-size: 2.5rem !important;
+        font-family: "Ubuntu", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif !important;
+        margin-bottom: 24px !important;
+        font-weight: 600 !important;
+        color: #1a1a1a !important;
+        letter-spacing: -0.8px !important;
+        line-height: 1.2 !important;
+        margin-left: 0;
+        margin-right: 0;
       }
       .hero p {
-        font-size: 1rem;
-        font-family: "Roboto", sans-serif;
-        max-width: 95vw;
-        margin: 0 auto;
+        font-size: 1.15rem !important;
+        font-family: "Ubuntu", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif !important;
+        margin: 0 !important;
+        color: #5a6c7d !important;
+        line-height: 1.75 !important;
+        font-weight: 400 !important;
       }
       .hero-buttons {
         display: flex;
         gap: 16px;
-        justify-content: center;
+        justify-content: flex-start;
         flex-wrap: wrap;
-        margin-top: 24px;
+        margin-top: 32px;
+      }
+      @media (max-width: 968px) {
+        .hero-buttons {
+          justify-content: center;
+        }
       }
       .hero .explore-btn {
-        padding: 14px 36px;
-        background: linear-gradient(90deg, #8ec5fc 0%, #4a90e2 100%);
-        color: #222;
+        padding: 14px 32px;
+        background: #4a90e2;
+        color: #ffffff;
         border: none;
-        border-radius: 32px;
-        font-family: "Poppins", sans-serif;
-        font-size: 1.1rem;
-        font-weight: 600;
-        letter-spacing: 1px;
+        border-radius: 6px;
+        font-family: "Ubuntu", sans-serif;
+        font-size: 1rem;
+        font-weight: 500;
+        letter-spacing: 0.3px;
         cursor: pointer;
-        box-shadow: 0 2px 8px rgba(142, 197, 252, 0.18);
-        transition: background 0.4s ease, box-shadow 0.4s ease;
+        box-shadow: 0 2px 4px rgba(74, 144, 226, 0.15);
+        transition: all 0.3s ease;
       }
       .hero .explore-btn:hover {
-        background: linear-gradient(90deg, #4a90e2 0%, #8ec5fc 100%);
-        box-shadow: 0 4px 16px rgba(142, 197, 252, 0.28);
-        color: #222;
+        background: #3a7bd5;
+        box-shadow: 0 4px 12px rgba(74, 144, 226, 0.25);
+        transform: translateY(-1px);
+        color: #ffffff;
       }
       .hero .explore-btn.secondary {
         background: transparent;
-        color: #222;
+        color: #4a90e2;
         border: 2px solid #4a90e2;
         box-shadow: none;
       }
       .hero .explore-btn.secondary:hover {
-        background: #4a90e2;
-        color: #222;
+        background: #f0f7ff;
+        color: #3a7bd5;
+        border-color: #3a7bd5;
       }
+
+      /* Hero Slideshow Styles */
+      .hero-slideshow {
+        position: relative;
+        width: 100%;
+        max-width: 700px;
+        min-height: 450px;
+        height: auto;
+        border-radius: 0 !important;
+        overflow: visible !important;
+        box-shadow: none !important;
+        background: transparent !important;
+        border: none !important;
+        outline: none !important;
+      }
+      .hero-slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        min-height: 450px;
+        opacity: 0;
+        transition: opacity 0.6s ease-in-out;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent !important;
+        border: none !important;
+        outline: none !important;
+      }
+      .hero-slide.active {
+        opacity: 1;
+        z-index: 2;
+      }
+      .hero-slide img {
+        width: auto !important;
+        height: auto !important;
+        max-width: 100% !important;
+        max-height: 500px !important;
+        min-width: 450px !important;
+        min-height: 400px !important;
+        object-fit: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        background: transparent !important;
+        border: none !important;
+        outline: none !important;
+        box-shadow: none !important;
+        image-rendering: auto;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        will-change: opacity;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        filter: none !important;
+        display: block;
+      }
+      .slide-overlay {
+        position: absolute;
+        bottom: 50px;
+        left: 0;
+        right: 0;
+        background: transparent !important;
+        color: #1a1a1a;
+        padding: 20px 0 0 0;
+        text-align: left;
+        z-index: 3;
+      }
+      .slide-overlay.explore-more-slide {
+        position: absolute;
+        bottom: auto;
+        top: 50%;
+        left: 50%;
+        right: auto;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        z-index: 3;
+        width: 100%;
+        max-width: 500px;
+        padding: 40px 20px;
+        background: rgba(255, 255, 255, 0.95) !important;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      }
+      .slide-overlay h3 {
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin: 0 0 8px 0;
+        color: #1a1a1a;
+        font-family: "Ubuntu", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+      }
+      .slide-overlay p {
+        font-size: 0.95rem;
+        margin: 0 0 16px 0;
+        color: #5a6c7d;
+        opacity: 1;
+        font-family: "Ubuntu", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+      }
+      .slide-overlay .slide-cta-btn {
+        padding: 10px 24px;
+        background: #4a90e2;
+        color: #ffffff;
+        border: none;
+        border-radius: 6px;
+        font-family: "Ubuntu", sans-serif;
+        font-size: 0.95rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 4px rgba(74, 144, 226, 0.15);
+        margin-top: 12px;
+      }
+      .slide-overlay .slide-cta-btn:hover {
+        background: #3a7bd5;
+        box-shadow: 0 4px 12px rgba(74, 144, 226, 0.25);
+        transform: translateY(-1px);
+        color: #ffffff;
+      }
+      .slide-prev,
+      .slide-next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.95);
+        border: 1px solid rgba(74, 144, 226, 0.2);
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        font-size: 24px;
+        color: #4a90e2;
+        cursor: pointer;
+        z-index: 4;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+      .slide-prev {
+        left: 15px;
+      }
+      .slide-next {
+        right: 15px;
+      }
+      .slide-prev:hover,
+      .slide-next:hover {
+        background: #4a90e2;
+        color: #ffffff;
+        box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+      }
+      .slide-indicators {
+        position: absolute;
+        bottom: 15px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 10px;
+        z-index: 4;
+      }
+      .indicator {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: rgba(74, 144, 226, 0.3);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(74, 144, 226, 0.2);
+      }
+      .indicator.active {
+        background: #4a90e2;
+        width: 30px;
+        border-radius: 5px;
+        border-color: #4a90e2;
+      }
+      @media (max-width: 968px) {
+        .hero-slideshow {
+          max-width: 100%;
+          min-height: 350px;
+          height: auto;
+          border-radius: 0 !important;
+          box-shadow: none !important;
+          background: transparent !important;
+          border: none !important;
+        }
+        .hero-slide {
+          background: transparent !important;
+          border: none !important;
+          min-height: 350px;
+        }
+        .hero-slide img {
+          background: transparent !important;
+          padding: 0 !important;
+          border: none !important;
+          outline: none !important;
+          width: auto !important;
+          height: auto !important;
+          max-height: 400px !important;
+          min-width: 300px !important;
+          min-height: 300px !important;
+          max-width: 100%;
+          object-fit: none !important;
+        }
+        .slide-overlay {
+          background: transparent !important;
+          bottom: 50px !important;
+        }
+        .slide-overlay h3 {
+          font-size: 1.1rem;
+          color: #1a1a1a;
+        }
+        .slide-overlay p {
+          font-size: 0.85rem;
+          color: #5a6c7d;
+          margin-bottom: 12px !important;
+        }
+        .slide-overlay .slide-cta-btn {
+          font-size: 0.85rem !important;
+          padding: 8px 20px !important;
+        }
+        .slide-overlay.explore-more-slide {
+          padding: 30px 15px !important;
+          max-width: 90% !important;
+        }
+        .slide-overlay.explore-more-slide h3 {
+          font-size: 1.2rem !important;
+        }
+        .slide-overlay.explore-more-slide p {
+          font-size: 0.9rem !important;
+        }
+      }
+
       .header-hero-container {
-        background: linear-gradient(135deg, #fff 0%, #8ec5fc 100%);
+        background: #fafbfc;
         width: 100%;
         margin: 0;
       }
@@ -338,22 +626,20 @@
 
       /* Products Section Styling */
       .products-section {
-        padding: 24px 4vw 16px 4vw;
-        background: linear-gradient(
-          135deg,
-          #fff 0%,
-          #8ec5fc 40%,
-          #4a90e2 80%,
-          #003366 100%
-        );
+        padding: 80px 6vw 70px 6vw !important;
+        background: #ffffff !important;
         margin: 0;
       }
       .products-section h2 {
-        text-align: center;
-        font-size: 1.1rem;
-        font-family: "Poppins", sans-serif;
-        margin-bottom: 18px;
-        color: #2a2a2a;
+        text-align: center !important;
+        font-size: 2.25rem !important;
+        font-family: "Ubuntu", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif !important;
+        margin-bottom: 50px !important;
+        color: #1a1a1a !important;
+        font-weight: 600 !important;
+        letter-spacing: -0.6px !important;
+        line-height: 1.2;
       }
       .product-cards {
         display: flex;
@@ -364,32 +650,79 @@
         max-width: 100%;
       }
       .product-card {
-        background: transparent;
-        border-radius: 14px;
-        box-shadow: none;
+        background: transparent !important;
+        border-radius: 0 !important;
+        box-shadow: 0 0 0 1px rgba(74, 144, 226, 0.2),
+          0 2px 8px rgba(74, 144, 226, 0.08) !important;
         width: 100%;
-        max-width: 100%;
-        min-height: 120px;
-        padding: 18px 6vw 14px 6vw;
+        max-width: 1200px !important;
+        min-height: 180px !important;
+        padding: 36px 40px !important;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        transition: box-shadow 0.2s;
-        font-family: "Roboto", sans-serif;
-        margin: 0;
-        border: 1px solid #e0e0e0;
+        transition: all 0.3s ease;
+        font-family: "Ubuntu", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        margin: 0 auto 30px auto !important;
+        border: none !important;
+        border-top: 3px solid rgba(74, 144, 226, 0.5);
+        border-bottom: 3px solid rgba(142, 197, 252, 0.5);
+        border-left: 3px solid rgba(74, 144, 226, 0.45);
+        border-right: 3px solid rgba(142, 197, 252, 0.45);
+        position: relative;
+        background: linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0.8),
+          rgba(142, 197, 252, 0.08),
+          rgba(255, 255, 255, 0.8)
+        ) !important;
+      }
+      .product-card::before {
+        content: "";
+        position: absolute;
+        top: -3px;
+        left: -3px;
+        right: -3px;
+        bottom: -3px;
+        background: linear-gradient(
+          135deg,
+          rgba(74, 144, 226, 0.5) 0%,
+          rgba(142, 197, 252, 0.5) 50%,
+          rgba(74, 144, 226, 0.5) 100%
+        );
+        z-index: -1;
+        opacity: 0.25;
+        transition: opacity 0.3s ease;
+      }
+      .product-card:hover {
+        transform: none;
+        border-top-color: rgba(74, 144, 226, 0.7);
+        border-bottom-color: rgba(142, 197, 252, 0.7);
+        border-left-color: rgba(74, 144, 226, 0.65);
+        border-right-color: rgba(142, 197, 252, 0.65);
+        box-shadow: 0 0 0 1px rgba(74, 144, 226, 0.3),
+          0 4px 12px rgba(74, 144, 226, 0.15) !important;
+      }
+      .product-card:hover::before {
+        opacity: 0.35;
       }
       .product-card h3 {
-        font-size: 1.05rem;
-        font-family: "Poppins", sans-serif;
-        margin-bottom: 6px;
-        color: #3a3a3a;
+        font-size: 1.4rem !important;
+        font-family: "Ubuntu", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif !important;
+        margin-bottom: 16px !important;
+        color: #1a1a1a !important;
+        font-weight: 600 !important;
+        letter-spacing: -0.3px;
       }
       .product-card ul {
-        margin: 0 0 0 18px;
+        margin: 0 0 0 28px !important;
         padding: 0;
-        font-size: 0.98rem;
-        color: #444;
+        font-size: 1.05rem !important;
+        color: #5a6c7d !important;
+        line-height: 2 !important;
+        font-weight: 400;
       }
 
       /* Carousel Styling */
@@ -437,13 +770,13 @@
 
       .carousel-desc {
         text-align: left;
-        font-size: 1.5rem;
-        color: #333;
-        font-family: "Roboto", sans-serif;
-        font-weight: 600;
+        font-size: 1.1rem;
+        color: #2c3e50;
+        font-family: "Ubuntu", sans-serif;
+        font-weight: 500;
         position: static;
         width: 50%;
-        line-height: 1.5;
+        line-height: 1.6;
         flex-shrink: 0;
       }
 
@@ -469,23 +802,24 @@
       }
 
       .product-cta {
-        background: #333;
-        color: #fff;
+        background: #4a90e2;
+        color: #ffffff;
         border: none;
-        border-radius: 20px;
-        font-family: "Poppins", sans-serif;
-        font-size: 0.9rem;
-        font-weight: 600;
+        border-radius: 6px;
+        font-family: "Ubuntu", sans-serif;
+        font-size: 0.95rem;
+        font-weight: 500;
         cursor: pointer;
-        padding: 8px 20px;
-        margin-top: 12px;
+        padding: 10px 24px;
+        margin-top: 16px;
         transition: all 0.3s ease;
+        box-shadow: 0 1px 3px rgba(74, 144, 226, 0.2);
       }
 
       .product-cta:hover {
-        background: #555;
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        background: #3a7bd5;
+        transform: translateY(-1px);
+        box-shadow: 0 2px 8px rgba(74, 144, 226, 0.3);
       }
 
       /* Category Title Styling */
@@ -495,14 +829,16 @@
       .sanitary-title,
       .spill-title,
       .health-title {
-        text-align: center !important;
-        font-size: 1.3rem;
-        font-family: "Poppins", sans-serif;
-        margin-bottom: 6px;
-        color: #3a3a3a;
+        text-align: left !important;
+        font-size: 1.5rem !important;
+        font-family: "Ubuntu", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif !important;
+        margin-bottom: 12px !important;
+        color: #1a1a1a !important;
         width: 100%;
         display: block;
-        font-weight: 600;
+        font-weight: 600 !important;
+        letter-spacing: -0.4px;
       }
 
       .ppe-desc,
@@ -511,13 +847,15 @@
       .sanitary-desc,
       .spill-desc,
       .health-desc {
-        text-align: center;
-        font-size: 1rem;
-        color: #333;
-        margin-bottom: 10px;
-        font-family: "Roboto", sans-serif;
-        line-height: 1.4;
+        text-align: left !important;
+        font-size: 1.05rem !important;
+        color: #5a6c7d !important;
+        margin-bottom: 16px !important;
+        font-family: "Ubuntu", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif !important;
+        line-height: 1.75 !important;
         width: 100%;
+        font-weight: 400;
       }
 
       /* Dropdown Styling */
@@ -1149,7 +1487,7 @@
         font-size: 1.5rem;
         font-weight: 600;
         color: #000000;
-        font-family: "Poppins", sans-serif;
+        font-family: "Ubuntu", sans-serif;
         letter-spacing: -0.5px;
       }
 
@@ -1158,7 +1496,7 @@
         font-size: 1rem;
         color: #333333;
         line-height: 1.6;
-        font-family: "Roboto", sans-serif;
+        font-family: "Ubuntu", sans-serif;
         white-space: pre-line;
       }
 
@@ -1172,7 +1510,7 @@
         font-weight: 600;
         cursor: pointer;
         transition: all 0.2s;
-        font-family: "Roboto", sans-serif;
+        font-family: "Ubuntu", sans-serif;
         text-transform: uppercase;
         letter-spacing: 0.5px;
       }
@@ -1346,16 +1684,123 @@
     <main id="main-content" role="main">
       <div class="header-hero-container">
         <section class="hero" role="banner" aria-labelledby="hero-title">
-          <h1 id="hero-title">
-            Professional Healthcare Safety Solutions - PPE, Medical Equipment &
-            Sterilization Systems
-          </h1>
-          <p>
-            Leading healthcare safety and hygiene solutions provider in Kenya
-            offering certified personal protective equipment, medical waste
-            disposal systems, sterilization equipment, and comprehensive
-            healthcare supplies. ISO 13485 certified quality standards.
-          </p>
+          <div class="hero-content-wrapper">
+            <div class="hero-text-content">
+              <h1 id="hero-title">
+                Professional Healthcare Safety Solutions - PPE, Medical
+                Equipment & Sterilization Systems
+              </h1>
+              <p>
+                Leading healthcare safety and hygiene solutions provider in
+                Kenya offering certified personal protective equipment, medical
+                waste disposal systems, sterilization equipment, and
+                comprehensive healthcare supplies. ISO 13485 certified quality
+                standards.
+              </p>
+            </div>
+            <div class="hero-slideshow">
+              <div class="hero-slide active" data-slide="0">
+                <img
+                  src="assets/PPE-safety-gear/face shield.png"
+                  alt="Face Shield - Complete face protection"
+                  loading="eager"
+                  fetchpriority="high"
+                />
+                <div class="slide-overlay">
+                  <h3>PPE & Safety Gear</h3>
+                  <p>
+                    Complete protective equipment for healthcare professionals
+                  </p>
+                </div>
+              </div>
+              <div class="hero-slide" data-slide="1">
+                <img
+                  src="assets/specimen-bags/specimen bags & containers.png"
+                  alt="Specimen Bags & Containers"
+                  loading="eager"
+                  fetchpriority="high"
+                />
+                <div class="slide-overlay">
+                  <h3>Medical Equipment</h3>
+                  <p>Quality medical supplies and diagnostic equipment</p>
+                </div>
+              </div>
+              <div class="hero-slide" data-slide="2">
+                <img
+                  src="assets/bins-wastes/pedal bins - 25 litres.png"
+                  alt="Pedal Bins - Waste Management"
+                  loading="eager"
+                  fetchpriority="high"
+                />
+                <div class="slide-overlay">
+                  <h3>Waste Management</h3>
+                  <p>Professional sterilization and waste disposal solutions</p>
+                </div>
+              </div>
+              <div class="hero-slide" data-slide="3">
+                <img
+                  src="assets/sanitary-bins/sanitary bins -automatic.png"
+                  alt="Automatic Sanitary Bins"
+                  loading="eager"
+                  fetchpriority="high"
+                />
+                <div class="slide-overlay">
+                  <h3>Sanitary Solutions</h3>
+                  <p>Advanced hygiene and sanitation systems</p>
+                </div>
+              </div>
+              <div class="hero-slide" data-slide="4">
+                <img
+                  src="assets/spill-kits/spill kits & spill packs -  biohazard  spill kit.png"
+                  alt="Biohazard Spill Kit"
+                  loading="eager"
+                  fetchpriority="high"
+                />
+                <div class="slide-overlay">
+                  <h3>Spill Management</h3>
+                  <p>
+                    Professional spill kits and emergency response solutions
+                  </p>
+                </div>
+              </div>
+              <div class="hero-slide" data-slide="5">
+                <div class="slide-overlay explore-more-slide">
+                  <h3>Explore Our Full Range</h3>
+                  <p>
+                    Discover our complete range of healthcare safety solutions
+                  </p>
+                  <button
+                    class="slide-cta-btn"
+                    onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth'})"
+                  >
+                    Explore More
+                  </button>
+                </div>
+              </div>
+              <button
+                class="slide-prev"
+                aria-label="Previous slide"
+                onclick="changeSlide(-1)"
+              >
+                &#8249;
+              </button>
+              <button
+                class="slide-next"
+                aria-label="Next slide"
+                onclick="changeSlide(1)"
+              >
+                &#8250;
+              </button>
+              <div class="slide-indicators">
+                <span class="indicator active" onclick="goToSlide(0)"></span>
+                <span class="indicator" onclick="goToSlide(1)"></span>
+                <span class="indicator" onclick="goToSlide(2)"></span>
+                <span class="indicator" onclick="goToSlide(3)"></span>
+                <span class="indicator" onclick="goToSlide(4)"></span>
+                <span class="indicator" onclick="goToSlide(5)"></span>
+              </div>
+            </div>
+          </div>
         </section>
       </div>
 
@@ -2158,6 +2603,72 @@
             }
           });
       }
+
+      // Hero Slideshow Functionality
+      let currentSlide = 0;
+      let slideshowInterval;
+
+      function initSlideshow() {
+        const slides = document.querySelectorAll(".hero-slide");
+        const indicators = document.querySelectorAll(
+          ".slide-indicators .indicator"
+        );
+
+        if (!slides.length) return;
+
+        function showSlide(index) {
+          // Ensure index is within bounds
+          if (index >= slides.length) {
+            currentSlide = 0;
+          } else if (index < 0) {
+            currentSlide = slides.length - 1;
+          } else {
+            currentSlide = index;
+          }
+
+          // Hide all slides
+          slides.forEach((slide) => slide.classList.remove("active"));
+          indicators.forEach((indicator) =>
+            indicator.classList.remove("active")
+          );
+
+          // Show current slide
+          if (slides[currentSlide]) {
+            slides[currentSlide].classList.add("active");
+          }
+          if (indicators[currentSlide]) {
+            indicators[currentSlide].classList.add("active");
+          }
+        }
+
+        window.changeSlide = function (direction) {
+          showSlide(currentSlide + direction);
+          resetAutoSlide();
+        };
+
+        window.goToSlide = function (index) {
+          showSlide(index);
+          resetAutoSlide();
+        };
+
+        function resetAutoSlide() {
+          clearInterval(slideshowInterval);
+          slideshowInterval = setInterval(() => {
+            showSlide(currentSlide + 1);
+          }, 5000);
+        }
+
+        // Initialize first slide
+        showSlide(0);
+
+        // Auto-advance slideshow every 5 seconds
+        resetAutoSlide();
+      }
+
+      // Initialize slideshow when DOM is ready
+      document.addEventListener("DOMContentLoaded", function () {
+        initSlideshow();
+      });
     </script>
   </body>
 </html>

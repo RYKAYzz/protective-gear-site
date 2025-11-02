@@ -1,6 +1,19 @@
 // API Client for ARK Hygiene Backend
-// Base API URL - Update this to match your backend server URL
-const API_BASE_URL = 'http://localhost:5000/api';
+// Base API URL - Automatically detect from current page
+// This allows the same code to work on localhost and mobile devices
+function getAPIBaseURL() {
+  // Get the current host (works for both localhost and IP addresses)
+  const protocol = window.location.protocol;
+  const hostname = window.location.hostname;
+  const port = window.location.port || (protocol === 'https:' ? '443' : '80');
+  
+  // If accessing via IP address (mobile), use the IP
+  // If accessing via localhost, use localhost
+  const baseURL = `${protocol}//${hostname}:3000/api`;
+  return baseURL;
+}
+
+const API_BASE_URL = getAPIBaseURL();
 
 class APIClient {
   constructor(baseURL = API_BASE_URL) {

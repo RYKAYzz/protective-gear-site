@@ -33,7 +33,7 @@
   padding: 2px !important;
 }
 .product-gallery .product-name {
-  font-family: "Poppins", sans-serif !important;
+  font-family: "Ubuntu", sans-serif !important;
   font-size: 1rem !important;
   font-weight: 600 !important;
   color: #222 !important;
@@ -62,7 +62,7 @@
   border-radius: 5px !important;
   padding: 5px 12px !important;
   font-size: 0.9rem !important;
-  font-family: "Poppins", sans-serif !important;
+  font-family: "Ubuntu", sans-serif !important;
   font-weight: 500 !important;
   cursor: pointer !important;
   transition: background 0.2s !important;
