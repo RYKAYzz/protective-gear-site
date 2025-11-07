@@ -990,6 +990,20 @@
     <div class="admin-container">
       <!-- Login Section -->
       <div id="loginSection" class="login-section">
+        <div
+          style="
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            color: #856404;
+          "
+        >
+          <strong>⚠️ Backend System Unavailable</strong><br />
+          The backend API is currently being updated. Admin functionality is
+          temporarily disabled.
+        </div>
         <h2>Admin Login</h2>
         <form id="loginForm">
           <div class="form-group">
@@ -1913,7 +1927,8 @@
       </div>
     </div>
 
-    <script src="js/api.js"></script>
+    <!-- Backend API disabled until backend is ready -->
+    <!-- <script src="js/api.js"></script> -->
     <script>
       // Global functions accessible from onclick handlers
       function showDashboard() {
@@ -3642,6 +3657,14 @@
             const errorDiv = document.getElementById("loginError");
 
             try {
+              // Check if backend API is available
+              if (typeof api === "undefined") {
+                errorDiv.textContent =
+                  "Backend system is currently being updated. Admin functionality is temporarily disabled.";
+                errorDiv.style.display = "block";
+                return;
+              }
+
               const response = await api.login({ email, password });
               if (response.success) {
                 showDashboard();

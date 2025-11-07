@@ -439,6 +439,16 @@ async function submitProductInquiry(event) {
       return;
     }
 
+    // Check if backend API is available
+    if (typeof api === 'undefined') {
+      showNotificationPopup(
+        "Backend Not Available",
+        "The backend system is currently being updated. Please contact us directly at +254716253184 or email info@arkhygienesolutions.com",
+        "error"
+      );
+      return;
+    }
+
     const response = await api.createInquiry(inquiryData);
 
     if (response.success) {
@@ -486,6 +496,16 @@ async function submitProductInquiry(event) {
 
 // Helper function to submit inquiry when API is loaded
 async function submitInquiryToAPI(inquiryData) {
+  // Check if backend API is available
+  if (typeof api === 'undefined') {
+    showNotificationPopup(
+      "Backend Not Available",
+      "The backend system is currently being updated. Please contact us directly at +254716253184 or email info@arkhygienesolutions.com",
+      "error"
+    );
+    return;
+  }
+
   const response = await api.createInquiry(inquiryData);
   if (response.success) {
     showNotificationPopup(
@@ -559,7 +579,7 @@ function closeContactModal() {
 function contactViaWhatsApp() {
   const modal = document.querySelector(".contact-modal");
   const content = modal ? modal.dataset.content : "";
-  const phoneNumber = "254729171831";
+  const phoneNumber = "254716253184";
 
   // Check if we're on the homepage by checking the current URL path
   const currentPath = window.location.pathname;
@@ -584,7 +604,7 @@ function contactViaWhatsApp() {
 
 // Contact via Call
 function contactViaCall() {
-  const phoneNumber = "254729171831";
+  const phoneNumber = "254716253184";
   window.open(`tel:${phoneNumber}`, "_self");
   closeContactModal();
   // Silent - no notification needed for phone dialer opening
