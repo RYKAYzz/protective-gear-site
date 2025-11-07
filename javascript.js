@@ -1015,7 +1015,7 @@ function handleContactForm(event) {
   emailBody += `Date: ${new Date().toLocaleString()}`;
 
   // Create mailto link
-  const mailtoLink = `mailto:mireyhen@gmail.com?subject=${encodeURIComponent(
+  const mailtoLink = `mailto:info@arkhygienesolutions.com?subject=${encodeURIComponent(
     emailSubject
   )}&body=${encodeURIComponent(emailBody)}`;
 
