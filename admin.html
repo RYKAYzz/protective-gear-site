@@ -1429,7 +1429,7 @@
       <div id="loginSection" class="login-section">
         <h2>Admin Login</h2>
         <div id="loginError" style="display: none; background: #fee; color: #c00; padding: 10px; border-radius: 4px; margin-bottom: 20px; border: 1px solid #fcc;"></div>
-        <form id="loginForm">
+        <form id="loginForm" method="POST" action="javascript:void(0);">
           <div class="form-group">
             <label for="email">Email</label>
             <input
@@ -4696,6 +4696,11 @@ function nextInquiryPage() {
 
       // Wait for page to load and api to be available
       document.addEventListener("DOMContentLoaded", function () {
+        // SECURITY: Clear any credentials from URL to prevent exposure in browser history
+        if (window.location.search.includes('email=') || window.location.search.includes('password=')) {
+          window.history.replaceState({}, document.title, window.location.pathname);
+        }
+        
         // Check if user is already logged in
         const authToken = localStorage.getItem('auth_token') || localStorage.getItem('token');
         if (authToken) {
