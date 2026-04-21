@@ -9,7 +9,7 @@ function getAPIBaseURL() {
   
   // If accessing via IP address (mobile), use the IP
   // If accessing via localhost, use localhost
-  const baseURL = `${protocol}//${hostname}:3000/api`;
+  const baseURL = `${protocol}//${hostname}:5001/api`;
   return baseURL;
 }
 

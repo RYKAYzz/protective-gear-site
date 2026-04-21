@@ -545,7 +545,92 @@
         if (typeof initializeStorage === "function") {
           initializeStorage();
         }
+        
+        // Add form submission handler to footer form
+        const footerForm = document.querySelector('.footer-contact-form');
+        if (footerForm) {
+          footerForm.addEventListener('submit', submitFooterInquiry);
+        }
       });
+      
+      // Submit footer inquiry to dashboard
+      async function submitFooterInquiry(event) {
+        event.preventDefault();
+        
+        const form = event.target;
+        const formData = new FormData(form);
+        const submitBtn = form.querySelector('.submit-btn');
+        const originalText = submitBtn.textContent;
+        
+        // Show loading state
+        submitBtn.textContent = 'Sending...';
+        submitBtn.disabled = true;
+        
+        try {
+          // Prepare inquiry data
+          const inquiryData = {
+            name: formData.get('footer-name'),
+            email: formData.get('footer-email'),
+            phone: formData.get('footer-phone') || '',
+            subject: 'Quote Request from Sanitary Solutions Page',
+            message: formData.get('footer-message'),
+            productCategory: formData.get('footer-category'),
+            quantity: formData.get('footer-units'),
+            status: 'new'
+          };
+          
+          // Submit to API
+          if (typeof api !== 'undefined') {
+            const response = await api.createInquiry(inquiryData);
+            
+            if (response.success) {
+              // Show success message
+              showFooterNotification('Success!', 'Your inquiry has been sent to our dashboard. We will contact you soon!', 'success');
+              form.reset();
+            } else {
+              throw new Error(response.message || 'Failed to submit inquiry');
+            }
+          } else {
+            throw new Error('Dashboard system is currently unavailable');
+          }
+          
+        } catch (error) {
+          console.error('Inquiry submission error:', error);
+          showFooterNotification('Error', 'Failed to send inquiry. Please try again or contact us directly.', 'error');
+        } finally {
+          // Reset button
+          submitBtn.textContent = originalText;
+          submitBtn.disabled = false;
+        }
+      }
+      
+      // Show notification for footer form
+      function showFooterNotification(title, message, type) {
+        // Create notification element
+        const notification = document.createElement('div');
+        notification.style.cssText = `
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          background: ${type === 'success' ? '#4CAF50' : '#f44336'};
+          color: white;
+          padding: 15px 20px;
+          border-radius: 5px;
+          box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+          z-index: 10000;
+          max-width: 300px;
+        `;
+        notification.innerHTML = `<strong>${title}</strong><br>${message}`;
+        
+        document.body.appendChild(notification);
+        
+        // Remove after 5 seconds
+        setTimeout(() => {
+          if (notification.parentNode) {
+            notification.parentNode.removeChild(notification);
+          }
+        }, 5000);
+      }
     </script>
   </body>
 </html>

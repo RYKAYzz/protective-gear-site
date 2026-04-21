@@ -46,6 +46,43 @@ router.get('/dashboard', async (req, res) => {
       }
     ]);
 
+    // Category breakdown
+    const categoryBreakdown = await Product.aggregate([
+      {
+        $group: {
+          _id: '$category',
+          count: { $sum: 1 },
+          products: {
+            $push: {
+              name: '$name',
+              slug: '$slug',
+              image: '$image',
+              active: '$active',
+              price: '$price'
+            }
+          }
+        }
+      },
+      { $sort: { count: -1 } }
+    ]);
+
+    // Format category names
+    const categoryNames = {
+      'ppe-safety-gear': 'PPE & Safety Gear',
+      'medical-equipment': 'Medical Equipment',
+      'sterilization-waste': 'Sterilization & Waste Equipment',
+      'sanitary-solutions': 'Sanitary Solutions',
+      'spill-management': 'Spill Management',
+      'public-health-sanitation': 'Public Health & Sanitation'
+    };
+
+    const formattedCategoryBreakdown = categoryBreakdown.map(cat => ({
+      category: categoryNames[cat._id] || cat._id,
+      categoryKey: cat._id,
+      count: cat.count,
+      products: cat.products.sort((a, b) => a.name.localeCompare(b.name))
+    }));
+
     // Recent activities
     const recentInquiries = await Inquiry.find()
       .sort('-createdAt')
@@ -75,6 +112,7 @@ router.get('/dashboard', async (req, res) => {
           pending: pendingOrders,
           revenueLast30Days: revenueLast30Days[0]?.total || 0
         },
+        categoryBreakdown: formattedCategoryBreakdown,
         recentInquiries,
         recentOrders
       }

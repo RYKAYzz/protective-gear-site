@@ -3,6 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
 
     <!-- SEO Meta Tags -->
     <title>Contact Us - ARK Hygiene Solutions Kenya | Get in Touch</title>
@@ -59,7 +62,7 @@
     /></noscript>
 
     <!-- External CSS -->
-    <link rel="stylesheet" href="style.v2.css" />
+    <link rel="stylesheet" href="style.v2.css?v=2.1" />
 
     <style>
       /* Contact Page Specific Styles */
@@ -388,6 +391,187 @@
         }
       }
 
+      /* Professional Notification System */
+      .notification-container {
+        position: fixed;
+        top: 20px;
+        right: -400px;
+        z-index: 10000;
+        transition: right 0.3s ease-in-out;
+        max-width: 380px;
+      }
+      
+      .notification-container.show {
+        right: 20px;
+      }
+      
+      .notification-content {
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+        border-left: 4px solid #000000;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        min-height: 80px;
+      }
+      
+      .notification-content.success {
+        border-left-color: #10b981;
+      }
+      
+      .notification-content.error {
+        border-left-color: #ef4444;
+      }
+      
+      .notification-content.warning {
+        border-left-color: #f59e0b;
+      }
+      
+      .notification-content.info {
+        border-left-color: #3b82f6;
+      }
+      
+      .notification-icon {
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 16px;
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
+      
+      .notification-content.success .notification-icon {
+        background: #d1fae5;
+        color: #10b981;
+      }
+      
+      .notification-content.error .notification-icon {
+        background: #fee2e2;
+        color: #ef4444;
+      }
+      
+      .notification-content.warning .notification-icon {
+        background: #fef3c7;
+        color: #f59e0b;
+      }
+      
+      .notification-content.info .notification-icon {
+        background: #dbeafe;
+        color: #3b82f6;
+      }
+      
+      .notification-symbol {
+        font-size: 20px;
+        font-weight: bold;
+      }
+      
+      .notification-content.success .notification-symbol::before {
+        content: "!";
+      }
+      
+      .notification-content.error .notification-symbol::before {
+        content: "×";
+      }
+      
+      .notification-content.warning .notification-symbol::before {
+        content: "!";
+      }
+      
+      .notification-content.info .notification-symbol::before {
+        content: "i";
+      }
+      
+      .notification-text {
+        flex: 1;
+        padding: 16px 16px 16px 0;
+      }
+      
+      .notification-title {
+        font-weight: 600;
+        font-size: 14px;
+        color: #111827;
+        margin-bottom: 4px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      }
+      
+      .notification-message {
+        font-size: 13px;
+        color: #6b7280;
+        line-height: 1.4;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      }
+      
+      .notification-close {
+        background: none;
+        border: none;
+        font-size: 18px;
+        color: #9ca3af;
+        cursor: pointer;
+        padding: 8px;
+        margin: 16px 16px 16px 8px;
+        border-radius: 4px;
+        transition: all 0.2s ease;
+        flex-shrink: 0;
+      }
+      
+      .notification-close:hover {
+        background: #f3f4f6;
+        color: #4b5563;
+      }
+      
+      .notification-close:focus {
+        outline: 2px solid #3b82f6;
+        outline-offset: 2px;
+      }
+      
+      /* Mobile responsive */
+      @media (max-width: 480px) {
+        .notification-container {
+          right: -100%;
+          left: 20px;
+          max-width: calc(100% - 40px);
+        }
+        
+        .notification-container.show {
+          right: auto;
+          left: 20px;
+        }
+        
+        .notification-content {
+          min-height: 70px;
+        }
+        
+        .notification-icon {
+          width: 40px;
+          height: 40px;
+          margin: 12px;
+        }
+        
+        .notification-symbol {
+          font-size: 16px;
+        }
+        
+        .notification-text {
+          padding: 12px 12px 12px 0;
+        }
+        
+        .notification-title {
+          font-size: 13px;
+        }
+        
+        .notification-message {
+          font-size: 12px;
+        }
+        
+        .notification-close {
+          margin: 12px 12px 12px 8px;
+          font-size: 16px;
+        }
+      }
+
       /* Custom Notification Popup */
       .notification-overlay {
         display: none;
@@ -668,9 +852,10 @@
                   type="text"
                   id="company"
                   name="company"
-                  placeholder="Enter your company name"
+                  placeholder="Your company or organization name"
                 />
               </div>
+
 
               <div class="form-group">
                 <label for="subject">Subject *</label>
@@ -900,11 +1085,57 @@
       </div>
     </div>
 
+    <!-- Professional Notification System -->
+    <div id="notificationContainer" class="notification-container">
+      <div class="notification-content">
+        <div class="notification-icon">
+          <span class="notification-symbol"></span>
+        </div>
+        <div class="notification-text">
+          <div class="notification-title"></div>
+          <div class="notification-message"></div>
+        </div>
+        <button class="notification-close" onclick="hideNotification()">
+          <span>&times;</span>
+        </button>
+      </div>
+    </div>
+
     <!-- API Client -->
-    <!-- Backend API disabled until backend is ready -->
-    <!-- <script src="js/api.js"></script> -->
+    <!-- Backend API enabled -->
+    <script src="js/api.js"></script>
 
     <script>
+      // Professional Notification System
+      function showNotification(title, message, type = 'info', duration = 5000) {
+        const container = document.getElementById('notificationContainer');
+        const content = container.querySelector('.notification-content');
+        const titleEl = container.querySelector('.notification-title');
+        const messageEl = container.querySelector('.notification-message');
+        
+        // Set content
+        titleEl.textContent = title;
+        messageEl.textContent = message;
+        
+        // Set type
+        content.className = 'notification-content ' + type;
+        
+        // Show notification
+        container.classList.add('show');
+        
+        // Auto hide after duration
+        if (duration > 0) {
+          setTimeout(() => {
+            hideNotification();
+          }, duration);
+        }
+      }
+      
+      function hideNotification() {
+        const container = document.getElementById('notificationContainer');
+        container.classList.remove('show');
+      }
+      
       // Toggle quote fields based on subject selection
       function toggleQuoteFields() {
         const subject = document.getElementById("subject").value;
@@ -948,6 +1179,8 @@
           company: data.company || "",
           subject: data.subject,
           message: data.message,
+          deliveryLocation: data.delivery_location || "",
+          deliveryCity: data.delivery_city || "",
           status: "new",
         };
 
@@ -1053,7 +1286,12 @@
         }
       }
 
-      document.addEventListener("DOMContentLoaded", () => {
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialize storage when page loads
+        if (typeof initializeStorage === "function") {
+          initializeStorage();
+        }
+        
         hideHeaderOnMobile();
       });
 

@@ -19,31 +19,6 @@
         box-sizing: border-box;
       }
       
-      /* Prevent horizontal overflow */
-      html, body {
-        overflow-x: hidden;
-        max-width: 100%;
-      }
-      
-      /* Prevent overflow in grid containers */
-      .category-breakdown-grid {
-        overflow-x: hidden;
-        max-width: 100%;
-      }
-      
-      /* Responsive grid for category breakdown */
-      @media (max-width: 1024px) {
-        .category-breakdown-grid {
-          grid-template-columns: repeat(2, 1fr) !important;
-        }
-      }
-      
-      @media (max-width: 640px) {
-        .category-breakdown-grid {
-          grid-template-columns: 1fr !important;
-        }
-      }
-      
       /* Product image styling */
       .product-image {
         transition: transform 0.2s ease;
@@ -734,16 +709,6 @@
         background: #ffffff;
         color: #000000;
         border: 1px dashed #000000;
-      }
-
-      .badge.active {
-        background: #10b981;
-        color: white;
-      }
-
-      .badge.inactive {
-        background: #6b7280;
-        color: white;
       }
 
       .alert {
@@ -1475,13 +1440,42 @@
         </button>
       </div>
 
-      <!-- Modals -->
+      <!-- Dashboard Section -->
+      <div id="dashboardSection" class="dashboard-section" style="display: none;">
+        <div class="admin-header">
+          <div class="admin-header-top">
+            <h1>ARK Hygiene Admin Dashboard</h1>
+            <button onclick="logout()" class="admin-logout-btn">Logout</button>
+          </div>
+          <div class="admin-nav">
+            <button onclick="showSection('dashboard')" class="active">
+              Dashboard
+            </button>
+            <button onclick="showSection('products')">Products</button>
+            <button onclick="showSection('inquiries')">
+              Quote Requests <span class="notification-badge" id="inquiriesBadge">0</span>
+            </button>
+            <button onclick="showSection('orders')">
+              Orders <span class="notification-badge" id="ordersBadge">0</span>
+            </button>
+            <button onclick="showSection('datamanagement')">
+              Data Management
+            </button>
+          </div>
+        </div>
+
+        <!-- Dashboard Stats -->
+        <div id="dashboard" class="dashboard-section active">
+          <h2>Overview</h2>
+          <div class="stats-grid" id="statsGrid">
       <div id="confirmationModal" class="confirmation-modal">
         <div class="confirmation-content">
           <h3 id="confirmationTitle"></h3>
           <p id="confirmationMessage"></p>
           <div class="confirmation-buttons">
-            <button class="btn-confirm" id="confirmationConfirm">Confirm</button>
+            <button class="btn-confirm" id="confirmationConfirm">
+              Confirm
+            </button>
             <button class="btn-cancel" id="confirmationCancel">Cancel</button>
           </div>
         </div>
@@ -1492,7 +1486,12 @@
         <div class="prompt-content">
           <h3 id="promptTitle"></h3>
           <p id="promptMessage"></p>
-          <input type="text" id="promptInput" placeholder="Type here..." autocomplete="off" />
+          <input
+            type="text"
+            id="promptInput"
+            placeholder="Type here..."
+            autocomplete="off"
+          />
           <div class="prompt-buttons">
             <button class="btn-submit" id="promptSubmit">Submit</button>
             <button class="btn-cancel" id="promptCancel">Cancel</button>
@@ -1508,15 +1507,21 @@
             <button onclick="logout()" class="admin-logout-btn">Logout</button>
           </div>
           <div class="admin-nav">
-            <button onclick="showSection('dashboard')" class="active">Dashboard</button>
+            <button onclick="showSection('dashboard')" class="active">
+              Dashboard
+            </button>
             <button onclick="showSection('products')">Products</button>
             <button onclick="showSection('inquiries')">
-              Quote Requests <span id="inquiriesBadge" class="notification-badge" style="display: none;">0</span>
+              Quote Requests
+              <span id="inquiriesBadge" class="notification-badge" style="display: none;">0</span>
             </button>
             <button onclick="showSection('orders')">
-              Orders <span id="ordersBadge" class="notification-badge" style="display: none;">0</span>
+              Orders
+              <span id="ordersBadge" class="notification-badge" style="display: none;">0</span>
             </button>
-            <button onclick="showSection('datamanagement')">Data Management</button>
+            <button onclick="showSection('datamanagement')">
+              Data Management
+            </button>
           </div>
         </div>
 
@@ -1524,21 +1529,33 @@
         <div id="dashboard" class="dashboard-section active">
           <h2>Overview</h2>
           <div class="stats-grid" id="statsGrid">
-            <div class="stat-card" title="Total number of products">
+            <div
+              class="stat-card"
+              title="Total number of products in your catalog"
+            >
               <h3>Total Products</h3>
-              <p class="stat-value" id="totalProducts">-</p>
+              <p class="stat-value" id="totalProducts">0</p>
             </div>
-            <div class="stat-card" title="Active products">
+            <div
+              class="stat-card"
+              title="Products currently visible on the website"
+            >
               <h3>Active Products</h3>
-              <p class="stat-value" id="activeProducts">-</p>
+              <p class="stat-value" id="activeProducts">0</p>
             </div>
-            <div class="stat-card" title="New inquiries">
+            <div
+              class="stat-card"
+              title="New quote requests from customers waiting for response"
+            >
               <h3>New Quote Requests</h3>
-              <p class="stat-value" id="newInquiries">-</p>
+              <p class="stat-value" id="newInquiries">0</p>
             </div>
-            <div class="stat-card" title="Pending orders">
+            <div
+              class="stat-card"
+              title="Pending orders (if any confirmed orders exist)"
+            >
               <h3>Pending Orders</h3>
-              <p class="stat-value" id="pendingOrders">-</p>
+              <p class="stat-value" id="pendingOrders">0</p>
             </div>
           </div>
 
@@ -1549,11 +1566,9 @@
               class="category-breakdown-grid"
               style="
                 display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: 20px;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 30px;
                 margin-top: 30px;
-                max-width: 100%;
-                overflow-x: hidden;
               "
               id="categoryBreakdown"
             >
@@ -1658,9 +1673,6 @@
           </div>
           <div id="productsMobileView" class="mobile-card-view">
             <!-- Mobile card view for products will be loaded here -->
-          </div>
-          <div id="productPagination" style="display: flex; justify-content: center; align-items: center; gap: 10px; margin: 20px 0; flex-wrap: wrap;">
-            <!-- Pagination controls will be loaded here -->
           </div>
         </div>
 
@@ -2095,9 +2107,6 @@
           </div>
           <div id="inquiriesMobileView" class="mobile-card-view">
             <!-- Mobile card view for inquiries will be loaded here -->
-          </div>
-          <div id="inquiryPagination" style="display: flex; justify-content: center; align-items: center; gap: 10px; margin: 20px 0; flex-wrap: wrap;">
-            <!-- Pagination controls will be loaded here -->
           </div>
 
           <!-- Inquiry Detail Modal -->
@@ -2534,11 +2543,6 @@
       let currentProductPage = 1;
       const productsPerPage = 10;
       let allProducts = [];
-      
-      // Inquiries pagination variables
-      let currentInquiryPage = 1;
-      const inquiriesPerPage = 10;
-      let allInquiries = [];
       let isLoadingProducts = false;
 
       function openProductModal(productId = null) {
@@ -3068,10 +3072,9 @@
       async function loadDashboardData() {
         try {
           // Use the proper dashboard API endpoint
-          const token = localStorage.getItem('auth_token') || localStorage.getItem('token');
-          const dashboardRes = await fetch('http://localhost:5001/api/admin/dashboard', {
+          const dashboardRes = await fetch('/api/admin/dashboard', {
             headers: {
-              'Authorization': `Bearer ${token}`
+              'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
           });
           
@@ -3130,13 +3133,6 @@
             border-radius: 12px;
             padding: 20px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            min-height: 400px;
-            max-height: 400px;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            width: 100%;
-            box-sizing: border-box;
           `;
           
           const categoryHeader = document.createElement('div');
@@ -3174,11 +3170,8 @@
           
           const productList = document.createElement('div');
           productList.style.cssText = `
-            flex: 1;
-            overflow-y: auto;
-            overflow-x: hidden;
             max-height: 300px;
-            min-height: 0;
+            overflow-y: auto;
           `;
           
           category.products.forEach(product => {
@@ -3190,8 +3183,6 @@
               border-bottom: 1px solid #f3f4f6;
               cursor: pointer;
               transition: background-color 0.2s;
-              min-width: 0;
-              flex-shrink: 0;
             `;
             productItem.onmouseover = () => productItem.style.backgroundColor = '#f9fafb';
             productItem.onmouseout = () => productItem.style.backgroundColor = 'transparent';
@@ -3213,15 +3204,12 @@
               border: 1px solid #e5e7eb;
             `;
             productImage.onerror = () => {
-              productImage.onerror = null; // Prevent infinite loop
               productImage.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBmaWxsPSIjRjNGNEY2Ii8+CjxwYXRoIGQ9Ik0yMCAyNkMxOC4yMDYxIDI2IDE2LjUgMjQuMjkzOSAxNi41IDIyLjVDMTYuNSAyMC43MDYxIDE4LjIwNjEgMTkgMjAgMTlDMjEuNzkzOSAxOSAyMy41IDIwLjcwNjEgMjMuNSAyMi41QzIzLjUgMjQuMjkzOSAyMS43OTM5IDI2IDIwIDI2WiIgZmlsbD0iIzlDQTNBRiIvPgo8L3N2Zz4K';
             };
             
             const productInfo = document.createElement('div');
             productInfo.style.cssText = `
               flex: 1;
-              min-width: 0;
-              overflow: hidden;
             `;
             
             const productName = document.createElement('div');
@@ -3231,9 +3219,6 @@
               color: #374151;
               font-size: 0.9rem;
               margin-bottom: 2px;
-              white-space: nowrap;
-              overflow: hidden;
-              text-overflow: ellipsis;
             `;
             
             const productStatus = document.createElement('div');
@@ -3523,24 +3508,14 @@
         isLoadingProducts = true;
         
         try {
-          console.log('Loading products...');
           const response = await api.getProducts({ limit: 100 });
           
           if (response.success && response.data) {
             // Store all products for pagination
             allProducts = response.data;
-            console.log(`Loaded ${allProducts.length} products`);
-            
-            // Reset to first page
-            currentProductPage = 1;
             
             // Display current page
             displayProductsPage();
-            
-            // Show pagination
-            updatePaginationControls();
-          } else {
-            console.error('Failed to load products:', response);
           }
         } catch (error) {
           console.error("Error loading products:", error);
@@ -3578,17 +3553,17 @@
             const row = document.createElement("tr");
             row.innerHTML = `
             <td>
-              <img src="${product.image || 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjUwIiBoZWlnaHQ9IjUwIiBmaWxsPSIjRjNGNEY2Ii8+CjxwYXRoIGQ9Ik0yNSAzMEMyMi43OTA5IDMwIDIxIDI4LjIwOTEgMjEgMjZDMjEgMjMuNzkwOSAyMi43OTA5IDIyIDI1IDIyQzI3LjIwOTEgMjIgMjkgMjMuNzkwOSAyOSAyNkMyOSAyOC4yMDkxIDI3LjIwOTEgMzAgMjUgMzBaIiBmaWxsPSIjOUNDM0FGIi8+Cjwvc3ZnPgo='}" 
+              <img src="${product.image || 'assets/placeholder.png'}" 
                    alt="${product.name}" 
                    style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px; border: 1px solid #ddd;"
-                   onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjUwIiBoZWlnaHQ9IjUwIiBmaWxsPSIjRjNGNEY2Ii8+CjxwYXRoIGQ9Ik0yNSAzMEMyMi43OTA5IDMwIDIxIDI4LjIwOTEgMjEgMjZDMjEgMjMuNzkwOSAyMi43OTA5IDIyIDI1IDIyQzI3LjIwOTEgMjIgMjkgMjMuNzkwOSAyOSAyNkMyOSAyOC4yMDkxIDI3LjIwOTEgMzAgMjUgMzBaIiBmaWxsPSIjOUNDM0FGIi8+Cjwvc3ZnPgo='">
+                   onerror="this.src='assets/placeholder.png'">
             </td>
             <td>${product.name}</td>
             <td>${product.category || 'N/A'}</td>
-            <td><span class="badge ${product.active ? 'active' : 'inactive'}">${
-              product.active ? 'Active' : 'Inactive'
+            <td><span class="badge ${product.status}">${
+              product.status || 'inactive'
             }</span></td>
-            <td>${product.price && product.price > 0 ? `KES ${product.price}` : 'Not set'}</td>
+            <td>KES ${product.price || 0}</td>
             <td>${product.stock || 0}</td>
             <td>
               <div class="action-buttons" style="display: flex; gap: 5px; align-items: center;">
@@ -3615,10 +3590,10 @@
                 <div class="mobile-table-row-value">
                   <div class="mobile-table-row-header">Image</div>
                   <div>
-                    <img src="${product.image || 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjUwIiBoZWlnaHQ9IjUwIiBmaWxsPSIjRjNGNEY2Ii8+CjxwYXRoIGQ9Ik0yNSAzMEMyMi43OTA5IDMwIDIxIDI4LjIwOTEgMjEgMjZDMjEgMjMuNzkwOSAyMi43OTA5IDIyIDI1IDIyQzI3LjIwOTEgMjIgMjkgMjMuNzkwOSAyOSAyNkMyOSAyOC4yMDkxIDI3LjIwOTEgMzAgMjUgMzBaIiBmaWxsPSIjOUNDM0FGIi8+Cjwvc3ZnPgo='}" 
+                    <img src="${product.image || 'assets/placeholder.png'}" 
                          alt="${product.name}" 
                          style="width: 60px; height: 60px; object-fit: cover; border-radius: 4px; border: 1px solid #ddd;"
-                         onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjUwIiBoZWlnaHQ9IjUwIiBmaWxsPSIjRjNGNEY2Ii8+CjxwYXRoIGQ9Ik0yNSAzMEMyMi43OTA5IDMwIDIxIDI4LjIwOTEgMjEgMjZDMjEgMjMuNzkwOSAyMi43OTA5IDIyIDI1IDIyQzI3LjIwOTEgMjIgMjkgMjMuNzkwOSAyOSAyNkMyOSAyOC4yMDkxIDI3LjIwOTEgMzAgMjUgMzBaIiBmaWxsPSIjOUNDM0FGIi8+Cjwvc3ZnPgo='">
+                         onerror="this.src='assets/placeholder.png'">
                   </div>
                 </div>
                 <div class="mobile-table-row-value">
@@ -3627,13 +3602,13 @@
                 </div>
                 <div class="mobile-table-row-value">
                   <div class="mobile-table-row-header">Status</div>
-                  <div><span class="badge ${product.active ? 'active' : 'inactive'}">${
-                product.active ? 'Active' : 'Inactive'
+                  <div><span class="badge ${product.status}">${
+                product.status || 'inactive'
               }</span></div>
                 </div>
                 <div class="mobile-table-row-value">
                   <div class="mobile-table-row-header">Price</div>
-                  <div>${product.price && product.price > 0 ? `KES ${product.price}` : 'Not set'}</div>
+                  <div>KES ${product.price || 0}</div>
                 </div>
                 <div class="mobile-table-row-value">
                   <div class="mobile-table-row-header">Stock</div>
@@ -3692,17 +3667,17 @@
             const row = document.createElement("tr");
             row.innerHTML = `
             <td>
-              <img src="${product.image || 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjUwIiBoZWlnaHQ9IjUwIiBmaWxsPSIjRjNGNEY2Ii8+CjxwYXRoIGQ9Ik0yNSAzMEMyMi43OTA5IDMwIDIxIDI4LjIwOTEgMjEgMjZDMjEgMjMuNzkwOSAyMi43OTA5IDIyIDI1IDIyQzI3LjIwOTEgMjIgMjkgMjMuNzkwOSAyOSAyNkMyOSAyOC4yMDkxIDI3LjIwOTEgMzAgMjUgMzBaIiBmaWxsPSIjOUNDM0FGIi8+Cjwvc3ZnPgo='}" 
+              <img src="${product.image || 'assets/placeholder.png'}" 
                    alt="${product.name}" 
                    style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px; border: 1px solid #ddd;"
-                   onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjUwIiBoZWlnaHQ9IjUwIiBmaWxsPSIjRjNGNEY2Ii8+CjxwYXRoIGQ9Ik0yNSAzMEMyMi43OTA5IDMwIDIxIDI4LjIwOTEgMjEgMjZDMjEgMjMuNzkwOSAyMi43OTA5IDIyIDI1IDIyQzI3LjIwOTEgMjIgMjkgMjMuNzkwOSAyOSAyNkMyOSAyOC4yMDkxIDI3LjIwOTEgMzAgMjUgMzBaIiBmaWxsPSIjOUNDM0FGIi8+Cjwvc3ZnPgo='">
+                   onerror="this.src='assets/placeholder.png'">
             </td>
             <td>${product.name}</td>
             <td>${product.category || 'N/A'}</td>
-            <td><span class="badge ${product.active ? 'active' : 'inactive'}">${
-              product.active ? 'Active' : 'Inactive'
+            <td><span class="badge ${product.status}">${
+              product.status || 'inactive'
             }</span></td>
-            <td>${product.price && product.price > 0 ? `KES ${product.price}` : 'Not set'}</td>
+            <td>KES ${product.price || 0}</td>
             <td>${product.stock || 0}</td>
             <td>
               <div class="action-buttons" style="display: flex; gap: 5px; align-items: center;">
@@ -3736,8 +3711,16 @@
   const totalPages = Math.ceil(allProducts.length / productsPerPage);
   let paginationDiv = document.getElementById('productPagination');
   
-  console.log(`Updating pagination: Page ${currentProductPage} of ${totalPages}, Total products: ${allProducts.length}`);
-  
+  if (!paginationDiv) {
+    // Create pagination div if it doesn't exist
+    const productsSection = document.querySelector('#products .dashboard-section');
+    if (productsSection) {
+      paginationDiv = document.createElement('div');
+      paginationDiv.id = 'productPagination';
+      paginationDiv.style.cssText = 'display: flex; justify-content: center; align-items: center; gap: 10px; margin: 20px 0; flex-wrap: wrap;';
+      productsSection.appendChild(paginationDiv);
+    }
+  }
   if (paginationDiv) {
     paginationDiv.innerHTML = `
       <button onclick="previousProductPage()" 
@@ -3774,151 +3757,48 @@ function nextProductPage() {
 
 async function loadInquiries() {
   try {
-    console.log('Loading inquiries...');
-    const response = await api.getInquiries({ limit: 100 });
-    
+    const response = await api.getInquiries({ limit: 50 });
+    const tbody = document.getElementById("inquiriesTableBody");
+    const mobileView = document.getElementById("inquiriesMobileView");
+
+    // Clear both views
+    if (tbody) tbody.innerHTML = "";
+    if (mobileView) mobileView.innerHTML = "";
+
     if (response.success && response.data) {
-      // Store all inquiries for pagination
-      allInquiries = response.data;
-      console.log(`Loaded ${allInquiries.length} inquiries`);
-      
-      // Reset to first page
-      currentInquiryPage = 1;
-      
-      // Display current page
-      displayInquiriesPage();
-      
-      // Show pagination
-      updateInquiryPaginationControls();
-    } else {
-      console.error('Failed to load inquiries:', response);
-    }
-  } catch (error) {
-    console.error("Error loading inquiries:", error);
-    showNotification("Error loading inquiries", "error");
-  }
-}
-
-function displayInquiriesPage() {
-  const tbody = document.getElementById("inquiriesTableBody");
-  const mobileView = document.getElementById("inquiriesMobileView");
-  
-  // Calculate pagination
-  const startIndex = (currentInquiryPage - 1) * inquiriesPerPage;
-  const endIndex = startIndex + inquiriesPerPage;
-  const currentInquiries = allInquiries.slice(startIndex, endIndex);
-  
-  // Clear both views
-  if (tbody) tbody.innerHTML = "";
-  if (mobileView) mobileView.innerHTML = "";
-
-  if (currentInquiries.length === 0) {
-    if (tbody) {
-      tbody.innerHTML =
-        '<tr><td colspan="6" style="text-align: center; padding: 30px;">No inquiries found.</td></tr>';
-    }
-    if (mobileView) {
-      mobileView.innerHTML =
-        '<div class="empty-state" style="text-align: center; padding: 30px; color: #666;">No inquiries found.</div>';
-    }
-  } else {
-    currentInquiries.forEach((inquiry) => {
-          // Desktop table row
-          const row = document.createElement("tr");
-          row.innerHTML = `
-            <td>${inquiry.name}</td>
-            <td><a href="mailto:${inquiry.email}">${inquiry.email}</a></td>
-            <td>${inquiry.subject}</td>
-            <td><span class="badge ${inquiry.status}">${inquiry.status}</span></td>
-            <td>${new Date(inquiry.createdAt).toLocaleDateString()}</td>
-            <td>
-              <div class="action-buttons" style="display: flex; gap: 5px; align-items: center;">
-                <button onclick="viewInquiry('${inquiry._id}')" class="btn-action btn-view" title="View inquiry details" style="padding: 6px 12px; border: 1px solid #000; background: #000; color: white; border-radius: 4px; cursor: pointer; font-size: 0.8rem;">View</button>
-                <button onclick="deleteInquiry('${inquiry._id}')" class="btn-action btn-delete" title="Delete inquiry" style="padding: 6px 12px; border: 1px solid #dc2626; background: #dc2626; color: white; border-radius: 4px; cursor: pointer; font-size: 0.8rem;">Delete</button>
-              </div>
-            </td>
-          `;
-          if (tbody) tbody.appendChild(row);
-
-          // Mobile card view
-          if (mobileView) {
-            const card = document.createElement("div");
-            card.className = "mobile-table-row";
-            card.innerHTML = `
-              <div class="mobile-table-row-value">
-                <div class="mobile-table-row-header">Name</div>
-                <div><strong>${inquiry.name}</strong></div>
-              </div>
-              <div class="mobile-table-row-value">
-                <div class="mobile-table-row-header">Email</div>
-                <div>${inquiry.email}</div>
-              </div>
-              <div class="mobile-table-row-value">
-                <div class="mobile-table-row-header">Subject</div>
-                <div>${inquiry.subject}</div>
-              </div>
-              <div class="mobile-table-row-value">
-                <div class="mobile-table-row-header">Status</div>
-                <div><span class="badge ${inquiry.status}">${inquiry.status}</span></div>
-              </div>
-              <div class="mobile-table-row-value">
-                <div class="mobile-table-row-header">Date</div>
-                <div>${new Date(inquiry.createdAt).toLocaleDateString()}</div>
-              </div>
-              <div class="mobile-table-row-actions" style="display: flex; gap: 5px; margin-top: 10px;">
-                <button onclick="viewInquiry('${inquiry._id}')" class="btn-action btn-view" style="flex: 1; padding: 8px; border: 1px solid #000; background: #000; color: white; border-radius: 4px; cursor: pointer; font-size: 0.8rem;">View</button>
-                <button onclick="deleteInquiry('${inquiry._id}')" class="btn-action btn-delete" style="flex: 1; padding: 8px; border: 1px solid #dc2626; background: #dc2626; color: white; border-radius: 4px; cursor: pointer; font-size: 0.8rem;">Delete</button>
-              </div>
-            `;
-            mobileView.appendChild(card);
+      if (response.data.length === 0) {
+        if (tbody) {
+          tbody.innerHTML =
+            '<tr><td colspan="6" style="text-align: center; padding: 30px;">No inquiries found.</td></tr>';
+              tbody.innerHTML =
+                '<tr><td colspan="6" style="text-align: center; padding: 30px;">No orders found.</td></tr>';
+            } else {
+              response.data.forEach((order) => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                <td>${order.orderNumber}</td>
+                <td>${order.customer.name}</td>
+                <td>KES ${order.total.toFixed(2)}</td>
+                <td><span class="badge ${order.status}">${
+                  order.status
+                }</span></td>
+                <td>${new Date(order.createdAt).toLocaleDateString()}</td>
+                <td>
+                  <div class="action-buttons">
+                    <button onclick="viewOrder('${
+                      order._id
+                    }')" class="view-btn" title="View order details">View</button>
+                  </div>
+                </td>
+              `;
+                tbody.appendChild(row);
+              });
+            }
           }
-        });
+        } catch (error) {
+          console.error("Error loading orders:", error);
+        }
       }
-    }
-  
-    // Update pagination controls
-    updateInquiryPaginationControls();
-  }
-
-  function updateInquiryPaginationControls() {
-  const totalPages = Math.ceil(allInquiries.length / inquiriesPerPage);
-  let paginationDiv = document.getElementById('inquiryPagination');
-  
-  console.log(`Updating inquiry pagination: Page ${currentInquiryPage} of ${totalPages}, Total inquiries: ${allInquiries.length}`);
-  
-  if (paginationDiv) {
-    paginationDiv.innerHTML = `
-      <button onclick="previousInquiryPage()" 
-              ${currentInquiryPage === 1 ? 'disabled' : ''} 
-              style="padding: 8px 16px; border: 1px solid #000; background: ${currentInquiryPage === 1 ? '#f0f0f0' : '#000'}; color: ${currentInquiryPage === 1 ? '#999' : '#fff'}; border-radius: 4px; cursor: ${currentInquiryPage === 1 ? 'not-allowed' : 'pointer'};">
-        Previous
-      </button>
-      <span style="padding: 8px 16px; font-weight: 600;">
-        Page ${currentInquiryPage} of ${totalPages} (${allInquiries.length} inquiries)
-      </span>
-      <button onclick="nextInquiryPage()" 
-              ${currentInquiryPage === totalPages ? 'disabled' : ''} 
-              style="padding: 8px 16px; border: 1px solid #000; background: ${currentInquiryPage === totalPages ? '#f0f0f0' : '#000'}; color: ${currentInquiryPage === totalPages ? '#999' : '#fff'}; border-radius: 4px; cursor: ${currentInquiryPage === totalPages ? 'not-allowed' : 'pointer'};">
-        Next
-      </button>
-    `;
-  }
-}
-
-function previousInquiryPage() {
-  if (currentInquiryPage > 1) {
-    currentInquiryPage--;
-    displayInquiriesPage();
-  }
-}
-
-function nextInquiryPage() {
-  const totalPages = Math.ceil(allInquiries.length / inquiriesPerPage);
-  if (currentInquiryPage < totalPages) {
-    currentInquiryPage++;
-    displayInquiriesPage();
-  }
-}
 
       // Function to open email client (Gmail preferred, fallback to mailto)
       function openEmailClient(email, subject, body) {

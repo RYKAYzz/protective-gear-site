@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Products Test</title>
+</head>
+<body>
+    <h1>Products Test</h1>
+    <div id="results"></div>
+    
+    <script>
+        async function testProducts() {
+            try {
+                console.log('Testing products API...');
+                const response = await fetch('http://localhost:5001/api/auth/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email: 'admin@arkhygiene.com', password: 'admin123' })
+                });
+                
+                const loginResult = await response.json();
+                console.log('Login result:', loginResult);
+                
+                if (loginResult.success) {
+                    const productsResponse = await fetch('http://localhost:5001/api/products?limit=100', {
+                        headers: { 'Authorization': `Bearer ${loginResult.token}` }
+                    });
+                    
+                    const productsResult = await productsResponse.json();
+                    console.log('Products result:', productsResult);
+                    
+                    const resultsDiv = document.getElementById('results');
+                    resultsDiv.innerHTML = `
+                        <h2>Login: ${loginResult.success ? 'Success' : 'Failed'}</h2>
+                        <h2>Products: ${productsResult.success ? productsResult.data.length + ' loaded' : 'Failed'}</h2>
+                        <h3>First 5 products:</h3>
+                        <ul>
+                            ${productsResult.data ? productsResult.data.slice(0, 5).map(p => `<li>${p.name} - ${p.image}</li>`).join('') : ''}
+                        </ul>
+                    `;
+                }
+            } catch (error) {
+                console.error('Test error:', error);
+                document.getElementById('results').innerHTML = `<h2>Error: ${error.message}</h2>`;
+            }
+        }
+        
+        testProducts();
+    </script>
+</body>
+</html>

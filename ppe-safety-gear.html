@@ -3,9 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
 
     <!-- SEO Meta Tags -->
-    <title>PPE & Safety Gear - Protective Equipment | ARK Hygiene</title>
+    <title>PPE & Safety Gear - Protective Equipment | ARK Hygiene - Updated v2</title>
     <meta
       name="description"
       content="Comprehensive range of PPE and safety gear including face shields, gloves, safety boots, and protective clothing. Quality protective equipment for healthcare and industrial safety."
@@ -54,7 +57,7 @@
     /></noscript>
 
     <!-- External CSS -->
-    <link rel="stylesheet" href="style.v2.css" />
+    <link rel="stylesheet" href="style.v2.css?v=2.1" />
   </head>
   <body>
     <header class="category-header" role="banner">
@@ -133,10 +136,10 @@
             </div>
           </div>
           <div class="header-selection-icon">
-            <a href="selected-products.html" class="icon-container" aria-label="View selected products" style="text-decoration: none; color: inherit;">
-              <span aria-hidden="true">🛒</span>
-              <span class="selection-count" id="selectedCount">0</span>
-            </a>
+            <button onclick="viewCart()" class="icon-container" aria-label="View shopping cart" style="text-decoration: none; color: inherit; background: none; border: none; cursor: pointer;">
+              <span aria-hidden="true">Cart</span>
+              <span class="selection-count" id="cartCount">0</span>
+            </button>
           </div>
           <button
             class="send-selection-btn"
@@ -184,13 +187,13 @@
               Disposable head cover for complete head protection in medical and
               industrial environments.
             </p>
-            <div class="product-actions">
+                        <div class="product-actions">
               <button
-                class="btn-select"
-                onclick="selectProduct('head-cover', 'Head Cover')"
-                aria-label="Select Head Cover"
+                class="btn-add-to-cart"
+                onclick="addToCart('head-cover', 'Head Cover', 2500, 'assets/PPE-safety-gear/head cover.png')"
+                aria-label="Add Head Cover to cart"
               >
-                Select
+                Add to Cart
               </button>
               <button
                 class="btn-details"
@@ -233,13 +236,13 @@
               Complete face protection shield for medical procedures and
               industrial safety.
             </p>
-            <div class="product-actions">
+                        <div class="product-actions">
               <button
-                class="btn-select"
-                onclick="selectProduct('face-shield', 'Face Shield')"
-                aria-label="Select Face Shield"
+                class="btn-add-to-cart"
+                onclick="addToCart('face-shield', 'Face Shield', 3500, 'assets/PPE-safety-gear/face shield.png')"
+                aria-label="Add Face Shield to cart"
               >
-                Select
+                Add to Cart
               </button>
               <button
                 class="btn-details"
@@ -248,6 +251,11 @@
               >
                 Details
               </button>
+            </div>
+            <div class="quantity-selector" id="quantity-face-shield">
+              <button class="btn-quantity" onclick="updateQuantity('face-shield', -1)">-</button>
+              <input type="number" class="quantity-input" id="qty-face-shield" value="1" min="1" readonly>
+              <button class="btn-quantity" onclick="updateQuantity('face-shield', 1)">+</button>
             </div>
             <div class="quantity-selector" id="quantity-face-shield">
               <label for="qty-face-shield" class="quantity-label"
@@ -1010,13 +1018,393 @@
     <!-- External JavaScript -->
     <script src="javascript.js"></script>
     <script src="storage.js"></script>
+    
+    <style>
+      .product-price {
+        margin: 10px 0;
+        font-size: 1.2rem;
+        color: #10b981;
+        font-weight: bold;
+      }
+      
+      .btn-add-to-cart {
+        background: #10b981;
+        color: white;
+        border: none;
+        padding: 10px 16px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: background 0.2s ease;
+        margin-right: 8px;
+      }
+      
+      .btn-add-to-cart:hover {
+        background: #059669;
+      }
+      
+      .btn-cart {
+        background: #000;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: background 0.2s ease;
+        margin-right: 10px;
+      }
+      
+      .btn-cart:hover {
+        background: #333;
+      }
+      
+      .quantity-selector {
+        margin-top: 10px;
+        display: none;
+        align-items: center;
+        gap: 10px;
+      }
+      
+      .quantity-selector.active {
+        display: flex;
+      }
+      
+      .quantity-input {
+        width: 60px;
+        padding: 5px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        text-align: center;
+      }
+      
+      .btn-quantity {
+        background: #f3f4f6;
+        border: 1px solid #ddd;
+        width: 30px;
+        height: 30px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+      
+      .btn-quantity:hover {
+        background: #e5e7eb;
+      }
+    </style>
+    
     <script>
       // Initialize storage when page loads
       document.addEventListener("DOMContentLoaded", function () {
         if (typeof initializeStorage === "function") {
           initializeStorage();
         }
+        
+                
+        // Add form submission handler to footer form
+        const footerForm = document.querySelector('.footer-contact-form');
+        if (footerForm) {
+          footerForm.addEventListener('submit', submitFooterInquiry);
+        }
       });
+      
+      // Submit footer inquiry to dashboard
+      async function submitFooterInquiry(event) {
+        event.preventDefault();
+        
+        const form = event.target;
+        const formData = new FormData(form);
+        const submitBtn = form.querySelector('.submit-btn');
+        const originalText = submitBtn.textContent;
+        
+        // Show loading state
+        submitBtn.textContent = 'Sending...';
+        submitBtn.disabled = true;
+        
+        try {
+          // Prepare inquiry data
+          const inquiryData = {
+            name: formData.get('footer-name'),
+            email: formData.get('footer-email'),
+            phone: formData.get('footer-phone') || '',
+            subject: 'Quote Request from PPE Page',
+            message: formData.get('footer-message'),
+            productCategory: formData.get('footer-category'),
+            quantity: formData.get('footer-units'),
+            deliveryLocation: formData.get('footer-location') || '',
+            deliveryCity: formData.get('footer-city') || '',
+            status: 'new'
+          };
+          
+          // For now, just show a success message
+          showFooterNotification('Success!', 'Your inquiry has been received. We will contact you soon!', 'success');
+          form.reset();
+          
+        } catch (error) {
+          console.error('Inquiry submission error:', error);
+          showFooterNotification('Error', 'Failed to send inquiry. Please try again or contact us directly.', 'error');
+        } finally {
+          // Reset button
+          submitBtn.textContent = originalText;
+          submitBtn.disabled = false;
+        }
+      }
+      
+      // Shopping Cart functionality
+      let cart = [];
+      
+      function addToCart(productId, productName, price, image) {
+        const existingItem = cart.find(item => item.id === productId);
+        
+        if (existingItem) {
+          existingItem.quantity += 1;
+        } else {
+          cart.push({
+            id: productId,
+            name: productName,
+            price: price,
+            image: image,
+            quantity: 1
+          });
+        }
+        
+        updateCartDisplay();
+        showFooterNotification('Added to Cart!', `${productName} has been added to your cart.`, 'success');
+        
+        // Show quantity selector
+        const quantitySelector = document.getElementById(`quantity-${productId}`);
+        if (quantitySelector) {
+          quantitySelector.classList.add('active');
+        }
+      }
+      
+      function updateQuantity(productId, change) {
+        const item = cart.find(item => item.id === productId);
+        if (item) {
+          item.quantity += change;
+          if (item.quantity <= 0) {
+            cart = cart.filter(item => item.id !== productId);
+            const quantitySelector = document.getElementById(`quantity-${productId}`);
+            if (quantitySelector) {
+              quantitySelector.classList.remove('active');
+            }
+          }
+          updateCartDisplay();
+        }
+      }
+      
+      function updateCartDisplay() {
+        const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+        const cartCountElement = document.getElementById('cartCount');
+        if (cartCountElement) {
+          cartCountElement.textContent = cartCount;
+        }
+        console.log('Cart updated:', cart);
+      }
+      
+      function viewCart() {
+        if (cart.length === 0) {
+          showFooterNotification('Cart Empty', 'Your cart is currently empty.', 'info');
+          return;
+        }
+        
+        let cartHTML = '<div style="max-height: 400px; overflow-y: auto;">';
+        let total = 0;
+        
+        cart.forEach(item => {
+          const itemTotal = item.price * item.quantity;
+          total += itemTotal;
+          cartHTML += `
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px; border-bottom: 1px solid #eee;">
+              <div>
+                <strong>${item.name}</strong><br>
+                <small>KES ${item.price} x ${item.quantity}</small>
+              </div>
+              <div style="text-align: right;">
+                <strong>KES ${itemTotal}</strong><br>
+                <button onclick="updateQuantity('${item.id}', -1)" style="background: #ef4444; color: white; border: none; padding: 2px 6px; border-radius: 3px; cursor: pointer;">-</button>
+                <span style="margin: 0 10px;">${item.quantity}</span>
+                <button onclick="updateQuantity('${item.id}', 1)" style="background: #10b981; color: white; border: none; padding: 2px 6px; border-radius: 3px; cursor: pointer;">+</button>
+              </div>
+            </div>
+          `;
+        });
+        
+        cartHTML += `
+          <div style="padding: 15px; text-align: right; border-top: 2px solid #000;">
+            <strong>Total: KES ${total}</strong>
+          </div>
+          <div style="padding: 15px; text-align: center;">
+            <button onclick="checkout()" style="background: #000; color: white; border: none; padding: 12px 24px; border-radius: 6px; cursor: pointer; font-weight: bold;">Proceed to Checkout</button>
+          </div>
+        </div>
+        `;
+        
+        showCartModal(cartHTML);
+      }
+      
+      function showCartModal(content) {
+        // Create modal if it doesn't exist
+        let modal = document.getElementById('cartModal');
+        if (!modal) {
+          modal = document.createElement('div');
+          modal.id = 'cartModal';
+          modal.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          `;
+          
+          modal.innerHTML = `
+            <div style="background: white; padding: 20px; border-radius: 8px; max-width: 500px; width: 90%; max-height: 80vh; overflow-y: auto;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h3 style="margin: 0;">Shopping Cart</h3>
+                <button onclick="closeCartModal()" style="background: none; border: none; font-size: 24px; cursor: pointer;">&times;</button>
+              </div>
+              <div id="cartContent"></div>
+            </div>
+          `;
+          
+          document.body.appendChild(modal);
+        }
+        
+        document.getElementById('cartContent').innerHTML = content;
+        modal.style.display = 'flex';
+      }
+      
+      function closeCartModal() {
+        const modal = document.getElementById('cartModal');
+        if (modal) {
+          modal.style.display = 'none';
+        }
+      }
+      
+      function checkout() {
+        if (cart.length === 0) {
+          showFooterNotification('Cart Empty', 'Your cart is empty.', 'error');
+          return;
+        }
+        
+        // Create order data
+        const orderData = {
+          items: cart,
+          total: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0),
+          timestamp: new Date().toISOString()
+        };
+        
+        // Save order to localStorage or send to backend
+        localStorage.setItem('pendingOrder', JSON.stringify(orderData));
+        
+        // Redirect to checkout page or show checkout form
+        showFooterNotification('Checkout', 'Redirecting to checkout...', 'success');
+        closeCartModal();
+        
+        // For now, just show the order details
+        console.log('Order ready for checkout:', orderData);
+        showFooterNotification('Order Ready', `${cart.length} items ready for checkout. Total: KES ${orderData.total}`, 'success');
+      }
+      
+      // Professional notification system for footer
+      function showFooterNotification(title, message, type) {
+        showNotification(title, message, type, 5000);
+      }
+      
+      // Professional notification system
+      function showNotification(title, message, type = 'info', duration = 5000) {
+        // Create notification container if it doesn't exist
+        let container = document.getElementById('notificationContainer');
+        if (!container) {
+          container = document.createElement('div');
+          container.id = 'notificationContainer';
+          container.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: -400px;
+            z-index: 10000;
+            transition: right 0.3s ease-in-out;
+            max-width: 380px;
+          `;
+          
+          container.innerHTML = `
+            <div class="notification-content" style="
+              background: #ffffff;
+              border-radius: 12px;
+              box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+              border-left: 4px solid ${type === 'success' ? '#10b981' : type === 'error' ? '#ef4444' : '#3b82f6'};
+              overflow: hidden;
+              display: flex;
+              align-items: center;
+              min-height: 80px;
+            ">
+              <div style="
+                width: 48px;
+                height: 48px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 16px;
+                border-radius: 50%;
+                background: ${type === 'success' ? '#d1fae5' : type === 'error' ? '#fee2e2' : '#dbeafe'};
+                color: ${type === 'success' ? '#10b981' : type === 'error' ? '#ef4444' : '#3b82f6'};
+                flex-shrink: 0;
+                font-size: 20px;
+                font-weight: bold;
+              ">${type === 'success' ? '!' : type === 'error' ? '×' : 'i'}</div>
+              <div style="
+                flex: 1;
+                padding: 16px 16px 16px 0;
+              ">
+                <div style="
+                  font-weight: 600;
+                  font-size: 14px;
+                  color: #111827;
+                  margin-bottom: 4px;
+                  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+                ">${title}</div>
+                <div style="
+                  font-size: 13px;
+                  color: #6b7280;
+                  line-height: 1.4;
+                  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+                ">${message}</div>
+              </div>
+              <button onclick="this.closest('#notificationContainer').classList.remove('show')" style="
+                background: none;
+                border: none;
+                font-size: 18px;
+                color: #9ca3af;
+                cursor: pointer;
+                padding: 8px;
+                margin: 16px 16px 16px 8px;
+                border-radius: 4px;
+                transition: all 0.2s ease;
+                flex-shrink: 0;
+              ">&times;</button>
+            </div>
+          `;
+          
+          document.body.appendChild(container);
+        }
+        
+        // Show notification
+        container.classList.add('show');
+        container.style.right = '20px';
+        
+        // Auto hide after duration
+        if (duration > 0) {
+          setTimeout(() => {
+            container.classList.remove('show');
+            container.style.right = '-400px';
+          }, duration);
+        }
+      }
     </script>
   </body>
 </html>
