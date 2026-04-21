@@ -1427,20 +1427,6 @@
     <div class="admin-container">
       <!-- Login Section -->
       <div id="loginSection" class="login-section">
-        <div
-          style="
-            background: #fff3cd;
-            border: 1px solid #ffc107;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            color: #856404;
-          "
-        >
-          <strong>⚠️ Backend System Unavailable</strong><br />
-          The backend API is currently being updated. Admin functionality is
-          temporarily disabled.
-        </div>
         <h2>Admin Login</h2>
         <div id="loginError" style="display: none; background: #fee; color: #c00; padding: 10px; border-radius: 4px; margin-bottom: 20px; border: 1px solid #fcc;"></div>
         <form id="loginForm">
@@ -4714,17 +4700,9 @@ function nextInquiryPage() {
 
       // Wait for page to load and api to be available
       document.addEventListener("DOMContentLoaded", function () {
-        // Make sure api is defined
-        if (typeof api === "undefined") {
-          console.error("API client not loaded. Please check js/api.js");
-          document.getElementById("loginError").textContent =
-            "API client not loaded. Please check console.";
-          document.getElementById("loginError").style.display = "block";
-          return;
-        }
-
-        // Check if user is logged in
-        if (api.token) {
+        // Check if user is already logged in
+        const authToken = localStorage.getItem('auth_token') || localStorage.getItem('token');
+        if (authToken) {
           showDashboard();
         }
 
@@ -4744,33 +4722,17 @@ function nextInquiryPage() {
             console.log('Attempting login with:', email);
 
             try {
-              // Check if backend API is available
-              if (typeof api === "undefined") {
-                console.error("API client not loaded");
-                errorDiv.textContent =
-                  "Backend system is currently being updated. Admin functionality is temporarily disabled.";
-                errorDiv.style.display = "block";
-                return;
-              }
-
-              console.log('API client available, attempting login...');
+              console.log('Attempting login to production backend...');
               
-              // Try API client first
-              let response;
-              try {
-                response = await api.login({ email, password });
-              } catch (apiError) {
-                console.log('API client failed, trying direct fetch:', apiError);
-                // Fallback to direct fetch
-                const fetchResponse = await fetch('https://ark-hygiene-api.onrender.com/api/auth/login', {
-                  method: 'POST',
-                  headers: {
-                    'Content-Type': 'application/json'
-                  },
-                  body: JSON.stringify({ email, password })
-                });
-                response = await fetchResponse.json();
-              }
+              // Direct fetch to production backend
+              const fetchResponse = await fetch('https://ark-hygiene-api.onrender.com/api/auth/login', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email, password })
+              });
+              const response = await fetchResponse.json();
               
               console.log('Login response received:', response);
 
