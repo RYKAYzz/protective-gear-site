@@ -4708,10 +4708,14 @@ function nextInquiryPage() {
         }
 
         // Login form handler
-        document
-          .getElementById("loginForm")
-          .addEventListener("submit", async (e) => {
+        console.log('Attaching login form handler...');
+        const loginForm = document.getElementById("loginForm");
+        console.log('Login form found:', !!loginForm);
+        
+        loginForm.addEventListener("submit", async (e) => {
             e.preventDefault();
+            alert('Login button clicked! Processing...');
+            
             const email = document.getElementById("email").value;
             const password = document.getElementById("password").value;
             const errorDiv = document.getElementById("loginError");
@@ -4721,6 +4725,7 @@ function nextInquiryPage() {
             errorDiv.textContent = "";
 
             console.log('Attempting login with:', email);
+            alert('Email entered: ' + email);
 
             try {
               console.log('Attempting login to production backend...');
@@ -4780,11 +4785,14 @@ function nextInquiryPage() {
               }
             } catch (error) {
               console.error('Login error:', error);
+              alert('Login ERROR: ' + error.message);
               errorDiv.textContent = "Login failed: " + (error.message || "Network error. Please try again.");
               errorDiv.style.display = "block";
             }
           });
       
+          console.log('Login form handler attached successfully');
+          
 }); // End DOMContentLoaded
     </script>
   </body>
