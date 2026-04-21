@@ -1455,10 +1455,6 @@
           <button type="submit" class="login-btn">Login</button>
         </form>
         
-        <!-- Quick Test Login Button -->
-        <button onclick="quickTestLogin()" style="margin-top: 10px; background: #28a745; color: white; border: none; padding: 10px; border-radius: 4px; cursor: pointer; width: 100%; font-size: 12px;">
-          Quick Test Login (Bypass Form)
-        </button>
       </div>
 
       <!-- Modals -->
@@ -4732,6 +4728,13 @@ function nextInquiryPage() {
                 },
                 body: JSON.stringify({ email, password })
               });
+              
+              console.log('Fetch response status:', fetchResponse.status);
+              
+              if (!fetchResponse.ok) {
+                throw new Error(`Server error: ${fetchResponse.status}`);
+              }
+              
               const response = await fetchResponse.json();
               
               console.log('Login response received:', response);
@@ -4777,87 +4780,7 @@ function nextInquiryPage() {
             }
           });
       
-      // Test login function for debugging
-      window.testLogin = async function() {
-        console.log('Test login called');
-        
-        try {
-          const response = await fetch('https://ark-hygiene-api.onrender.com/api/auth/login', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ 
-              email: 'admin@arkhygiene.com', 
-              password: 'admin123' 
-            })
-          });
-          
-          const result = await response.json();
-          console.log('Test login result:', result);
-          
-          if (result.success) {
-            // Store token
-            localStorage.setItem('auth_token', result.token);
-            
-            // Hide login, show dashboard
-            document.getElementById("loginSection").style.display = "none";
-            document.getElementById("dashboardSection").style.display = "block";
-            
-            // Load dashboard data
-            setTimeout(() => {
-              loadDashboardData();
-            }, 100);
-            
-            console.log('Test login successful!');
-          } else {
-            console.error('Test login failed:', result.message);
-          }
-        } catch (error) {
-          console.error('Test login error:', error);
-        }
-      };
-      
-      // Quick test login function
-      window.quickTestLogin = async function() {
-        console.log('Quick test login started');
-        
-        try {
-          const response = await fetch('https://ark-hygiene-api.onrender.com/api/auth/login', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ 
-              email: 'admin@arkhygiene.com', 
-              password: 'admin123' 
-            })
-          });
-          
-          const result = await response.json();
-          console.log('Quick test result:', result);
-          
-          if (result.success) {
-            // Store token
-            localStorage.setItem('auth_token', result.token);
-            
-            // Hide login, show dashboard
-            document.getElementById("loginSection").style.display = "none";
-            document.getElementById("dashboardSection").style.display = "block";
-            
-            console.log('Quick test login successful!');
-            alert('Login successful! Dashboard should now be visible.');
-          } else {
-            console.error('Quick test failed:', result.message);
-            alert('Login failed: ' + result.message);
-          }
-        } catch (error) {
-          console.error('Quick test error:', error);
-          alert('Login error: ' + error.message);
-        }
-      };
-      
-      }); // End DOMContentLoaded
+}); // End DOMContentLoaded
     </script>
   </body>
 </html>
