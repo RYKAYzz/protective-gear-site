@@ -1452,7 +1452,7 @@
               placeholder="Enter your password"
             />
           </div>
-          <button type="submit" class="login-btn">Login</button>
+          <button type="submit" class="login-btn" onclick="alert('BUTTON CLICKED!')">Login</button>
         </form>
         
       </div>
@@ -4696,6 +4696,8 @@ function nextInquiryPage() {
 
       // Wait for page to load and api to be available
       document.addEventListener("DOMContentLoaded", function () {
+        alert('PAGE LOADED - JavaScript is running!');
+        
         // SECURITY: Clear any credentials from URL to prevent exposure in browser history
         if (window.location.search.includes('email=') || window.location.search.includes('password=')) {
           window.history.replaceState({}, document.title, window.location.pathname);
@@ -4712,8 +4714,14 @@ function nextInquiryPage() {
         const loginForm = document.getElementById("loginForm");
         console.log('Login form found:', !!loginForm);
         
+        if (!loginForm) {
+          alert('ERROR: Login form not found!');
+          return;
+        }
+        
         loginForm.addEventListener("submit", async (e) => {
             e.preventDefault();
+            alert('SUBMIT EVENT TRIGGERED!');
             alert('Login button clicked! Processing...');
             
             const email = document.getElementById("email").value;
