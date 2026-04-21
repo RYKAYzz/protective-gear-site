@@ -155,11 +155,11 @@
         <form id="loginForm">
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" id="email" value="admin@arkhygiene.com" required>
+                <input type="email" id="email" placeholder="Enter your email" required>
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" id="password" value="admin123" required>
+                <input type="password" id="password" placeholder="Enter your password" required>
             </div>
             <button type="submit" id="loginBtn">Login</button>
         </form>
@@ -202,7 +202,7 @@
     </div>
     
     <script>
-        const API_BASE_URL = 'http://localhost:5001/api';
+        const API_BASE_URL = 'https://ark-hygiene-api.onrender.com/api';
         let authToken = localStorage.getItem('auth_token') || '';
         
         // Check if already logged in
