@@ -76,19 +76,28 @@ if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
 
-// Test endpoint - always works
+// Admin login - credentials come from environment variables (never hardcode)
 app.post("/api/auth/login", (req, res) => {
   const { email, password } = req.body;
-  
-  // Simple hardcoded check for now
-  if (email === "admin@arkhygiene.com" && password === "admin123") {
+
+  const adminEmail = process.env.ADMIN_EMAIL;
+  const adminPassword = process.env.ADMIN_PASSWORD;
+
+  if (!adminEmail || !adminPassword) {
+    return res.status(500).json({
+      success: false,
+      message: "Admin login is not configured. Set ADMIN_EMAIL and ADMIN_PASSWORD."
+    });
+  }
+
+  if (email === adminEmail && password === adminPassword) {
     return res.json({
       success: true,
-      token: "test-token-12345",
+      token: require("crypto").randomBytes(24).toString("hex"),
       user: { email, role: "admin" }
     });
   }
-  
+
   res.status(401).json({
     success: false,
     message: "Invalid credentials"
