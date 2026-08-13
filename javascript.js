@@ -443,7 +443,7 @@ async function submitProductInquiry(event) {
     if (typeof api === 'undefined') {
       showNotificationPopup(
         "Backend Not Available",
-        "The backend system is currently being updated. Please contact us directly at +254716253184 or email support@arkhygieneexperts.com",
+        "The backend system is currently being updated. Please contact us directly at +254716253184 or email antoinette@gohorizonapp.co",
         "error"
       );
       return;
@@ -500,7 +500,7 @@ async function submitInquiryToAPI(inquiryData) {
   if (typeof api === 'undefined') {
     showNotificationPopup(
       "Backend Not Available",
-      "The backend system is currently being updated. Please contact us directly at +254716253184 or email support@arkhygieneexperts.com",
+      "The backend system is currently being updated. Please contact us directly at +254716253184 or email antoinette@gohorizonapp.co",
       "error"
     );
     return;
@@ -616,7 +616,7 @@ function contactViaEmail() {
   const content = modal ? modal.dataset.content : "";
   const subject = "Product Selection Inquiry";
   const emailBody = content || "Hello, I'm interested in your products.";
-  const mailtoLink = `mailto:support@arkhygieneexperts.com?subject=${encodeURIComponent(
+  const mailtoLink = `mailto:antoinette@gohorizonapp.co?subject=${encodeURIComponent(
     subject
   )}&body=${encodeURIComponent(emailBody)}`;
   window.open(mailtoLink, "_blank");
@@ -1015,7 +1015,7 @@ function handleContactForm(event) {
   emailBody += `Date: ${new Date().toLocaleString()}`;
 
   // Create mailto link
-  const mailtoLink = `mailto:support@arkhygieneexperts.com?subject=${encodeURIComponent(
+  const mailtoLink = `mailto:antoinette@gohorizonapp.co?subject=${encodeURIComponent(
     emailSubject
   )}&body=${encodeURIComponent(emailBody)}`;
 
