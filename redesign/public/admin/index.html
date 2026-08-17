@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>ARK Hygiene — Catalogue admin</title>
+    <style>
+      :root {
+        color-scheme: light;
+      }
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      }
+      /* Brand the CMS shell so it does not feel like a foreign tool */
+      #nc-root .nc-appHeader-container,
+      #nc-root [class*="AppHeader"] {
+        background: #6e1a26 !important;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Netlify Identity: provides the login for git-gateway. Must load
+         before the CMS so Decap can pick up the auth session. -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+    <!-- Decap CMS: git-backed, so every edit is a commit and a rebuild.
+         No database, nothing to go down. -->
+    <script src="https://unpkg.com/decap-cms@^3.8.4/dist/decap-cms.js"></script>
+  </body>
+</html>

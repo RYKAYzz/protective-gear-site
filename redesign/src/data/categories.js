@@ -1,57 +1,13 @@
+import data from "./categories.json";
+
 /**
- * Category metadata. Single source of truth — the homepage index, the
- * generated category pages and the footer all read from here.
+ * Category metadata. The data itself lives in categories.json so the admin
+ * at /admin can edit it; this module adds the helpers around it.
+ *
+ * The homepage index, the generated category pages, /products and the
+ * footer all read from here.
  */
-export const categories = [
-  {
-    slug: "ppe-safety-gear",
-    name: "PPE & safety gear",
-    short:
-      "Masks, gloves, gowns, coveralls, face shields, goggles and footwear for clinical and industrial environments.",
-    intro:
-      "Head-to-foot protection for clinical and industrial environments. Every line is stocked in Nairobi and available for bulk or recurring supply.",
-  },
-  {
-    slug: "sterilization-waste-equipment",
-    name: "Sterilization & waste",
-    short:
-      "Autoclaves, macerators, incinerators and sharps containers, with installation and servicing.",
-    intro:
-      "Sterilization and medical waste equipment, supplied with installation, servicing and operator training by our own engineers.",
-  },
-  {
-    slug: "sanitary-solutions",
-    name: "Sanitary solutions",
-    short:
-      "Sanitary bins, tissue and towel dispensers, and washroom hygiene systems for busy facilities.",
-    intro:
-      "Washroom hygiene systems built for high-traffic facilities, from sanitary bins to tissue and towel dispensers.",
-  },
-  {
-    slug: "spill-management",
-    name: "Spill management",
-    short:
-      "Biohazard, cytotoxic and body-fluid spill kits, packed for immediate response.",
-    intro:
-      "Pre-packed spill kits for immediate response to biohazard, cytotoxic and body-fluid incidents.",
-  },
-  {
-    slug: "public-health-sanitation",
-    name: "Public health & sanitation",
-    short:
-      "Waste bins, trolley bins, cleaning equipment and disinfectants for facility-wide programmes.",
-    intro:
-      "Waste handling, cleaning equipment and disinfectants for facility-wide sanitation programmes.",
-  },
-  {
-    slug: "medical-equipment",
-    name: "Medical equipment",
-    short:
-      "Diagnostic consumables, specimen bags and containers for laboratory and ward use.",
-    intro:
-      "Diagnostic consumables and specimen handling supplies for laboratory and ward use.",
-  },
-];
+export const categories = data.categories;
 
 export const getCategory = (slug) => categories.find((c) => c.slug === slug);
 

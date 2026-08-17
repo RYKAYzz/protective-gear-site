@@ -68,6 +68,33 @@ const GOOGLE_TAG_ID = "AW-18158845729";
   </head>
 
   <body>
+    {/*
+      Netlify Identity invite/recovery links land on the site root with a
+      token in the hash. Load the widget only in that case and hand the user
+      straight to the admin — no cost on normal page loads.
+    */}
+    <script is:inline>
+      (function () {
+        var hash = window.location.hash;
+        if (!/(invite_token|recovery_token|confirmation_token)=/.test(hash))
+          return;
+        var s = document.createElement("script");
+        s.src = "https://identity.netlify.com/v1/netlify-identity-widget.js";
+        s.onload = function () {
+          if (!window.netlifyIdentity) return;
+          window.netlifyIdentity.on("init", function (user) {
+            if (!user) {
+              window.netlifyIdentity.on("login", function () {
+                document.location.href = "/admin/";
+              });
+            }
+          });
+          window.netlifyIdentity.init();
+        };
+        document.head.appendChild(s);
+      })();
+    </script>
+
     <a href="#main" class="skip-link">Skip to content</a>
     <Header />
     <main id="main">
