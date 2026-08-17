@@ -1,0 +1,284 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+
+const services = [
+  {
+    title: "Installation",
+    body: "Professional installation of medical waste equipment, autoclaves and sterilization systems by trained technicians.",
+    points: [
+      "Site assessment and planning",
+      "Equipment installation and setup",
+      "Safety testing and validation",
+      "Staff training and handover",
+      "Documentation and compliance",
+    ],
+  },
+  {
+    title: "Repair & maintenance",
+    body: "Scheduled maintenance and prompt repair that keeps equipment running efficiently and safely.",
+    points: [
+      "Preventive maintenance schedules",
+      "Emergency repair callouts",
+      "Parts replacement and upgrades",
+      "Performance optimisation",
+      "Warranty support",
+    ],
+  },
+  {
+    title: "Training & support",
+    body: "Training programmes and ongoing technical support so your staff can operate equipment correctly.",
+    points: [
+      "Equipment operation training",
+      "Safety protocol instruction",
+      "Maintenance procedures",
+      "24/7 technical support",
+      "Remote troubleshooting",
+    ],
+  },
+  {
+    title: "Compliance",
+    body: "Help meeting the regulatory requirements that apply to your facility, with the documentation to prove it.",
+    points: [
+      "Regulatory compliance audits",
+      "Safety certification",
+      "Documentation management",
+      "Inspection preparation",
+      "Continuous monitoring",
+    ],
+  },
+];
+
+const equipment = [
+  {
+    name: "Autoclaves",
+    body: "Installation, maintenance and repair of autoclave systems for sterilizing instruments and equipment.",
+  },
+  {
+    name: "Medical waste incinerators",
+    body: "Complete service for diesel-fired incinerators and medical waste disposal systems, including shredders.",
+  },
+  {
+    name: "Macerators",
+    body: "Installation and maintenance of macerator systems for safe disposal of medical waste and sharps.",
+  },
+  {
+    name: "Sterilization systems",
+    body: "Sterilization equipment including autoclaves with shredder capability and monitoring systems.",
+  },
+  {
+    name: "Safety equipment",
+    body: "Installation and maintenance of safety showers, eyewash stations and emergency response equipment.",
+  },
+  {
+    name: "Climate control",
+    body: "HVAC for medical facilities, clean rooms and temperature-controlled environments.",
+  },
+];
+---
+
+<Base
+  title="Capabilities — ARK Hygiene Solutions, Nairobi"
+  description="Installation, maintenance, repair, training and compliance support for autoclaves, incinerators, macerators and sterilization systems across Kenya."
+>
+  <PageHero
+    crumb="Capabilities"
+    eyebrow="Capabilities"
+    title="We supply it, then keep it running."
+    lede="Beyond supplying products, we install, service and repair the equipment, and train the people who use it — so your facility keeps operating."
+    meta="Installation · Maintenance · Training · Compliance"
+  />
+
+  <!-- ============ Services ============ -->
+  <section class="section">
+    <div class="container">
+      <ul class="services">
+        {
+          services.map((s, i) => (
+            <li class="service">
+              <div class="service__head">
+                <span class="service__num">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <div>
+                  <h2 class="service__title">{s.title}</h2>
+                  <p class="body-muted service__body">{s.body}</p>
+                </div>
+              </div>
+              <ul class="service__points">
+                {s.points.map((p) => (
+                  <li>{p}</li>
+                ))}
+              </ul>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ Equipment we service ============ -->
+  <section class="section panel-invert">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow">Equipment we service</p>
+        <h2 class="measure">Six systems our engineers work on.</h2>
+      </header>
+
+      <ul class="equipment">
+        {
+          equipment.map((e) => (
+            <li class="equipment__item">
+              <h3 class="equipment__name">{e.name}</h3>
+              <p class="body-muted">{e.body}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="section">
+    <div class="container cta">
+      <div>
+        <p class="eyebrow">Next step</p>
+        <h2 class="measure">Talk to us about a service contract.</h2>
+        <p class="lede measure cta__lede">
+          We put together maintenance agreements around your facility's
+          equipment, usage and budget.
+        </p>
+      </div>
+      <div class="cta__actions">
+        <a href="/contact" class="btn btn--primary">Request a quote</a>
+        <a href="tel:+254716253184" class="link-quiet">
+          +254 716 253 184 <span class="arrow">&rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .services {
+    display: grid;
+    gap: 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .service {
+    display: grid;
+    gap: var(--space-m);
+    padding-block: var(--space-xl);
+    border-bottom: 1px solid var(--line);
+  }
+
+  @media (min-width: 900px) {
+    .service {
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: var(--space-2xl);
+      align-items: start;
+    }
+  }
+
+  .service__head {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-m);
+  }
+
+  .service__num {
+    font-size: var(--step-0);
+    color: var(--gold-600);
+    font-variant-numeric: tabular-nums;
+    padding-top: 0.45rem;
+  }
+
+  .service__title {
+    font-size: var(--step-2);
+  }
+
+  .service__body {
+    margin-top: var(--space-2xs);
+    max-width: 44ch;
+  }
+
+  .service__points {
+    display: grid;
+    gap: 0;
+  }
+
+  .service__points li {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    padding-block: 0.6rem;
+    border-bottom: 1px solid var(--line-soft);
+    display: flex;
+    gap: var(--space-2xs);
+  }
+
+  .service__points li::before {
+    content: "—";
+    color: var(--gold-500);
+    flex: none;
+  }
+
+  /* --- equipment --- */
+  .equipment {
+    display: grid;
+    gap: var(--space-l);
+  }
+
+  @media (min-width: 700px) {
+    .equipment {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-xl);
+    }
+  }
+
+  @media (min-width: 1000px) {
+    .equipment {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .equipment__item {
+    padding-top: var(--space-s);
+    border-top: 1px solid color-mix(in srgb, var(--gold-050) 24%, transparent);
+  }
+
+  .equipment__name {
+    font-size: var(--step-1);
+    margin-bottom: var(--space-3xs);
+  }
+
+  .equipment__item p {
+    font-size: var(--step--1);
+    max-width: 38ch;
+  }
+
+  /* --- cta --- */
+  .cta {
+    display: grid;
+    gap: var(--space-l);
+  }
+
+  @media (min-width: 900px) {
+    .cta {
+      grid-template-columns: 1.2fr auto;
+      align-items: center;
+      gap: var(--space-2xl);
+    }
+  }
+
+  .cta__lede {
+    margin-top: var(--space-s);
+  }
+
+  .cta__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-m) var(--space-l);
+  }
+</style>

@@ -1,0 +1,229 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import { site } from "../data/site.js";
+
+const reviewsUrl = `https://www.google.com/search?q=${encodeURIComponent(
+  "ARK HYGIENE SOLUTIONS KENYA reviews"
+)}`;
+
+const figures = [
+  { value: String(site.reviews.count), label: "Google reviews" },
+  { value: `${site.reviews.rating}★`, label: "Average rating" },
+  { value: "100%", label: "Verified reviews" },
+  { value: "24/7", label: "Support available" },
+];
+---
+
+<Base
+  title="Reviews — ARK Hygiene Solutions, Nairobi"
+  description={`ARK Hygiene Solutions holds a ${site.reviews.rating} star average across ${site.reviews.count} verified Google reviews from healthcare facilities across Kenya.`}
+>
+  <PageHero
+    crumb="Reviews"
+    eyebrow="Reviews"
+    title="Rated by the facilities we supply."
+    lede={`We hold a ${site.reviews.rating} star average across ${site.reviews.count} verified Google reviews. Rather than reprint selected quotes here, we would rather you read all of them at source.`}
+    meta={`${site.reviews.rating} average · ${site.reviews.count} reviews`}
+  />
+
+  <!-- ============ Rating ============ -->
+  <section class="section">
+    <div class="container rating">
+      <div class="rating__score">
+        <span class="rating__value">{site.reviews.rating}</span>
+        <span class="rating__stars" aria-hidden="true">★★★★★</span>
+        <span class="rating__meta">
+          Based on {site.reviews.count} verified Google reviews
+        </span>
+      </div>
+
+      <div class="rating__body">
+        <p class="lede">
+          Every review is left by a verified Google customer. We do not curate
+          or filter them, and we do not publish testimonials we cannot point
+          you to.
+        </p>
+        <p class="body-muted">
+          Search for <strong>ARK Hygiene Solutions Kenya</strong> on Google Maps
+          to read the full set.
+        </p>
+        <a
+          href={reviewsUrl}
+          class="btn btn--primary rating__cta"
+          target="_blank"
+          rel="noopener"
+        >
+          Read all {site.reviews.count} reviews on Google
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Figures ============ -->
+  <section class="credentials" aria-label="Review figures">
+    <div class="container">
+      <ul class="credentials__list">
+        {
+          figures.map((f) => (
+            <li class="credential">
+              <span class="credential__value">{f.value}</span>
+              <span class="credential__label">{f.label}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="section panel-invert">
+    <div class="container cta">
+      <div>
+        <p class="eyebrow">Join them</p>
+        <h2 class="measure">Put us to the same test.</h2>
+        <p class="lede measure cta__lede">
+          Send your list and quantities. We will quote within 24 hours.
+        </p>
+      </div>
+      <div class="cta__actions">
+        <a href="/contact" class="btn btn--primary">Request a quote</a>
+        <a href="/capabilities" class="link-quiet">
+          See our capabilities <span class="arrow">&rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .rating {
+    display: grid;
+    gap: var(--space-xl);
+  }
+
+  @media (min-width: 900px) {
+    .rating {
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: var(--space-2xl);
+      align-items: start;
+    }
+  }
+
+  .rating__score {
+    display: grid;
+    gap: var(--space-2xs);
+    padding: var(--space-xl);
+    border-radius: var(--radius-lg);
+    background: linear-gradient(
+      165deg,
+      var(--gold-050) 0%,
+      var(--surface) 60%,
+      #ece3d7 100%
+    );
+    text-align: center;
+    justify-items: center;
+  }
+
+  .rating__value {
+    font-size: var(--step-5);
+    font-weight: 600;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: var(--oxblood-700);
+  }
+
+  .rating__stars {
+    font-size: var(--step-1);
+    color: var(--gold-500);
+    letter-spacing: 0.1em;
+  }
+
+  .rating__meta {
+    font-size: var(--step--1);
+    color: var(--muted);
+    max-width: 24ch;
+  }
+
+  .rating__body {
+    display: grid;
+    gap: var(--space-m);
+    justify-items: start;
+  }
+
+  .rating__cta {
+    margin-top: var(--space-2xs);
+  }
+
+  /* --- figures band --- */
+  .credentials {
+    border-block: 1px solid var(--line);
+    background: var(--white);
+  }
+
+  .credentials__list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 800px) {
+    .credentials__list {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .credential {
+    padding: var(--space-l) var(--space-m);
+    border-right: 1px solid var(--line-soft);
+    border-bottom: 1px solid var(--line-soft);
+    display: grid;
+    gap: var(--space-3xs);
+  }
+
+  @media (min-width: 800px) {
+    .credential {
+      border-bottom: 0;
+    }
+    .credential:last-child {
+      border-right: 0;
+    }
+  }
+
+  .credential__value {
+    font-size: var(--step-2);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    color: var(--oxblood-700);
+    line-height: 1.1;
+  }
+
+  .credential__label {
+    font-size: var(--step--1);
+    color: var(--muted);
+  }
+
+  /* --- cta --- */
+  .cta {
+    display: grid;
+    gap: var(--space-l);
+  }
+
+  @media (min-width: 900px) {
+    .cta {
+      grid-template-columns: 1.2fr auto;
+      align-items: center;
+      gap: var(--space-2xl);
+    }
+  }
+
+  .cta__lede {
+    margin-top: var(--space-s);
+  }
+
+  .cta__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-m) var(--space-l);
+  }
+</style>

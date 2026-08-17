@@ -1,0 +1,309 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import { site } from "../data/site.js";
+
+const values = [
+  {
+    title: "Quality & safety",
+    body: "We never compromise on quality. Every product we supply meets the required safety standards and regulatory requirements.",
+  },
+  {
+    title: "Trust & reliability",
+    body: "We build lasting relationships on trust, reliability and consistent delivery of quality products and services.",
+  },
+  {
+    title: "Customer focus",
+    body: "Our customers are at the heart of what we do. We listen, understand and respond to their particular needs.",
+  },
+  {
+    title: "Innovation",
+    body: "We continuously seek better solutions and stay current with developments in healthcare safety and hygiene.",
+  },
+  {
+    title: "Healthcare support",
+    body: "We support healthcare professionals in their work of providing safe, effective care to patients.",
+  },
+  {
+    title: "Community impact",
+    body: "We contribute to public health by making sure facilities can get hold of essential safety equipment.",
+  },
+];
+
+const figures = [
+  { value: "500+", label: "Healthcare facilities served" },
+  { value: "1,000+", label: "Products delivered" },
+  { value: "24/7", label: "Technical support" },
+  { value: "ISO 13485", label: "Quality certified" },
+];
+---
+
+<Base
+  title="About — ARK Hygiene Solutions, Nairobi"
+  description="ARK Hygiene Solutions has supplied certified PPE, medical equipment and sterilization systems to healthcare facilities across Kenya since 2018. ISO 13485 certified, based in Nairobi."
+>
+  <PageHero
+    crumb="About"
+    eyebrow="About us"
+    title="A dependable local source."
+    lede="ARK Hygiene Solutions supplies certified protective equipment, medical supplies and sterilization systems to healthcare facilities across Kenya and East Africa."
+    meta={`Established ${site.founded} · Nairobi`}
+  />
+
+  <!-- ============ Story ============ -->
+  <section class="section">
+    <div class="container story">
+      <div>
+        <p class="eyebrow">Our story</p>
+        <h2 class="measure">Facilities cannot afford to run out.</h2>
+      </div>
+      <div class="story__body">
+        <p>
+          ARK Hygiene Solutions was established in 2018 with a clear purpose: to
+          give healthcare facilities across Kenya and East Africa a reliable
+          source of high-quality personal protective equipment, medical supplies
+          and sterilization solutions — rather than one that arrives late, or
+          not at all.
+        </p>
+        <p>
+          Since then we have built supply relationships with more than 500
+          healthcare facilities, including hospitals, clinics, medical centres
+          and research institutions across the country. Our range covers
+          certified PPE, medical waste equipment, cleaning supplies,
+          sterilization systems and specialised medical equipment.
+        </p>
+        <p>
+          We hold ISO 13485 certification for quality management and keep to
+          strict quality control. Our technicians and healthcare specialists
+          check that every product meets the safety standards and regulatory
+          requirements that apply to it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Figures ============ -->
+  <section class="credentials" aria-label="Company figures">
+    <div class="container">
+      <ul class="credentials__list">
+        {
+          figures.map((f) => (
+            <li class="credential">
+              <span class="credential__value">{f.value}</span>
+              <span class="credential__label">{f.label}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ Mission & vision ============ -->
+  <section class="section panel-invert">
+    <div class="container mv">
+      <div class="mv__item">
+        <p class="eyebrow">Our mission</p>
+        <p class="mv__text">
+          To provide healthcare facilities across East Africa with reliable,
+          high-quality protective equipment and hygiene solutions that keep
+          medical professionals and patients safe, while meeting international
+          standards of cleanliness, infection control and compliance.
+        </p>
+      </div>
+      <div class="mv__item">
+        <p class="eyebrow">Our vision</p>
+        <p class="mv__text">
+          To be the leading supplier of healthcare safety and hygiene solutions
+          in East Africa — recognised for quality, reliability and service that
+          facilities can plan around.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Values ============ -->
+  <section class="section">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow">What we hold to</p>
+        <h2 class="measure">Six things we do not trade away.</h2>
+      </header>
+
+      <ul class="values">
+        {
+          values.map((v, i) => (
+            <li class="value">
+              <span class="value__num">{String(i + 1).padStart(2, "0")}</span>
+              <div>
+                <h3 class="value__title">{v.title}</h3>
+                <p class="body-muted">{v.body}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="section section--surface">
+    <div class="container cta">
+      <div>
+        <p class="eyebrow">Work with us</p>
+        <h2 class="measure">Tell us what your facility needs.</h2>
+      </div>
+      <div class="cta__actions">
+        <a href="/contact" class="btn btn--primary">Request a quote</a>
+        <a href="/products" class="link-quiet">
+          See all products <span class="arrow">&rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .story {
+    display: grid;
+    gap: var(--space-l);
+  }
+
+  @media (min-width: 900px) {
+    .story {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-2xl);
+    }
+  }
+
+  .story__body {
+    display: grid;
+    gap: var(--space-m);
+    color: var(--ink-soft);
+  }
+
+  /* --- figures band (shared look with the homepage credentials) --- */
+  .credentials {
+    border-block: 1px solid var(--line);
+    background: var(--white);
+  }
+
+  .credentials__list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 800px) {
+    .credentials__list {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .credential {
+    padding: var(--space-l) var(--space-m);
+    border-right: 1px solid var(--line-soft);
+    border-bottom: 1px solid var(--line-soft);
+    display: grid;
+    gap: var(--space-3xs);
+  }
+
+  @media (min-width: 800px) {
+    .credential {
+      border-bottom: 0;
+    }
+    .credential:last-child {
+      border-right: 0;
+    }
+  }
+
+  .credential__value {
+    font-size: var(--step-2);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    color: var(--oxblood-700);
+    line-height: 1.1;
+  }
+
+  .credential__label {
+    font-size: var(--step--1);
+    color: var(--muted);
+  }
+
+  /* --- mission / vision --- */
+  .mv {
+    display: grid;
+    gap: var(--space-xl);
+  }
+
+  @media (min-width: 900px) {
+    .mv {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-2xl);
+    }
+  }
+
+  .mv__text {
+    font-size: var(--step-1);
+    line-height: 1.55;
+    max-width: 44ch;
+  }
+
+  /* --- values --- */
+  .values {
+    display: grid;
+    gap: 0;
+    border-top: 1px solid var(--line);
+  }
+
+  @media (min-width: 800px) {
+    .values {
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: var(--space-2xl);
+    }
+  }
+
+  .value {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-m);
+    padding-block: var(--space-l);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .value__num {
+    font-size: var(--step-0);
+    color: var(--gold-600);
+    font-variant-numeric: tabular-nums;
+    padding-top: 0.3rem;
+  }
+
+  .value__title {
+    font-size: var(--step-1);
+    margin-bottom: var(--space-3xs);
+  }
+
+  .value p {
+    font-size: var(--step--1);
+    max-width: 44ch;
+  }
+
+  /* --- cta --- */
+  .cta {
+    display: grid;
+    gap: var(--space-l);
+  }
+
+  @media (min-width: 900px) {
+    .cta {
+      grid-template-columns: 1.2fr auto;
+      align-items: center;
+      gap: var(--space-2xl);
+    }
+  }
+
+  .cta__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-m) var(--space-l);
+  }
+</style>

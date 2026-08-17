@@ -1,0 +1,142 @@
+---
+import Base from "./Base.astro";
+import PageHero from "../components/PageHero.astro";
+import { site } from "../data/site.js";
+
+interface Props {
+  title: string;
+  description: string;
+  heading: string;
+  updated: string;
+}
+
+const { title, description, heading, updated } = Astro.props;
+---
+
+<Base title={title} description={description}>
+  <PageHero
+    crumb={heading}
+    eyebrow="Legal"
+    title={heading}
+    meta={`Last updated ${updated}`}
+  />
+
+  <section class="section">
+    <div class="container legal">
+      <article class="prose">
+        <slot />
+      </article>
+
+      <aside class="legal__aside">
+        <p class="legal__label">Questions about this page?</p>
+        <a href={`mailto:${site.email}`} class="legal__link">{site.email}</a>
+        <a href={site.phoneHref} class="legal__link">{site.phone}</a>
+        <p class="legal__address body-muted">
+          {site.address.poBox}<br />
+          {site.address.line1}<br />
+          {site.address.line2}
+        </p>
+      </aside>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .legal {
+    display: grid;
+    gap: var(--space-xl);
+  }
+
+  @media (min-width: 900px) {
+    .legal {
+      grid-template-columns: 1fr 0.4fr;
+      gap: var(--space-2xl);
+      align-items: start;
+    }
+  }
+
+  /* prose is emitted by the slot, so these need to pierce scoping */
+  .prose :global(h2) {
+    font-size: var(--step-1);
+    margin-top: var(--space-xl);
+    margin-bottom: var(--space-s);
+    padding-top: var(--space-s);
+    border-top: 1px solid var(--line);
+  }
+
+  .prose :global(h2:first-child) {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+  }
+
+  .prose :global(p) {
+    margin-bottom: var(--space-s);
+    color: var(--ink-soft);
+    max-width: 68ch;
+  }
+
+  .prose :global(ul) {
+    display: grid;
+    gap: 0.4rem;
+    margin-bottom: var(--space-m);
+    max-width: 68ch;
+  }
+
+  .prose :global(li) {
+    display: flex;
+    gap: var(--space-2xs);
+    color: var(--ink-soft);
+  }
+
+  .prose :global(li)::before {
+    content: "—";
+    color: var(--gold-500);
+    flex: none;
+  }
+
+  .prose :global(strong) {
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .prose :global(a) {
+    color: var(--oxblood-700);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  /* --- aside --- */
+  .legal__aside {
+    display: grid;
+    gap: var(--space-2xs);
+    justify-items: start;
+    padding: var(--space-l);
+    border-radius: var(--radius);
+    background: var(--surface);
+    border: 1px solid var(--line);
+  }
+
+  .legal__label {
+    font-size: var(--step--1);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: var(--space-2xs);
+  }
+
+  .legal__link {
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .legal__link:hover {
+    color: var(--oxblood-700);
+  }
+
+  .legal__address {
+    font-size: var(--step--1);
+    margin-top: var(--space-s);
+    line-height: 1.7;
+  }
+</style>

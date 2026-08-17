@@ -1,0 +1,90 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  lede?: string;
+  crumb: string;
+  meta?: string;
+}
+
+const { eyebrow, title, lede, crumb, meta } = Astro.props;
+---
+
+<section class="page-hero">
+  <div class="container">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span aria-hidden="true">/</span>
+      <span>{crumb}</span>
+    </nav>
+
+    <div class="page-hero__grid">
+      <div>
+        <p class="eyebrow">{eyebrow}</p>
+        <h1 class="page-hero__title">{title}</h1>
+      </div>
+      {
+        (lede || meta) && (
+          <div class="page-hero__aside">
+            {lede && <p class="lede">{lede}</p>}
+            {meta && <p class="page-hero__meta">{meta}</p>}
+          </div>
+        )
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .page-hero {
+    padding-block: var(--space-l) var(--space-xl);
+    border-bottom: 1px solid var(--line);
+  }
+
+  @media (min-width: 900px) {
+    .page-hero {
+      padding-block: var(--space-l) var(--space-2xl);
+    }
+  }
+
+  .crumbs {
+    display: flex;
+    gap: var(--space-2xs);
+    font-size: var(--step--1);
+    color: var(--muted);
+    margin-bottom: var(--space-xl);
+  }
+
+  .crumbs a:hover {
+    color: var(--oxblood-700);
+  }
+
+  .page-hero__grid {
+    display: grid;
+    gap: var(--space-l);
+  }
+
+  @media (min-width: 900px) {
+    .page-hero__grid {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-2xl);
+      align-items: end;
+    }
+  }
+
+  .page-hero__title {
+    max-width: 16ch;
+  }
+
+  .page-hero__aside .lede {
+    max-width: 48ch;
+  }
+
+  .page-hero__meta {
+    margin-top: var(--space-s);
+    font-size: var(--step--1);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold-600);
+  }
+</style>

@@ -2,9 +2,26 @@
 # Critical: the live Google Ads campaign points at /ppe-safety-gear.html,
 # and these paths are already indexed by Google. 301 keeps both working.
 /index.html                          /                                 301!
+
+# Product categories
 /ppe-safety-gear.html                /ppe-safety-gear                  301!
 /sterilization-waste-equipment.html  /sterilization-waste-equipment    301!
 /sanitary-solutions.html             /sanitary-solutions               301!
 /spill-management.html               /spill-management                 301!
 /public-health-sanitation.html       /public-health-sanitation         301!
 /medical-equipment.html              /medical-equipment                301!
+/selected-products.html              /products                         301!
+
+# Company pages
+/about-us.html                       /about                            301!
+/services.html                       /capabilities                     301!
+/contact-us.html                     /contact                          301!
+/faq.html                            /faq                              301!
+/testimonials.html                   /testimonials                     301!
+/privacy-policy.html                 /privacy-policy                   301!
+/terms-of-service.html               /terms-of-service                 301!
+
+# Blog is not yet migrated — send readers to the catalogue rather than a 404.
+# Remove these once the articles are rebuilt.
+/blog.html                           /products                         302
+/blog-articles/*                     /products                         302

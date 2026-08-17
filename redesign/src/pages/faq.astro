@@ -1,0 +1,276 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import { site } from "../data/site.js";
+
+const groups = [
+  {
+    title: "Products & services",
+    items: [
+      {
+        q: "What types of PPE do you supply?",
+        a: "A full range: face masks, gloves, face shields, safety goggles, head covers, lab coats, surgical gowns, safety boots and more. All products meet the applicable international safety standards.",
+      },
+      {
+        q: "Do you provide medical waste disposal equipment?",
+        a: "Yes. We supply and install autoclaves, incinerators, macerators and sharps containers, and we provide maintenance and repair for them.",
+      },
+      {
+        q: "What sterilization equipment do you offer?",
+        a: "Autoclaves, sterilization systems and related equipment for healthcare facilities — supplied with installation, training and ongoing maintenance support.",
+      },
+      {
+        q: "Do you provide installation services?",
+        a: "Yes. Our technicians handle installation for all medical equipment we supply, including setup, testing and staff training.",
+      },
+    ],
+  },
+  {
+    title: "Delivery & support",
+    items: [
+      {
+        q: "Where do you deliver?",
+        a: "Nationwide across Kenya, covering all major cities and towns including Nairobi, Mombasa, Kisumu, Nakuru and Eldoret, and the surrounding areas.",
+      },
+      {
+        q: "How long does delivery take?",
+        a: "Typically 2–3 business days for major cities and 3–5 days elsewhere. Express delivery is available for urgent orders at additional cost.",
+      },
+      {
+        q: "What is your minimum order quantity?",
+        a: "It varies by product. For PPE items the minimum is usually 10 units. For medical equipment we work to your facility's requirements.",
+      },
+      {
+        q: "Do you provide technical support?",
+        a: "Yes — 24/7 technical support for all equipment, covering phone assistance, remote diagnostics and on-site service when it is needed.",
+      },
+    ],
+  },
+  {
+    title: "Quality & certification",
+    items: [
+      {
+        q: "Are your products certified?",
+        a: "Yes. We are ISO 13485 certified for quality management, and our products comply with the relevant healthcare regulations.",
+      },
+      {
+        q: "Do you provide warranties?",
+        a: "Yes, on all equipment and products. Terms vary by product type and typically run 1–3 years, with extended options available.",
+      },
+      {
+        q: "Can you provide product training?",
+        a: "Yes. Training accompanies every equipment installation and covers operating procedures, safety protocols and maintenance schedules.",
+      },
+      {
+        q: "Do you offer maintenance contracts?",
+        a: "Yes. Contracts include regular inspections, preventive maintenance and priority service support, arranged around your facility.",
+      },
+    ],
+  },
+  {
+    title: "Pricing & payment",
+    items: [
+      {
+        q: "How do I get a quote?",
+        a: `Call ${site.phone}, email ${site.email}, or use the quote form on our contact page. We come back with a detailed quote within 24 hours.`,
+      },
+      {
+        q: "What payment methods do you accept?",
+        a: "Bank transfer, mobile money (M-Pesa, Airtel Money) and cash. For large orders we can arrange flexible payment terms.",
+      },
+      {
+        q: "Do you offer bulk discounts?",
+        a: "Yes. Rates depend on order quantity and product type — contact us for specific pricing on what you need.",
+      },
+      {
+        q: "Can I get a sample before ordering?",
+        a: "For most products, yes. Availability depends on the product and current stock, so get in touch to arrange it.",
+      },
+    ],
+  },
+];
+
+const totalQuestions = groups.reduce((n, g) => n + g.items.length, 0);
+---
+
+<Base
+  title="Frequently asked questions — ARK Hygiene Solutions"
+  description="Answers on products, delivery across Kenya, certification, warranties, bulk pricing and payment for ARK Hygiene Solutions."
+>
+  <PageHero
+    crumb="FAQ"
+    eyebrow="Questions"
+    title="Answers, before you have to ask."
+    lede="Common questions about our products, delivery, certification and pricing. If yours is not here, call or send us a message and we will answer it directly."
+    meta={`${totalQuestions} questions`}
+  />
+
+  {
+    groups.map((group, gi) => (
+      <section class="section faq-block">
+        <div class="container faq-block__inner">
+          <header class="faq-block__head">
+            <p class="eyebrow">{String(gi + 1).padStart(2, "0")}</p>
+            <h2 class="faq-block__title">{group.title}</h2>
+          </header>
+
+          <div class="faq-list">
+            {group.items.map((item) => (
+              <details class="faq">
+                <summary class="faq__q">
+                  <span>{item.q}</span>
+                  <span class="faq__icon" aria-hidden="true" />
+                </summary>
+                <div class="faq__a">
+                  <p>{item.a}</p>
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+    ))
+  }
+
+  <!-- ============ CTA ============ -->
+  <section class="section panel-invert">
+    <div class="container cta">
+      <div>
+        <p class="eyebrow">Still have questions?</p>
+        <h2 class="measure">Ask us directly.</h2>
+        <p class="lede measure cta__lede">
+          We answer quotes and technical questions within 24 hours, usually
+          sooner.
+        </p>
+      </div>
+      <div class="cta__actions">
+        <a href="/contact" class="btn btn--primary">Contact us</a>
+        <a href={site.phoneHref} class="link-quiet">
+          {site.phone} <span class="arrow">&rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .faq-block {
+    padding-block: var(--space-xl);
+  }
+
+  .faq-block + .faq-block {
+    border-top: 1px solid var(--line);
+  }
+
+  .faq-block__inner {
+    display: grid;
+    gap: var(--space-l);
+  }
+
+  @media (min-width: 900px) {
+    .faq-block__inner {
+      grid-template-columns: 0.4fr 1fr;
+      gap: var(--space-2xl);
+      align-items: start;
+    }
+  }
+
+  .faq-block__title {
+    font-size: var(--step-2);
+  }
+
+  .faq-list {
+    border-top: 1px solid var(--line);
+  }
+
+  .faq {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .faq__q {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-m);
+    padding-block: var(--space-m);
+    font-size: var(--step-1);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    cursor: pointer;
+    list-style: none;
+    transition: color 0.2s var(--ease);
+  }
+
+  .faq__q::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq__q:hover {
+    color: var(--oxblood-700);
+  }
+
+  /* plus / minus built from two rules */
+  .faq__icon {
+    position: relative;
+    width: 14px;
+    height: 14px;
+    flex: none;
+  }
+
+  .faq__icon::before,
+  .faq__icon::after {
+    content: "";
+    position: absolute;
+    background: var(--gold-600);
+    transition: transform 0.25s var(--ease), opacity 0.25s var(--ease);
+  }
+
+  .faq__icon::before {
+    inset: 6px 0 auto 0;
+    height: 1.5px;
+  }
+
+  .faq__icon::after {
+    inset: 0 auto 0 6px;
+    width: 1.5px;
+  }
+
+  .faq[open] .faq__icon::after {
+    transform: rotate(90deg);
+    opacity: 0;
+  }
+
+  .faq__a {
+    padding-bottom: var(--space-m);
+    max-width: 62ch;
+  }
+
+  .faq__a p {
+    color: var(--muted);
+  }
+
+  /* --- cta --- */
+  .cta {
+    display: grid;
+    gap: var(--space-l);
+  }
+
+  @media (min-width: 900px) {
+    .cta {
+      grid-template-columns: 1.2fr auto;
+      align-items: center;
+      gap: var(--space-2xl);
+    }
+  }
+
+  .cta__lede {
+    margin-top: var(--space-s);
+  }
+
+  .cta__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-m) var(--space-l);
+  }
+</style>

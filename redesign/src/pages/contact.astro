@@ -1,0 +1,138 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import QuoteForm from "../components/QuoteForm.astro";
+import { site } from "../data/site.js";
+
+const mapQuery = encodeURIComponent(
+  "Tumaini House Room 310 CBD Nairobi Kenya"
+);
+---
+
+<Base
+  title="Contact — ARK Hygiene Solutions, Nairobi"
+  description="Request a quote from ARK Hygiene Solutions. Call or WhatsApp +254 716 253 184, email antoinette@gohorizonapp.co, or visit Tumaini House, Room 310, CBD, Nairobi."
+>
+  <PageHero
+    crumb="Contact"
+    eyebrow="Contact"
+    title="Tell us what you need."
+    lede="Send a list of items and quantities and we will quote within 24 hours. For recurring supply we will put together a schedule and pricing for your facility."
+    meta="Replies within 24 hours"
+  />
+
+  <!-- ============ Form + details ============ -->
+  <section class="section">
+    <div class="container contact">
+      <div class="contact__form">
+        <h2 class="contact__heading">Request a quote</h2>
+        <QuoteForm />
+      </div>
+
+      <aside class="contact__aside">
+        <ul class="routes">
+          <li>
+            <span class="routes__label">Call or WhatsApp</span>
+            <a href={site.phoneHref} class="routes__value">{site.phone}</a>
+            <a href={site.whatsapp} class="routes__sub link-quiet">
+              Open WhatsApp <span class="arrow">&rarr;</span>
+            </a>
+          </li>
+          <li>
+            <span class="routes__label">Email</span>
+            <a href={`mailto:${site.email}`} class="routes__value">
+              {site.email}
+            </a>
+          </li>
+          <li>
+            <span class="routes__label">Visit</span>
+            <span class="routes__value routes__value--plain">
+              {site.address.line1}<br />{site.address.line2}
+            </span>
+            <span class="routes__sub body-muted">{site.address.poBox}</span>
+            <a
+              href={`https://maps.google.com/?q=${mapQuery}`}
+              class="routes__sub link-quiet"
+              target="_blank"
+              rel="noopener"
+            >
+              Open in Maps <span class="arrow">&rarr;</span>
+            </a>
+          </li>
+          <li>
+            <span class="routes__label">Hours</span>
+            <span class="routes__value routes__value--plain">
+              Mon–Fri, 8:00–17:00
+            </span>
+            <span class="routes__sub body-muted">
+              Saturday by arrangement. 24/7 technical support for equipment
+              under contract.
+            </span>
+          </li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .contact {
+    display: grid;
+    gap: var(--space-2xl);
+  }
+
+  @media (min-width: 900px) {
+    .contact {
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: var(--space-2xl);
+      align-items: start;
+    }
+  }
+
+  .contact__heading {
+    font-size: var(--step-2);
+    margin-bottom: var(--space-l);
+  }
+
+  .routes {
+    display: grid;
+    gap: 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .routes li {
+    display: grid;
+    gap: var(--space-3xs);
+    padding-block: var(--space-m);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .routes__label {
+    font-size: var(--step--1);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .routes__value {
+    font-size: var(--step-2);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    line-height: 1.25;
+    transition: color 0.2s var(--ease);
+  }
+
+  a.routes__value:hover {
+    color: var(--oxblood-700);
+  }
+
+  .routes__value--plain {
+    font-size: var(--step-1);
+  }
+
+  .routes__sub {
+    font-size: var(--step--1);
+    margin-top: var(--space-3xs);
+  }
+</style>
