@@ -19,8 +19,9 @@ publish_mode: editorial_workflow
 media_folder: assets/uploads
 public_folder: /assets/uploads
 
-site_url: https://arkhygienesolutions.com
-logo_url: https://arkhygienesolutions.com/favicon.svg
+# Root-relative so it resolves on whatever host the admin is served from —
+# localhost, a Netlify preview, or the live domain.
+logo_url: /favicon.svg
 
 collections:
   # -------------------------------------------------------------------------
