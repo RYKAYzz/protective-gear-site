@@ -1,0 +1,149 @@
+# ---------------------------------------------------------------------------
+# ARK Hygiene — catalogue admin (Decap CMS)
+#
+# Git-backed: every save is a commit to this repository, which triggers a
+# Netlify rebuild. There is no database and no server to keep alive.
+#
+# Paths are relative to the REPOSITORY ROOT, not to redesign/.
+# ---------------------------------------------------------------------------
+
+# GitHub backend. Netlify's Git Gateway was returning 404 on
+# /.netlify/git/settings even when the dashboard showed it enabled — it is a
+# deprecated service. Logging in with GitHub talks to the repo directly and
+# has no Netlify Identity dependency.
+backend:
+  name: github
+  repo: RYKAYzz/protective-gear-site
+  # Must match the branch Netlify builds production from, otherwise edits
+  # commit successfully but never reach the live site.
+  branch: main
+  commit_messages:
+    update: "Update {{collection}} from admin"
+    uploadMedia: "Upload {{path}} from admin"
+    deleteMedia: "Delete {{path}} from admin"
+
+# Uploaded images land in the canonical assets folder, which the build copies
+# into the site (see the "sync-assets" script in redesign/package.json).
+media_folder: assets/uploads
+public_folder: /assets/uploads
+
+# Root-relative so it resolves on whatever host the admin is served from —
+# localhost, a Netlify preview, or the live domain.
+logo_url: /favicon.svg
+
+collections:
+  # -------------------------------------------------------------------------
+  # Products — add, edit, reorder and price the catalogue
+  # -------------------------------------------------------------------------
+  - name: catalogue
+    label: Catalogue
+    label_singular: Catalogue
+    description: >-
+      Every product on the site. Adding one here publishes it to the
+      relevant category page and to /products.
+    files:
+      - name: products
+        label: Products
+        file: redesign/src/data/products.json
+        description: The full product list.
+        fields:
+          - name: products
+            label: Products
+            label_singular: Product
+            widget: list
+            summary: "{{fields.name}} — {{fields.category}}"
+            fields:
+              - name: name
+                label: Product name
+                widget: string
+                hint: Shown on the card, e.g. "Examination gloves".
+
+              - name: slug
+                label: Slug
+                widget: string
+                pattern:
+                  ["^[a-z0-9]+(?:-[a-z0-9]+)*$", "Lowercase letters, numbers and hyphens only"]
+                hint: Unique id, lowercase with hyphens, e.g. "examination-gloves".
+
+              - name: description
+                label: Description
+                widget: text
+                required: false
+                hint: One or two lines. Shown under the product name.
+
+              - name: image
+                label: Image
+                widget: image
+                media_library:
+                  config:
+                    max_file_size: 5000000
+                hint: >-
+                  Square-ish product shot on a plain background works best.
+                  Aim for at least 800px wide.
+
+              - name: category
+                label: Category
+                widget: select
+                options:
+                  - { label: "PPE & safety gear", value: "ppe-safety-gear" }
+                  - {
+                      label: "Sterilization & waste",
+                      value: "sterilization-waste-equipment",
+                    }
+                  - { label: "Sanitary solutions", value: "sanitary-solutions" }
+                  - { label: "Spill management", value: "spill-management" }
+                  - {
+                      label: "Public health & sanitation",
+                      value: "public-health-sanitation",
+                    }
+                  - { label: "Medical equipment", value: "medical-equipment" }
+
+              - name: subcategory
+                label: Sub-category
+                widget: string
+                required: false
+                hint: >-
+                  Groups products within a category page, e.g.
+                  "hand-protection". Leave blank if not needed.
+
+              - name: price
+                label: Price (KES)
+                widget: number
+                required: false
+                value_type: int
+                min: 0
+                hint: >-
+                  Optional. Leave blank to show no price — prices are hidden
+                  on the site until you decide to display them.
+
+  # -------------------------------------------------------------------------
+  # Categories — the six product groups
+  # -------------------------------------------------------------------------
+  - name: settings
+    label: Site
+    files:
+      - name: categories
+        label: Categories
+        file: redesign/src/data/categories.json
+        description: The six product categories, their order and copy.
+        fields:
+          - name: categories
+            label: Categories
+            label_singular: Category
+            widget: list
+            summary: "{{fields.name}}"
+            fields:
+              - { name: slug, label: Slug, widget: string }
+              - { name: name, label: Name, widget: string }
+              - {
+                  name: short,
+                  label: Short description,
+                  widget: text,
+                  hint: Used on the homepage category grid.,
+                }
+              - {
+                  name: intro,
+                  label: Page intro,
+                  widget: text,
+                  hint: Used at the top of the category page.,
+                }
