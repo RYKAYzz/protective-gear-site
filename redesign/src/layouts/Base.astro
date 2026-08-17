@@ -22,20 +22,6 @@ const GOOGLE_TAG_ID = "AW-18158845729";
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    {/*
-      Netlify Identity invite, recovery and confirmation links all land on the
-      site root with the token in the hash. Forward it to /admin/, which
-      already loads the Identity widget and can complete the flow. Runs first
-      thing in <head> so it fires before anything renders.
-    */}
-    <script is:inline>
-      (function () {
-        var h = window.location.hash;
-        if (/(invite_token|recovery_token|confirmation_token)=/.test(h)) {
-          window.location.replace("/admin/" + h);
-        }
-      })();
-    </script>
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />

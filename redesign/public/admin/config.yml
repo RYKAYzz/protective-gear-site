@@ -7,14 +7,20 @@
 # Paths are relative to the REPOSITORY ROOT, not to redesign/.
 # ---------------------------------------------------------------------------
 
+# GitHub backend. Netlify's Git Gateway was returning 404 on
+# /.netlify/git/settings even when the dashboard showed it enabled — it is a
+# deprecated service. Logging in with GitHub talks to the repo directly and
+# has no Netlify Identity dependency.
 backend:
-  name: git-gateway
+  name: github
+  repo: RYKAYzz/protective-gear-site
   # Must match the branch Netlify builds production from, otherwise edits
   # commit successfully but never reach the live site.
   branch: main
-
-# Keeps edits out of production until they are published.
-publish_mode: editorial_workflow
+  commit_messages:
+    update: "Update {{collection}} from admin"
+    uploadMedia: "Upload {{path}} from admin"
+    deleteMedia: "Delete {{path}} from admin"
 
 # Uploaded images land in the canonical assets folder, which the build copies
 # into the site (see the "sync-assets" script in redesign/package.json).
