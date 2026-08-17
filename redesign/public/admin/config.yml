@@ -9,7 +9,9 @@
 
 backend:
   name: git-gateway
-  branch: redesign
+  # Must match the branch Netlify builds production from, otherwise edits
+  # commit successfully but never reach the live site.
+  branch: main
 
 # Keeps edits out of production until they are published.
 publish_mode: editorial_workflow
