@@ -1,0 +1,64 @@
+---
+interface Props {
+  name: string;
+  detail?: string | null;
+  image: string;
+}
+
+const { name, detail, image } = Astro.props;
+---
+
+<article class="product">
+  <div class="product__media">
+    <img src={encodeURI(image)} alt={name} loading="lazy" decoding="async" />
+  </div>
+  <div class="product__body">
+    <h3 class="product__name">{name}</h3>
+    {detail && <p class="product__detail body-muted">{detail}</p>}
+  </div>
+</article>
+
+<style>
+  /* Fixed media height keeps every card in a row aligned regardless of the
+     source image's aspect ratio. */
+  .product__media {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    height: 260px;
+    display: grid;
+    place-items: center;
+    padding: var(--space-m);
+    transition: border-color 0.3s var(--ease);
+  }
+
+  .product:hover .product__media {
+    border-color: var(--gold-400);
+  }
+
+  /* Source images are small (max ~295px). Cap the rendered size at native
+     resolution so they stay sharp rather than upscaled and soft. */
+  .product__media img {
+    width: auto;
+    height: auto;
+    max-width: min(100%, 180px);
+    max-height: 210px;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+  }
+
+  .product__body {
+    margin-top: var(--space-s);
+  }
+
+  .product__name {
+    font-size: var(--step-1);
+    font-weight: 600;
+  }
+
+  .product__detail {
+    font-size: var(--step--1);
+    margin-top: 2px;
+    max-width: 40ch;
+  }
+</style>

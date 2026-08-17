@@ -1,0 +1,182 @@
+---
+import { categories } from "../data/categories.js";
+
+const year = new Date().getFullYear();
+
+const columns = [
+  {
+    title: "Products",
+    links: categories.map((c) => ({ label: c.name, href: `/${c.slug}` })),
+  },
+  {
+    title: "Company",
+    links: [
+      { label: "About us", href: "/#about" },
+      { label: "Capabilities", href: "/#capabilities" },
+      { label: "Certifications", href: "/#standards" },
+      { label: "Contact", href: "/#contact" },
+    ],
+  },
+];
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="wordmark__mark">ARK</span>
+        <p class="footer-blurb body-muted">
+          Certified protective equipment and hygiene systems, supplied to
+          healthcare facilities across Kenya since 2018.
+        </p>
+        <p class="footer-cert">ISO 13485 certified</p>
+      </div>
+
+      {
+        columns.map((col) => (
+          <nav class="footer-col" aria-label={col.title}>
+            <h2 class="footer-col__title">{col.title}</h2>
+            <ul>
+              {col.links.map((link) => (
+                <li>
+                  <a href={link.href}>{link.label}</a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        ))
+      }
+
+      <div class="footer-col">
+        <h2 class="footer-col__title">Contact</h2>
+        <address>
+          <a href="tel:+254716253184">+254 716 253 184</a>
+          <a href="mailto:antoinette@gohorizonapp.co"
+            >antoinette@gohorizonapp.co</a
+          >
+          <span class="footer-address">
+            Tumaini House, Room 310<br />CBD, Nairobi, Kenya
+          </span>
+        </address>
+      </div>
+    </div>
+
+    <hr class="rule" />
+
+    <div class="footer-base">
+      <p>&copy; {year} ARK Hygiene Solutions. All rights reserved.</p>
+      <ul class="footer-legal">
+        <li><a href="/privacy-policy">Privacy policy</a></li>
+        <li><a href="/terms-of-service">Terms of service</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--surface);
+    border-top: 1px solid var(--line);
+    padding-block: var(--space-2xl) var(--space-l);
+    margin-top: var(--space-3xl);
+  }
+
+  .footer-grid {
+    display: grid;
+    gap: var(--space-xl);
+    padding-bottom: var(--space-xl);
+  }
+
+  @media (min-width: 720px) {
+    .footer-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1000px) {
+    .footer-grid {
+      grid-template-columns: 1.6fr 1fr 1fr 1.2fr;
+      gap: var(--space-l);
+    }
+  }
+
+  .wordmark__mark {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--oxblood-700);
+  }
+
+  .footer-blurb {
+    margin-top: var(--space-s);
+    font-size: var(--step--1);
+    max-width: 34ch;
+  }
+
+  .footer-cert {
+    margin-top: var(--space-s);
+    font-size: var(--step--1);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold-600);
+  }
+
+  .footer-col__title {
+    font-family: var(--font-body);
+    font-size: var(--step--1);
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: var(--space-s);
+  }
+
+  .footer-col ul {
+    display: grid;
+    gap: 0.6rem;
+  }
+
+  .footer-col a,
+  address a {
+    font-size: var(--step--1);
+    color: var(--muted);
+    transition: color 0.2s var(--ease);
+  }
+
+  .footer-col a:hover,
+  address a:hover {
+    color: var(--oxblood-700);
+  }
+
+  address {
+    font-style: normal;
+    display: grid;
+    gap: 0.6rem;
+  }
+
+  .footer-address {
+    font-size: var(--step--1);
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .footer-base {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--space-s);
+    padding-top: var(--space-l);
+    font-size: var(--step--1);
+    color: var(--muted);
+  }
+
+  .footer-legal {
+    display: flex;
+    gap: var(--space-m);
+  }
+
+  .footer-legal a:hover {
+    color: var(--oxblood-700);
+  }
+</style>

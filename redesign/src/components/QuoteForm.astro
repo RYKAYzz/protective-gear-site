@@ -1,0 +1,173 @@
+---
+import { categories } from "../data/categories.js";
+---
+
+{/*
+  Netlify Forms handles submission: no backend, no cold start, spam
+  filtering included, and it still works with JavaScript disabled.
+  The hidden `form-name` field is what Netlify matches on.
+*/}
+<form
+  class="quote-form"
+  name="quote"
+  method="POST"
+  action="/thank-you"
+  data-netlify="true"
+  netlify-honeypot="company-website"
+>
+  <input type="hidden" name="form-name" value="quote" />
+
+  {/* honeypot: hidden from people, tempting to bots */}
+  <p class="hp">
+    <label>
+      Do not fill this in
+      <input name="company-website" tabindex="-1" autocomplete="off" />
+    </label>
+  </p>
+
+  <div class="field-row">
+    <p class="field">
+      <label for="q-name">Name <span aria-hidden="true">*</span></label>
+      <input id="q-name" name="name" type="text" required autocomplete="name" />
+    </p>
+    <p class="field">
+      <label for="q-org">Facility or organisation</label>
+      <input
+        id="q-org"
+        name="organisation"
+        type="text"
+        autocomplete="organization"
+      />
+    </p>
+  </div>
+
+  <div class="field-row">
+    <p class="field">
+      <label for="q-email">Email <span aria-hidden="true">*</span></label>
+      <input
+        id="q-email"
+        name="email"
+        type="email"
+        required
+        autocomplete="email"
+      />
+    </p>
+    <p class="field">
+      <label for="q-phone">Phone</label>
+      <input id="q-phone" name="phone" type="tel" autocomplete="tel" />
+    </p>
+  </div>
+
+  <p class="field">
+    <label for="q-category">Product area</label>
+    <select id="q-category" name="category">
+      <option value="">Not sure yet</option>
+      {categories.map((c) => <option value={c.name}>{c.name}</option>)}
+      <option value="Multiple / other">Multiple or other</option>
+    </select>
+  </p>
+
+  <p class="field">
+    <label for="q-message">
+      What do you need? <span aria-hidden="true">*</span>
+    </label>
+    <textarea
+      id="q-message"
+      name="message"
+      rows="5"
+      required
+      placeholder="List the items and quantities, e.g. 20 boxes examination gloves (M), 500 face masks, 1 autoclave."></textarea>
+  </p>
+
+  <div class="form-foot">
+    <button type="submit" class="btn btn--primary">Send request</button>
+    <p class="form-note body-muted">We reply within 24 hours.</p>
+  </div>
+</form>
+
+<style>
+  .quote-form {
+    display: grid;
+    gap: var(--space-m);
+  }
+
+  .hp {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  .field-row {
+    display: grid;
+    gap: var(--space-m);
+  }
+
+  @media (min-width: 620px) {
+    .field-row {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .field {
+    display: grid;
+    gap: var(--space-3xs);
+    margin: 0;
+  }
+
+  label {
+    font-size: var(--step--1);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  label span {
+    color: var(--oxblood-600);
+  }
+
+  input,
+  select,
+  textarea {
+    font-family: inherit;
+    font-size: var(--step-0);
+    color: var(--ink);
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    padding: 0.75rem 0.85rem;
+    width: 100%;
+    transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
+  }
+
+  textarea {
+    resize: vertical;
+    line-height: 1.6;
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus {
+    outline: none;
+    border-color: var(--oxblood-700);
+    box-shadow: 0 0 0 3px var(--oxblood-050);
+  }
+
+  ::placeholder {
+    color: var(--muted-light);
+  }
+
+  .form-foot {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-m);
+    margin-top: var(--space-2xs);
+  }
+
+  .form-note {
+    font-size: var(--step--1);
+    margin: 0;
+  }
+</style>

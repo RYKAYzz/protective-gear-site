@@ -1,0 +1,94 @@
+---
+import "@fontsource-variable/source-sans-3";
+import "../styles/tokens.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+
+// Google tag — Ads conversion measurement for the Kenya PPE Search campaign
+const GOOGLE_TAG_ID = "AW-18158845729";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "MedicalBusiness",
+        name: "ARK Hygiene Solutions",
+        description:
+          "ISO 13485 certified supplier of personal protective equipment, sterilization systems and medical waste equipment to healthcare facilities across Kenya.",
+        url: "https://arkhygienesolutions.com",
+        telephone: "+254716253184",
+        email: "antoinette@gohorizonapp.co",
+        foundingDate: "2018",
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "Tumaini House, Room 310, CBD",
+          addressLocality: "Nairobi",
+          addressCountry: "KE",
+        },
+      })}
+    />
+
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_TAG_ID}`}></script>
+    <script is:inline define:vars={{ GOOGLE_TAG_ID }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", GOOGLE_TAG_ID);
+    </script>
+  </head>
+
+  <body>
+    <a href="#main" class="skip-link">Skip to content</a>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+
+    <style>
+      .skip-link {
+        position: absolute;
+        left: -9999px;
+        top: 0;
+        background: var(--ink);
+        color: var(--paper);
+        padding: var(--space-xs) var(--space-s);
+        z-index: 100;
+      }
+      .skip-link:focus {
+        left: var(--space-s);
+        top: var(--space-s);
+      }
+    </style>
+  </body>
+</html>

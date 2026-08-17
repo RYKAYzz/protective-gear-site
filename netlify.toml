@@ -1,3 +1,24 @@
+# ---------------------------------------------------------------------------
+# Production is deliberately left untouched: no build command, so Netlify
+# keeps publishing the existing site from the repository root.
+#
+# Branch deploys and deploy previews build the Astro redesign instead, so it
+# can be reviewed and its quote form tested on a preview URL without
+# affecting arkhygienesolutions.com.
+# ---------------------------------------------------------------------------
+[build.environment]
+  NODE_VERSION = "22"
+
+[context.branch-deploy]
+  base = "redesign"
+  command = "npm run build"
+  publish = "dist"
+
+[context.deploy-preview]
+  base = "redesign"
+  command = "npm run build"
+  publish = "dist"
+
 [[headers]]
   for = "/*"
   [headers.values]

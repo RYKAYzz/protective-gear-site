@@ -1,0 +1,90 @@
+---
+import Base from "../layouts/Base.astro";
+---
+
+<Base
+  title="Request received — ARK Hygiene Solutions"
+  description="Thank you — your quote request has reached ARK Hygiene Solutions. We reply within 24 hours."
+>
+  <section class="section thanks">
+    <div class="container">
+      <p class="eyebrow">Request received</p>
+      <h1 class="thanks__title">Thank you — we have your request.</h1>
+      <p class="lede measure thanks__lede">
+        One of our team will come back to you within 24 hours, usually sooner.
+        If it is urgent, call or message us directly and we will pick it up
+        straight away.
+      </p>
+
+      <ul class="thanks__routes">
+        <li>
+          <span class="thanks__label">Call or WhatsApp</span>
+          <a href="tel:+254716253184" class="thanks__value">+254 716 253 184</a>
+        </li>
+        <li>
+          <span class="thanks__label">Email</span>
+          <a href="mailto:antoinette@gohorizonapp.co" class="thanks__value"
+            >antoinette@gohorizonapp.co</a
+          >
+        </li>
+      </ul>
+
+      <p class="thanks__back">
+        <a href="/" class="link-quiet">
+          Back to home <span class="arrow">&rarr;</span>
+        </a>
+      </p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .thanks {
+    padding-block: var(--space-2xl) var(--space-3xl);
+  }
+
+  .thanks__title {
+    max-width: 18ch;
+  }
+
+  .thanks__lede {
+    margin-top: var(--space-m);
+  }
+
+  .thanks__routes {
+    display: grid;
+    gap: 0;
+    margin-top: var(--space-xl);
+    border-top: 1px solid var(--line);
+    max-width: 540px;
+  }
+
+  .thanks__routes li {
+    display: grid;
+    gap: var(--space-3xs);
+    padding-block: var(--space-m);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .thanks__label {
+    font-size: var(--step--1);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .thanks__value {
+    font-size: var(--step-2);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+  }
+
+  .thanks__value:hover {
+    color: var(--oxblood-700);
+  }
+
+  .thanks__back {
+    margin-top: var(--space-xl);
+  }
+</style>

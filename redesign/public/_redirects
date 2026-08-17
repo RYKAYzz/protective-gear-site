@@ -1,0 +1,10 @@
+# Legacy .html URLs -> clean URLs.
+# Critical: the live Google Ads campaign points at /ppe-safety-gear.html,
+# and these paths are already indexed by Google. 301 keeps both working.
+/index.html                          /                                 301!
+/ppe-safety-gear.html                /ppe-safety-gear                  301!
+/sterilization-waste-equipment.html  /sterilization-waste-equipment    301!
+/sanitary-solutions.html             /sanitary-solutions               301!
+/spill-management.html               /spill-management                 301!
+/public-health-sanitation.html       /public-health-sanitation         301!
+/medical-equipment.html              /medical-equipment                301!

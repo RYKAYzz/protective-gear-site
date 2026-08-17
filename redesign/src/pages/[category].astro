@@ -1,0 +1,314 @@
+---
+import Base from "../layouts/Base.astro";
+import ProductCard from "../components/ProductCard.astro";
+import products from "../data/products.json";
+import { categories, labelFor } from "../data/categories.js";
+
+export function getStaticPaths() {
+  return categories.map((cat, i) => ({
+    params: { category: cat.slug },
+    props: { cat, index: i + 1 },
+  }));
+}
+
+const { cat, index } = Astro.props;
+
+const items = products.filter((p) => p.category === cat.slug);
+
+// Group by subcategory, preserving first-seen order.
+const groups = [];
+for (const item of items) {
+  const key = item.subcategory || "other";
+  let group = groups.find((g) => g.key === key);
+  if (!group) {
+    group = { key, label: labelFor(item.subcategory), items: [] };
+    groups.push(group);
+  }
+  group.items.push(item);
+}
+
+// Only worth showing group headings when there is more than one.
+const showGroups = groups.length > 1;
+
+const position = String(index).padStart(2, "0");
+const others = categories.filter((c) => c.slug !== cat.slug);
+---
+
+<Base
+  title={`${cat.name} — ARK Hygiene Solutions, Nairobi`}
+  description={`${cat.intro} Supplied across Kenya by ARK Hygiene Solutions, ISO 13485 certified.`}
+>
+  <!-- ============ Category header ============ -->
+  <section class="cat-head">
+    <div class="container">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">/</span>
+        <span>{cat.name}</span>
+      </nav>
+
+      <div class="cat-head__grid">
+        <div>
+          <p class="eyebrow">Product range — {position}</p>
+          <h1 class="cat-head__title">{cat.name}</h1>
+        </div>
+        <div class="cat-head__aside">
+          <p class="lede">{cat.intro}</p>
+          <p class="cat-head__count">
+            {`${items.length} ${items.length === 1 ? "line" : "lines"} stocked`}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Products ============ -->
+  <section class="section">
+    <div class="container">
+      {
+        groups.map((group) => (
+          <div class="group">
+            {showGroups && (
+              <header class="group__head">
+                <h2 class="group__title">{group.label}</h2>
+                <span class="group__count">
+                  {String(group.items.length).padStart(2, "0")}
+                </span>
+              </header>
+            )}
+            <ul class="product-grid">
+              {group.items.map((p) => (
+                <li>
+                  <ProductCard
+                    name={p.name}
+                    detail={p.description}
+                    image={p.image}
+                  />
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- ============ Quote CTA ============ -->
+  <section class="section section--surface">
+    <div class="container cta__inner">
+      <div>
+        <p class="eyebrow">Next step</p>
+        <h2 class="measure">Send us your list and quantities.</h2>
+        <p class="lede measure cta__lede">
+          We quote within 24 hours, and can put together a recurring supply
+          schedule for your facility.
+        </p>
+      </div>
+      <div class="cta__actions">
+        <a href="/#contact" class="btn btn--primary">Request a quote</a>
+        <a href="tel:+254716253184" class="link-quiet">
+          +254 716 253 184 <span class="arrow">&rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Other categories ============ -->
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Continue browsing</p>
+      <ol class="index-list">
+        {
+          others.map((o) => {
+            const n = categories.findIndex((c) => c.slug === o.slug) + 1;
+            return (
+              <li>
+                <a href={`/${o.slug}`} class="index-row">
+                  <span class="index-row__num">
+                    {String(n).padStart(2, "0")}
+                  </span>
+                  <span class="index-row__name">{o.name}</span>
+                  <span class="index-row__arrow" aria-hidden="true">
+                    &rarr;
+                  </span>
+                </a>
+              </li>
+            );
+          })
+        }
+      </ol>
+    </div>
+  </section>
+</Base>
+
+<style>
+  /* ---------- Header ---------- */
+  .cat-head {
+    padding-block: var(--space-l) var(--space-xl);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .crumbs {
+    display: flex;
+    gap: var(--space-2xs);
+    font-size: var(--step--1);
+    color: var(--muted);
+    margin-bottom: var(--space-xl);
+  }
+
+  .crumbs a:hover {
+    color: var(--oxblood-700);
+  }
+
+  .cat-head__grid {
+    display: grid;
+    gap: var(--space-l);
+  }
+
+  @media (min-width: 900px) {
+    .cat-head {
+      padding-block: var(--space-l) var(--space-2xl);
+    }
+    .cat-head__grid {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-2xl);
+      align-items: end;
+    }
+  }
+
+  .cat-head__title {
+    max-width: 14ch;
+  }
+
+  .cat-head__aside .lede {
+    max-width: 46ch;
+  }
+
+  .cat-head__count {
+    margin-top: var(--space-s);
+    font-size: var(--step--1);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold-600);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ---------- Groups ---------- */
+  .group + .group {
+    margin-top: var(--space-2xl);
+  }
+
+  .group__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-s);
+    padding-bottom: var(--space-xs);
+    margin-bottom: var(--space-l);
+    border-bottom: 2px solid var(--ink);
+  }
+
+  .group__title {
+    font-size: var(--step-1);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .group__count {
+    font-size: var(--step--1);
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .product-grid {
+    display: grid;
+    gap: var(--space-l);
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 760px) {
+    .product-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-xl);
+    }
+  }
+
+  @media (min-width: 1080px) {
+    .product-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  /* ---------- CTA ---------- */
+  .cta__inner {
+    display: grid;
+    gap: var(--space-l);
+  }
+
+  @media (min-width: 900px) {
+    .cta__inner {
+      grid-template-columns: 1.2fr auto;
+      gap: var(--space-2xl);
+      align-items: center;
+    }
+  }
+
+  .cta__lede {
+    margin-top: var(--space-s);
+  }
+
+  .cta__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-m) var(--space-l);
+  }
+
+  /* ---------- Index (shared look with the homepage hero) ---------- */
+  .index-list {
+    margin-top: var(--space-m);
+  }
+
+  .index-row {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: baseline;
+    gap: var(--space-s);
+    padding-block: 0.95rem;
+    border-top: 1px solid var(--line);
+    transition: color 0.2s var(--ease);
+  }
+
+  .index-list li:last-child .index-row {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .index-row__num {
+    font-size: var(--step--1);
+    font-variant-numeric: tabular-nums;
+    color: var(--gold-600);
+    letter-spacing: 0.04em;
+  }
+
+  .index-row__name {
+    font-size: var(--step-1);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  .index-row__arrow {
+    color: var(--muted);
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: opacity 0.2s var(--ease), transform 0.2s var(--ease);
+  }
+
+  .index-row:hover {
+    color: var(--oxblood-700);
+  }
+
+  .index-row:hover .index-row__arrow {
+    opacity: 1;
+    transform: translateX(0);
+  }
+</style>

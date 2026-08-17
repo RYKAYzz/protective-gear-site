@@ -1,0 +1,720 @@
+---
+import Base from "../layouts/Base.astro";
+import ProductCard from "../components/ProductCard.astro";
+import QuoteForm from "../components/QuoteForm.astro";
+import { categories } from "../data/categories.js";
+import products from "../data/products.json";
+
+const totalProducts = products.length;
+
+const credentials = [
+  { value: "ISO 13485", label: "Certified quality management" },
+  { value: "2018", label: "Supplying Kenya since" },
+  { value: "500+", label: "Healthcare facilities served" },
+  { value: "Nairobi", label: "Stocked and dispatched locally" },
+];
+
+const selected = [
+  {
+    name: "Face shield",
+    detail: "Full-face splash protection, anti-fog visor",
+    img: "/assets/PPE-safety-gear/face shield.png",
+  },
+  {
+    name: "Examination gloves",
+    detail: "Latex, powdered and powder-free",
+    img: "/assets/PPE-safety-gear/latex powdered & powder free gloves.jpg",
+  },
+  {
+    name: "Surgical gown",
+    detail: "Sterile barrier for theatre and high-risk areas",
+    img: "/assets/PPE-safety-gear/surgical gown.png",
+  },
+  {
+    name: "Autoclave sterilizer",
+    detail: "Installed, serviced and maintained by our engineers",
+    img: "/assets/Medical-waste-system/installations, repair and maintainance of medical waste equipments - autoclave.png",
+  },
+  {
+    name: "Biohazard spill kit",
+    detail: "Complete response pack, ready to deploy",
+    img: "/assets/spill-kits/spill kits & spill packs -  biohazard  spill kit.png",
+  },
+  {
+    name: "Automatic sanitary bin",
+    detail: "Touch-free operation for high-traffic washrooms",
+    img: "/assets/sanitary-bins/sanitary bins -automatic.png",
+  },
+];
+
+const capabilities = [
+  {
+    title: "Supply & logistics",
+    body: "Bulk and recurring supply contracts, dispatched from our Nairobi store with delivery across Kenya.",
+  },
+  {
+    title: "Installation",
+    body: "Commissioning of autoclaves, macerators and incinerators by trained engineers, on your site.",
+  },
+  {
+    title: "Maintenance & repair",
+    body: "Scheduled servicing and breakdown repair that keeps sterilization and waste systems in operation.",
+  },
+  {
+    title: "Training & support",
+    body: "Practical handling and safety training for the staff who use the equipment every day.",
+  },
+];
+---
+
+<Base
+  title="ARK Hygiene Solutions — Certified PPE & Medical Supplies, Nairobi"
+  description="ISO 13485 certified supplier of personal protective equipment, sterilization systems and medical waste equipment to over 500 healthcare facilities across Kenya. Based in Nairobi."
+>
+  <!-- ================= Hero ================= -->
+  <section class="hero">
+    <div class="container hero__grid">
+      <div class="hero__statement">
+        <p class="eyebrow">Nairobi, Kenya — since 2018</p>
+        <h1 class="hero__title">
+          Certified protection,<br />supplied without interruption.
+        </h1>
+        <p class="lede hero__lede">
+          Personal protective equipment, sterilization systems and medical
+          waste equipment — stocked in Nairobi, delivered across Kenya, to more
+          than 500 healthcare facilities.
+        </p>
+        <div class="hero__actions">
+          <a href="#contact" class="btn btn--primary">Request a quote</a>
+          <a href="#products" class="link-quiet">
+            Download catalogue <span class="arrow">&rarr;</span>
+          </a>
+        </div>
+      </div>
+
+      <aside class="hero__index" aria-label="Product range">
+        <p class="hero__index-head">
+          <span>Product range</span>
+          <span>06 categories</span>
+        </p>
+        <ol class="index-list">
+          {
+            categories.map((cat, i) => (
+              <li>
+                <a href={`/${cat.slug}`} class="index-row">
+                  <span class="index-row__num">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span class="index-row__name">{cat.name}</span>
+                  <span class="index-row__arrow" aria-hidden="true">
+                    &rarr;
+                  </span>
+                </a>
+              </li>
+            ))
+          }
+        </ol>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ================= Credentials ================= -->
+  <section class="credentials" aria-label="Company credentials">
+    <div class="container">
+      <ul class="credentials__list">
+        {
+          credentials.map((c) => (
+            <li class="credential">
+              <span class="credential__value">{c.value}</span>
+              <span class="credential__label">{c.label}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- ================= Selected products ================= -->
+  <section class="section" id="products">
+    <div class="container">
+      <header class="section-head section-head--split">
+        <div>
+          <p class="eyebrow">Selected products</p>
+          <h2 class="measure">A representative few.</h2>
+        </div>
+        <p class="body-muted section-head__aside">
+          Our catalogue runs to {totalProducts} lines across six categories. These
+          are the ones facilities ask for most.
+        </p>
+      </header>
+
+      <ul class="product-grid">
+        {
+          selected.map((p) => (
+            <li>
+              <ProductCard name={p.name} detail={p.detail} image={p.img} />
+            </li>
+          ))
+        }
+      </ul>
+
+      <div class="product-grid__footer">
+        <a href="/ppe-safety-gear" class="link-quiet">
+          Browse all {totalProducts} products <span class="arrow">&rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= What we supply ================= -->
+  <section class="section section--surface" id="range">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow">What we supply</p>
+        <h2 class="measure">
+          Six categories, stocked for healthcare and industry.
+        </h2>
+      </header>
+
+      <ul class="category-grid">
+        {
+          categories.map((cat) => (
+            <li class="category">
+              <h3 class="category__name">{cat.name}</h3>
+              <p class="category__desc body-muted">{cat.short}</p>
+              <a href={`/${cat.slug}`} class="link-quiet category__link">
+                Browse <span class="arrow">&rarr;</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- ================= Capabilities ================= -->
+  <section class="section" id="capabilities">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow">Capabilities</p>
+        <h2 class="measure">We supply the equipment, then keep it running.</h2>
+      </header>
+
+      <ul class="capability-list">
+        {
+          capabilities.map((cap, i) => (
+            <li class="capability">
+              <span class="capability__num">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <div>
+                <h3 class="capability__title">{cap.title}</h3>
+                <p class="body-muted">{cap.body}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- ================= About / proof ================= -->
+  <section class="section section--surface" id="about">
+    <div class="container about__inner">
+      <div>
+        <p class="eyebrow">About</p>
+        <h2 class="measure">
+          Built around one thing: facilities cannot run out.
+        </h2>
+      </div>
+      <div class="about__body">
+        <p>
+          ARK Hygiene Solutions was established in 2018 to give healthcare
+          facilities in Kenya and East Africa a dependable local source of
+          certified protective equipment — rather than one that arrives late,
+          or not at all.
+        </p>
+        <p>
+          We hold ISO 13485 certification for quality management, stock in
+          Nairobi for fast dispatch, and support long-term supply agreements
+          with hospitals, clinics, laboratories and pharmacies. Today more than
+          500 facilities rely on us.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Standards ================= -->
+  <section class="section standards" id="standards">
+    <div class="container">
+      <p class="eyebrow eyebrow--center">Standards &amp; compliance</p>
+      <ul class="standards__list">
+        <li class="standard">
+          <span class="standard__mark">ISO 13485</span>
+          <span class="standard__label">Medical devices — quality management</span
+          >
+        </li>
+        <li class="standard">
+          <span class="standard__mark">Est. 2018</span>
+          <span class="standard__label">Registered in Kenya</span>
+        </li>
+        <li class="standard">
+          <span class="standard__mark">500+</span>
+          <span class="standard__label">Facilities supplied</span>
+        </li>
+      </ul>
+      <!--
+        Client / partner logo wall goes here once permissions are confirmed.
+        Only display logos of organisations that have agreed to be named.
+      -->
+    </div>
+  </section>
+
+  <!-- ================= Contact ================= -->
+  <section class="section contact" id="contact">
+    <div class="container contact__inner">
+      <div class="contact__lead">
+        <p class="eyebrow">Get in touch</p>
+        <h2>Tell us what you need, and we'll quote within 24 hours.</h2>
+        <p class="lede measure">
+          Send a list of items and quantities. For recurring supply, we will
+          put together a schedule and pricing for your facility.
+        </p>
+
+        <ul class="contact__routes">
+          <li>
+            <span class="contact__label">Call or WhatsApp</span>
+            <a href="tel:+254716253184" class="contact__value"
+              >+254 716 253 184</a
+            >
+          </li>
+          <li>
+            <span class="contact__label">Email</span>
+            <a href="mailto:antoinette@gohorizonapp.co" class="contact__value"
+              >antoinette@gohorizonapp.co</a
+            >
+          </li>
+          <li>
+            <span class="contact__label">Visit</span>
+            <span class="contact__value contact__value--plain">
+              Tumaini House, Room 310<br />CBD, Nairobi
+            </span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="contact__form">
+        <QuoteForm />
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  /* ---------------- Hero ----------------
+     Statement paired with a working index of the range — a catalogue
+     cover, not a slogan over whitespace. */
+  .hero {
+    padding-block: var(--space-xl) var(--space-2xl);
+  }
+
+  @media (min-width: 900px) {
+    .hero {
+      padding-block: var(--space-2xl) var(--space-3xl);
+    }
+  }
+
+  .hero__grid {
+    display: grid;
+    gap: var(--space-xl);
+    align-items: start;
+  }
+
+  @media (min-width: 950px) {
+    .hero__grid {
+      grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.75fr);
+      gap: var(--space-2xl);
+    }
+  }
+
+  .hero__title {
+    max-width: 16ch;
+  }
+
+  .hero__lede {
+    max-width: 46ch;
+    margin-top: var(--space-m);
+  }
+
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-m) var(--space-l);
+    margin-top: var(--space-l);
+  }
+
+  /* --- Index --- */
+  .hero__index {
+    border-top: 2px solid var(--ink);
+    padding-top: var(--space-xs);
+  }
+
+  @media (min-width: 950px) {
+    .hero__index {
+      margin-top: 0.6rem;
+    }
+  }
+
+  .hero__index-head {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-s);
+    font-size: var(--step--1);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding-bottom: var(--space-2xs);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .index-row {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: baseline;
+    gap: var(--space-s);
+    padding-block: 0.85rem;
+    border-top: 1px solid var(--line);
+    transition: color 0.2s var(--ease);
+  }
+
+  .index-list li:last-child .index-row {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .index-row__num {
+    font-size: var(--step--1);
+    font-variant-numeric: tabular-nums;
+    color: var(--gold-600);
+    letter-spacing: 0.04em;
+  }
+
+  .index-row__name {
+    font-size: var(--step-1);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  .index-row__arrow {
+    color: var(--muted);
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: opacity 0.2s var(--ease), transform 0.2s var(--ease);
+  }
+
+  .index-row:hover {
+    color: var(--oxblood-700);
+  }
+
+  .index-row:hover .index-row__arrow {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* ---------------- Credentials ---------------- */
+  .credentials {
+    border-block: 1px solid var(--line);
+    background: var(--white);
+  }
+
+  .credentials__list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 800px) {
+    .credentials__list {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .credential {
+    padding: var(--space-l) var(--space-m);
+    border-right: 1px solid var(--line-soft);
+    border-bottom: 1px solid var(--line-soft);
+    display: grid;
+    gap: var(--space-3xs);
+  }
+
+  @media (min-width: 800px) {
+    .credential {
+      border-bottom: 0;
+    }
+    .credential:last-child {
+      border-right: 0;
+    }
+  }
+
+  .credential__value {
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    color: var(--oxblood-700);
+    line-height: 1.1;
+  }
+
+  .credential__label {
+    font-size: var(--step--1);
+    color: var(--muted);
+  }
+
+  /* ---------------- Section furniture ---------------- */
+  .section--surface {
+    background: var(--surface);
+    border-block: 1px solid var(--line);
+  }
+
+  .section-head {
+    margin-bottom: var(--space-xl);
+  }
+
+  .section-head--split {
+    display: grid;
+    gap: var(--space-m);
+  }
+
+  @media (min-width: 900px) {
+    .section-head--split {
+      grid-template-columns: 1fr auto;
+      align-items: end;
+    }
+    .section-head__aside {
+      max-width: 34ch;
+      text-align: right;
+      font-size: var(--step--1);
+    }
+  }
+
+  .eyebrow--center {
+    justify-content: center;
+    text-align: center;
+  }
+
+  /* ---------------- Categories ---------------- */
+  .category-grid {
+    display: grid;
+    gap: 0;
+    border-top: 1px solid var(--line);
+  }
+
+  @media (min-width: 700px) {
+    .category-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1000px) {
+    .category-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .category {
+    padding: var(--space-l) var(--space-m) var(--space-l) 0;
+    border-bottom: 1px solid var(--line);
+    display: grid;
+    align-content: start;
+    gap: var(--space-2xs);
+  }
+
+  @media (min-width: 700px) {
+    .category {
+      padding-right: var(--space-xl);
+    }
+  }
+
+  .category__name {
+    font-size: var(--step-1);
+  }
+
+  .category__desc {
+    font-size: var(--step--1);
+    max-width: 38ch;
+  }
+
+  .category__link {
+    margin-top: var(--space-xs);
+    font-size: var(--step--1);
+  }
+
+  /* ---------------- Products ---------------- */
+  .product-grid {
+    display: grid;
+    gap: var(--space-l);
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 800px) {
+    .product-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-xl);
+    }
+  }
+
+  .product-grid__footer {
+    margin-top: var(--space-xl);
+    padding-top: var(--space-l);
+    border-top: 1px solid var(--line);
+  }
+
+  /* ---------------- Capabilities ---------------- */
+  .capability-list {
+    display: grid;
+    gap: 0;
+    border-top: 1px solid var(--line);
+  }
+
+  @media (min-width: 800px) {
+    .capability-list {
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: var(--space-2xl);
+    }
+  }
+
+  .capability {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-m);
+    padding-block: var(--space-l);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .capability__num {
+    font-family: var(--font-display);
+    font-size: var(--step-0);
+    color: var(--gold-600);
+    padding-top: 0.35rem;
+  }
+
+  .capability__title {
+    font-size: var(--step-1);
+    margin-bottom: var(--space-3xs);
+  }
+
+  .capability p {
+    font-size: var(--step--1);
+    max-width: 44ch;
+  }
+
+  /* ---------------- About ---------------- */
+  .about__inner {
+    display: grid;
+    gap: var(--space-l);
+  }
+
+  @media (min-width: 900px) {
+    .about__inner {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-2xl);
+    }
+  }
+
+  .about__body {
+    display: grid;
+    gap: var(--space-m);
+    color: var(--ink-soft);
+  }
+
+  /* ---------------- Standards ---------------- */
+  .standards__list {
+    display: grid;
+    gap: var(--space-l);
+    justify-items: center;
+    text-align: center;
+    margin-top: var(--space-l);
+  }
+
+  @media (min-width: 700px) {
+    .standards__list {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .standard {
+    display: grid;
+    gap: var(--space-3xs);
+  }
+
+  .standard__mark {
+    font-family: var(--font-display);
+    font-size: var(--step-3);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    color: var(--oxblood-700);
+    line-height: 1;
+  }
+
+  .standard__label {
+    font-size: var(--step--1);
+    color: var(--muted);
+  }
+
+  /* ---------------- Contact ---------------- */
+  .contact__inner {
+    display: grid;
+    gap: var(--space-xl);
+  }
+
+  @media (min-width: 900px) {
+    .contact__inner {
+      /* the form is the conversion point — give it the larger share */
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: var(--space-2xl);
+      align-items: start;
+    }
+  }
+
+  .contact__lead h2 {
+    margin-bottom: var(--space-m);
+  }
+
+  .contact__routes {
+    display: grid;
+    gap: 0;
+    margin-top: var(--space-xl);
+    border-top: 1px solid var(--line);
+  }
+
+  .contact__routes li {
+    display: grid;
+    gap: var(--space-3xs);
+    padding-block: var(--space-m);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .contact__label {
+    font-size: var(--step--1);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .contact__value {
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    line-height: 1.25;
+    transition: color 0.2s var(--ease);
+  }
+
+  a.contact__value:hover {
+    color: var(--oxblood-700);
+  }
+
+  .contact__value--plain {
+    font-size: var(--step-1);
+  }
+</style>

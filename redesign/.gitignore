@@ -1,0 +1,9 @@
+# build output
+dist/
+# product images are copied from the canonical ../assets at build time
+# (see the "sync-assets" script) — never edit or commit this copy
+public/assets/
+# generated types / astro cache
+.astro/
+# dependencies
+node_modules/

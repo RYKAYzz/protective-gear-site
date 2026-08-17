@@ -1,0 +1,225 @@
+---
+const nav = [
+  { label: "Products", href: "/#products" },
+  { label: "Capabilities", href: "/#capabilities" },
+  { label: "About", href: "/#about" },
+  { label: "Contact", href: "/#contact" },
+];
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="wordmark" aria-label="ARK Hygiene Solutions — home">
+      <span class="wordmark__mark">ARK</span>
+      <span class="wordmark__sub">Hygiene Solutions</span>
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      <ul class="nav__list">
+        {
+          nav.map((item) => (
+            <li>
+              <a href={item.href} class="nav__link">
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <a href="tel:+254716253184" class="header-phone">+254 716 253 184</a>
+      <a href="/#contact" class="btn btn--primary btn--sm">Request a quote</a>
+    </div>
+
+    <button
+      class="nav-toggle"
+      aria-expanded="false"
+      aria-controls="mobile-nav"
+      aria-label="Open menu"
+    >
+      <span></span><span></span>
+    </button>
+  </div>
+
+  <div class="mobile-nav" id="mobile-nav" hidden>
+    <ul>
+      {
+        nav.map((item) => (
+          <li>
+            <a href={item.href}>{item.label}</a>
+          </li>
+        ))
+      }
+      <li><a href="tel:+254716253184">+254 716 253 184</a></li>
+    </ul>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line-soft);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-l);
+    min-height: 74px;
+  }
+
+  /* --- Wordmark --- */
+  .wordmark {
+    display: flex;
+    align-items: baseline;
+    gap: 0.55rem;
+    flex: none;
+  }
+
+  .wordmark__mark {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--oxblood-700);
+  }
+
+  .wordmark__sub {
+    font-size: var(--step--1);
+    letter-spacing: 0.02em;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  /* --- Nav --- */
+  .nav {
+    display: none;
+  }
+
+  .nav__list {
+    display: flex;
+    align-items: center;
+    gap: var(--space-l);
+  }
+
+  .nav__link {
+    font-size: var(--step--1);
+    letter-spacing: 0.02em;
+    color: var(--ink-soft);
+    padding-block: 0.4rem;
+    background-image: linear-gradient(var(--gold-500), var(--gold-500));
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.3s var(--ease), color 0.2s var(--ease);
+  }
+
+  .nav__link:hover {
+    color: var(--ink);
+    background-size: 100% 1px;
+  }
+
+  /* --- Actions --- */
+  .header-actions {
+    display: none;
+    align-items: center;
+    gap: var(--space-m);
+  }
+
+  .header-phone {
+    font-size: var(--step--1);
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .header-phone:hover {
+    color: var(--ink);
+  }
+
+  .btn--sm {
+    font-size: var(--step--1);
+    padding: 0.7em 1.15em;
+    white-space: nowrap;
+  }
+
+  /* Phone is the first thing to go when space is tight */
+  @media (max-width: 1120px) {
+    .header-phone {
+      display: none;
+    }
+  }
+
+  /* --- Mobile toggle --- */
+  .nav-toggle {
+    display: grid;
+    gap: 5px;
+    background: none;
+    border: 0;
+    padding: 0.6rem 0.15rem;
+    cursor: pointer;
+  }
+
+  .nav-toggle span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: var(--ink);
+    transition: transform 0.25s var(--ease), opacity 0.2s var(--ease);
+  }
+
+  .nav-toggle[aria-expanded="true"] span:first-child {
+    transform: translateY(3.25px) rotate(45deg);
+  }
+
+  .nav-toggle[aria-expanded="true"] span:last-child {
+    transform: translateY(-3.25px) rotate(-45deg);
+  }
+
+  .mobile-nav {
+    border-top: 1px solid var(--line-soft);
+    padding: var(--space-s) var(--space-m) var(--space-m);
+  }
+
+  .mobile-nav ul {
+    display: grid;
+    gap: var(--space-2xs);
+  }
+
+  .mobile-nav a {
+    display: block;
+    padding: var(--space-2xs) 0;
+    color: var(--ink-soft);
+    border-bottom: 1px solid var(--line-soft);
+  }
+
+  @media (min-width: 900px) {
+    .nav,
+    .header-actions {
+      display: flex;
+    }
+    .nav-toggle,
+    .mobile-nav {
+      display: none !important;
+    }
+  }
+</style>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>(".nav-toggle");
+  const panel = document.querySelector<HTMLElement>("#mobile-nav");
+
+  toggle?.addEventListener("click", () => {
+    const open = toggle.getAttribute("aria-expanded") === "true";
+    toggle.setAttribute("aria-expanded", String(!open));
+    toggle.setAttribute("aria-label", open ? "Open menu" : "Close menu");
+    if (panel) panel.hidden = open;
+  });
+</script>
