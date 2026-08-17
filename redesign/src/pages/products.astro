@@ -1,0 +1,277 @@
+---
+import Base from "../layouts/Base.astro";
+import ProductCard from "../components/ProductCard.astro";
+import catalogue from "../data/products.json";
+import { categories } from "../data/categories.js";
+
+const products = catalogue.products;
+
+// Every product, grouped by category — the whole range on one page,
+// no pagination and nothing hidden behind a "show more".
+const groups = categories.map((cat) => ({
+  ...cat,
+  items: products.filter((p) => p.category === cat.slug),
+}));
+---
+
+<Base
+  title="All products — ARK Hygiene Solutions, Nairobi"
+  description={`The complete ARK Hygiene Solutions catalogue: ${products.length} lines of PPE, sterilization, medical waste, sanitary and spill management equipment, stocked in Nairobi and delivered across Kenya.`}
+>
+  <!-- ============ Header ============ -->
+  <section class="cat-head">
+    <div class="container">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">/</span>
+        <span>All products</span>
+      </nav>
+
+      <div class="cat-head__grid">
+        <div>
+          <p class="eyebrow">Full catalogue</p>
+          <h1 class="cat-head__title">Everything we stock.</h1>
+        </div>
+        <div class="cat-head__aside">
+          <p class="lede">
+            All {products.length} lines across six categories, on one page. Send
+            us the items and quantities you need and we will quote within 24
+            hours.
+          </p>
+          <p class="cat-head__count">{products.length} lines stocked</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Jump links ============ -->
+  <nav class="jump" aria-label="Jump to category">
+    <div class="container jump__inner">
+      {
+        groups.map((g, i) => (
+          <a href={`#${g.slug}`} class="jump__link">
+            <span class="jump__num">{String(i + 1).padStart(2, "0")}</span>
+            {g.name}
+            <span class="jump__count">{g.items.length}</span>
+          </a>
+        ))
+      }
+    </div>
+  </nav>
+
+  <!-- ============ Everything ============ -->
+  {
+    groups.map((g, i) => (
+      <section class="section cat-block" id={g.slug}>
+        <div class="container">
+          <header class="cat-block__head">
+            <div>
+              <p class="eyebrow">{String(i + 1).padStart(2, "0")}</p>
+              <h2 class="cat-block__title">{g.name}</h2>
+            </div>
+            <p class="cat-block__intro body-muted">{g.intro}</p>
+          </header>
+
+          <ul class="product-grid">
+            {g.items.map((p) => (
+              <li>
+                <ProductCard
+                  name={p.name}
+                  detail={p.description}
+                  image={p.image}
+                />
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    ))
+  }
+
+  <!-- ============ CTA ============ -->
+  <section class="section panel-invert">
+    <div class="container cta__inner">
+      <div>
+        <p class="eyebrow">Next step</p>
+        <h2 class="measure">Send us your list and quantities.</h2>
+        <p class="lede measure cta__lede">
+          We quote within 24 hours, and can put together a recurring supply
+          schedule for your facility.
+        </p>
+      </div>
+      <div class="cta__actions">
+        <a href="/#contact" class="btn btn--primary">Request a quote</a>
+        <a href="tel:+254716253184" class="link-quiet">
+          +254 716 253 184 <span class="arrow">&rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .cat-head {
+    padding-block: var(--space-l) var(--space-xl);
+  }
+
+  .crumbs {
+    display: flex;
+    gap: var(--space-2xs);
+    font-size: var(--step--1);
+    color: var(--muted);
+    margin-bottom: var(--space-xl);
+  }
+
+  .crumbs a:hover {
+    color: var(--oxblood-700);
+  }
+
+  .cat-head__grid {
+    display: grid;
+    gap: var(--space-l);
+  }
+
+  @media (min-width: 900px) {
+    .cat-head__grid {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-2xl);
+      align-items: end;
+    }
+  }
+
+  .cat-head__aside .lede {
+    max-width: 46ch;
+  }
+
+  .cat-head__count {
+    margin-top: var(--space-s);
+    font-size: var(--step--1);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold-600);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ---------- Sticky jump bar ---------- */
+  .jump {
+    position: sticky;
+    top: 74px;
+    z-index: 20;
+    background: color-mix(in srgb, var(--paper) 92%, transparent);
+    backdrop-filter: blur(10px);
+    border-block: 1px solid var(--line);
+  }
+
+  .jump__inner {
+    display: flex;
+    gap: var(--space-xs);
+    overflow-x: auto;
+    padding-block: var(--space-2xs);
+    scrollbar-width: thin;
+  }
+
+  .jump__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    flex: none;
+    padding: 0.5rem 0.85rem;
+    border-radius: 999px;
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    white-space: nowrap;
+    transition: background-color 0.2s var(--ease), color 0.2s var(--ease);
+  }
+
+  .jump__link:hover {
+    background: var(--surface);
+    color: var(--oxblood-700);
+  }
+
+  .jump__num {
+    color: var(--gold-600);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .jump__count {
+    font-size: 0.75em;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ---------- Category blocks ---------- */
+  .cat-block {
+    scroll-margin-top: 130px;
+  }
+
+  .cat-block + .cat-block {
+    border-top: 1px solid var(--line);
+  }
+
+  .cat-block__head {
+    display: grid;
+    gap: var(--space-s);
+    margin-bottom: var(--space-xl);
+  }
+
+  @media (min-width: 900px) {
+    .cat-block__head {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-2xl);
+      align-items: end;
+    }
+  }
+
+  .cat-block__title {
+    font-size: var(--step-3);
+  }
+
+  .cat-block__intro {
+    max-width: 46ch;
+    font-size: var(--step--1);
+  }
+
+  .product-grid {
+    display: grid;
+    gap: var(--space-l);
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 760px) {
+    .product-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-xl);
+    }
+  }
+
+  @media (min-width: 1080px) {
+    .product-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  /* ---------- CTA ---------- */
+  .cta__inner {
+    display: grid;
+    gap: var(--space-l);
+  }
+
+  @media (min-width: 900px) {
+    .cta__inner {
+      grid-template-columns: 1.2fr auto;
+      gap: var(--space-2xl);
+      align-items: center;
+    }
+  }
+
+  .cta__lede {
+    margin-top: var(--space-s);
+  }
+
+  .cta__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-m) var(--space-l);
+  }
+</style>
