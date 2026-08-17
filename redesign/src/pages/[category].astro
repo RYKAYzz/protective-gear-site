@@ -1,7 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
 import ProductCard from "../components/ProductCard.astro";
-import products from "../data/products.json";
+import catalogue from "../data/products.json";
 import { categories, labelFor } from "../data/categories.js";
 
 export function getStaticPaths() {
@@ -13,6 +13,7 @@ export function getStaticPaths() {
 
 const { cat, index } = Astro.props;
 
+const products = catalogue.products;
 const items = products.filter((p) => p.category === cat.slug);
 
 // Group by subcategory, preserving first-seen order.

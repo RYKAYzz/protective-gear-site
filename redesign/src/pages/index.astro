@@ -3,8 +3,9 @@ import Base from "../layouts/Base.astro";
 import ProductCard from "../components/ProductCard.astro";
 import QuoteForm from "../components/QuoteForm.astro";
 import { categories } from "../data/categories.js";
-import products from "../data/products.json";
+import catalogue from "../data/products.json";
 
+const products = catalogue.products;
 const totalProducts = products.length;
 
 const credentials = [
@@ -193,7 +194,7 @@ const capabilities = [
   </section>
 
   <!-- ================= Capabilities ================= -->
-  <section class="section" id="capabilities">
+  <section class="section panel-invert" id="capabilities">
     <div class="container">
       <header class="section-head">
         <p class="eyebrow">Capabilities</p>
@@ -568,11 +569,19 @@ const capabilities = [
     border-top: 1px solid var(--line);
   }
 
-  /* ---------------- Capabilities ---------------- */
+  /* ---------------- Capabilities (on the inverted panel) ---------------- */
   .capability-list {
     display: grid;
     gap: 0;
-    border-top: 1px solid var(--line);
+    border-top: 1px solid color-mix(in srgb, var(--gold-050) 22%, transparent);
+  }
+
+  .panel-invert .capability {
+    border-bottom-color: color-mix(in srgb, var(--gold-050) 22%, transparent);
+  }
+
+  .panel-invert .capability__num {
+    color: var(--gold-400);
   }
 
   @media (min-width: 800px) {

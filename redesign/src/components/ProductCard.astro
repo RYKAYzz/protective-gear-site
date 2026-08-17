@@ -21,19 +21,28 @@ const { name, detail, image } = Astro.props;
 <style>
   /* Fixed media height keeps every card in a row aligned regardless of the
      source image's aspect ratio. */
+  /* A warm tinted field rather than a white box: the product sits in the
+     brand world, and small source images read as placed rather than lost
+     in empty white. */
   .product__media {
-    background: var(--white);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    height: 260px;
+    background: linear-gradient(
+      165deg,
+      var(--gold-050) 0%,
+      var(--surface) 62%,
+      #ece3d7 100%
+    );
+    border: 1px solid transparent;
+    border-radius: var(--radius-lg);
+    height: 280px;
     display: grid;
     place-items: center;
     padding: var(--space-m);
-    transition: border-color 0.3s var(--ease);
+    transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
   }
 
   .product:hover .product__media {
-    border-color: var(--gold-400);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lift);
   }
 
   /* Source images are small (max ~295px). Cap the rendered size at native

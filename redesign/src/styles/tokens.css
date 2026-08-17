@@ -62,12 +62,12 @@
   --measure: 68ch;
   --container: 1180px;
   --container-narrow: 880px;
-  --radius-sm: 3px;
-  --radius: 5px;
+  --radius-sm: 6px;
+  --radius: 12px;
+  --radius-lg: 22px;
 
-  /* Shadows are almost absent by design — flat, confident surfaces */
   --shadow-subtle: 0 1px 2px rgba(26, 21, 18, 0.04);
-  --shadow-lift: 0 12px 32px -12px rgba(26, 21, 18, 0.14);
+  --shadow-lift: 0 18px 40px -20px rgba(26, 21, 18, 0.18);
 
   --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
 }
@@ -308,6 +308,54 @@ ol {
   border: 0;
   border-top: 1px solid var(--line);
   margin: 0;
+}
+
+/* ==========================================================================
+   Inverted panel — a full-bleed oxblood field.
+   The strongest differentiator in the category: most suppliers stay on
+   white. One or two of these per page, never more.
+   ========================================================================== */
+
+.panel-invert {
+  background: var(--oxblood-800);
+  color: var(--gold-050);
+}
+
+.panel-invert h1,
+.panel-invert h2,
+.panel-invert h3 {
+  color: var(--gold-050);
+}
+
+.panel-invert .eyebrow {
+  color: var(--gold-400);
+}
+
+.panel-invert .eyebrow::before {
+  background: var(--gold-400);
+}
+
+.panel-invert .lede,
+.panel-invert .body-muted {
+  color: color-mix(in srgb, var(--gold-050) 78%, transparent);
+}
+
+.panel-invert .btn--primary {
+  background: var(--gold-400);
+  color: var(--oxblood-900);
+}
+
+.panel-invert .btn--primary:hover {
+  background: var(--gold-200);
+}
+
+.panel-invert .link-quiet {
+  color: var(--gold-050);
+}
+
+.panel-invert .rule,
+.panel-invert hr {
+  border-color: color-mix(in srgb, var(--gold-050) 22%, transparent);
 }
 
 .visually-hidden {
