@@ -227,6 +227,30 @@ export default async function handler(req) {
     .replace(/\/$/, "");
 
   try {
+    /**
+     * Diagnostics. Reports whether each variable is present, the length of
+     * the password, and whether the GitHub token actually works — enough to
+     * find a misconfiguration, without returning any secret value.
+     * Safe to delete once the admin is running.
+     */
+    if (route === "health" && req.method === "GET") {
+      let github = "not checked";
+      try {
+        const repo = await gh(`/repos/${REPO}`, GITHUB_TOKEN);
+        github = `ok — can see ${repo.full_name}`;
+      } catch (e) {
+        github = `FAILED — ${e.message}`;
+      }
+      return json(200, {
+        staffPasswordSet: Boolean(STAFF_PASSWORD),
+        staffPasswordLength: STAFF_PASSWORD.trim().length,
+        staffSecretSet: Boolean(STAFF_SECRET),
+        staffSecretLength: STAFF_SECRET.trim().length,
+        githubTokenSet: Boolean(GITHUB_TOKEN),
+        github,
+      });
+    }
+
     if (route === "login" && req.method === "POST") {
       const { password } = await req.json().catch(() => ({}));
       if (!passwordMatches(password, STAFF_PASSWORD)) {
