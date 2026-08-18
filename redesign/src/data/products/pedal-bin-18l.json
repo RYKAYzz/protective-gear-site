@@ -1,11 +1,11 @@
 {
   "order": 28,
-  "name": "Pedal Bin 18L",
+  "name": "Pedal Bin 18L with biohazard logo ",
   "slug": "pedal-bin-18l",
   "description": "Compact pedal-operated waste bin",
   "image": "/assets/bins-wastes/pedal bins-18 litres.png",
   "category": "sterilization-waste-equipment",
   "subcategory": "bins",
-  "price": null,
+  "price": 2950,
   "unit": ""
 }
