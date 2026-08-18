@@ -1,0 +1,10 @@
+{
+  "order": 49,
+  "name": "Manual Sanitary Bin",
+  "slug": "sanitary-manual",
+  "description": "Traditional manual sanitary disposal bin",
+  "image": "/assets/sanitary-bins/sanitary bins - manual.png",
+  "category": "sanitary-solutions",
+  "subcategory": "sanitary",
+  "price": null
+}

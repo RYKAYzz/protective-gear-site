@@ -1,0 +1,10 @@
+{
+  "order": 15,
+  "name": "Surgical Gown",
+  "slug": "surgical-gown",
+  "description": "Sterile surgical gown for operating room procedures.",
+  "image": "/assets/PPE-safety-gear/surgical gown.png",
+  "category": "ppe-safety-gear",
+  "subcategory": "body-protection",
+  "price": null
+}

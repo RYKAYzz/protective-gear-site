@@ -1,0 +1,10 @@
+{
+  "order": 1,
+  "name": "Face Shield",
+  "slug": "face-shield",
+  "description": "Complete face protection shield for medical procedures and industrial safety.",
+  "image": "/assets/PPE-safety-gear/face shield.png",
+  "category": "ppe-safety-gear",
+  "subcategory": "face-protection",
+  "price": 3500
+}

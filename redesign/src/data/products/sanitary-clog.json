@@ -1,0 +1,10 @@
+{
+  "order": 8,
+  "name": "Sanitary Clog",
+  "slug": "sanitary-clog",
+  "description": "Medical sanitary clogs for healthcare environments.",
+  "image": "/assets/PPE-safety-gear/sanitary clog.png",
+  "category": "ppe-safety-gear",
+  "subcategory": "foot-protection",
+  "price": null
+}

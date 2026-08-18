@@ -1,0 +1,10 @@
+{
+  "order": 60,
+  "name": "General Spill Kit",
+  "slug": "general-spill-kit",
+  "description": "Versatile spill containment and cleanup solution",
+  "image": "/assets/spill-kits/spill kits & spill packs.png",
+  "category": "spill-management",
+  "subcategory": "all",
+  "price": null
+}

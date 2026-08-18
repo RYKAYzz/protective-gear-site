@@ -1,0 +1,10 @@
+{
+  "order": 9,
+  "name": "Cover Shoes",
+  "slug": "cover-shoes",
+  "description": "Disposable cover shoes for clean room and medical environments.",
+  "image": "/assets/PPE-safety-gear/cover shoes.png",
+  "category": "ppe-safety-gear",
+  "subcategory": "foot-protection",
+  "price": null
+}

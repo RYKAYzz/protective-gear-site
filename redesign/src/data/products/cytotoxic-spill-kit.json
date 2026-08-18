@@ -1,0 +1,10 @@
+{
+  "order": 58,
+  "name": "Cytotoxic Spill Kit",
+  "slug": "cytotoxic-spill-kit",
+  "description": "Specialized kit for handling cytotoxic and chemotherapy spills",
+  "image": "/assets/spill-kits/spill kits & spill packs - cytotoxic spill pack.png",
+  "category": "spill-management",
+  "subcategory": "cytotoxic",
+  "price": null
+}

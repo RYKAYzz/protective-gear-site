@@ -3,10 +3,8 @@ import Base from "../layouts/Base.astro";
 import ProductCard from "../components/ProductCard.astro";
 import QuoteForm from "../components/QuoteForm.astro";
 import { categories } from "../data/categories.js";
-import catalogue from "../data/products.json";
+import { products, total as totalProducts } from "../data/products.js";
 
-const products = catalogue.products;
-const totalProducts = products.length;
 
 const credentials = [
   { value: "ISO 13485", label: "Certified quality management" },

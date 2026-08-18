@@ -1,0 +1,10 @@
+{
+  "order": 71,
+  "name": "First Aid Kit",
+  "slug": "first-aid-kit",
+  "description": "Complete first aid kit for emergency situations",
+  "image": "/assets/linen-covers/First aid kit.png",
+  "category": "public-health-sanitation",
+  "subcategory": "linen",
+  "price": null
+}

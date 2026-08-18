@@ -1,0 +1,10 @@
+{
+  "order": 10,
+  "name": "Surgical Boots",
+  "slug": "surgical-boots",
+  "description": "Sterile surgical boots for operating room environments.",
+  "image": "/assets/PPE-safety-gear/surgical boots.png",
+  "category": "ppe-safety-gear",
+  "subcategory": "foot-protection",
+  "price": null
+}

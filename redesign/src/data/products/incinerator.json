@@ -1,0 +1,10 @@
+{
+  "order": 19,
+  "name": "Diesel Fired Incinerator",
+  "slug": "incinerator",
+  "description": "High-temperature medical waste incineration system",
+  "image": "/assets/Medical-waste-system/installations, repair and maintainance of medical waste equipments - diesel fried incinerator.png",
+  "category": "sterilization-waste-equipment",
+  "subcategory": "sterilization",
+  "price": null
+}

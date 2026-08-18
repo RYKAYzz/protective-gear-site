@@ -1,10 +1,9 @@
 ---
 import Base from "../layouts/Base.astro";
 import ProductCard from "../components/ProductCard.astro";
-import catalogue from "../data/products.json";
+import { products, total as totalProducts } from "../data/products.js";
 import { categories } from "../data/categories.js";
 
-const products = catalogue.products;
 
 // Every product, grouped by category — the whole range on one page,
 // no pagination and nothing hidden behind a "show more".

@@ -1,0 +1,10 @@
+{
+  "order": 73,
+  "name": "Specimen Containers",
+  "slug": "specimen-containers",
+  "description": "Secure handling and storage containers for medical specimens",
+  "image": "/assets/specimen-bags/pecimen bags & containers -2.png",
+  "category": "medical-equipment",
+  "subcategory": "specimen",
+  "price": null
+}

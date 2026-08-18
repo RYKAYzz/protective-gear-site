@@ -1,0 +1,10 @@
+{
+  "order": 11,
+  "name": "Lab Coat",
+  "slug": "lab-coat",
+  "description": "Laboratory coat for scientific and medical environments.",
+  "image": "/assets/PPE-safety-gear/lab coat.png",
+  "category": "ppe-safety-gear",
+  "subcategory": "body-protection",
+  "price": null
+}

@@ -4,13 +4,14 @@
 # Git-backed: every save is a commit to this repository, which triggers a
 # Netlify rebuild. There is no database and no server to keep alive.
 #
+# Products are a FOLDER collection — one file per product — so the admin
+# lists them as a searchable, sortable grid. A file collection with a list
+# widget renders as a single blank card hiding a 74-row accordion, which is
+# unusable at this size.
+#
 # Paths are relative to the REPOSITORY ROOT, not to redesign/.
 # ---------------------------------------------------------------------------
 
-# GitHub backend. Netlify's Git Gateway was returning 404 on
-# /.netlify/git/settings even when the dashboard showed it enabled — it is a
-# deprecated service. Logging in with GitHub talks to the repo directly and
-# has no Netlify Identity dependency.
 backend:
   name: github
   repo: RYKAYzz/protective-gear-site
@@ -18,7 +19,9 @@ backend:
   # commit successfully but never reach the live site.
   branch: main
   commit_messages:
-    update: "Update {{collection}} from admin"
+    create: "Add {{slug}} from admin"
+    update: "Update {{slug}} from admin"
+    delete: "Delete {{slug}} from admin"
     uploadMedia: "Upload {{path}} from admin"
     deleteMedia: "Delete {{path}} from admin"
 
@@ -27,99 +30,125 @@ backend:
 media_folder: assets/uploads
 public_folder: /assets/uploads
 
-# Root-relative so it resolves on whatever host the admin is served from —
-# localhost, a Netlify preview, or the live domain.
 logo_url: /favicon.svg
+
+# The side-by-side preview only renders raw field dumps for this kind of
+# data, which looks broken rather than helpful. The live site is the preview.
+editor:
+  preview: false
 
 collections:
   # -------------------------------------------------------------------------
-  # Products — add, edit, reorder and price the catalogue
+  # Products — one entry per product
   # -------------------------------------------------------------------------
-  - name: catalogue
-    label: Catalogue
-    label_singular: Catalogue
-    description: >-
-      Every product on the site. Adding one here publishes it to the
-      relevant category page and to /products.
-    files:
-      - name: products
-        label: Products
-        file: redesign/src/data/products.json
-        description: The full product list.
-        fields:
-          - name: products
-            label: Products
-            label_singular: Product
-            widget: list
-            summary: "{{fields.name}} — {{fields.category}}"
-            fields:
-              - name: name
-                label: Product name
-                widget: string
-                hint: Shown on the card, e.g. "Examination gloves".
+  - name: products
+    label: Products
+    label_singular: Product
+    folder: redesign/src/data/products
+    extension: json
+    format: json
+    create: true
+    slug: "{{fields.slug}}"
+    identifier_field: name
+    summary: "{{name}}  ·  {{category}}"
+    sortable_fields: [name, category, price, order]
+    view_filters:
+      - { label: "PPE & safety gear", field: category, pattern: ppe-safety-gear }
+      - {
+          label: "Sterilization & waste",
+          field: category,
+          pattern: sterilization-waste-equipment,
+        }
+      - { label: "Sanitary solutions", field: category, pattern: sanitary-solutions }
+      - { label: "Spill management", field: category, pattern: spill-management }
+      - {
+          label: "Public health & sanitation",
+          field: category,
+          pattern: public-health-sanitation,
+        }
+      - { label: "Medical equipment", field: category, pattern: medical-equipment }
+      - { label: "Has a price", field: price, pattern: "[0-9]" }
+    fields:
+      - name: name
+        label: Product name
+        widget: string
+        hint: Shown on the card, e.g. "Examination gloves".
 
-              - name: slug
-                label: Slug
-                widget: string
-                pattern:
-                  ["^[a-z0-9]+(?:-[a-z0-9]+)*$", "Lowercase letters, numbers and hyphens only"]
-                hint: Unique id, lowercase with hyphens, e.g. "examination-gloves".
+      - name: slug
+        label: Slug
+        widget: string
+        pattern:
+          [
+            "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+            "Lowercase letters, numbers and hyphens only",
+          ]
+        hint: >-
+          Unique id, lowercase with hyphens. Also becomes the filename, so
+          avoid changing it once a product is live.
 
-              - name: description
-                label: Description
-                widget: text
-                required: false
-                hint: One or two lines. Shown under the product name.
+      - name: image
+        label: Image
+        widget: image
+        media_library:
+          config:
+            max_file_size: 5000000
+        hint: >-
+          Click the field, then Upload. The Media library only lists images
+          uploaded through here — the original product photos live in the
+          category folders under assets/ and are already attached, so you do
+          not need to re-pick them. Plain background, at least 800px wide.
 
-              - name: image
-                label: Image
-                widget: image
-                media_library:
-                  config:
-                    max_file_size: 5000000
-                hint: >-
-                  Click the field, then Upload. The Media library only lists
-                  images uploaded through here — the 74 original product
-                  photos live in assets/PPE-safety-gear, assets/spill-kits and
-                  the other category folders, and are already attached to
-                  their products, so you do not need to re-pick them. Plain
-                  background, at least 800px wide.
+      - name: description
+        label: Description
+        widget: text
+        required: false
+        hint: One or two lines, shown under the product name.
 
-              - name: category
-                label: Category
-                widget: select
-                options:
-                  - { label: "PPE & safety gear", value: "ppe-safety-gear" }
-                  - {
-                      label: "Sterilization & waste",
-                      value: "sterilization-waste-equipment",
-                    }
-                  - { label: "Sanitary solutions", value: "sanitary-solutions" }
-                  - { label: "Spill management", value: "spill-management" }
-                  - {
-                      label: "Public health & sanitation",
-                      value: "public-health-sanitation",
-                    }
-                  - { label: "Medical equipment", value: "medical-equipment" }
+      - name: category
+        label: Category
+        widget: select
+        options:
+          - { label: "PPE & safety gear", value: "ppe-safety-gear" }
+          - {
+              label: "Sterilization & waste",
+              value: "sterilization-waste-equipment",
+            }
+          - { label: "Sanitary solutions", value: "sanitary-solutions" }
+          - { label: "Spill management", value: "spill-management" }
+          - {
+              label: "Public health & sanitation",
+              value: "public-health-sanitation",
+            }
+          - { label: "Medical equipment", value: "medical-equipment" }
 
-              - name: subcategory
-                label: Sub-category
-                widget: string
-                required: false
-                hint: >-
-                  Groups products within a category page, e.g.
-                  "hand-protection". Leave blank if not needed.
+      - name: subcategory
+        label: Sub-category
+        widget: string
+        required: false
+        hint: >-
+          Groups products within a category page, e.g. "hand-protection".
+          Leave blank if not needed.
 
-              - name: price
-                label: Price — from (KSh)
-                widget: number
-                required: false
-                value_type: int
-                min: 0
-                hint: >-
-                  Optional. Shown on the card as "From KSh 2,500". Enter the
-                  lowest unit price, digits only, no commas. Leave blank and
-                  no price appears at all — the card just shows the product.
+      - name: price
+        label: Price — from (KSh)
+        widget: number
+        required: false
+        value_type: int
+        min: 0
+        hint: >-
+          Optional. Shown on the card as "From KSh 2,500". Enter the lowest
+          unit price, digits only, no commas. Leave blank and no price
+          appears at all.
+
+      - name: order
+        label: Sort position
+        widget: number
+        required: false
+        value_type: int
+        default: 999
+        hint: >-
+          Lower numbers appear first within a category. Leave at 999 for new
+          products to place them last.
 
   # -------------------------------------------------------------------------
   # Categories — the six product groups

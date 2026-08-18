@@ -1,0 +1,10 @@
+{
+  "order": 18,
+  "name": "Medical Waste Macerator",
+  "slug": "macerator",
+  "description": "Advanced waste processing and disposal system",
+  "image": "/assets/Medical-waste-system/installations, repair and maintainance of medical waste equipments - Macerators.png",
+  "category": "sterilization-waste-equipment",
+  "subcategory": "sterilization",
+  "price": null
+}

@@ -1,0 +1,10 @@
+{
+  "order": 2,
+  "name": "Safety Goggles",
+  "slug": "safety-goggles",
+  "description": "Protective safety goggles for eye protection in hazardous environments.",
+  "image": "/assets/PPE-safety-gear/safety google.png",
+  "category": "ppe-safety-gear",
+  "subcategory": "face-protection",
+  "price": null
+}
