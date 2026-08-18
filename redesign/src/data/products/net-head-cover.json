@@ -1,11 +1,11 @@
 {
   "order": 0,
-  "name": "Head Cover",
-  "slug": "head-cover",
+  "name": "Disposable Head Cover",
+  "slug": "net-head-cover",
   "description": "Disposable head cover for complete head protection in medical and industrial environments.",
   "image": "/assets/PPE-safety-gear/head cover.png",
   "category": "ppe-safety-gear",
   "subcategory": "head-protection",
-  "price": 2500,
-  "unit": ""
+  "price": 1697,
+  "unit": "pack"
 }
