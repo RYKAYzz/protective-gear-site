@@ -6,6 +6,6 @@
   "image": "/assets/PPE-safety-gear/lab coat.png",
   "category": "ppe-safety-gear",
   "subcategory": "body-protection",
-  "price": null,
-  "unit": ""
+  "price": 1800,
+  "unit": "piece"
 }
