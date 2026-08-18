@@ -10,10 +10,11 @@ const { name, detail, image, price } = Astro.props;
 
 // Prices are optional: most lines are quoted rather than listed, so a card
 // simply omits the line when no price is set in the admin.
-const priceLabel =
-  typeof price === "number" && price > 0
-    ? `KES ${price.toLocaleString("en-KE")}`
-    : null;
+//
+// Shown as "From KSh X" because these are unit prices that fall with volume —
+// stating them flat would misrepresent what a facility actually pays.
+const hasPrice = typeof price === "number" && price > 0;
+const priceValue = hasPrice ? price.toLocaleString("en-KE") : null;
 ---
 
 <article class="product">
@@ -23,7 +24,13 @@ const priceLabel =
   <div class="product__body">
     <h3 class="product__name">{name}</h3>
     {detail && <p class="product__detail body-muted">{detail}</p>}
-    {priceLabel && <p class="product__price">{priceLabel}</p>}
+    {
+      hasPrice && (
+        <p class="product__price">
+          <span class="product__price-from">From</span> KSh {priceValue}
+        </p>
+      )
+    }
   </div>
 </article>
 
@@ -87,5 +94,14 @@ const priceLabel =
     letter-spacing: -0.01em;
     color: var(--oxblood-700);
     font-variant-numeric: tabular-nums;
+  }
+
+  /* "From" sits quieter than the figure it qualifies */
+  .product__price-from {
+    font-weight: 400;
+    font-size: var(--step--1);
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
   }
 </style>

@@ -78,8 +78,12 @@ collections:
                   config:
                     max_file_size: 5000000
                 hint: >-
-                  Square-ish product shot on a plain background works best.
-                  Aim for at least 800px wide.
+                  Click the field, then Upload. The Media library only lists
+                  images uploaded through here — the 74 original product
+                  photos live in assets/PPE-safety-gear, assets/spill-kits and
+                  the other category folders, and are already attached to
+                  their products, so you do not need to re-pick them. Plain
+                  background, at least 800px wide.
 
               - name: category
                 label: Category
@@ -107,14 +111,15 @@ collections:
                   "hand-protection". Leave blank if not needed.
 
               - name: price
-                label: Price (KES)
+                label: Price — from (KSh)
                 widget: number
                 required: false
                 value_type: int
                 min: 0
                 hint: >-
-                  Optional. Leave blank to show no price — prices are hidden
-                  on the site until you decide to display them.
+                  Optional. Shown on the card as "From KSh 2,500". Enter the
+                  lowest unit price, digits only, no commas. Leave blank and
+                  no price appears at all — the card just shows the product.
 
   # -------------------------------------------------------------------------
   # Categories — the six product groups
