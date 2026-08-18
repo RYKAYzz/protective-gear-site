@@ -62,11 +62,18 @@ function verify(token, secret) {
   }
 }
 
-/** Constant-time compare that does not throw on differing lengths. */
+/**
+ * Constant-time compare that does not throw on differing lengths.
+ *
+ * Both sides are trimmed: pasting a value into Netlify's env var field very
+ * easily carries a trailing space or newline, and a password that fails for
+ * an invisible character is impossible to debug from the login screen.
+ * Leading/trailing whitespace is not meaningful in a password anyway.
+ */
 function passwordMatches(given, expected) {
   if (typeof given !== "string" || typeof expected !== "string") return false;
-  const a = createHmac("sha256", "pw").update(given).digest();
-  const b = createHmac("sha256", "pw").update(expected).digest();
+  const a = createHmac("sha256", "pw").update(given.trim()).digest();
+  const b = createHmac("sha256", "pw").update(expected.trim()).digest();
   return timingSafeEqual(a, b);
 }
 

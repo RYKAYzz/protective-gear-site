@@ -23,21 +23,41 @@ const categoryOptions = categories.map((c) => ({
     <!-- ===================== Login ===================== -->
     <div id="login" class="login">
       <form class="login__card" id="login-form">
-        <div class="login__mark">ARK</div>
-        <h1 class="login__title">Staff admin</h1>
-        <label class="login__label" for="pw">Password</label>
-        <input
-          id="pw"
-          type="password"
-          autocomplete="current-password"
-          required
-          autofocus
-        />
-        <button type="submit" class="btn btn--primary" id="login-btn">
+        <header class="login__head">
+          <span class="login__mark">ARK</span>
+          <span class="login__brand">
+            <span class="login__brand-name">ARK Hygiene Solutions</span>
+            <span class="login__brand-sub">Catalogue management</span>
+          </span>
+        </header>
+
+        <h1 class="login__title">Sign in</h1>
+        <p class="login__intro">
+          Enter the staff password to update products, prices and details.
+        </p>
+
+        <div class="login__field">
+          <label for="pw">Password</label>
+          <input
+            id="pw"
+            type="password"
+            autocomplete="current-password"
+            placeholder="••••••••••••"
+            required
+            autofocus
+          />
+        </div>
+
+        <p class="login__error" id="login-error" role="alert" hidden></p>
+
+        <button type="submit" class="btn btn--primary login__btn" id="login-btn">
           Log in
         </button>
-        <p class="login__error" id="login-error" hidden></p>
-        <a href="/" class="login__back">&larr; Back to site</a>
+
+        <footer class="login__foot">
+          <a href="/" class="login__back">&larr; Back to site</a>
+          <span class="login__note">Changes go live in about a minute</span>
+        </footer>
       </form>
     </div>
 
@@ -97,42 +117,93 @@ const categoryOptions = categories.map((c) => ({
         display: grid;
         place-items: center;
         padding: var(--space-m);
+        /* a faint warm wash so the card reads as a surface, not a floating box */
+        background:
+          radial-gradient(
+            60rem 40rem at 50% -10%,
+            var(--gold-050) 0%,
+            transparent 70%
+          ),
+          var(--surface);
       }
 
       .login__card {
-        display: grid;
-        gap: var(--space-xs);
         width: 100%;
-        max-width: 360px;
+        max-width: 420px;
         padding: var(--space-xl);
         background: var(--paper);
         border: 1px solid var(--line);
-        border-radius: var(--radius-lg);
-        justify-items: stretch;
-        text-align: left;
+        /* tighter than --radius-lg: this should read as a document, not a widget */
+        border-radius: 10px;
+        box-shadow: var(--shadow-lift);
+      }
+
+      @media (min-width: 480px) {
+        .login__card {
+          padding: var(--space-2xl) var(--space-xl);
+        }
+      }
+
+      .login__head {
+        display: flex;
+        align-items: center;
+        gap: var(--space-s);
+        padding-bottom: var(--space-l);
+        margin-bottom: var(--space-l);
+        border-bottom: 1px solid var(--line-soft);
       }
 
       .login__mark {
         display: grid;
         place-items: center;
-        width: 56px;
-        height: 56px;
+        width: 42px;
+        height: 42px;
+        flex: none;
         border-radius: var(--radius);
         background: var(--oxblood-700);
         color: var(--gold-050);
         font-weight: 700;
+        font-size: 0.85rem;
         letter-spacing: 0.04em;
-        margin-bottom: var(--space-2xs);
+      }
+
+      .login__brand {
+        display: grid;
+        gap: 1px;
+        min-width: 0;
+      }
+
+      .login__brand-name {
+        font-weight: 600;
+        letter-spacing: -0.01em;
+      }
+
+      .login__brand-sub {
+        font-size: var(--step--1);
+        color: var(--muted);
       }
 
       .login__title {
-        font-size: var(--step-2);
+        font-size: var(--step-3);
         font-weight: 600;
-        letter-spacing: -0.025em;
-        margin-bottom: var(--space-s);
+        letter-spacing: -0.03em;
+        line-height: 1.1;
       }
 
-      .login__label,
+      .login__intro {
+        margin-top: var(--space-2xs);
+        font-size: var(--step--1);
+        color: var(--muted);
+        max-width: 34ch;
+      }
+
+      .login__field {
+        display: grid;
+        gap: var(--space-3xs);
+        margin-top: var(--space-l);
+      }
+
+      .login__field label,
       .field label {
         font-size: var(--step--1);
         letter-spacing: 0.1em;
@@ -140,20 +211,67 @@ const categoryOptions = categories.map((c) => ({
         color: var(--muted);
       }
 
+      /* This input sits outside .field, so it needs its own rules — without
+         them the browser default shows through, which looked unfinished. */
+      .login__field input {
+        font-family: inherit;
+        font-size: var(--step-0);
+        color: var(--ink);
+        background: var(--white);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-sm);
+        padding: 0.75rem 0.85rem;
+        width: 100%;
+        transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
+      }
+
+      .login__field input::placeholder {
+        color: var(--muted-light);
+        letter-spacing: 0.1em;
+      }
+
+      .login__field input:focus {
+        outline: none;
+        border-color: var(--oxblood-700);
+        box-shadow: 0 0 0 3px var(--oxblood-050);
+      }
+
       .login__error {
+        margin: var(--space-s) 0 0;
+        padding: var(--space-2xs) var(--space-xs);
         font-size: var(--step--1);
-        color: var(--oxblood-600);
-        margin: 0;
+        color: var(--oxblood-800);
+        background: var(--oxblood-050);
+        border-radius: var(--radius-sm);
+      }
+
+      .login__btn {
+        width: 100%;
+        margin-top: var(--space-m);
+      }
+
+      .login__foot {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--space-2xs);
+        margin-top: var(--space-l);
+        padding-top: var(--space-m);
+        border-top: 1px solid var(--line-soft);
+        font-size: var(--step--1);
       }
 
       .login__back {
-        font-size: var(--step--1);
         color: var(--muted);
-        margin-top: var(--space-s);
       }
 
       .login__back:hover {
         color: var(--oxblood-700);
+      }
+
+      .login__note {
+        color: var(--muted-light);
       }
 
       /* ---------------- Bar ---------------- */
