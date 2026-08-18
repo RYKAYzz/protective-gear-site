@@ -3,10 +3,7 @@ import "@fontsource-variable/source-sans-3";
 import "../styles/tokens.css";
 import { categories } from "../data/categories.js";
 
-const categoryOptions = categories.map((c) => ({
-  slug: c.slug,
-  name: c.name,
-}));
+const categoryOptions = categories.map((c) => ({ slug: c.slug, name: c.name }));
 ---
 
 <!doctype html>
@@ -88,19 +85,36 @@ const categoryOptions = categories.map((c) => ({
         />
         <select id="filter">
           <option value="">All categories</option>
-          {
-            categoryOptions.map((c) => (
-              <option value={c.slug}>{c.name}</option>
-            ))
-          }
+          {categoryOptions.map((c) => <option value={c.slug}>{c.name}</option>)}
         </select>
       </div>
 
-      <main class="list" id="list"></main>
+      <main class="grid" id="grid"></main>
     </div>
 
-    {/* Categories come from the same source the site builds from, so the
-        dropdown can never drift out of sync with the real category slugs. */}
+    <!-- ===================== Editor ===================== -->
+    <div id="editor" class="editor" hidden>
+      <div class="editor__scrim" data-act="close"></div>
+      <section
+        class="editor__panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="editor-title"
+      >
+        <header class="editor__head">
+          <h2 class="editor__title" id="editor-title">Edit product</h2>
+          <button class="editor__close" data-act="close" aria-label="Close">
+            &times;
+          </button>
+        </header>
+        <div class="editor__body" id="editor-body"></div>
+        <footer class="editor__foot">
+          <button class="btn btn--danger" data-act="delete">Delete</button>
+          <button class="btn btn--primary" data-act="close">Done</button>
+        </footer>
+      </section>
+    </div>
+
     <script is:inline define:vars={{ categoryOptions }}>
       window.__CATEGORIES__ = categoryOptions;
     </script>
@@ -108,9 +122,8 @@ const categoryOptions = categories.map((c) => ({
 
     <style is:global>
       /* The browser's [hidden] rule is display:none at UA specificity, which
-         any class selector beats. .login sets display:grid, so toggling the
-         hidden attribute did nothing and the login panel stayed on top of a
-         fully rendered app. Force it. */
+         any class selector beats. Force it, or panels that set their own
+         display value never hide. */
       [hidden] {
         display: none !important;
       }
@@ -125,7 +138,6 @@ const categoryOptions = categories.map((c) => ({
         display: grid;
         place-items: center;
         padding: var(--space-m);
-        /* a faint warm wash so the card reads as a surface, not a floating box */
         background:
           radial-gradient(
             60rem 40rem at 50% -10%,
@@ -141,7 +153,6 @@ const categoryOptions = categories.map((c) => ({
         padding: var(--space-xl);
         background: var(--paper);
         border: 1px solid var(--line);
-        /* tighter than --radius-lg: this should read as a document, not a widget */
         border-radius: 10px;
         box-shadow: var(--shadow-lift);
       }
@@ -161,7 +172,8 @@ const categoryOptions = categories.map((c) => ({
         border-bottom: 1px solid var(--line-soft);
       }
 
-      .login__mark {
+      .login__mark,
+      .bar__mark {
         display: grid;
         place-items: center;
         width: 42px;
@@ -219,8 +231,6 @@ const categoryOptions = categories.map((c) => ({
         color: var(--muted);
       }
 
-      /* This input sits outside .field, so it needs its own rules — without
-         them the browser default shows through, which looked unfinished. */
       .login__field input {
         font-family: inherit;
         font-size: var(--step-0);
@@ -273,11 +283,9 @@ const categoryOptions = categories.map((c) => ({
       .login__back {
         color: var(--muted);
       }
-
       .login__back:hover {
         color: var(--oxblood-700);
       }
-
       .login__note {
         color: var(--muted-light);
       }
@@ -292,7 +300,7 @@ const categoryOptions = categories.map((c) => ({
         align-items: center;
         justify-content: space-between;
         gap: var(--space-s);
-        padding: var(--space-s) var(--space-m);
+        padding: var(--space-2xs) var(--space-m);
         background: var(--paper);
         border-bottom: 1px solid var(--line);
       }
@@ -303,12 +311,6 @@ const categoryOptions = categories.map((c) => ({
         align-items: center;
         gap: var(--space-s);
         flex-wrap: wrap;
-      }
-
-      .bar__mark {
-        font-weight: 700;
-        color: var(--oxblood-700);
-        letter-spacing: 0.04em;
       }
 
       .bar__title {
@@ -333,7 +335,7 @@ const categoryOptions = categories.map((c) => ({
         display: flex;
         gap: var(--space-s);
         padding: var(--space-m) var(--space-m) 0;
-        max-width: 1100px;
+        max-width: 1240px;
         margin-inline: auto;
       }
 
@@ -352,81 +354,169 @@ const categoryOptions = categories.map((c) => ({
         flex: 1;
       }
 
-      /* ---------------- List ---------------- */
-      .list {
-        max-width: 1100px;
+      /* ---------------- Card grid ---------------- */
+      .grid {
+        max-width: 1240px;
         margin-inline: auto;
         padding: var(--space-m) var(--space-m) var(--space-3xl);
         display: grid;
-        gap: var(--space-2xs);
+        gap: var(--space-m);
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
       }
 
-      .row {
+      .card {
+        display: grid;
+        grid-template-rows: auto 1fr;
         background: var(--paper);
         border: 1px solid var(--line);
         border-radius: var(--radius);
         overflow: hidden;
-      }
-
-      .row[data-dirty="true"] {
-        border-color: var(--gold-500);
-      }
-
-      .row__head {
-        display: grid;
-        grid-template-columns: 48px 1fr auto auto;
-        align-items: center;
-        gap: var(--space-s);
-        padding: var(--space-2xs) var(--space-s);
-        cursor: pointer;
-        width: 100%;
-        background: none;
-        border: 0;
         text-align: left;
         font: inherit;
         color: inherit;
+        cursor: pointer;
+        transition: border-color 0.2s var(--ease), transform 0.2s var(--ease);
       }
 
-      .row__thumb {
-        width: 44px;
-        height: 44px;
-        object-fit: contain;
+      .card:hover {
+        border-color: var(--gold-500);
+        transform: translateY(-2px);
+      }
+
+      .card[data-dirty="true"] {
+        border-color: var(--gold-500);
+        box-shadow: inset 3px 0 0 var(--gold-500);
+      }
+
+      .card__media {
+        height: 150px;
+        display: grid;
+        place-items: center;
+        padding: var(--space-s);
         background: var(--white);
-        border: 1px solid var(--line-soft);
-        border-radius: var(--radius-sm);
+        border-bottom: 1px solid var(--line-soft);
+      }
+
+      .card__media img {
+        max-width: 100%;
+        max-height: 118px;
+        object-fit: contain;
         mix-blend-mode: multiply;
       }
 
-      .row__name {
-        font-weight: 600;
-        letter-spacing: -0.01em;
+      .card__media--empty {
+        font-size: var(--step--1);
+        color: var(--muted-light);
       }
 
-      .row__meta {
+      .card__body {
+        padding: var(--space-s);
+        display: grid;
+        gap: 2px;
+        align-content: start;
+      }
+
+      .card__name {
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        line-height: 1.25;
+      }
+
+      .card__cat {
         font-size: var(--step--1);
         color: var(--muted);
       }
 
-      .row__price {
+      .card__price {
+        margin-top: var(--space-3xs);
         font-size: var(--step--1);
+        font-weight: 600;
         color: var(--oxblood-700);
         font-variant-numeric: tabular-nums;
       }
 
-      .row__chev {
+      .card__price--none {
+        font-weight: 400;
+        color: var(--muted-light);
+      }
+
+      .empty {
+        grid-column: 1 / -1;
+        padding: var(--space-2xl);
+        text-align: center;
         color: var(--muted);
-        transition: transform 0.2s var(--ease);
       }
 
-      .row[data-open="true"] .row__chev {
-        transform: rotate(90deg);
+      /* ---------------- Editor ---------------- */
+      .editor {
+        position: fixed;
+        inset: 0;
+        z-index: 60;
+        display: grid;
+        justify-items: end;
       }
 
-      .row__body {
-        padding: var(--space-s) var(--space-s) var(--space-m);
-        border-top: 1px solid var(--line-soft);
+      .editor__scrim {
+        position: absolute;
+        inset: 0;
+        background: rgba(26, 21, 18, 0.4);
+        border: 0;
+        cursor: pointer;
+      }
+
+      .editor__panel {
+        position: relative;
+        width: min(520px, 100vw);
+        height: 100%;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        background: var(--paper);
+        border-left: 1px solid var(--line);
+        box-shadow: var(--shadow-lift);
+      }
+
+      .editor__head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--space-s);
+        padding: var(--space-m);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .editor__title {
+        font-size: var(--step-1);
+        font-weight: 600;
+      }
+
+      .editor__close {
+        background: none;
+        border: 0;
+        font-size: 1.6rem;
+        line-height: 1;
+        color: var(--muted);
+        cursor: pointer;
+        padding: 0 0.25rem;
+      }
+
+      .editor__close:hover {
+        color: var(--ink);
+      }
+
+      .editor__body {
+        overflow-y: auto;
+        padding: var(--space-m);
         display: grid;
         gap: var(--space-s);
+        align-content: start;
+      }
+
+      .editor__foot {
+        display: flex;
+        justify-content: space-between;
+        gap: var(--space-s);
+        padding: var(--space-m);
+        border-top: 1px solid var(--line);
       }
 
       .grid2 {
@@ -434,7 +524,7 @@ const categoryOptions = categories.map((c) => ({
         gap: var(--space-s);
       }
 
-      @media (min-width: 700px) {
+      @media (min-width: 420px) {
         .grid2 {
           grid-template-columns: 1fr 1fr;
         }
@@ -471,11 +561,50 @@ const categoryOptions = categories.map((c) => ({
         box-shadow: 0 0 0 3px var(--oxblood-050);
       }
 
-      .row__actions {
-        display: flex;
-        justify-content: flex-end;
+      .field__hint {
+        font-size: var(--step--1);
+        color: var(--muted-light);
       }
 
+      /* image picker */
+      .imagebox {
+        display: grid;
+        gap: var(--space-2xs);
+        padding: var(--space-s);
+        border: 1px dashed var(--line);
+        border-radius: var(--radius-sm);
+        background: var(--white);
+        justify-items: center;
+      }
+
+      .imagebox img {
+        max-height: 120px;
+        max-width: 100%;
+        object-fit: contain;
+        mix-blend-mode: multiply;
+      }
+
+      .imagebox__none {
+        font-size: var(--step--1);
+        color: var(--muted-light);
+        padding-block: var(--space-m);
+      }
+
+      .imagebox__actions {
+        display: flex;
+        gap: var(--space-2xs);
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .imagebox__path {
+        font-size: var(--step--1);
+        color: var(--muted);
+        word-break: break-all;
+        text-align: center;
+      }
+
+      /* buttons */
       .btn--ghost {
         background: transparent;
         border: 1px solid var(--line);
@@ -504,12 +633,6 @@ const categoryOptions = categories.map((c) => ({
       .btn:disabled {
         opacity: 0.45;
         cursor: not-allowed;
-      }
-
-      .empty {
-        padding: var(--space-2xl);
-        text-align: center;
-        color: var(--muted);
       }
     </style>
   </body>

@@ -241,11 +241,11 @@ export default async function handler(req) {
       } catch (e) {
         github = `FAILED — ${e.message}`;
       }
+      // Deliberately no lengths or values: this endpoint is unauthenticated,
+      // and password length is a real hint to anyone guessing.
       return json(200, {
         staffPasswordSet: Boolean(STAFF_PASSWORD),
-        staffPasswordLength: STAFF_PASSWORD.trim().length,
         staffSecretSet: Boolean(STAFF_SECRET),
-        staffSecretLength: STAFF_SECRET.trim().length,
         githubTokenSet: Boolean(GITHUB_TOKEN),
         github,
       });
@@ -273,6 +273,52 @@ export default async function handler(req) {
 
     if (route === "products" && req.method === "GET") {
       return json(200, await readProducts(GITHUB_TOKEN));
+    }
+
+    /* ---- image upload: commits straight into assets/uploads ---- */
+    if (route === "upload" && req.method === "POST") {
+      const { filename, dataUrl } = await req.json().catch(() => ({}));
+
+      if (!filename || !dataUrl) {
+        return json(400, { error: "Missing filename or file data." });
+      }
+
+      const match = /^data:(image\/(png|jpeg|jpg|webp|gif|avif));base64,(.+)$/i.exec(
+        dataUrl
+      );
+      if (!match) {
+        return json(400, {
+          error: "Only PNG, JPG, WebP, GIF or AVIF images can be uploaded.",
+        });
+      }
+
+      const base64 = match[3];
+      // 5MB ceiling, measured on the decoded bytes rather than the string.
+      if (Buffer.byteLength(base64, "base64") > 5 * 1024 * 1024) {
+        return json(400, { error: "Image is larger than 5MB." });
+      }
+
+      // Normalise the name: no spaces or path traversal, keep it predictable.
+      const ext = (filename.split(".").pop() || "png").toLowerCase();
+      const stem = filename
+        .replace(/\.[^.]+$/, "")
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-+|-+$/g, "")
+        .slice(0, 60) || "image";
+      const path = `assets/uploads/${stem}-${Date.now().toString(36)}.${ext}`;
+
+      await gh(`/repos/${REPO}/contents/${encodeURI(path)}`, GITHUB_TOKEN, {
+        method: "PUT",
+        body: JSON.stringify({
+          message: `Upload ${path} from staff admin`,
+          content: base64,
+          branch: BRANCH,
+        }),
+      });
+
+      // The site serves assets from the root, so drop the leading folder.
+      return json(200, { path: `/${path}` });
     }
 
     if (route === "products" && req.method === "PUT") {

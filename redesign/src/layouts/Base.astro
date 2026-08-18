@@ -3,6 +3,7 @@ import "@fontsource-variable/source-sans-3";
 import "../styles/tokens.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import FloatingContact from "../components/FloatingContact.astro";
 
 interface Props {
   title: string;
@@ -75,6 +76,7 @@ const GOOGLE_TAG_ID = "AW-18158845729";
       <slot />
     </main>
     <Footer />
+    <FloatingContact />
 
     <style>
       .skip-link {

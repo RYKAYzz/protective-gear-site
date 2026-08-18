@@ -1,0 +1,145 @@
+---
+import { site } from "../data/site.js";
+
+/**
+ * Persistent WhatsApp and call actions. Most enquiries here come by phone or
+ * WhatsApp rather than a form, so these stay reachable on every page and at
+ * every scroll position.
+ */
+const waMessage = encodeURIComponent(
+  "Hello ARK Hygiene Solutions, I would like a quote for:"
+);
+const waHref = `${site.whatsapp}?text=${waMessage}`;
+---
+
+<div class="fab" role="complementary" aria-label="Contact us">
+  <a
+    class="fab__btn fab__btn--wa"
+    href={waHref}
+    target="_blank"
+    rel="noopener"
+    aria-label={`Message ARK Hygiene Solutions on WhatsApp at ${site.phone}`}
+  >
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path
+        fill="currentColor"
+        d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.06 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35Z"
+      ></path>
+      <path
+        fill="currentColor"
+        d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.86 9.86 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.13h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.25-4.36c0-4.54 3.7-8.23 8.24-8.23a8.17 8.17 0 0 1 5.82 2.42 8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.21-8.25 8.21Z"
+      ></path>
+    </svg>
+    <span class="fab__label">WhatsApp us</span>
+  </a>
+
+  <a
+    class="fab__btn fab__btn--call"
+    href={site.phoneHref}
+    aria-label={`Call ARK Hygiene Solutions on ${site.phone}`}
+  >
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path
+        fill="currentColor"
+        d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.03-.24c1.12.37 2.33.57 3.56.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.24.2 2.44.57 3.56a1 1 0 0 1-.25 1.03l-2.2 2.2Z"
+      ></path>
+    </svg>
+    <span class="fab__label">Call us</span>
+  </a>
+</div>
+
+<style>
+  .fab {
+    position: fixed;
+    right: var(--space-m);
+    bottom: var(--space-m);
+    z-index: 45;
+    display: grid;
+    gap: var(--space-2xs);
+    justify-items: end;
+  }
+
+  @media (min-width: 700px) {
+    .fab {
+      right: var(--space-l);
+      bottom: var(--space-l);
+    }
+  }
+
+  .fab__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0;
+    height: 52px;
+    padding: 0 14px;
+    border-radius: 999px;
+    color: #fff;
+    box-shadow: 0 8px 22px -8px rgba(26, 21, 18, 0.45);
+    transition:
+      gap 0.25s var(--ease),
+      padding 0.25s var(--ease),
+      transform 0.2s var(--ease),
+      filter 0.2s var(--ease);
+  }
+
+  .fab__btn:hover,
+  .fab__btn:focus-visible {
+    transform: translateY(-2px);
+    filter: brightness(1.06);
+  }
+
+  .fab__btn--wa {
+    background: #25d366;
+  }
+
+  .fab__btn--call {
+    background: var(--oxblood-700);
+  }
+
+  .fab__btn svg {
+    width: 24px;
+    height: 24px;
+    flex: none;
+  }
+
+  /* The label is collapsed to zero width and only expands on interaction, so
+     the buttons stay out of the way of the page on small screens. */
+  .fab__label {
+    max-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: var(--step--1);
+    font-weight: 500;
+    opacity: 0;
+    transition:
+      max-width 0.3s var(--ease),
+      opacity 0.2s var(--ease);
+  }
+
+  @media (hover: hover) and (min-width: 700px) {
+    .fab__btn:hover .fab__label,
+    .fab__btn:focus-visible .fab__label {
+      max-width: 9rem;
+      opacity: 1;
+    }
+
+    .fab__btn:hover,
+    .fab__btn:focus-visible {
+      gap: 8px;
+      padding-right: 18px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fab__btn,
+    .fab__label {
+      transition: none;
+    }
+  }
+
+  @media print {
+    .fab {
+      display: none;
+    }
+  }
+</style>
