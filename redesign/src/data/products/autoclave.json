@@ -1,11 +1,11 @@
 {
-  "order": 16,
-  "name": "Medical Waste Autoclave 18L",
+  "order": 17,
+  "name": "Digital Autoclave machine ",
   "slug": "autoclave",
-  "description": "High-temperature sterilization system for medical waste treatment",
-  "image": "/assets/Medical-waste-system/installations, repair and maintainance of medical waste equipments - autoclave.png",
+  "description": "Combined sterilization and shredding system for medical waste",
+  "image": "/assets/Medical-waste-system/installations, repair and maintainance of medical waste equipments - autoclave with shredder.png",
   "category": "sterilization-waste-equipment",
   "subcategory": "sterilization",
-  "price": 30000,
-  "unit": "piece"
+  "price": null,
+  "unit": ""
 }

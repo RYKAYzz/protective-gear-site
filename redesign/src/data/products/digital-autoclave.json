@@ -1,0 +1,11 @@
+{
+  "order": 16,
+  "name": "Medical Waste Autoclave 18L",
+  "slug": "digital-autoclave",
+  "description": "High-temperature sterilization system for medical waste treatment",
+  "image": "/assets/Medical-waste-system/installations, repair and maintainance of medical waste equipments - autoclave.png",
+  "category": "sterilization-waste-equipment",
+  "subcategory": "sterilization",
+  "price": 250000,
+  "unit": "piece"
+}
