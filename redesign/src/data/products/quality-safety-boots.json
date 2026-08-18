@@ -1,11 +1,11 @@
 {
   "order": 7,
   "name": "Safety Boots",
-  "slug": "safety-boots",
+  "slug": "quality-safety-boots",
   "description": "Industrial safety boots with steel toe protection for hazardous environments.",
   "image": "/assets/PPE-safety-gear/safety boots.png",
   "category": "ppe-safety-gear",
   "subcategory": "foot-protection",
-  "price": null,
-  "unit": ""
+  "price": 4500,
+  "unit": "pair"
 }
