@@ -136,9 +136,28 @@ collections:
         value_type: int
         min: 0
         hint: >-
-          Optional. Shown on the card as "From KSh 2,500". Enter the lowest
-          unit price, digits only, no commas. Leave blank and no price
-          appears at all.
+          Optional. Enter the lowest unit price, digits only, no commas.
+          Leave blank and no price appears at all.
+
+      - name: unit
+        label: Price is per…
+        widget: select
+        required: false
+        options:
+          - { label: "— not set —", value: "" }
+          - { label: "Piece", value: "piece" }
+          - { label: "Pair", value: "pair" }
+          - { label: "Box", value: "box" }
+          - { label: "Pack", value: "pack" }
+          - { label: "Carton", value: "carton" }
+          - { label: "Roll", value: "roll" }
+          - { label: "Set", value: "set" }
+          - { label: "Litre", value: "litre" }
+          - { label: "Unit", value: "unit" }
+        hint: >-
+          What the price buys. The customer sees "From KSh 2,500 per box".
+          Leave unset and they just see "From KSh 2,500", which invites
+          questions — set it wherever you know it.
 
       - name: order
         label: Sort position
@@ -151,33 +170,52 @@ collections:
           products to place them last.
 
   # -------------------------------------------------------------------------
-  # Categories — the six product groups
+  # Categories — the six product groups, one file each so they list as a grid
   # -------------------------------------------------------------------------
-  - name: settings
-    label: Site
-    files:
-      - name: categories
-        label: Categories
-        file: redesign/src/data/categories.json
-        description: The six product categories, their order and copy.
-        fields:
-          - name: categories
-            label: Categories
-            label_singular: Category
-            widget: list
-            summary: "{{fields.name}}"
-            fields:
-              - { name: slug, label: Slug, widget: string }
-              - { name: name, label: Name, widget: string }
-              - {
-                  name: short,
-                  label: Short description,
-                  widget: text,
-                  hint: Used on the homepage category grid.,
-                }
-              - {
-                  name: intro,
-                  label: Page intro,
-                  widget: text,
-                  hint: Used at the top of the category page.,
-                }
+  - name: categories
+    label: Categories
+    label_singular: Category
+    folder: redesign/src/data/categories
+    extension: json
+    format: json
+    create: true
+    slug: "{{fields.slug}}"
+    identifier_field: name
+    summary: "{{name}}"
+    sortable_fields: [order, name]
+    fields:
+      - name: name
+        label: Name
+        widget: string
+        hint: e.g. "PPE & safety gear".
+
+      - name: slug
+        label: Slug
+        widget: string
+        pattern:
+          [
+            "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+            "Lowercase letters, numbers and hyphens only",
+          ]
+        hint: >-
+          Becomes the page address, e.g. /ppe-safety-gear, and links products
+          to this category. Changing it breaks existing links and unlinks
+          every product in it — avoid once live.
+
+      - name: short
+        label: Short description
+        widget: text
+        hint: Used on the homepage category grid.
+
+      - name: intro
+        label: Page intro
+        widget: text
+        hint: Used at the top of the category page.
+
+      - name: order
+        label: Sort position
+        widget: number
+        required: false
+        value_type: int
+        default: 99
+        hint: Lower numbers appear first, in the menu and on the homepage.

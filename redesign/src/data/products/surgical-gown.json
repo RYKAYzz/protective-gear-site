@@ -6,5 +6,6 @@
   "image": "/assets/PPE-safety-gear/surgical gown.png",
   "category": "ppe-safety-gear",
   "subcategory": "body-protection",
-  "price": null
+  "price": null,
+  "unit": ""
 }

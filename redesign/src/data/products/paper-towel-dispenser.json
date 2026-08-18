@@ -6,5 +6,6 @@
   "image": "/assets/tissue-dispensers/tissue dispensers  - paper towel dispenser.png",
   "category": "sanitary-solutions",
   "subcategory": "tissue",
-  "price": null
+  "price": null,
+  "unit": ""
 }

@@ -4,17 +4,20 @@ interface Props {
   detail?: string | null;
   image: string;
   price?: number | null;
+  unit?: string | null;
 }
 
-const { name, detail, image, price } = Astro.props;
+const { name, detail, image, price, unit } = Astro.props;
 
 // Prices are optional: most lines are quoted rather than listed, so a card
 // simply omits the line when no price is set in the admin.
 //
-// Shown as "From KSh X" because these are unit prices that fall with volume —
-// stating them flat would misrepresent what a facility actually pays.
+// Shown as "From KSh X per box" because these are unit prices that fall with
+// volume, and a figure without its unit is ambiguous — a buyer needs to know
+// whether that is a piece, a pair or a carton before it means anything.
 const hasPrice = typeof price === "number" && price > 0;
 const priceValue = hasPrice ? price.toLocaleString("en-KE") : null;
+const unitLabel = unit && unit.trim() ? unit.trim() : null;
 ---
 
 <article class="product">
@@ -28,6 +31,7 @@ const priceValue = hasPrice ? price.toLocaleString("en-KE") : null;
       hasPrice && (
         <p class="product__price">
           <span class="product__price-from">From</span> KSh {priceValue}
+          {unitLabel && <span class="product__price-unit">per {unitLabel}</span>}
         </p>
       )
     }
@@ -96,12 +100,19 @@ const priceValue = hasPrice ? price.toLocaleString("en-KE") : null;
     font-variant-numeric: tabular-nums;
   }
 
-  /* "From" sits quieter than the figure it qualifies */
+  /* "From" and the unit sit quieter than the figure they qualify */
   .product__price-from {
     font-weight: 400;
     font-size: var(--step--1);
     color: var(--muted);
     letter-spacing: 0.04em;
     text-transform: uppercase;
+  }
+
+  .product__price-unit {
+    font-weight: 400;
+    font-size: var(--step--1);
+    color: var(--muted);
+    margin-left: 0.15em;
   }
 </style>

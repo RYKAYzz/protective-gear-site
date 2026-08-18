@@ -6,5 +6,6 @@
   "image": "/assets/sanitary-bins/sanitary bins - 1 litres manual.png",
   "category": "sanitary-solutions",
   "subcategory": "sanitary",
-  "price": null
+  "price": null,
+  "unit": ""
 }

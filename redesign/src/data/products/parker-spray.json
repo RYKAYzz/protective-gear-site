@@ -6,5 +6,6 @@
   "image": "/assets/Disinfectants/parker portex disinfectant sprays.png",
   "category": "public-health-sanitation",
   "subcategory": "disinfectants",
-  "price": null
+  "price": null,
+  "unit": ""
 }

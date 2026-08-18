@@ -6,5 +6,6 @@
   "image": "/assets/tissue-dispensers/tissue dispensers - toilet Paper Dispenser.png",
   "category": "sanitary-solutions",
   "subcategory": "tissue",
-  "price": null
+  "price": null,
+  "unit": ""
 }

@@ -6,5 +6,6 @@
   "image": "/assets/PPE-safety-gear/cover shoes.png",
   "category": "ppe-safety-gear",
   "subcategory": "foot-protection",
-  "price": null
+  "price": null,
+  "unit": ""
 }

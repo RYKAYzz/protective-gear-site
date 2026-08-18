@@ -6,5 +6,6 @@
   "image": "/assets/specimen-bags/specimen bags & containers.png",
   "category": "medical-equipment",
   "subcategory": "specimen",
-  "price": null
+  "price": null,
+  "unit": ""
 }

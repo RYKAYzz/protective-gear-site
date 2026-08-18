@@ -6,5 +6,6 @@
   "image": "/assets/PPE-safety-gear/face shield.png",
   "category": "ppe-safety-gear",
   "subcategory": "face-protection",
-  "price": 3500
+  "price": 3500,
+  "unit": ""
 }

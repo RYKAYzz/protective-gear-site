@@ -1,13 +1,16 @@
-import data from "./categories.json";
-
 /**
- * Category metadata. The data itself lives in categories.json so the admin
- * at /admin can edit it; this module adds the helpers around it.
+ * Categories are one JSON file each, under src/data/categories/.
  *
- * The homepage index, the generated category pages, /products and the
- * footer all read from here.
+ * Same reason as products: Decap renders a folder collection as a proper
+ * grid, whereas a single file behind a list widget shows as one blank card.
+ *
+ * `order` fixes the display sequence, since files load alphabetically.
  */
-export const categories = data.categories;
+const modules = import.meta.glob("./categories/*.json", { eager: true });
+
+export const categories = Object.values(modules)
+  .map((m) => m.default ?? m)
+  .sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
 
 export const getCategory = (slug) => categories.find((c) => c.slug === slug);
 

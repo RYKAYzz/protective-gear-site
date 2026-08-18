@@ -6,5 +6,6 @@
   "image": "/assets/Medical-waste-system/cleaning Equipments - size 20 by 30 color yellow.png",
   "category": "sterilization-waste-equipment",
   "subcategory": "cleaning",
-  "price": null
+  "price": null,
+  "unit": ""
 }
