@@ -107,6 +107,14 @@ const categoryOptions = categories.map((c) => ({
     <script is:inline src="/staff.js"></script>
 
     <style is:global>
+      /* The browser's [hidden] rule is display:none at UA specificity, which
+         any class selector beats. .login sets display:grid, so toggling the
+         hidden attribute did nothing and the login panel stayed on top of a
+         fully rendered app. Force it. */
+      [hidden] {
+        display: none !important;
+      }
+
       body {
         background: var(--surface);
       }
