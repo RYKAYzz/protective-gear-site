@@ -1,11 +1,11 @@
 {
   "order": 13,
-  "name": "Coverall",
+  "name": "Full body Coverall",
   "slug": "coverall",
   "description": "Full body coverall for complete protection in hazardous environments.",
   "image": "/assets/PPE-safety-gear/coverall.png",
   "category": "ppe-safety-gear",
   "subcategory": "body-protection",
-  "price": null,
-  "unit": ""
+  "price": 3900,
+  "unit": "piece"
 }
