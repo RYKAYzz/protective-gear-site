@@ -3,19 +3,19 @@ import { categories } from "../data/categories.js";
 ---
 
 {/*
-  Netlify Forms handles submission: no backend, no cold start, spam
-  filtering included, and it still works with JavaScript disabled.
-  The hidden `form-name` field is what Netlify matches on.
+  Posts to /api/quote, which emails the enquiry. Netlify Forms used to
+  handle this, but it is Netlify-only — this works on any host.
+
+  The action and method are real, so a browser with JavaScript disabled
+  still submits; the script below upgrades it to stay on the page.
 */}
 <form
   class="quote-form"
+  id="quote-form"
   name="quote"
   method="POST"
-  action="/thank-you"
-  data-netlify="true"
-  netlify-honeypot="company-website"
+  action="/api/quote"
 >
-  <input type="hidden" name="form-name" value="quote" />
 
   {/* honeypot: hidden from people, tempting to bots */}
   <p class="hp">
@@ -80,10 +80,56 @@ import { categories } from "../data/categories.js";
   </p>
 
   <div class="form-foot">
-    <button type="submit" class="btn btn--primary">Send request</button>
+    <button type="submit" class="btn btn--primary" id="quote-submit">
+      Send request
+    </button>
     <p class="form-note body-muted">We reply within 24 hours.</p>
   </div>
+
+  <p class="form-result" id="quote-result" role="alert" hidden></p>
 </form>
+
+<script is:inline>
+  (function () {
+    var form = document.getElementById("quote-form");
+    if (!form) return;
+    var btn = document.getElementById("quote-submit");
+    var out = document.getElementById("quote-result");
+
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+      out.hidden = true;
+      out.removeAttribute("data-tone");
+      btn.disabled = true;
+      btn.textContent = "Sending…";
+
+      try {
+        var res = await fetch("/api/quote", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify(
+            Object.fromEntries(new FormData(form).entries())
+          ),
+        });
+        var data = await res.json().catch(function () {
+          return {};
+        });
+
+        if (!res.ok) throw new Error(data.error || "Something went wrong.");
+
+        window.location.href = "/thank-you";
+        return;
+      } catch (err) {
+        // Never strand a lead: give them the phone number rather than a dead end.
+        out.textContent = err.message;
+        out.setAttribute("data-tone", "err");
+        out.hidden = false;
+        btn.disabled = false;
+        btn.textContent = "Send request";
+      }
+    });
+  })();
+</script>
 
 <style>
   .quote-form {
@@ -169,5 +215,19 @@ import { categories } from "../data/categories.js";
   .form-note {
     font-size: var(--step--1);
     margin: 0;
+  }
+
+  .form-result {
+    margin: var(--space-s) 0 0;
+    padding: var(--space-2xs) var(--space-xs);
+    font-size: var(--step--1);
+    border-radius: var(--radius-sm);
+    background: var(--surface);
+    color: var(--ink-soft);
+  }
+
+  .form-result[data-tone="err"] {
+    background: var(--oxblood-050);
+    color: var(--oxblood-800);
   }
 </style>
