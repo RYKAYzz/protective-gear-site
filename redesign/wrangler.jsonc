@@ -1,0 +1,20 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "protective-gear-site",
+  "main": "worker.mjs",
+  "compatibility_date": "2025-06-01",
+
+  // The Astro build output is served as static assets; the Worker in
+  // worker.mjs only intercepts /api/*. _redirects and _headers in dist/ are
+  // honoured by the assets runtime, so the same files cover Cloudflare and
+  // Netlify.
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "not_found_handling": "404-page"
+  },
+
+  "observability": {
+    "enabled": true
+  }
+}
