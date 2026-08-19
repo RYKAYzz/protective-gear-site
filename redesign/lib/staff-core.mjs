@@ -23,8 +23,6 @@
  * cannot half-apply.
  */
 
-import { createHmac, timingSafeEqual, randomUUID } from "node:crypto";
-
 const REPO = "RYKAYzz/protective-gear-site";
 const BRANCH = "main";
 const DIR = "redesign/src/data/products";
@@ -37,28 +35,57 @@ const json = (status, body) =>
     headers: { "content-type": "application/json", "cache-control": "no-store" },
   });
 
-/* ---------------------------------------------------------------- auth --- */
+/* ----------------------------------------------------------------- auth ---
+ *
+ * Web Crypto, not node:crypto. Cloudflare Workers has no Node crypto module,
+ * and the whole point of this file is that it runs unchanged on any host.
+ * Web Crypto is available on Node, Workers, Vercel and Netlify alike.
+ */
 
-const b64url = (buf) =>
-  Buffer.from(buf)
-    .toString("base64")
+const enc = new TextEncoder();
+
+const b64url = (bytes) =>
+  btoa(String.fromCharCode(...new Uint8Array(bytes)))
     .replace(/\+/g, "-")
     .replace(/\//g, "_")
     .replace(/=+$/, "");
 
-const sign = (payload, secret) => {
-  const body = b64url(JSON.stringify(payload));
-  return `${body}.${b64url(createHmac("sha256", secret).update(body).digest())}`;
+const b64urlDecode = (str) => {
+  const pad = str.length % 4 ? "=".repeat(4 - (str.length % 4)) : "";
+  const bin = atob(str.replace(/-/g, "+").replace(/_/g, "/") + pad);
+  return Uint8Array.from(bin, (c) => c.charCodeAt(0));
 };
 
-function verify(token, secret) {
+async function hmac(secret, message) {
+  const key = await crypto.subtle.importKey(
+    "raw",
+    enc.encode(secret),
+    { name: "HMAC", hash: "SHA-256" },
+    false,
+    ["sign"]
+  );
+  return crypto.subtle.sign("HMAC", key, enc.encode(message));
+}
+
+/** Constant-time comparison — no early return on first differing byte. */
+function equal(a, b) {
+  if (a.length !== b.length) return false;
+  let diff = 0;
+  for (let i = 0; i < a.length; i++) diff |= a.charCodeAt(i) ^ b.charCodeAt(i);
+  return diff === 0;
+}
+
+async function sign(payload, secret) {
+  const body = b64url(enc.encode(JSON.stringify(payload)));
+  return `${body}.${b64url(await hmac(secret, body))}`;
+}
+
+async function verify(token, secret) {
   if (typeof token !== "string" || !token.includes(".")) return null;
   const [body, mac] = token.split(".");
-  const expected = b64url(createHmac("sha256", secret).update(body).digest());
-  if (mac.length !== expected.length) return null;
-  if (!timingSafeEqual(Buffer.from(mac), Buffer.from(expected))) return null;
+  if (!equal(mac, b64url(await hmac(secret, body)))) return null;
   try {
-    const payload = JSON.parse(Buffer.from(body, "base64").toString());
+    const payload = JSON.parse(new TextDecoder().decode(b64urlDecode(body)));
     return payload.exp && Date.now() < payload.exp ? payload : null;
   } catch {
     return null;
@@ -66,18 +93,18 @@ function verify(token, secret) {
 }
 
 /**
- * Constant-time compare that does not throw on differing lengths.
- *
- * Both sides are trimmed: pasting a value into Netlify's env var field very
- * easily carries a trailing space or newline, and a password that fails for
- * an invisible character is impossible to debug from the login screen.
- * Leading/trailing whitespace is not meaningful in a password anyway.
+ * Compares HMACs of the two passwords rather than the strings, so length is
+ * not leaked by the comparison. Both sides are trimmed: a value pasted into a
+ * dashboard env field easily carries a trailing newline, and a login that
+ * fails on an invisible character is undebuggable from the login screen.
  */
-function passwordMatches(given, expected) {
+async function passwordMatches(given, expected) {
   if (typeof given !== "string" || typeof expected !== "string") return false;
-  const a = createHmac("sha256", "pw").update(given.trim()).digest();
-  const b = createHmac("sha256", "pw").update(expected.trim()).digest();
-  return timingSafeEqual(a, b);
+  const [a, b] = await Promise.all([
+    hmac("pw", given.trim()),
+    hmac("pw", expected.trim()),
+  ]);
+  return equal(b64url(a), b64url(b));
 }
 
 /* -------------------------------------------------------------- github --- */
@@ -224,8 +251,10 @@ async function writeProducts(token, products, baseCommit, changed) {
 
 /* --------------------------------------------------------------- routes --- */
 
-export async function handleStaff(req) {
-  const { STAFF_PASSWORD, STAFF_SECRET, GITHUB_TOKEN } = process.env;
+export async function handleStaff(req, env = globalThis.process?.env ?? {}) {
+  // Cloudflare Workers has no process.env — the platform hands env to the
+  // adapter, which passes it in. Node hosts fall back to process.env.
+  const { STAFF_PASSWORD, STAFF_SECRET, GITHUB_TOKEN } = env;
 
   if (!STAFF_PASSWORD || !STAFF_SECRET || !GITHUB_TOKEN) {
     return json(500, {
@@ -265,13 +294,16 @@ export async function handleStaff(req) {
 
     if (route === "login" && req.method === "POST") {
       const { password } = await req.json().catch(() => ({}));
-      if (!passwordMatches(password, STAFF_PASSWORD)) {
+      if (!(await passwordMatches(password, STAFF_PASSWORD))) {
         await new Promise((r) => setTimeout(r, 400));
         return json(401, { error: "Incorrect password." });
       }
       return json(200, {
-        token: sign(
-          { sid: randomUUID(), exp: Date.now() + SESSION_HOURS * 3600 * 1000 },
+        token: await sign(
+          {
+            sid: crypto.randomUUID(),
+            exp: Date.now() + SESSION_HOURS * 3600 * 1000,
+          },
           STAFF_SECRET
         ),
       });
@@ -279,7 +311,7 @@ export async function handleStaff(req) {
 
     const auth = req.headers.get("authorization") || "";
     const session = auth.startsWith("Bearer ")
-      ? verify(auth.slice(7), STAFF_SECRET)
+      ? await verify(auth.slice(7), STAFF_SECRET)
       : null;
     if (!session) return json(401, { error: "Session expired. Log in again." });
 

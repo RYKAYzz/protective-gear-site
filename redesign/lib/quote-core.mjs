@@ -13,9 +13,6 @@
  * misconfiguration returns a clear failure rather than pretending to send.
  */
 
-const TO = process.env.QUOTE_TO || "antoinette@gohorizonapp.co";
-const FROM = process.env.QUOTE_FROM || "ARK Hygiene <onboarding@resend.dev>";
-
 const json = (status, body) =>
   new Response(JSON.stringify(body), {
     status,
@@ -32,7 +29,11 @@ const escapeHtml = (s) =>
       ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]
   );
 
-export async function handleQuote(req) {
+export async function handleQuote(req, env = globalThis.process?.env ?? {}) {
+  // Read per request: Workers provides env to the adapter, not globally.
+  const TO = env.QUOTE_TO || "antoinette@gohorizonapp.co";
+  const FROM = env.QUOTE_FROM || "ARK Hygiene <onboarding@resend.dev>";
+
   if (req.method !== "POST") return json(405, { error: "Method not allowed." });
 
   let data = {};
@@ -65,7 +66,7 @@ export async function handleQuote(req) {
   }
   if (!message) return json(400, { error: "Please tell us what you need." });
 
-  const key = process.env.RESEND_API_KEY;
+  const key = env.RESEND_API_KEY;
   if (!key) {
     return json(500, {
       error:
