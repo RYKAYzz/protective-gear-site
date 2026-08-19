@@ -20,18 +20,19 @@ const UNITS = [
   "unit",
 ];
 
-/* Drafts are mirrored to localStorage on every keystroke, and committed
-   automatically a short while after you stop typing. Edits previously lived
-   only in memory, so a refresh, a closed tab or a stray Log out threw away
-   everything typed since the last manual Save. */
+/* Drafts are mirrored to localStorage on every keystroke, so a refresh, a
+   closed tab or a stray Log out no longer throws away everything typed.
+ *
+ * Publishing stays MANUAL and deliberate. Each publish is a git commit, and
+ * every commit triggers a Netlify build — auto-committing as you type would
+ * burn the account's monthly build minutes in an afternoon. Edit freely,
+ * publish once. */
 const DRAFT_KEY = "ark_staff_draft";
-const AUTOSAVE_MS = 12000;
 
 let products = [];
 let baseCommit = null;
 let dirty = new Set();
 let editing = null;
-let autosaveTimer = null;
 
 const $ = (id) => document.getElementById(id);
 const token = () => sessionStorage.getItem(KEY);
@@ -45,7 +46,7 @@ function saveDraft() {
       JSON.stringify({ baseCommit, products, dirty: [...dirty], at: Date.now() })
     );
   } catch {
-    /* private mode or quota — autosave still covers it */
+    /* private mode or quota — nothing else to fall back on */
   }
 }
 
@@ -61,13 +62,6 @@ function clearDraft() {
   try {
     localStorage.removeItem(DRAFT_KEY);
   } catch {}
-}
-
-function scheduleAutosave() {
-  clearTimeout(autosaveTimer);
-  autosaveTimer = setTimeout(() => {
-    if (dirty.size) commit({ auto: true });
-  }, AUTOSAVE_MS);
 }
 
 /* ------------------------------------------------------------- helpers --- */
@@ -97,9 +91,8 @@ function markDirty(slug) {
   dirty.add(slug);
   $("save").disabled = false;
   saveDraft();
-  scheduleAutosave();
   status(
-    `${dirty.size} unsaved change${dirty.size === 1 ? "" : "s"} — saving shortly`
+    `${dirty.size} unpublished change${dirty.size === 1 ? "" : "s"} — kept on this device`
   );
 }
 
@@ -174,7 +167,6 @@ async function start() {
       products = draft.products;
       dirty = new Set(draft.dirty);
       $("save").disabled = false;
-      scheduleAutosave();
       status(
         draft.baseCommit === baseCommit
           ? `Recovered ${dirty.size} unsaved change${dirty.size === 1 ? "" : "s"} from your last session.`
@@ -463,14 +455,13 @@ let saving = false;
 async function commit({ auto = false } = {}) {
   if (saving || !dirty.size) return;
   saving = true;
-  clearTimeout(autosaveTimer);
   $("save").disabled = true;
   status(auto ? "Saving…" : "Saving…");
 
   try {
     const res = await api("/products", {
       method: "PUT",
-      body: JSON.stringify({ products, baseCommit }),
+      body: JSON.stringify({ products, baseCommit, changed: [...dirty] }),
     });
     baseCommit = res.commit;
     dirty.clear();
@@ -481,7 +472,6 @@ async function commit({ auto = false } = {}) {
     // The draft stays on disk, so nothing typed is lost by a failed save.
     status(`${e.message} Your changes are kept — try Save again.`, "err");
     $("save").disabled = false;
-    if (auto) scheduleAutosave();
   } finally {
     saving = false;
   }

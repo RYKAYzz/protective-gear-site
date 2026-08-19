@@ -14,7 +14,7 @@
  * Routes (under /api/staff):
  *   POST /login     { password }                  -> { token }
  *   GET  /products                                -> { products, baseCommit }
- *   PUT  /products  { products, baseCommit }      -> { commit, saved }
+ *   PUT  /products  { products, baseCommit, changed } -> { commit, saved }
  *
  * Writes land as ONE commit via the git data API, so a multi-product save
  * cannot half-apply.
@@ -146,15 +146,12 @@ async function readProducts(token) {
   return { products, baseCommit: commit };
 }
 
-async function writeProducts(token, products, baseCommit) {
+async function writeProducts(token, products, baseCommit, changed) {
+  // Always build on top of whatever main is now. The previous version
+  // rejected the save whenever main had moved at all — including for commits
+  // that never touched a product — which surfaced as a spurious "someone else
+  // saved" every time anything else was pushed.
   const current = await headCommit(token);
-  if (current !== baseCommit) {
-    const err = new Error(
-      "Someone else saved while you were editing. Reload and reapply your change."
-    );
-    err.status = 409;
-    throw err;
-  }
 
   const { tree: oldTree } = await gh(
     `/repos/${REPO}/git/trees/${current}?recursive=1`,
@@ -166,8 +163,17 @@ async function writeProducts(token, products, baseCommit) {
       .map((t) => t.path)
   );
 
-  // One blob per product, then a single tree and commit.
-  const entries = await pooled(products, async (p) => {
+  // When the client tells us which products it actually touched, write only
+  // those. Anything edited elsewhere in the meantime is then left alone
+  // rather than being clobbered by this session's stale copy.
+  const touched =
+    Array.isArray(changed) && changed.length ? new Set(changed) : null;
+
+  const toWrite = touched
+    ? products.filter((p) => touched.has(p.slug))
+    : products;
+
+  const entries = await pooled(toWrite, async (p) => {
     const { _path, ...clean } = p;
     const path = `${DIR}/${p.slug}.json`;
     const blob = await gh(`/repos/${REPO}/git/blobs`, token, {
@@ -180,13 +186,16 @@ async function writeProducts(token, products, baseCommit) {
     return { path, mode: "100644", type: "blob", sha: blob.sha };
   });
 
-  // Anything that existed but is no longer present has been deleted.
-  const kept = new Set(entries.map((e) => e.path));
+  // Deletions: a slug the client no longer has, that it says it touched.
+  const present = new Set(products.map((p) => `${DIR}/${p.slug}.json`));
   for (const path of existing) {
-    if (!kept.has(path)) {
-      entries.push({ path, mode: "100644", type: "blob", sha: null });
-    }
+    if (present.has(path)) continue;
+    const slug = path.slice(DIR.length + 1, -".json".length);
+    if (touched && !touched.has(slug)) continue; // deleted by someone else
+    entries.push({ path, mode: "100644", type: "blob", sha: null });
   }
+
+  if (!entries.length) return current; // nothing to do
 
   const newTree = await gh(`/repos/${REPO}/git/trees`, token, {
     method: "POST",
@@ -196,7 +205,7 @@ async function writeProducts(token, products, baseCommit) {
   const commit = await gh(`/repos/${REPO}/git/commits`, token, {
     method: "POST",
     body: JSON.stringify({
-      message: `Update catalogue from staff admin (${products.length} products)`,
+      message: `Update catalogue from staff admin (${entries.length} changed)`,
       tree: newTree.sha,
       parents: [current],
     }),
@@ -322,7 +331,7 @@ export default async function handler(req) {
     }
 
     if (route === "products" && req.method === "PUT") {
-      const { products, baseCommit } = await req.json().catch(() => ({}));
+      const { products, baseCommit, changed } = await req.json().catch(() => ({}));
 
       if (!Array.isArray(products) || !products.length) {
         return json(400, { error: "products must be a non-empty array." });
@@ -351,7 +360,12 @@ export default async function handler(req) {
       const dupe = slugs.find((s, i) => slugs.indexOf(s) !== i);
       if (dupe) return json(400, { error: `Duplicate slug: "${dupe}".` });
 
-      const commit = await writeProducts(GITHUB_TOKEN, products, baseCommit);
+      const commit = await writeProducts(
+        GITHUB_TOKEN,
+        products,
+        baseCommit,
+        changed
+      );
       return json(200, { commit, saved: products.length });
     }
 
