@@ -10,11 +10,19 @@
   // Keeps the *.workers.dev URL alive for testing before DNS is switched.
   "workers_dev": true,
 
-  // NOTE: the dashboard also had a route for arkhygienesolutions.com, which
-  // this deploy removes. That is deliberate — the domain still resolves to the
-  // old host, so the route serves no traffic yet. Re-add it here once the site
-  // is verified on workers.dev and the nameservers have moved:
-  //   "routes": [{ "pattern": "arkhygienesolutions.com/*", "zone_name": "arkhygienesolutions.com" }]
+  // The wildcard matters. The dashboard's route was "arkhygienesolutions.com/"
+  // — the bare root — so only the homepage reached the Worker while every
+  // /_astro/* asset fell through to the old origin, which no longer has those
+  // content-hashed filenames. The result was a 404 on the stylesheet and an
+  // unstyled live site. /* keeps the whole origin on one host.
+  //
+  // No www route: that hostname has no DNS record.
+  "routes": [
+    {
+      "pattern": "arkhygienesolutions.com/*",
+      "zone_name": "arkhygienesolutions.com"
+    }
+  ],
 
   // The Astro build output is served as static assets; the Worker in
   // worker.mjs only intercepts /api/*. _redirects and _headers in dist/ are
