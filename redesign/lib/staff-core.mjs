@@ -27,7 +27,6 @@ const REPO = "RYKAYzz/protective-gear-site";
 const BRANCH = "main";
 const DIR = "redesign/src/data/products";
 const SESSION_HOURS = 12;
-const CONCURRENCY = 10;
 
 const json = (status, body) =>
   new Response(JSON.stringify(body), {
@@ -135,19 +134,26 @@ async function gh(path, token, options = {}) {
   return body;
 }
 
-/** Run tasks with a small concurrency cap so 74 files do not open 74 sockets. */
-async function pooled(items, worker, limit = CONCURRENCY) {
-  const out = [];
-  let i = 0;
-  await Promise.all(
-    Array.from({ length: Math.min(limit, items.length) }, async () => {
-      while (i < items.length) {
-        const index = i++;
-        out[index] = await worker(items[index]);
-      }
-    })
-  );
-  return out;
+async function ghGraphQL(token, query, variables) {
+  const res = await fetch("https://api.github.com/graphql", {
+    method: "POST",
+    headers: {
+      authorization: `Bearer ${token}`,
+      "user-agent": "ark-staff-admin",
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({ query, variables }),
+  });
+
+  const body = await res.json().catch(() => ({}));
+  if (!res.ok || body.errors) {
+    const err = new Error(
+      body.errors?.[0]?.message || body.message || `GitHub GraphQL ${res.status}`
+    );
+    err.status = res.status;
+    throw err;
+  }
+  return body.data;
 }
 
 async function headCommit(token) {
@@ -155,22 +161,49 @@ async function headCommit(token) {
   return ref.object.sha;
 }
 
+/**
+ * Reads the whole catalogue in ONE request.
+ *
+ * The REST version fetched a blob per product: 1 ref + 1 tree + 73 blobs = 75
+ * calls. A Cloudflare Worker on the free plan may make 50 subrequests per
+ * invocation, so the panel died with "Too many subrequests" and rendered an
+ * empty grid. Node hosts have no such cap, which is why this only appeared
+ * after the move. GraphQL returns every blob's text inline, so the cost is
+ * one call no matter how large the catalogue grows.
+ */
 async function readProducts(token) {
-  const commit = await headCommit(token);
-  const { tree } = await gh(
-    `/repos/${REPO}/git/trees/${commit}?recursive=1`,
-    token
+  const [owner, name] = REPO.split("/");
+
+  const data = await ghGraphQL(
+    token,
+    `query($owner:String!, $name:String!, $branch:String!, $expr:String!) {
+      repository(owner:$owner, name:$name) {
+        ref(qualifiedName:$branch) { target { oid } }
+        object(expression:$expr) {
+          ... on Tree {
+            entries { name  object { ... on Blob { text } } }
+          }
+        }
+      }
+    }`,
+    { owner, name, branch: BRANCH, expr: `${BRANCH}:${DIR}` }
   );
 
-  const files = tree.filter(
-    (t) => t.type === "blob" && t.path.startsWith(`${DIR}/`) && t.path.endsWith(".json")
-  );
+  const repo = data?.repository;
+  const commit = repo?.ref?.target?.oid;
+  if (!commit) throw new Error(`Could not read branch ${BRANCH}.`);
 
-  const products = await pooled(files, async (f) => {
-    const blob = await gh(`/repos/${REPO}/git/blobs/${f.sha}`, token);
-    const raw = Buffer.from(blob.content, "base64").toString("utf8");
-    return { ...JSON.parse(raw), _path: f.path };
-  });
+  const products = [];
+  for (const entry of repo.object?.entries ?? []) {
+    if (!entry.name.endsWith(".json")) continue;
+    const text = entry.object?.text;
+    if (!text) continue; // binary or truncated — skip rather than corrupt
+    try {
+      products.push({ ...JSON.parse(text), _path: `${DIR}/${entry.name}` });
+    } catch {
+      throw new Error(`${entry.name} is not valid JSON.`);
+    }
+  }
 
   products.sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
   return { products, baseCommit: commit };
@@ -203,17 +236,19 @@ async function writeProducts(token, products, baseCommit, changed) {
     ? products.filter((p) => touched.has(p.slug))
     : products;
 
-  const entries = await pooled(toWrite, async (p) => {
+  // The create-tree call accepts file content inline, so there is no need to
+  // POST a blob per product first. That kept the old version's cost linear in
+  // the number of edits — publishing a full catalogue blew the Worker's
+  // 50-subrequest ceiling. A save is now a flat five calls however many
+  // products changed.
+  const entries = toWrite.map((p) => {
     const { _path, ...clean } = p;
-    const path = `${DIR}/${p.slug}.json`;
-    const blob = await gh(`/repos/${REPO}/git/blobs`, token, {
-      method: "POST",
-      body: JSON.stringify({
-        content: JSON.stringify(clean, null, 2) + "\n",
-        encoding: "utf-8",
-      }),
-    });
-    return { path, mode: "100644", type: "blob", sha: blob.sha };
+    return {
+      path: `${DIR}/${p.slug}.json`,
+      mode: "100644",
+      type: "blob",
+      content: JSON.stringify(clean, null, 2) + "\n",
+    };
   });
 
   // Deletions: a slug the client no longer has, that it says it touched.
@@ -259,7 +294,7 @@ export async function handleStaff(req, env = globalThis.process?.env ?? {}) {
   if (!STAFF_PASSWORD || !STAFF_SECRET || !GITHUB_TOKEN) {
     return json(500, {
       error:
-        "Staff admin is not configured. Set STAFF_PASSWORD, STAFF_SECRET and GITHUB_TOKEN in Netlify environment variables.",
+        "Staff admin is not configured. Set STAFF_PASSWORD, STAFF_SECRET and GITHUB_TOKEN in the hosting dashboard.",
     });
   }
 
@@ -336,9 +371,16 @@ export async function handleStaff(req, env = globalThis.process?.env ?? {}) {
         });
       }
 
-      const base64 = match[3];
+      // Strip any whitespace a client may have wrapped into the data URL, so
+      // the size maths below counts real payload characters.
+      const base64 = match[3].replace(/\s+/g, "");
+
       // 5MB ceiling, measured on the decoded bytes rather than the string.
-      if (Buffer.byteLength(base64, "base64") > 5 * 1024 * 1024) {
+      // Computed arithmetically because Workers has no Buffer: every 4 base64
+      // characters carry 3 bytes, less one byte per '=' of padding.
+      const padding = base64.endsWith("==") ? 2 : base64.endsWith("=") ? 1 : 0;
+      const bytes = Math.floor((base64.length * 3) / 4) - padding;
+      if (bytes > 5 * 1024 * 1024) {
         return json(400, { error: "Image is larger than 5MB." });
       }
 
