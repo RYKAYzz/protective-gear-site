@@ -2,7 +2,19 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "protective-gear-site",
   "main": "worker.mjs",
-  "compatibility_date": "2025-06-01",
+  // Matches what the dashboard already provisioned. Wrangler overwrites the
+  // remote config on every deploy, so anything set in the dashboard must be
+  // mirrored here or it is silently dropped.
+  "compatibility_date": "2026-08-19",
+
+  // Keeps the *.workers.dev URL alive for testing before DNS is switched.
+  "workers_dev": true,
+
+  // NOTE: the dashboard also had a route for arkhygienesolutions.com, which
+  // this deploy removes. That is deliberate — the domain still resolves to the
+  // old host, so the route serves no traffic yet. Re-add it here once the site
+  // is verified on workers.dev and the nameservers have moved:
+  //   "routes": [{ "pattern": "arkhygienesolutions.com/*", "zone_name": "arkhygienesolutions.com" }]
 
   // The Astro build output is served as static assets; the Worker in
   // worker.mjs only intercepts /api/*. _redirects and _headers in dist/ are
