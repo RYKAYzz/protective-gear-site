@@ -8,7 +8,7 @@ export const site = {
   phone: "+254 716 253 184",
   phoneHref: "tel:+254716253184",
   whatsapp: "https://wa.me/254716253184",
-  email: "antoinette@gohorizonapp.co",
+  email: "arkhygieneexperts@gmail.com",
   address: {
     line1: "Tumaini House, Room 310",
     line2: "CBD, Nairobi",

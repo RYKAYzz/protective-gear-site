@@ -31,7 +31,7 @@ const escapeHtml = (s) =>
 
 export async function handleQuote(req, env = globalThis.process?.env ?? {}) {
   // Read per request: Workers provides env to the adapter, not globally.
-  const TO = env.QUOTE_TO || "antoinette@gohorizonapp.co";
+  const TO = env.QUOTE_TO || "arkhygieneexperts@gmail.com";
   const FROM = env.QUOTE_FROM || "ARK Hygiene <onboarding@resend.dev>";
 
   if (req.method !== "POST") return json(405, { error: "Method not allowed." });
