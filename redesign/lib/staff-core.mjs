@@ -311,9 +311,15 @@ export async function handleStaff(req, env = globalThis.process?.env ?? {}) {
      */
     if (route === "health" && req.method === "GET") {
       let github = "not checked";
+      let canWrite = "unknown";
       try {
         const repo = await gh(`/repos/${REPO}`, GITHUB_TOKEN);
         github = `ok — can see ${repo.full_name}`;
+        // A token that can read but not write reports push:false here. That
+        // distinction is the whole difference between "Contents: Read-only"
+        // and "Read and write" on a fine-grained token, and it is otherwise
+        // only visible as a 403 at save time.
+        canWrite = repo.permissions?.push === true ? "yes" : "NO — read only";
       } catch (e) {
         github = `FAILED — ${e.message}`;
       }
@@ -324,6 +330,7 @@ export async function handleStaff(req, env = globalThis.process?.env ?? {}) {
         staffSecretSet: Boolean(STAFF_SECRET),
         githubTokenSet: Boolean(GITHUB_TOKEN),
         github,
+        canWrite,
       });
     }
 
