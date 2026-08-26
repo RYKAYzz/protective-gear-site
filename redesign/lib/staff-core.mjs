@@ -127,7 +127,12 @@ async function gh(path, token, options = {}) {
     body = { raw: text };
   }
   if (!res.ok) {
-    const err = new Error(body.message || `GitHub ${res.status}`);
+    // Name the endpoint. GitHub's 403 for a fine-grained token is the bare
+    // string "Resource not accessible by personal access token", which says
+    // nothing about which call was refused — and the save path touches five.
+    const err = new Error(
+      `${body.message || `GitHub ${res.status}`} (${options.method || "GET"} ${path})`
+    );
     err.status = res.status;
     throw err;
   }
@@ -315,13 +320,24 @@ export async function handleStaff(req, env = globalThis.process?.env ?? {}) {
       try {
         const repo = await gh(`/repos/${REPO}`, GITHUB_TOKEN);
         github = `ok — can see ${repo.full_name}`;
-        // A token that can read but not write reports push:false here. That
-        // distinction is the whole difference between "Contents: Read-only"
-        // and "Read and write" on a fine-grained token, and it is otherwise
-        // only visible as a 403 at save time.
-        canWrite = repo.permissions?.push === true ? "yes" : "NO — read only";
       } catch (e) {
         github = `FAILED — ${e.message}`;
+      }
+
+      // repo.permissions reflects the *account's* role, not the token's
+      // scopes, so it reports push:true even for a read-only fine-grained
+      // token. The only honest test is to attempt a write. Creating a blob
+      // needs Contents: write but is inert: it is not referenced by any tree
+      // or commit, changes no branch, and is garbage-collected.
+      // TODO: remove this probe once the admin is confirmed working.
+      try {
+        await gh(`/repos/${REPO}/git/blobs`, GITHUB_TOKEN, {
+          method: "POST",
+          body: JSON.stringify({ content: "probe", encoding: "utf-8" }),
+        });
+        canWrite = "yes — blob write accepted";
+      } catch (e) {
+        canWrite = `NO — ${e.message}`;
       }
       // Deliberately no lengths or values: this endpoint is unauthenticated,
       // and password length is a real hint to anyone guessing.
