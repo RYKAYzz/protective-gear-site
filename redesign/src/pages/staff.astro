@@ -452,8 +452,6 @@ const categoryOptions = categories.map((c) => ({ slug: c.slug, name: c.name }));
         position: fixed;
         inset: 0;
         z-index: 60;
-        display: grid;
-        justify-items: end;
       }
 
       .editor__scrim {
@@ -465,9 +463,14 @@ const categoryOptions = categories.map((c) => ({ slug: c.slug, name: c.name }));
       }
 
       .editor__panel {
-        position: relative;
+        /* Pinned to the fixed parent rather than laid out as a grid item.
+           As a grid item the row auto-sized to the content, so on a tall
+           form the panel grew past the viewport and height:100% resolved
+           against that overgrown row — leaving the body unconstrained and
+           unscrollable however its overflow was set. */
+        position: absolute;
+        inset: 0 0 0 auto;
         width: min(520px, 100vw);
-        height: 100%;
         display: grid;
         grid-template-rows: auto 1fr auto;
         background: var(--paper);
@@ -505,6 +508,13 @@ const categoryOptions = categories.map((c) => ({ slug: c.slug, name: c.name }));
 
       .editor__body {
         overflow-y: auto;
+        /* Without this the panel does not scroll. A grid item's automatic
+           minimum size is its content, so this 1fr track grew to fit every
+           field instead of capping at the panel height — overflow-y had
+           nothing to overflow, the price fields sat below the fold, and the
+           footer with Save was pushed off-screen entirely. */
+        min-height: 0;
+        overscroll-behavior: contain;
         padding: var(--space-m);
         display: grid;
         gap: var(--space-s);
