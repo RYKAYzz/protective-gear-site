@@ -1,11 +1,11 @@
 {
   "order": 32,
-  "name": "Pedal Bin 50L",
+  "name": "Pedal Bin 18L",
   "slug": "pedal-bin-50l",
   "description": "High-capacity pedal-operated waste bin",
   "image": "/assets/bins-wastes/pedal bins - 50 litres.png",
   "category": "sterilization-waste-equipment",
   "subcategory": "bins",
-  "price": 4950,
+  "price": 2500,
   "unit": "piece"
 }
