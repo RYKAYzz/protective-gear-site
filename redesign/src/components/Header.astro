@@ -53,12 +53,15 @@ import { nav } from "../data/site.js";
 </header>
 
 <style>
+  /* Opaque rather than translucent-and-blurred: a sticky bar with a
+     backdrop-filter forces the browser to re-blur everything behind it on
+     every single scroll frame, which is what made scrolling stutter. The
+     paper background is only a shade off the page anyway. */
   .site-header {
     position: sticky;
     top: 0;
     z-index: 50;
-    background: color-mix(in srgb, var(--paper) 88%, transparent);
-    backdrop-filter: blur(10px);
+    background: var(--paper);
     border-bottom: 1px solid var(--line-soft);
   }
 

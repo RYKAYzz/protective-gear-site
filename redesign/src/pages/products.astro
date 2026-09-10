@@ -154,12 +154,14 @@ const groups = categories.map((cat) => ({
   }
 
   /* ---------- Sticky jump bar ---------- */
+  /* Opaque for the same reason as the site header: a second blurred sticky
+     bar stacked under the first doubled the per-frame blur cost on the
+     longest page on the site. */
   .jump {
     position: sticky;
     top: 74px;
     z-index: 20;
-    background: color-mix(in srgb, var(--paper) 92%, transparent);
-    backdrop-filter: blur(10px);
+    background: var(--paper);
     border-block: 1px solid var(--line);
   }
 

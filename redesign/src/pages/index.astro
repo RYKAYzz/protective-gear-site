@@ -402,6 +402,9 @@ const capabilities = [
       #eae0d3 100%
     );
     border-radius: var(--radius-lg);
+    /* Keeps the shelf images' multiply blend inside the shelf, rather than
+       blending against everything painted below it in the page. */
+    isolation: isolate;
   }
 
   @media (min-width: 700px) {
