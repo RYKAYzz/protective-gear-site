@@ -1,0 +1,11 @@
+{
+  "order": 50,
+  "name": "Sanitizer dispenser  400ml",
+  "slug": "sterile-400ml",
+  "description": "Compact sanitary disposal bin for small facilities",
+  "image": "/assets/sanitary-bins/sanitary bins - 400ml.png",
+  "category": "sanitary-solutions",
+  "subcategory": "sanitary",
+  "price": 2500,
+  "unit": "piece"
+}
