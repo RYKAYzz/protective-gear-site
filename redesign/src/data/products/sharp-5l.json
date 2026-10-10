@@ -1,11 +1,11 @@
 {
   "order": 22,
   "name": "Sharp Container 4L",
-  "slug": "sharp-4l",
-  "description": "Large capacity sharps disposal container",
+  "slug": "sharp-5l",
+  "description": "Medical sharp box/safety box ",
   "image": "/assets/Medical-waste-system/sharp containers - 4 litres.png",
   "category": "sterilization-waste-equipment",
   "subcategory": "sharps",
-  "price": null,
-  "unit": ""
+  "price": 4100,
+  "unit": "piece"
 }
