@@ -11,12 +11,15 @@
  * footer and the structured data have room for every line, so they walk this
  * array instead.
  *
- * WhatsApp runs on the primary line only.
+ * WhatsApp is answered on a different line from the one the call button
+ * dials — see `whatsapp` below.
  */
 const phones = [
   { display: "+254 716 253 184", href: "tel:+254716253184" },
   { display: "+254 712 773 220", href: "tel:+254712773220" },
 ];
+
+const whatsappLine = phones[1];
 
 export const site = {
   name: "ARK Hygiene Solutions",
@@ -24,7 +27,15 @@ export const site = {
   phones,
   phone: phones[0].display,
   phoneHref: phones[0].href,
-  whatsapp: "https://wa.me/254716253184",
+
+  // WhatsApp is answered on the second line, not the first. The chat button
+  // and every product enquiry link go there, while the call button, the
+  // header and the page-foot CTAs keep dialling the primary. Derived from
+  // the list so the two can never drift apart, and carried alongside as a
+  // display string because the chat button has to say which number it is
+  // reaching for anyone using a screen reader.
+  whatsapp: `https://wa.me/${whatsappLine.href.replace("tel:+", "")}`,
+  whatsappNumber: whatsappLine.display,
   email: "arkhygieneexperts@gmail.com",
   address: {
     line1: "Tumaini House, Room 310",

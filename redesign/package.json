@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "sync-assets": "rm -rf public/assets && cp -R ../assets public/assets",
+    "sync-assets": "rm -rf public/assets && cp -R ../assets public/assets && find public/assets -name '.DS_Store' -delete",
     "predev": "npm run sync-assets",
     "dev": "astro dev",
     "prebuild": "npm run sync-assets",
