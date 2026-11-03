@@ -1,5 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
+import { conversions } from "../data/conversions.js";
 ---
 
 <Base
@@ -36,6 +37,13 @@ import Base from "../layouts/Base.astro";
       </p>
     </div>
   </section>
+
+  {/* The quote request is the campaign's primary goal. This page is only
+      reached after /api/quote accepts a submission, so a view here is a
+      genuine lead rather than someone browsing. */}
+  <script is:inline define:vars={{ sendTo: conversions.quoteRequest }}>
+    if (window.arkConversion) window.arkConversion(sendTo);
+  </script>
 </Base>
 
 <style>

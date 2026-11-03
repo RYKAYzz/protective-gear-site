@@ -4,6 +4,8 @@ import "../styles/tokens.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import FloatingContact from "../components/FloatingContact.astro";
+import { googleAdsTags, conversions } from "../data/conversions.js";
+import { site } from "../data/site.js";
 
 interface Props {
   title: string;
@@ -13,8 +15,10 @@ interface Props {
 const { title, description } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 
-// Google tag — Ads conversion measurement for the Kenya PPE Search campaign
-const GOOGLE_TAG_ID = "AW-18158845729";
+// Google tag — Ads measurement. Two accounts advertise this site, so there
+// may be more than one id; src/data/conversions.js is the source of truth.
+// gtag.js itself only needs loading once, with any one of them.
+const GTAG_SRC_ID = googleAdsTags[0];
 ---
 
 <!doctype html>
@@ -43,7 +47,7 @@ const GOOGLE_TAG_ID = "AW-18158845729";
         description:
           "ISO 13485 certified supplier of personal protective equipment, sterilization systems and medical waste equipment to healthcare facilities across Kenya.",
         url: "https://arkhygienesolutions.com",
-        telephone: "+254716253184",
+        telephone: site.phones.map((line) => line.href.replace("tel:", "")),
         email: "arkhygieneexperts@gmail.com",
         foundingDate: "2018",
         address: {
@@ -58,14 +62,45 @@ const GOOGLE_TAG_ID = "AW-18158845729";
     <!-- Google tag (gtag.js) -->
     <script
       async
-      src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_TAG_ID}`}></script>
-    <script is:inline define:vars={{ GOOGLE_TAG_ID }}>
+      src={`https://www.googletagmanager.com/gtag/js?id=${GTAG_SRC_ID}`}></script>
+    <script is:inline define:vars={{ googleAdsTags, conversions }}>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
       }
       gtag("js", new Date());
-      gtag("config", GOOGLE_TAG_ID);
+      // One config call per account, or the second account sees nothing.
+      googleAdsTags.forEach(function (id) {
+        gtag("config", id);
+      });
+
+      // Fires one conversion action. Each action carries the full send_to
+      // values ("AW-<account>/<label>"), so an action can report into both
+      // accounts at once. An empty list means the action has not been
+      // created in Google Ads yet, so we stay silent rather than sending a
+      // malformed hit.
+      window.arkConversion = function (sendTo) {
+        if (!sendTo || !sendTo.length) return;
+        sendTo.forEach(function (value) {
+          gtag("event", "conversion", { send_to: value });
+        });
+      };
+
+      // Calls and WhatsApp messages are the two ways a buyer reaches us
+      // without ever touching the quote form, and the phone number appears
+      // in the header, the footer, the floating button and most page feet.
+      // One delegated listener catches every one of them, including any
+      // added later, instead of an onclick per link.
+      document.addEventListener("click", function (event) {
+        var link = event.target.closest && event.target.closest("a[href]");
+        if (!link) return;
+        var href = link.getAttribute("href") || "";
+        if (href.lastIndexOf("tel:", 0) === 0) {
+          window.arkConversion(conversions.callClick);
+        } else if (href.indexOf("wa.me") !== -1) {
+          window.arkConversion(conversions.whatsappClick);
+        }
+      });
     </script>
   </head>
 
