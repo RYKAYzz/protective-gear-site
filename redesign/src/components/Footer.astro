@@ -1,5 +1,6 @@
 ---
 import { categories } from "../data/categories.js";
+import { site } from "../data/site.js";
 
 const year = new Date().getFullYear();
 
@@ -51,7 +52,9 @@ const columns = [
       <div class="footer-col">
         <h2 class="footer-col__title">Contact</h2>
         <address>
-          <a href="tel:+254716253184">+254 716 253 184</a>
+          {site.phones.map((line) => (
+            <a href={line.href}>{line.display}</a>
+          ))}
           <a href="mailto:arkhygieneexperts@gmail.com"
             >arkhygieneexperts@gmail.com</a
           >

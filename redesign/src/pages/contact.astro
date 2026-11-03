@@ -33,7 +33,11 @@ const mapQuery = encodeURIComponent(
         <ul class="routes">
           <li>
             <span class="routes__label">Call or WhatsApp</span>
-            <a href={site.phoneHref} class="routes__value">{site.phone}</a>
+            {site.phones.map((line) => (
+              <a href={line.href} class="routes__value">
+                {line.display}
+              </a>
+            ))}
             <a href={site.whatsapp} class="routes__sub link-quiet">
               Open WhatsApp <span class="arrow">&rarr;</span>
             </a>
