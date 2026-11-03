@@ -5,21 +5,19 @@
 /**
  * Reachable lines, primary first.
  *
- * Most of the site can only show one. The header has no room for two, and a
- * floating call button dials a single number — those places use `phone` and
- * `phoneHref` below, which are just the first entry. The contact page, the
- * footer and the structured data have room for every line, so they walk this
- * array instead.
+ * The old primary, +254 716 253 184, was lost and has been taken off the site
+ * entirely: a number nobody can answer is worse than one fewer number. It is
+ * still in git history if that line is ever recovered.
  *
- * WhatsApp is answered on a different line from the one the call button
- * dials — see `whatsapp` below.
+ * This stays an array even with a single entry, because the places with room
+ * for more than one line — the contact page, the footer, the structured data —
+ * walk it, so restoring a second line is a one-line change here and nothing
+ * else. The header and the floating call button have room for only one and
+ * use `phone` / `phoneHref`, which are the first entry.
  */
-const phones = [
-  { display: "+254 716 253 184", href: "tel:+254716253184" },
-  { display: "+254 712 773 220", href: "tel:+254712773220" },
-];
+const phones = [{ display: "+254 712 773 220", href: "tel:+254712773220" }];
 
-const whatsappLine = phones[1];
+const whatsappLine = phones[0];
 
 export const site = {
   name: "ARK Hygiene Solutions",
@@ -28,12 +26,10 @@ export const site = {
   phone: phones[0].display,
   phoneHref: phones[0].href,
 
-  // WhatsApp is answered on the second line, not the first. The chat button
-  // and every product enquiry link go there, while the call button, the
-  // header and the page-foot CTAs keep dialling the primary. Derived from
-  // the list so the two can never drift apart, and carried alongside as a
-  // display string because the chat button has to say which number it is
-  // reaching for anyone using a screen reader.
+  // WhatsApp is answered on this same line. Derived from the list rather than
+  // written out again so the link and the number shown beside it cannot
+  // drift apart, and carried as a display string too because the chat button
+  // has to say which number it is reaching for anyone using a screen reader.
   whatsapp: `https://wa.me/${whatsappLine.href.replace("tel:+", "")}`,
   whatsappNumber: whatsappLine.display,
   email: "arkhygieneexperts@gmail.com",

@@ -1,6 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
 import { conversions } from "../data/conversions.js";
+import { site } from "../data/site.js";
 ---
 
 <Base
@@ -20,7 +21,7 @@ import { conversions } from "../data/conversions.js";
       <ul class="thanks__routes">
         <li>
           <span class="thanks__label">Call or WhatsApp</span>
-          <a href="tel:+254716253184" class="thanks__value">+254 716 253 184</a>
+          <a href={site.phoneHref} class="thanks__value">{site.phone}</a>
         </li>
         <li>
           <span class="thanks__label">Email</span>

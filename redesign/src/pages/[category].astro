@@ -3,6 +3,7 @@ import Base from "../layouts/Base.astro";
 import ProductCard from "../components/ProductCard.astro";
 import { products, total as totalProducts } from "../data/products.js";
 import { categories, labelFor } from "../data/categories.js";
+import { site } from "../data/site.js";
 
 export function getStaticPaths() {
   return categories.map((cat, i) => ({
@@ -108,8 +109,8 @@ const others = categories.filter((c) => c.slug !== cat.slug);
       </div>
       <div class="cta__actions">
         <a href="/#contact" class="btn btn--primary">Request a quote</a>
-        <a href="tel:+254716253184" class="link-quiet">
-          +254 716 253 184 <span class="arrow">&rarr;</span>
+        <a href={site.phoneHref} class="link-quiet">
+          {site.phone} <span class="arrow">&rarr;</span>
         </a>
       </div>
     </div>

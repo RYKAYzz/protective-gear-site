@@ -1,5 +1,5 @@
 ---
-import { nav } from "../data/site.js";
+import { nav, site } from "../data/site.js";
 ---
 
 <header class="site-header">
@@ -24,7 +24,7 @@ import { nav } from "../data/site.js";
     </nav>
 
     <div class="header-actions">
-      <a href="tel:+254716253184" class="header-phone">+254 716 253 184</a>
+      <a href={site.phoneHref} class="header-phone">{site.phone}</a>
       <a href="/#contact" class="btn btn--primary btn--sm">Request a quote</a>
     </div>
 
@@ -47,7 +47,7 @@ import { nav } from "../data/site.js";
           </li>
         ))
       }
-      <li><a href="tel:+254716253184">+254 716 253 184</a></li>
+      <li><a href={site.phoneHref}>{site.phone}</a></li>
     </ul>
   </div>
 </header>

@@ -4,6 +4,7 @@ import ProductCard from "../components/ProductCard.astro";
 import QuoteForm from "../components/QuoteForm.astro";
 import { categories } from "../data/categories.js";
 import { products, total as totalProducts } from "../data/products.js";
+import { site } from "../data/site.js";
 
 
 const credentials = [
@@ -318,8 +319,8 @@ const capabilities = [
         <ul class="contact__routes">
           <li>
             <span class="contact__label">Call or WhatsApp</span>
-            <a href="tel:+254716253184" class="contact__value"
-              >+254 716 253 184</a
+            <a href={site.phoneHref} class="contact__value"
+              >{site.phone}</a
             >
           </li>
           <li>

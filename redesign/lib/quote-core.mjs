@@ -13,6 +13,13 @@
  * misconfiguration returns a clear failure rather than pretending to send.
  */
 
+import { site } from "../src/data/site.js";
+
+// The error paths tell the visitor how to reach us by hand, so the number has
+// to come from the same place the pages get it — a hardcoded copy here would
+// outlive the line it names.
+const FALLBACK_CONTACT = `Please call or WhatsApp ${site.phone}.`;
+
 const json = (status, body) =>
   new Response(JSON.stringify(body), {
     status,
@@ -70,7 +77,7 @@ export async function handleQuote(req, env = globalThis.process?.env ?? {}) {
   if (!key) {
     return json(500, {
       error:
-        "Quote requests are not configured yet. Please call or WhatsApp +254 716 253 184.",
+        `Quote requests are not configured yet. ${FALLBACK_CONTACT}`,
     });
   }
 
@@ -118,7 +125,7 @@ export async function handleQuote(req, env = globalThis.process?.env ?? {}) {
     console.error("Resend failed:", res.status, detail);
     return json(502, {
       error:
-        "We could not send that just now. Please call or WhatsApp +254 716 253 184.",
+        `We could not send that just now. ${FALLBACK_CONTACT}`,
     });
   }
 
