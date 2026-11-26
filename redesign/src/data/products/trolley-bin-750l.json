@@ -1,11 +1,11 @@
 {
   "order": 39,
-  "name": "Trolley Bin 750L",
+  "name": "Hospital/medical waste -Trolley Bin 750L",
   "slug": "trolley-bin-750l",
-  "description": "Large mobile waste collection bin",
+  "description": "Hospital/medical waste collection bin",
   "image": "/assets/bins-wastes/trolley bins-750 litres.png",
   "category": "sterilization-waste-equipment",
-  "subcategory": "bins",
-  "price": 30000,
+  "subcategory": "Waste bins",
+  "price": 59000,
   "unit": "piece"
 }
