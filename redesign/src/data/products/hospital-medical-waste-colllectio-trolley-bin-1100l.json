@@ -1,11 +1,11 @@
 {
   "order": 40,
   "name": "Trolley Bin 1100L",
-  "slug": "trolley-bin-1100l",
+  "slug": "hospital-medical-waste-colllectio-trolley-bin-1100l",
   "description": "Maximum capacity mobile waste collection bin",
   "image": "/assets/bins-wastes/trolley bins - 1100 litres.jpg",
   "category": "sterilization-waste-equipment",
-  "subcategory": "bins",
-  "price": 35000,
+  "subcategory": "Waste bins",
+  "price": 65700,
   "unit": "piece"
 }
