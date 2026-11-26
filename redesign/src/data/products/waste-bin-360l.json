@@ -1,11 +1,11 @@
 {
   "order": 37,
-  "name": "Waste Bin 360L",
+  "name": "Hospital/medical waste -Trolley Bin 360L",
   "slug": "waste-bin-360l",
-  "description": "Maximum capacity waste bin for large facilities",
+  "description": "Maximum capacity waste bin for large facilities for Hospital/medical waste ",
   "image": "/assets/bins-wastes/waste bins - 360 litres.jpg",
   "category": "sterilization-waste-equipment",
   "subcategory": "bins",
-  "price": 28500,
+  "price": 29500,
   "unit": "piece"
 }
